@@ -5,7 +5,7 @@
  */
 const http = require("http");
 const app = require("../app");
-const debug = require("debug")("lebocalgram-back:server");
+const debug = require("debug")("cannesisup_DB:server");
 const mongoose = require("mongoose");
 
 /**

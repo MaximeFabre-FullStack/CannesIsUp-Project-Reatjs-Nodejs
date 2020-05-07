@@ -20,7 +20,7 @@ app.set("port", port);
  */
 var server = http.createServer(app);
 
-mongoose.connect("mongodb://localhost:27017/lebocalgram-DB", {
+mongoose.connect("mongodb://localhost:27017/cannesisupDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

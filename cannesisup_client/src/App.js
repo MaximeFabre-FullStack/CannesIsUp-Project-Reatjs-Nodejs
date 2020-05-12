@@ -3,11 +3,9 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>coucou</p>
-      </header>
-    </div>
+    <Router>
+      <Switch></Switch>
+    </Router>
   );
 }
 

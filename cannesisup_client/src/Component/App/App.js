@@ -12,7 +12,6 @@ class App extends Component {
           <Route path="/signup">
             <SignUp />
           </Route>
-
           {/* Annuaire route */}
           <Route path="/annuaire"></Route>
         </Switch>

@@ -4,7 +4,7 @@
 const Fiches = require("../models/adherent");
 
 const toutAdherents = (req, res, next) => {
-  Fiches.find({}, (err, data) => {
+  Fiches.find({ motDePasse: 0, mailPrive: 0 }, (err, data) => {
     if (err) {
       res.status(500).json((success = false));
       return;

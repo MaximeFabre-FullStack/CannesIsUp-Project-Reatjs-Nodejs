@@ -36,6 +36,7 @@ class SignUp extends Component {
       <div className="form_container">
         <Form>
           <div className="form_connexion">
+            <h1>Formulaire</h1>
             <p> Identifiants de votre compte</p>
             <Form.Group>
               <Form.Label>Adresse Email (privée) *</Form.Label>
@@ -138,7 +139,7 @@ class SignUp extends Component {
                 Adresse email qui apparaîtra sur votre profil.
               </Form.Text>
             </Form.Group>
-            <button className=".btn-default">click</button>
+            <button className="btn-default">click</button>
           </div>
         </Form>
       </div>

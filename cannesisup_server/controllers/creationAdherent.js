@@ -5,41 +5,42 @@ const creationFiches = require("../models/adherent");
 
 const toutAdherents = (req, res, next) => {
   const nouvelAdherent = new creationFiches({
-    nomDeSociete: req.body.nomDeSociete,
-    mailPrive: req.body.mailPrive,
-    motDePasse: req.body.motDePasse,
+    nomDeSociete: req.body.nom,
+    mailPrive: req.body.email,
+    motDePasse: req.body.password,
 
     coordonnes: {
-      adresse: req.body.coordonnes.adresse,
-      complementDadresse: req.body.coordonnes.complementDadresse,
-      codePostal: req.body.coordonnes.codePostal,
-      mailSociete: req.body.coordonnes.mailSociete,
-      telephone: req.body.coordonnes.telephone,
-      siteWeb: req.body.coordonnes.siteWeb,
+      adresse: req.body.adresse,
+      complementDadresse: req.body.adresse2,
+      codePostal: req.body.code_postal,
+      ville: req.body.ville,
+      mailSociete: req.body.email_public,
+      telephone: req.body.tel,
+      siteWeb: req.body.site,
     },
 
     reseauSociaux: {
-      facebook: req.body.reseauSociaux.facebook,
-      instagram: req.body.reseauSociaux.instagram,
-      twitter: req.body.reseauSociaux.twitter,
-      linkedin: req.body.reseauSociaux.linkedin,
+      facebook: req.body.facebook,
+      instagram: req.body.instagram,
+      twitter: req.body.twitter,
+      linkedin: req.body.linkedin,
     },
 
-    secteurDactivite: req.body.secteurDactivite,
-    descriptionExhaustive: req.body.descriptionExhaustive,
-    logo: req.body.logo,
-    photoCouverture: req.body.photoCouverture,
-    dossierPresentation: req.body.dossierPresentation,
+    secteurDactivite: req.body.activite,
+    descriptionExhaustive: req.body.description,
+    logo: req.body.logo, // a modifier
+    photoCouverture: req.body.photoCouverture, // a modifier
+    dossierPresentation: req.body.dossierPresentation, // a modifier
 
     dirigeant: {
-      nom: req.body.dirigeant.nom,
-      prenom: req.body.dirigeant.prenom,
-      paroleDeMembre: req.body.dirigeant.paroleDeMembre,
-      fonction: req.body.dirigeant.fonction,
-      photoPortrait: req.body.dirigeant.photoPortrait,
+      nom: req.body.nomDirigeant,
+      prenom: req.body.prenomDirigeant,
+      paroleDeMembre: req.body.parole,
+      fonction: req.body.fonction,
+      photoPortrait: req.body.photoPortrait, // a modifier
     },
 
-    pdf: req.body.pdf,
+    paiement: req.body.paiement, // a modifier
     estActif: false,
   });
   nouvelAdherent.save({}, (err, data) => {

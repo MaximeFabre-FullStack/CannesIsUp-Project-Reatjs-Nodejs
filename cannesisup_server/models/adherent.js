@@ -10,6 +10,7 @@ const adherentSchema = mongoose.Schema({
     adresse: String,
     complementDadresse: String,
     codePostal: String,
+    ville: String,
     mailSociete: String,
     telephone: String,
     siteWeb: String,
@@ -36,7 +37,7 @@ const adherentSchema = mongoose.Schema({
     photoPortrait: String,
   },
 
-  pdf: String,
+  paiement: String,
   estActif: { type: Boolean, default: false },
 });
 

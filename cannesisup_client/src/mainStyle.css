@@ -1,0 +1,97 @@
+/**
+* mainStyle.css - style global du site
+*/
+
+/* Couleurs */
+
+.blue {
+  color: #1da1f2;
+}
+
+.pink {
+  color: #f7316b;
+}
+
+.grey {
+  color: #454545;
+}
+
+/* Style des textes */
+
+.fs14 {
+  font-size: 14px;
+}
+
+h1,
+h2 {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: #454545;
+  font-size: 40px;
+  font-weight: 300;
+  text-transform: uppercase;
+  display: table;
+  margin: 0 0 50px 0;
+}
+
+h1:after,
+h2:after {
+  content: "";
+  height: 1px;
+  width: 50%;
+  display: block;
+  padding-top: 10px;
+  border-bottom: 2px solid #f7316b;
+}
+
+h3 {
+  color: #1da1f2;
+  font-size: 22px;
+  font-weight: 900;
+  padding: 0 0 15px 0;
+  margin: 0;
+}
+
+h4 {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: #f7316b;
+  font-size: 17px;
+  padding: 10px 0;
+  margin: 0;
+  font-weight: 700;
+}
+
+p,
+ul,
+li {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  color: #000;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* Style des boutons */
+.btn-default {
+  color: #f7316b;
+  background-color: #fff;
+  border: 2px solid #f7316b;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.btn-default:hover {
+  color: #fff;
+  background-color: #f7316b;
+  border: 2px solid #f7316b;
+}
+
+/* Style des cadres */
+
+.cadre {
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 15px;
+}

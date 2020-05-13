@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 
+import "../../../src/mainStyle.css";
 import "./style.css";
 
 class SignUp extends Component {
@@ -137,6 +138,7 @@ class SignUp extends Component {
                 Adresse email qui apparaîtra sur votre profil.
               </Form.Text>
             </Form.Group>
+            <button className=".btn-default">click</button>
           </div>
         </Form>
       </div>

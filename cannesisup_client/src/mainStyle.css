@@ -1,0 +1,11 @@
+.btn-default {
+  color: #f7316b;
+  background-color: #fff;
+  border: 2px solid #f7316b;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 900;
+  text-transform: uppercase;
+}

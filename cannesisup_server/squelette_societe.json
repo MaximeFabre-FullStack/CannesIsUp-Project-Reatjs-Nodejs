@@ -34,7 +34,7 @@
         "photo-portrait":,
     },
     
-    "est-actif": true / false,
+    "est-actif": "false",
     "pdf":,
     "mode-de-paiement":,
 

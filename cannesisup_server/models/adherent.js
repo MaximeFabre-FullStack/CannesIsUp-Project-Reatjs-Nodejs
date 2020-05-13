@@ -29,7 +29,7 @@ const adherentSchema = mongoose.Schema({
     linkedin: String,
   },
 
-  estActif: Boolean,
+  estActif: { type: Boolean, default: false },
 
   pdf: String,
 });

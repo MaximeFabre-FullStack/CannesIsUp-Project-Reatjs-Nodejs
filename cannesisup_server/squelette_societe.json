@@ -1,0 +1,41 @@
+{
+
+    "mail-prive":,
+    "mot-de-passe":,
+    "nom-de-societe":,
+
+    "coordonnes": {
+        "adresse":,
+        "complement-dadresse":,
+        "code-postal":,
+        "ville":,
+        "mail-societe":,
+        "telephone":,
+        "site-web":,   
+    },
+
+    "reseau-sociaux": {
+        "facebook":,
+        "instagram":,
+        "twitter":,
+        "linkedin":,
+    },
+    "secteur-dactivite":,
+    "description-exhaustive":,
+    "logo":,
+    "photo-couverture":,
+    "dossier-presentation":,
+
+    "dirigeant": {
+        "nom":,
+        "prenom":,
+        "fonction":,
+        "parole-de-membre":,
+        "photo-portrait":,
+    },
+    
+    "est-actif": true / false,
+    "pdf":,
+    "mode-de-paiement":,
+
+}

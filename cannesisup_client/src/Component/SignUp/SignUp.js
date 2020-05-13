@@ -29,6 +29,7 @@ class SignUp extends Component {
         description: "",
         logo: null,
         couv: null,
+        dossier: null,
         nomDirigeant: "",
         prenomDirigeant: "",
         parole: "",
@@ -45,7 +46,6 @@ class SignUp extends Component {
     this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.value },
     });
-    console.log(e.target);
   };
 
   /* selectionne le fichier dans le state selectedFile*/
@@ -60,7 +60,37 @@ class SignUp extends Component {
     this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.checked },
     });
-    console.log(e.target.checked);
+  };
+
+  /* Requête POST */
+  submitForm = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    /* Options, paramètres de la requête */
+    const myHeaders = new Headers({
+      "Content-Type": "multipart/form-data",
+    });
+
+    const options = {
+      method: "POST",
+      headers: myHeaders,
+      mode: "cors",
+      body: formData,
+    };
+
+    /* Requête */
+    fetch("http://localhost:8080/adherent", options)
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          console.log("ok");
+        },
+        (error) => {
+          console.log("error coucou");
+        }
+      );
   };
 
   render() {
@@ -70,7 +100,7 @@ class SignUp extends Component {
           <h1>Formulaire</h1>
         </div>
 
-        <Form>
+        <Form onSubmit={this.submitForm}>
           <div className="form_bloc">
             <h3> Identifiants de votre compte</h3>
             <Form.Group>

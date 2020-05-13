@@ -5,7 +5,7 @@ const creationFiches = require("../models/adherent");
 
 const toutAdherents = (req, res, next) => {
   const nouvelAdherent = new creationFiches({
-    nomDeSociete: req.body.nom,
+    nomDeSociete: req.body.nom.value,
     mailPrive: req.body.email,
     motDePasse: req.body.password,
 
@@ -28,28 +28,31 @@ const toutAdherents = (req, res, next) => {
 
     secteurDactivite: req.body.activite,
     descriptionExhaustive: req.body.description,
-    logo: req.body.logo, // a modifier
-    photoCouverture: req.body.photoCouverture, // a modifier
-    dossierPresentation: req.body.dossierPresentation, // a modifier
+    //logo: req.body.logo, // a modifier
+    //photoCouverture: req.body.photoCouverture, // a modifier
+    //dossierPresentation: req.body.dossierPresentation, // a modifier
 
     dirigeant: {
       nom: req.body.nomDirigeant,
       prenom: req.body.prenomDirigeant,
       paroleDeMembre: req.body.parole,
       fonction: req.body.fonction,
-      photoPortrait: req.body.photoPortrait, // a modifier
+      // photoPortrait: req.body.photoPortrait, // a modifier
     },
 
-    paiement: req.body.paiement, // a modifier
+    //paiement: req.body.paiement, // a modifier
     estActif: false,
   });
+
   nouvelAdherent.save({}, (err, data) => {
     if (err) {
-      res.status(500).json((success = false));
+      res.status(500).json(((success = false), "message erreur"));
+      console.log("message erreur");
       return;
     }
     if (!data) {
       res.status(500).json(((sucess = false), "no data send"));
+      console.log("no data");
       return;
     }
     if (data) {

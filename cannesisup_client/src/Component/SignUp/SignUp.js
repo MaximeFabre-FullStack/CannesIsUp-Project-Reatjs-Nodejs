@@ -66,9 +66,9 @@ class SignUp extends Component {
   submitForm = (e) => {
     e.preventDefault();
 
+    /* Options, paramètres de la requête */
     const formData = new FormData(e.target);
 
-    /* Options, paramètres de la requête */
     const myHeaders = new Headers({
       "Content-Type": "multipart/form-data",
     });
@@ -110,6 +110,7 @@ class SignUp extends Component {
                 onChange={this.handle_change}
                 type="email"
                 placeholder="exemple@ex.com"
+                value={this.state.form.email}
               />
               <Form.Text className="text-muted">
                 Adresse email que vous utiliserez pour accéder à votre espace
@@ -123,6 +124,7 @@ class SignUp extends Component {
                 onChange={this.handle_change}
                 type="password"
                 placeholder="Votre mot de passe"
+                value={this.state.form.password}
               />
             </Form.Group>
             <Form.Group>
@@ -132,6 +134,7 @@ class SignUp extends Component {
                 onChange={this.handle_change}
                 type="password"
                 placeholder="Votre mot de passe"
+                value={this.state.form.password_confirm}
               />
             </Form.Group>
           </div>
@@ -144,6 +147,7 @@ class SignUp extends Component {
                 name="nom"
                 onChange={this.handle_change}
                 placeholder="Nom de votre société"
+                value={this.state.form.nom}
               />
             </Form.Group>
             <Form.Group>
@@ -152,6 +156,7 @@ class SignUp extends Component {
                 name="adresse"
                 onChange={this.handle_change}
                 placeholder="221B Baker St"
+                value={this.state.form.adresse}
               />
             </Form.Group>
             <Form.Group>
@@ -160,6 +165,7 @@ class SignUp extends Component {
                 name="adresse2"
                 onChange={this.handle_change}
                 placeholder="2ème étage"
+                value={this.state.form.adresse2}
               />
             </Form.Group>
             <Form.Row>
@@ -170,6 +176,7 @@ class SignUp extends Component {
                     name="code_postal"
                     onChange={this.handle_change}
                     placeholder="06000"
+                    value={this.state.form.code_postal}
                   />
                 </Form.Group>
               </Col>
@@ -180,6 +187,7 @@ class SignUp extends Component {
                     name="ville"
                     onChange={this.handle_change}
                     placeholder="Ville"
+                    value={this.state.form.ville}
                   />
                 </Form.Group>
               </Col>
@@ -190,6 +198,7 @@ class SignUp extends Component {
                 name="tel"
                 onChange={this.handle_change}
                 placeholder="0400000000"
+                value={this.state.form.tel}
               />
             </Form.Group>
             <Form.Group>
@@ -199,6 +208,7 @@ class SignUp extends Component {
                 onChange={this.handle_change}
                 type="email"
                 placeholder="exemple@ex.com"
+                value={this.state.form.email_public}
               />
               <Form.Text className="text-muted">
                 Adresse email qui apparaîtra sur votre profil.
@@ -210,6 +220,7 @@ class SignUp extends Component {
                 name="site"
                 onChange={this.handle_change}
                 placeholder="Votre site web"
+                value={this.state.form.site}
               />
             </Form.Group>
             <Form.Group>
@@ -222,6 +233,7 @@ class SignUp extends Component {
                       name="facebook"
                       onChange={this.handle_change}
                       placeholder="Fabebook"
+                      value={this.state.form.facebook}
                     />
                   </Form.Group>
                 </Col>
@@ -232,6 +244,7 @@ class SignUp extends Component {
                       name="instagram"
                       onChange={this.handle_change}
                       placeholder="Instagram"
+                      value={this.state.form.instagram}
                     />
                   </Form.Group>
                 </Col>
@@ -244,6 +257,7 @@ class SignUp extends Component {
                       name="linkedin"
                       onChange={this.handle_change}
                       placeholder="Linkedin"
+                      value={this.state.form.linkedin}
                     />
                   </Form.Group>
                 </Col>
@@ -254,6 +268,7 @@ class SignUp extends Component {
                       name="twitter"
                       onChange={this.handle_change}
                       placeholder="Twitter"
+                      value={this.state.form.twitter}
                     />
                   </Form.Group>
                 </Col>
@@ -265,6 +280,7 @@ class SignUp extends Component {
                 name="activite"
                 onChange={this.handle_change}
                 placeholder="Votre secteur d'activité"
+                value={this.state.form.activite}
               />
             </Form.Group>
             <Form.Group>
@@ -274,6 +290,7 @@ class SignUp extends Component {
                 onChange={this.handle_change}
                 as="textarea"
                 placeholder="Décrivez en quelques mots votre activité"
+                value={this.state.form.description}
               />
             </Form.Group>
             <Form.Group>
@@ -313,6 +330,7 @@ class SignUp extends Component {
                 name="nomDirigeant"
                 onChange={this.handle_change}
                 placeholder="Nom du dirigeant"
+                value={this.state.form.nomDirigeant}
               />
             </Form.Group>
             <Form.Group>
@@ -321,6 +339,7 @@ class SignUp extends Component {
                 name="prenomDirigeant"
                 onChange={this.handle_change}
                 placeholder="Prénom du dirigeant"
+                value={this.state.form.prenomDirigeant}
               />
             </Form.Group>
             <Form.Group>
@@ -329,6 +348,7 @@ class SignUp extends Component {
                 name="fonction"
                 onChange={this.handle_change}
                 placeholder="Fonction du dirigeant"
+                value={this.state.form.fonction}
               />
             </Form.Group>
             <Form.Group>
@@ -337,6 +357,7 @@ class SignUp extends Component {
                 name="parole"
                 onChange={this.handle_change}
                 placeholder="Parole de membre"
+                value={this.state.form.parole}
               />
             </Form.Group>
             <Form.Group>

@@ -27,40 +27,41 @@ class Navbar extends Component {
         </div>
         <div id="navbar">
           <ul className="navListe">
-            <a href="https://cannesisup.com/">
-              <li>ACCUEIL</li>
-            </a>
+            <li>
+              <a href="https://cannesisup.com/">ACCUEIL</a>
+            </li>
 
-            <a href="https://cannesisup.com/contact.php">
-              <li>Devenez adhérent</li>
-            </a>
+            <li>
+              <a href="https://cannesisup.com/contact.php">Devenez adhérent</a>
+            </li>
 
-            <a href="https://cannesisup.com/#dda">
-              <li>DDA îles de Lerins</li>
-            </a>
+            <li>
+              <a href="https://cannesisup.com/#dda">DDA îles de Lerins</a>
+            </li>
 
-            <a href="https://cannesisup.com/#actus">
-              <li>Actualités</li>
-            </a>
+            <li>
+              <a href="https://cannesisup.com/#actus">Actualités</a>
+            </li>
 
             {/* <li>
                <a href="">Adhérents</a> 
             </li> */}
 
-            <a href="https://cannesisup.com/equipe.php">
-              <li>L'équipe</li>
-            </a>
+            <li>
+              <a href="https://cannesisup.com/equipe.php">L'équipe</a>
+            </li>
 
-            <a href="https://cannesisup.com/#partenaires">
-              <li>Partenaires</li>
-            </a>
-
-            <a
-              href="https://cannesisup.com/contact.php"
-              className="lienContact"
-            >
-              <li>Contact</li>
-            </a>
+            <li>
+              <a href="https://cannesisup.com/#partenaires">Partenaires</a>
+            </li>
+            <li>
+              <a
+                href="https://cannesisup.com/contact.php"
+                className="lienContact"
+              >
+                Contact
+              </a>
+            </li>
           </ul>
         </div>
         <div className="footer">

@@ -9,6 +9,11 @@
   display: flex;
   flex-wrap: nowrap;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  background-color: white;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .navbarHeader {
@@ -27,9 +32,11 @@
   margin-right: 130px;
   margin-top: auto;
   margin-bottom: auto;
+  list-style: none;
+  float: left;
 }
 
-.navListe a li {
+.navListe li a {
   padding: 0 15px;
   line-height: 80px;
   font-size: 14px;
@@ -46,7 +53,7 @@
   text-decoration: none;
 }
 
-.navListe a li:hover {
+.navListe li a:hover {
   color: #f7316b;
 }
 

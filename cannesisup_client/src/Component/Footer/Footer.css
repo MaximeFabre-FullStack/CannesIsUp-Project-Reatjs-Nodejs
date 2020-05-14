@@ -1,0 +1,27 @@
+.footerContainer {
+  background-color: #1da1f2;
+  height: 200px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+  color: white;
+}
+
+.copyright {
+  float: left;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.copyright a {
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.lienReseaux {
+  float: right;
+}

@@ -18,60 +18,60 @@ class Annuaire extends Component {
       <div>
         <Navbar />
         <div className="annuaireContainer">
-          <InfiniteScroll>
-            <Container>
-              <Row>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  1
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  2
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  3
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  4
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  1
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  2
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  3
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  4
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  1
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  2
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  3
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  4
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  1
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  2
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  3
-                </Col>
-                <Col className="style1" xs={12} sm={6} md={4}>
-                  4
-                </Col>
-              </Row>
-            </Container>
-          </InfiniteScroll>
+          {/* <InfiniteScroll> */}
+          <Container>
+            <Row>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                1
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                2
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                3
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                4
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                1
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                2
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                3
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                4
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                1
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                2
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                3
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                4
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                1
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                2
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                3
+              </Col>
+              <Col className="style1" xs={12} sm={6} md={4}>
+                4
+              </Col>
+            </Row>
+          </Container>
+          {/* </InfiniteScroll> */}
         </div>
         <footer>
           <Footer />

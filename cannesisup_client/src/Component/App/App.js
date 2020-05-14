@@ -25,7 +25,7 @@ class App extends Component {
           <Route path="/annuaire">
             <Annuaire />
           </Route>
-          <Route path="/admin">
+          <Route path="/admin/charts">
             <AdminChart />
           </Route>
         </Switch>

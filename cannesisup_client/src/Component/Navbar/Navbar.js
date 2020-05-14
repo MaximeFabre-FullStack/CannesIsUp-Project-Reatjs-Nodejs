@@ -1,9 +1,5 @@
-/**
- * TODO CHANGER LES LIENS VERS NO LIENS
- */
-
 import React, { Component } from "react";
-import Footer from "../Footer/Footer";
+
 import "../../../src/mainStyle.css";
 import "./Navbar.css";
 
@@ -63,9 +59,6 @@ class Navbar extends Component {
               </a>
             </li>
           </ul>
-        </div>
-        <div className="footer">
-          <Footer />
         </div>
       </div>
     );

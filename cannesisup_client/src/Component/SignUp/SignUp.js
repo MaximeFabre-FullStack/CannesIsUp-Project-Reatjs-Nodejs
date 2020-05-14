@@ -451,7 +451,9 @@ class SignUp extends Component {
               <button className="btn-default">Inscription</button>
             </div>
           </Form>
-          <Footer />
+          <footer className="footer">
+            <Footer />
+          </footer>
         </div>
       </div>
     );

@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
+
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import Annuaire from "../Annuaire/Annuaire";
-import Navbar from "../Navbar/Navbar";
+import AdminChart from "../AdminChart/AdminChart";
 
 class App extends Component {
   render() {
@@ -24,8 +25,8 @@ class App extends Component {
           <Route path="/annuaire">
             <Annuaire />
           </Route>
-          <Route path="/navbar">
-            <Navbar />
+          <Route path="/admin">
+            <AdminChart />
           </Route>
         </Switch>
       </Router>

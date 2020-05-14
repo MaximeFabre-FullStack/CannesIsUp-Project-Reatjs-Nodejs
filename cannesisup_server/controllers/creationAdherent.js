@@ -4,9 +4,49 @@
 const creationFiches = require("../models/adherent");
 
 const toutAdherents = (req, res, next) => {
+  console.log(req.body.form.email);
+
   const nouvelAdherent = new creationFiches({
-    nomDeSociete: req.body.nom.value,
-    mailPrive: req.body.email,
+    nomDeSociete: req.body.form.nom,
+    mailPrive: req.body.form.email,
+    motDePasse: req.body.form.password,
+
+    coordonnes: {
+      adresse: req.body.form.adresse,
+      complementDadresse: req.body.form.adresse2,
+      codePostal: req.body.form.code_postal,
+      ville: req.body.form.ville,
+      mailSociete: req.body.form.email_public,
+      telephone: req.body.form.tel,
+      siteWeb: req.body.form.site,
+    },
+
+    reseauSociaux: {
+      facebook: req.body.form.facebook,
+      instagram: req.body.form.instagram,
+      twitter: req.body.form.twitter,
+      linkedin: req.body.form.linkedin,
+    },
+
+    secteurDactivite: req.body.form.activite,
+    descriptionExhaustive: req.body.form.description,
+
+    logo: "", // a modifier
+    photoCouverture: "", // a modifier
+    dossierPresentation: "", // a modifier
+
+    dirigeant: {
+      nom: req.body.form.nomDirigeant,
+      prenom: req.body.form.prenomDirigeant,
+      paroleDeMembre: req.body.form.parole,
+      fonction: req.body.form.fonction,
+      photoPortrait: req.body.form.photoPortrait, // a modifier
+    },
+
+    paiement: "", // a modifier
+    estActif: false,
+
+    /*mailPrive: req.body.email,
     motDePasse: req.body.password,
 
     coordonnes: {
@@ -41,7 +81,7 @@ const toutAdherents = (req, res, next) => {
     },
 
     //paiement: req.body.paiement, // a modifier
-    estActif: false,
+    estActif: false,*/
   });
 
   nouvelAdherent.save({}, (err, data) => {
@@ -51,12 +91,12 @@ const toutAdherents = (req, res, next) => {
       return;
     }
     if (!data) {
-      res.status(500).json(((sucess = false), "no data send"));
+      res.status(500).json(((success = false), "no data send"));
       console.log("no data");
       return;
     }
     if (data) {
-      res.json((sucess = true));
+      res.json((success = false));
     }
   });
 };

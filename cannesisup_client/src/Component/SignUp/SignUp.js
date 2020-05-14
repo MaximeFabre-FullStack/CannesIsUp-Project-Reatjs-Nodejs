@@ -41,23 +41,24 @@ class SignUp extends Component {
       },
     };
   }
+
   /* Récupère la valeur d'input dans le state */
-  handle_change = (e) => {
-    this.setState({
+  handle_change = async (e) => {
+    await this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.value },
     });
   };
 
   /* selectionne le fichier dans le state selectedFile*/
-  fileSelectedHandler = (e) => {
-    this.setState({
+  fileSelectedHandler = async (e) => {
+    await this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.files[0] },
     });
   };
 
   /* Récupère la valeur d'input dans le state */
-  handle_check = (e) => {
-    this.setState({
+  handle_check = async (e) => {
+    await this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.checked },
     });
   };
@@ -66,7 +67,35 @@ class SignUp extends Component {
   submitForm = (e) => {
     e.preventDefault();
 
-    /* Options, paramètres de la requête */
+    /* REQUETE JSON */
+
+    const data = { form: this.state.form };
+    console.log(JSON.stringify(data));
+
+    const myHeaders = new Headers({
+      "Content-Type": "application/json",
+    });
+
+    const options = {
+      method: "POST",
+      headers: myHeaders,
+      mode: "cors",
+      body: JSON.stringify(data),
+    };
+
+    fetch("http://localhost:8080/adherents", options)
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          console.log("ok la requete est passée");
+        },
+        (error) => {
+          console.log("error la requete n'est pas passée");
+        }
+      );
+
+    /* REQUETE FORMDATA
+    Options, paramètres de la requête 
     const formData = new FormData(e.target);
 
     const myHeaders = new Headers({
@@ -80,8 +109,10 @@ class SignUp extends Component {
       body: formData,
     };
 
-    /* Requête */
-    fetch("http://localhost:8080/adherent", options)
+    console.log(formData);
+
+   
+    fetch("http://localhost:8080/adherents", options)
       .then((response) => response.json())
       .then(
         (data) => {
@@ -91,6 +122,7 @@ class SignUp extends Component {
           console.log("error coucou");
         }
       );
+      */
   };
 
   render() {
@@ -293,6 +325,7 @@ class SignUp extends Component {
                 value={this.state.form.description}
               />
             </Form.Group>
+            {/*
             <Form.Group>
               <Form.Label>Logo *</Form.Label>
               <Form.File
@@ -320,8 +353,8 @@ class SignUp extends Component {
                 custom
               />
             </Form.Group>
+            */}
           </div>
-
           <div className="form_bloc">
             <h3> Informations sur le dirigeant</h3>
             <Form.Group>
@@ -360,6 +393,7 @@ class SignUp extends Component {
                 value={this.state.form.parole}
               />
             </Form.Group>
+            {/* 
             <Form.Group>
               <Form.Label>Photo</Form.Label>
               <Form.File
@@ -369,8 +403,8 @@ class SignUp extends Component {
                 custom
               />
             </Form.Group>
+            */}
           </div>
-
           <div className="form_bloc">
             <Form.Check
               type="checkbox"
@@ -385,12 +419,10 @@ class SignUp extends Component {
               label="RGPD"
             />
           </div>
-
           <div className="form_bloc">
             <Form.Check type="radio" name="paiement" label="CB" />
             <Form.Check type="radio" name="paiement" label="Virement" />
           </div>
-
           <div className="btn">
             <button className="btn-default">Inscription</button>
           </div>

@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors_handle.handle);
 
 // routes
-app.use("/adherent", adherentRouter);
+app.use("/adherents", adherentRouter);
 app.use("/admin", adminRouter);
 app.use("/visiteurs", visiteurRouter);
 

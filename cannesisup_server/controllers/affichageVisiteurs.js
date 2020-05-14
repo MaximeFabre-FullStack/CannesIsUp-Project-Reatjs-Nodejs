@@ -1,10 +1,12 @@
 /**
- * controller to get post history
+ * controller to get adherent history
  */
+
 const Fiches = require("../models/adherent");
 
 const toutAdherents = (req, res, next) => {
-  Fiches.find({ motDePasse: 0, mailPrive: 0 }, (err, data) => {
+  // TODO exclure mdp et mail prive
+  Fiches.find({}, (err, data) => {
     if (err) {
       res.status(500).json((success = false));
       return;

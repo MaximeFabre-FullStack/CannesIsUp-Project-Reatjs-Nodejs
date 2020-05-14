@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const adherentSchema = mongoose.Schema({
   nomDeSociete: String,
-  mailPrive: { type: String, unique: true },
+  mailPrive: String,
   motDePasse: String,
 
   coordonnes: {

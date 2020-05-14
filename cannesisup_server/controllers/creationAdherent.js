@@ -46,7 +46,7 @@ const toutAdherents = (req, res, next) => {
         photoPortrait: req.body.form.photoPortrait, // a modifier
       },
 
-      paiement: "", // a modifier
+      paiement: req.body.form.paiement, // a modifier
       estActif: false,
     });
 

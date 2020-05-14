@@ -63,14 +63,21 @@ class SignUp extends Component {
     });
   };
 
+  /* Récupère la valeur d'input dans le state */
+  handle_radio = async (e) => {
+    if (e.target.checked === true) {
+      await this.setState({
+        form: { ...this.state.form, [e.target.name]: e.target.value },
+      });
+    }
+  };
+
   /* Requête POST */
   submitForm = (e) => {
     e.preventDefault();
 
     /* REQUETE JSON */
-
     const data = { form: this.state.form };
-    console.log(JSON.stringify(data));
 
     const myHeaders = new Headers({
       "Content-Type": "application/json",
@@ -420,8 +427,20 @@ class SignUp extends Component {
             />
           </div>
           <div className="form_bloc">
-            <Form.Check type="radio" name="paiement" label="CB" />
-            <Form.Check type="radio" name="paiement" label="Virement" />
+            <Form.Check
+              type="radio"
+              name="paiement"
+              label="CB"
+              value="CB"
+              onChange={this.handle_radio}
+            />
+            <Form.Check
+              type="radio"
+              name="paiement"
+              label="Virement"
+              value="Virement"
+              onChange={this.handle_radio}
+            />
           </div>
           <div className="btn">
             <button className="btn-default">Inscription</button>

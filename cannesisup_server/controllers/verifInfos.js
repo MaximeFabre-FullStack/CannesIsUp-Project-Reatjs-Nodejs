@@ -5,7 +5,6 @@ const MdpMail = require("../models/adherent");
 
 const toutAdherents = (req, res, next) => {
   //TODO CRYPTER MDP
-  console.log(body);
   MdpMail.findOne(
     { mailPrive: req.body.emailSignIn, motDePasse: req.body.motDePasseSignIn },
     (err, data) => {

@@ -4,9 +4,9 @@
 
 const Fiches = require("../models/adherent");
 
-const toutAdherents = (req, res, next) => {
+const affichageAnnuaire = (req, res, next) => {
   // TODO exclure mdp et mail prive
-  Fiches.find({}, (err, data) => {
+  Fiches.find({ estActif: true }, (err, data) => {
     if (err) {
       res.status(500).json((success = false));
       return;
@@ -15,4 +15,4 @@ const toutAdherents = (req, res, next) => {
   });
 };
 
-module.exports = toutAdherents;
+module.exports = affichageAnnuaire;

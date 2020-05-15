@@ -8,8 +8,6 @@ const bcrypt = require("bcrypt");
 
 /* Controller */
 const toutAdherents = (req, res, next) => {
-  console.log(req.body);
-  console.log(req.files);
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const nouvelAdherent = new creationFiches({
       nomDeSociete: req.body.nom,
@@ -36,16 +34,16 @@ const toutAdherents = (req, res, next) => {
       secteurDactivite: req.body.activite,
       descriptionExhaustive: req.body.description,
 
-      logo: req.files.logo[0].path, // a modifier
-      photoCouverture: req.files.couv[0].path, // a modifier
-      dossierPresentation: req.files.dossier[0].path, // a modifier
+      logo: req.files.logo[0].path,
+      photoCouverture: req.files.couv[0].path,
+      dossierPresentation: req.files.dossier[0].path,
 
       dirigeant: {
         nom: req.body.nomDirigeant,
         prenom: req.body.prenomDirigeant,
         paroleDeMembre: req.body.parole,
         fonction: req.body.fonction,
-        photoPortrait: req.files.photoPortrait[0].path, // a modifier
+        photoPortrait: req.files.photoPortrait[0].path,
       },
 
       paiement: req.body.paiement,

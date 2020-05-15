@@ -80,33 +80,6 @@ class SignUp extends Component {
   submitForm = (e) => {
     e.preventDefault();
 
-    /* REQUETE JSON 
-    const data = { form: this.state.form };
-
-    const myHeaders = new Headers({
-      "Content-Type": "application/json",
-    });
-
-    const options = {
-      method: "POST",
-      headers: myHeaders,
-      mode: "cors",
-      body: JSON.stringify(data),
-    };
-
-    fetch("http://localhost:8080/adherents", options)
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          console.log("ok la requete est passée");
-        },
-        (error) => {
-          console.log("error la requete n'est pas passée");
-        }
-      );
-    */
-    /* REQUETE FORMDATA */
-
     const formData = new FormData(e.target);
 
     const myHeaders = new Headers({
@@ -120,8 +93,6 @@ class SignUp extends Component {
       body: formData,
     };
 
-    console.log(formData);
-
     axios({
       method: "post",
       url: "http://localhost:8080/adherents",
@@ -129,24 +100,12 @@ class SignUp extends Component {
     }).then((res) => {
       console.log(res);
     });
-
-    /*
-    fetch("http://localhost:8080/adherents", options)
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          console.log("ok");
-        },
-        (error) => {
-          console.log("error coucou");
-        }
-      );*/
   };
 
   render() {
     return (
       <div>
-        {/*<Navbar />*/}
+        <Navbar />
         <div className="form_container">
           <div className="center">
             <h1>Formulaire</h1>

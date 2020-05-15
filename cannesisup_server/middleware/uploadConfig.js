@@ -36,5 +36,3 @@ module.exports = multer({ storage: storage }).fields([
   { name: "dossier", maxCount: 1 },
   { name: "photoPortrait", maxCount: 1 },
 ]);
-
-//module.exports = multer({ storage: storage }).single("logo");

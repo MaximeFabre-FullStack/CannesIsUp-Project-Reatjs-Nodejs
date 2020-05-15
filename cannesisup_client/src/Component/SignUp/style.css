@@ -1,13 +1,25 @@
+body {
+  background-color: rgb(233, 241, 241);
+}
+
 .form_container {
-  margin: 60px 60px;
+  padding: 120px 60px;
 }
-.form_connexion {
-  border: blue 1px solid;
-  padding: 5px;
+
+.form_bloc {
+  background-color: white;
+  border-radius: 8px;
+  border: rgb(226, 226, 226) 1px solid;
+  padding: 15px;
   margin: 10px;
 }
-.form_profil {
-  border: rgb(255, 0, 179) 1px solid;
-  padding: 5px;
-  margin: 10px;
+.center h1 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }

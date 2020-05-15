@@ -1,41 +1,38 @@
 {
+  "mailPrive": "max06",
+  "motDePasse": "coucoulesloulou",
+  "nomDeSociete": "devfullstack06210",
 
-    "mail-prive":,
-    "mot-de-passe":,
-    "nom-de-societe":,
+  "coordonnes": {
+    "adresse": "364 allee de la marine royale",
+    "complement-dadresse": "le concorde",
+    "codePostal": "06210",
+    "ville": "Mandelieu la napoule",
+    "mailSociete": "max06fullstack",
+    "telephone": "0699036197",
+    "siteWeb": "https://lebocal.academy/"
+  },
 
-    "coordonnes": {
-        "adresse":,
-        "complement-dadresse":,
-        "code-postal":,
-        "ville":,
-        "mail-societe":,
-        "telephone":,
-        "site-web":,   
-    },
+  "reseauSociaux": {
+    "facebook": "https://www.facebook.com/",
+    "instagram": "https://www.instagram.com/?hl=fr",
+    "twitter": "https://twitter.com/explore",
+    "linkedin": "https://www.linkedin.com/in/maxime-fabre-developer/"
+  },
 
-    "reseau-sociaux": {
-        "facebook":,
-        "instagram":,
-        "twitter":,
-        "linkedin":,
-    },
-    "secteur-dactivite":,
-    "description-exhaustive":,
-    "logo":,
-    "photo-couverture":,
-    "dossier-presentation":,
+  "secteurDactivite": "dev chez google",
+  "descriptionExhaustive": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  "logo": "jesuislogo",
+  "photoCouverture": "jesuiscouverture",
+  "dossierPresentation": "jesuispresentation",
 
-    "dirigeant": {
-        "nom":,
-        "prenom":,
-        "fonction":,
-        "parole-de-membre":,
-        "photo-portrait":,
-    },
-    
-    "est-actif": "false",
-    "pdf":,
-    "mode-de-paiement":,
+  "dirigeant": {
+    "nom": "La Menace",
+    "prenom": "Max",
+    "fonction": "I'm CEO Bitch",
+    "paroleDeMembre": "Marie donne moi une crepe",
+    "photoPortrait": "jesuisphotoportrait"
+  },
 
+  "pdf": "jesuispdf"
 }

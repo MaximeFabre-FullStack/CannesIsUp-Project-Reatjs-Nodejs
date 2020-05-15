@@ -3,20 +3,14 @@ const mongoose = require("mongoose");
 
 const adherentSchema = mongoose.Schema({
   nomDeSociete: String,
-  logo: String,
-  descriptionExhaustive: String,
-  secteurDactivite: String,
-  mailPrive: { type: String, unique: true },
+  mailPrive: String,
   motDePasse: String,
-
-  dirigeant: {
-    nom: String,
-    prenom: String,
-    paroleDeMembre: String,
-  },
 
   coordonnes: {
     adresse: String,
+    complementDadresse: String,
+    codePostal: String,
+    ville: String,
     mailSociete: String,
     telephone: String,
     siteWeb: String,
@@ -29,9 +23,22 @@ const adherentSchema = mongoose.Schema({
     linkedin: String,
   },
 
-  estActif: { type: Boolean, default: false },
+  secteurDactivite: String,
+  descriptionExhaustive: String,
+  logo: String,
+  photoCouverture: String,
+  dossierPresentation: String,
 
-  pdf: String,
+  dirigeant: {
+    nom: String,
+    prenom: String,
+    paroleDeMembre: String,
+    fonction: String,
+    photoPortrait: String,
+  },
+
+  paiement: String,
+  estActif: { type: Boolean, default: false },
 });
 
 /* avec unique verifie que 2 utilisateurs n'ont pas la même adresse mail */

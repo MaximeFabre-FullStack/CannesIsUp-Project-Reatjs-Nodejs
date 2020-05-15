@@ -40,6 +40,9 @@ class SignIn extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
+          if (!data) {
+            alert("Compte inexistant ou mauvais champs!"); // TODO voir comment gerer mdp/mail/alert
+          }
           console.log(data);
           const uid = data.userId;
           const token = data.token;

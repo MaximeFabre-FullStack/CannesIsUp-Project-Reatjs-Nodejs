@@ -7,6 +7,7 @@ import "../../../src/mainStyle.css";
 import "../SignUp/style.css";
 import "./Annuaire.css";
 
+import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 

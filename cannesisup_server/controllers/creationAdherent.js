@@ -8,60 +8,56 @@ const bcrypt = require("bcrypt");
 
 /* Controller */
 const toutAdherents = (req, res, next) => {
-  bcrypt.hash(req.body.form.password, 10).then((hash) => {
+  console.log(req.body);
+  console.log(req.files);
+  bcrypt.hash(req.body.password, 10).then((hash) => {
     const nouvelAdherent = new creationFiches({
-      nomDeSociete: req.body.form.nom,
-      mailPrive: req.body.form.email,
+      nomDeSociete: req.body.nom,
+      mailPrive: req.body.email,
       motDePasse: hash,
 
       coordonnes: {
-        adresse: req.body.form.adresse,
-        complementDadresse: req.body.form.adresse2,
-        codePostal: req.body.form.code_postal,
-        ville: req.body.form.ville,
-        mailSociete: req.body.form.email_public,
-        telephone: req.body.form.tel,
-        siteWeb: req.body.form.site,
+        adresse: req.body.adresse,
+        complementDadresse: req.body.adresse2,
+        codePostal: req.body.code_postal,
+        ville: req.body.ville,
+        mailSociete: req.body.email_public,
+        telephone: req.body.tel,
+        siteWeb: req.body.site,
       },
 
       reseauSociaux: {
-        facebook: req.body.form.facebook,
-        instagram: req.body.form.instagram,
-        twitter: req.body.form.twitter,
-        linkedin: req.body.form.linkedin,
+        facebook: req.body.facebook,
+        instagram: req.body.instagram,
+        twitter: req.body.twitter,
+        linkedin: req.body.linkedin,
       },
 
-      secteurDactivite: req.body.form.activite,
-      descriptionExhaustive: req.body.form.description,
+      secteurDactivite: req.body.activite,
+      descriptionExhaustive: req.body.description,
 
-      logo: "", // a modifier
-      photoCouverture: "", // a modifier
-      dossierPresentation: "", // a modifier
+      logo: req.files.logo[0].path, // a modifier
+      photoCouverture: req.files.couv[0].path, // a modifier
+      dossierPresentation: req.files.dossier[0].path, // a modifier
 
       dirigeant: {
-        nom: req.body.form.nomDirigeant,
-        prenom: req.body.form.prenomDirigeant,
-        paroleDeMembre: req.body.form.parole,
-        fonction: req.body.form.fonction,
-        photoPortrait: req.body.form.photoPortrait, // a modifier
+        nom: req.body.nomDirigeant,
+        prenom: req.body.prenomDirigeant,
+        paroleDeMembre: req.body.parole,
+        fonction: req.body.fonction,
+        photoPortrait: req.files.photoPortrait[0].path, // a modifier
       },
 
-      paiement: req.body.form.paiement, // a modifier
+      paiement: req.body.paiement,
       estActif: false,
     });
 
-    nouvelAdherent.save({}, (err, data) => {
+    nouvelAdherent.save({}, (err) => {
       if (err) {
-        res.status(500).json(((success = false), "message erreur"));
+        res.status(500).json({ success: false, message: "erreur 500" });
         return;
       }
-      if (!data) {
-        res.status(500).json(((success = false), "no data send"));
-        return;
-      }
-      if (data) {
-        res.json((success = true));
-      }
+      res.json({ success: true, message: "ok" });
     });
   });
 };

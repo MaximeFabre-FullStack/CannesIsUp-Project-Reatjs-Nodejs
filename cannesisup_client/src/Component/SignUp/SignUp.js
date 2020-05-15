@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import axios from "axios";
 
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -37,7 +38,7 @@ class SignUp extends Component {
         prenomDirigeant: "",
         parole: "",
         fonction: "",
-        photoPortrait: "",
+        photoPortrait: null,
         checkCharte: false,
         checkRgpd: false,
         paiement: "",
@@ -46,30 +47,30 @@ class SignUp extends Component {
   }
 
   /* Récupère la valeur d'input dans le state */
-  handle_change = async (e) => {
-    await this.setState({
+  handle_change = (e) => {
+    this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.value },
     });
   };
 
   /* selectionne le fichier dans le state selectedFile*/
-  fileSelectedHandler = async (e) => {
-    await this.setState({
+  fileSelectedHandler = (e) => {
+    this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.files[0] },
     });
   };
 
   /* Récupère la valeur d'input dans le state */
-  handle_check = async (e) => {
-    await this.setState({
+  handle_check = (e) => {
+    this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.checked },
     });
   };
 
   /* Récupère la valeur d'input dans le state */
-  handle_radio = async (e) => {
+  handle_radio = (e) => {
     if (e.target.checked === true) {
-      await this.setState({
+      this.setState({
         form: { ...this.state.form, [e.target.name]: e.target.value },
       });
     }
@@ -79,7 +80,7 @@ class SignUp extends Component {
   submitForm = (e) => {
     e.preventDefault();
 
-    /* REQUETE JSON */
+    /* REQUETE JSON 
     const data = { form: this.state.form };
 
     const myHeaders = new Headers({
@@ -103,9 +104,9 @@ class SignUp extends Component {
           console.log("error la requete n'est pas passée");
         }
       );
+    */
+    /* REQUETE FORMDATA */
 
-    /* REQUETE FORMDATA
-    Options, paramètres de la requête 
     const formData = new FormData(e.target);
 
     const myHeaders = new Headers({
@@ -121,7 +122,15 @@ class SignUp extends Component {
 
     console.log(formData);
 
-   
+    axios({
+      method: "post",
+      url: "http://localhost:8080/adherents",
+      data: formData,
+    }).then((res) => {
+      console.log(res);
+    });
+
+    /*
     fetch("http://localhost:8080/adherents", options)
       .then((response) => response.json())
       .then(
@@ -131,14 +140,13 @@ class SignUp extends Component {
         (error) => {
           console.log("error coucou");
         }
-      );
-      */
+      );*/
   };
 
   render() {
     return (
       <div>
-        <Navbar />
+        {/*<Navbar />*/}
         <div className="form_container">
           <div className="center">
             <h1>Formulaire</h1>
@@ -337,35 +345,34 @@ class SignUp extends Component {
                   value={this.state.form.description}
                 />
               </Form.Group>
-              {/*
-            <Form.Group>
-              <Form.Label>Logo *</Form.Label>
-              <Form.File
-                name="logo"
-                onChange={this.fileSelectedHandler}
-                label="Logo (.jpeg , .jpg , .png)"
-                custom
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Photo de couverture</Form.Label>
-              <Form.File
-                name="couv"
-                onChange={this.fileSelectedHandler}
-                label="Photo de couverture (.jpeg , .jpg , .png)"
-                custom
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Dossier de présentation</Form.Label>
-              <Form.File
-                name="dossier"
-                onChange={this.fileSelectedHandler}
-                label="Dossier de présentation PDF (Max 10Mo)"
-                custom
-              />
-            </Form.Group>
-            */}
+
+              <Form.Group>
+                <Form.Label>Logo *</Form.Label>
+                <Form.File
+                  name="logo"
+                  onChange={this.fileSelectedHandler}
+                  label="Logo (.jpeg , .jpg , .png)"
+                  custom
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Photo de couverture</Form.Label>
+                <Form.File
+                  name="couv"
+                  onChange={this.fileSelectedHandler}
+                  label="Photo de couverture (.jpeg , .jpg , .png)"
+                  custom
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Dossier de présentation</Form.Label>
+                <Form.File
+                  name="dossier"
+                  onChange={this.fileSelectedHandler}
+                  label="Dossier de présentation PDF (Max 10Mo)"
+                  custom
+                />
+              </Form.Group>
             </div>
             <div className="form_bloc">
               <h3> Informations sur le dirigeant</h3>
@@ -405,17 +412,16 @@ class SignUp extends Component {
                   value={this.state.form.parole}
                 />
               </Form.Group>
-              {/* 
-            <Form.Group>
-              <Form.Label>Photo</Form.Label>
-              <Form.File
-                name="photoPortrait"
-                onChange={this.fileSelectedHandler}
-                label="Photo de profil (.jpeg , .jpg , .png)"
-                custom
-              />
-            </Form.Group>
-            */}
+
+              <Form.Group>
+                <Form.Label>Photo</Form.Label>
+                <Form.File
+                  name="photoPortrait"
+                  onChange={this.fileSelectedHandler}
+                  label="Photo de profil (.jpeg , .jpg , .png)"
+                  custom
+                />
+              </Form.Group>
             </div>
             <div className="form_bloc">
               <Form.Check

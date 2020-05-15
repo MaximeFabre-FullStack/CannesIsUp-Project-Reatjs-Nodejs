@@ -32,15 +32,22 @@ class SignIn extends Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       mode: "cors",
-      body: body,
+      body: JSON.stringify(body),
     };
 
     /* Requête */
-    fetch("http://localhost:8080/adherent/signin", options)
+    fetch("http://localhost:8080/adherents/signin", options)
       .then((response) => response.json())
       .then(
         (data) => {
+          if (!data) {
+            alert("Compte inexistant ou mauvais champs!"); // TODO voir comment gerer mdp/mail/alert
+          }
           console.log(data);
+          const uid = data.userId;
+          const token = data.token;
+          localStorage.setItem("uid", uid);
+          localStorage.setItem("token", token);
         },
         (error) => {
           console.log(error);

@@ -6,6 +6,13 @@ import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 
 class CarteAnnuaire extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: "",
+    };
+  }
+
   render() {
     return (
       <div>

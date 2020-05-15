@@ -82,17 +82,6 @@ class SignUp extends Component {
 
     const formData = new FormData(e.target);
 
-    const myHeaders = new Headers({
-      "Content-Type": "multipart/form-data",
-    });
-
-    const options = {
-      method: "POST",
-      headers: myHeaders,
-      mode: "cors",
-      body: formData,
-    };
-
     axios({
       method: "post",
       url: "http://localhost:8080/adherents",

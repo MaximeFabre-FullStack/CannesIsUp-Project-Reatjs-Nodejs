@@ -10,6 +10,7 @@ const MIME_TYPES = {
   "image/jpg": "jpg",
   "image/jpeg": "jpg",
   "image/png": "png",
+  "application/pdf": "pdf",
 };
 
 /* Middleware */

@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const affichageVisiteurs = require("../controllers/affichageVisiteurs");
+const affichageAnnuaire = require("../controllers/affichageAnnuaire");
 
 /* GET home page. */
-router.get("/", affichageVisiteurs); // a tester sur POSTMAN
+router.get("/", affichageAnnuaire); // route OK
 
 module.exports = router;

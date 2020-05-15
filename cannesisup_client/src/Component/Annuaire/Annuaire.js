@@ -14,61 +14,90 @@ import Footer from "../Footer/Footer";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 class Annuaire extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      BDDdata: [],
+    };
+  }
+
+  /* requete GET */
+  componentDidMount() {
+    /* Options, paramètres de la requête */
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    };
+
+    /* Requête */
+    fetch("http://localhost:8080/visiteurs", options)
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          this.setState({ BDDdata: data });
+          console.log(this.state.BDDdata[0]._id);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  affichageAnnuaire = () => {
+    return this.state.BDDdata.map((element, index) => (
+      <div key={index}>
+        <Col className="style1" xs={12} sm={6} md={4}>
+          <p>{element._id}</p>
+          <CarteAnnuaire />
+        </Col>
+      </div>
+    ));
+  };
+
   render() {
     return (
       <div>
-        <Navbar />
+        {/* <Navbar />*/}
+
         <div className="annuaireContainer">
           {/* <InfiniteScroll> */}
           <Container>
             <Row>
               <Col className="style1" xs={12} sm={6} md={4}>
-                1
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                2
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                3
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                4
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                1
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                2
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                3
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                4
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                1
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                2
+                <CarteAnnuaire />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                3
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                4
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                1
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                2
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                3
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                4
+                <CarteAnnuaire />
               </Col>
             </Row>
           </Container>

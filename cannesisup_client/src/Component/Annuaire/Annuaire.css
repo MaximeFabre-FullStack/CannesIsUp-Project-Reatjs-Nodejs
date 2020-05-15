@@ -2,3 +2,37 @@
   height: 500px;
   margin-top: 200px;
 }
+
+.couverture {
+  background: url(/assets/img/fond_equipe.png) no-repeat center center;
+  background-size: cover;
+  margin-top: 80px;
+  height: 500px;
+}
+
+.couverture h1 {
+  color: white;
+  margin: auto;
+  position: relative;
+  padding-top: 4%;
+  font-size: 50px;
+}
+
+h1:after {
+  content: "";
+  height: 1px;
+  width: 50%;
+  display: block;
+  padding-top: 10px;
+  border-bottom: 2px solid #f7316b;
+  margin-left: 25%;
+}
+
+.barreRecherche {
+  margin: 5% 40%;
+  width: 25%;
+  height: 100px;
+}
+.react-search-field {
+  width: 100%;
+}

@@ -30,11 +30,9 @@ const storage = multer.diskStorage({
 });
 
 /* Export accepte plusieurs fichiers */
-/*module.exports = multer({ storage: storage }).fields([
+module.exports = multer({ storage: storage }).fields([
   { name: "logo", maxCount: 1 },
   { name: "couv", maxCount: 1 },
   { name: "dossier", maxCount: 1 },
   { name: "photoPortrait", maxCount: 1 },
-]);*/
-
-module.exports = multer({ storage: storage }).single("logo");
+]);

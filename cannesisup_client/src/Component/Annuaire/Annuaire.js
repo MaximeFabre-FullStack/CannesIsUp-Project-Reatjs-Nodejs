@@ -38,7 +38,7 @@ class Annuaire extends Component {
       .then(
         (data) => {
           this.setState({ BDDdata: data });
-          console.log(this.state.BDDdata[0]._id);
+          console.log(this.state.BDDdata[0].logo);
         },
         (error) => {
           console.log(error);
@@ -50,8 +50,16 @@ class Annuaire extends Component {
     return this.state.BDDdata.map((element, index) => (
       <div key={index}>
         <Col className="style1" xs={12} sm={6} md={4}>
-          <p>{element._id}</p>
-          <CarteAnnuaire />
+          <CarteAnnuaire
+            nomDeSociete={element.nomDeSociete}
+            descriptionExhaustive={element.descriptionExhaustive}
+            secteurDactivite={element.secteurDactivite}
+            prenom={element.dirigeant.prenom}
+            nom={element.dirigeant.nom}
+            photo={"http://localhost:8080/" + element.dirigeant.photoPortrait}
+            couv={"http://localhost:8080/" + element.photoCouverture}
+            logo={"http://localhost:8080/" + element.logo}
+          />
         </Col>
       </div>
     ));
@@ -67,37 +75,13 @@ class Annuaire extends Component {
           <Container>
             <Row>
               <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
+                {this.affichageAnnuaire()}
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
+                <CarteAnnuaire activite="toto" />
               </Col>
               <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire />
+                <CarteAnnuaire activite="titi" />
               </Col>
             </Row>
           </Container>

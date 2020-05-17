@@ -34,16 +34,16 @@ const toutAdherents = (req, res, next) => {
       secteurDactivite: req.body.activite,
       descriptionExhaustive: req.body.description,
 
-      logo: req.files.logo[0].path,
-      photoCouverture: req.files.couv[0].path,
-      dossierPresentation: req.files.dossier[0].path,
+      logo: req.files.logo[0].filename,
+      photoCouverture: req.files.couv[0].filename,
+      dossierPresentation: req.files.dossier[0].filename,
 
       dirigeant: {
         nom: req.body.nomDirigeant,
         prenom: req.body.prenomDirigeant,
         paroleDeMembre: req.body.parole,
         fonction: req.body.fonction,
-        photoPortrait: req.files.photoPortrait[0].path,
+        photoPortrait: req.files.photoPortrait[0].filename,
       },
 
       paiement: req.body.paiement,

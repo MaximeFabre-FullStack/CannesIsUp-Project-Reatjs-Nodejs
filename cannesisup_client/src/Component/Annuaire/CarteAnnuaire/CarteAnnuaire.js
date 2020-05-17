@@ -8,9 +8,7 @@ import ListGroupItem from "react-bootstrap/ListGroupItem";
 class CarteAnnuaire extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      photo: "http://localhost:8080/",
-    };
+    this.state = {};
   }
 
   render() {
@@ -22,9 +20,14 @@ class CarteAnnuaire extends Component {
             className="couverture"
             variant="top"
             src={this.props.couv}
+            alt=""
           />
           {/* Photo de profil  */}
-          <img className="photoProfil" src={this.props.photoportrait} alt="" />
+          <img
+            className="photoProfil"
+            src={this.props.photoProfil}
+            alt="coucou"
+          />
           {/* Logo entreprise */}
           <img className="logoSociete" src={this.props.logo} alt="" />
           {/* Description  */}

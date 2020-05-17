@@ -14,7 +14,7 @@ class Navbar extends Component {
       <div className="navbarContainer">
         <div className="bande"></div>
         <a href="https://cannesisup.com/#home" className="logoNav">
-          <img src="./assets/img/logocopie.png" alt="logo"></img>{" "}
+          <img src="./assets/img/logocopie.png" alt="logo" />
         </a>
 
         <Container>
@@ -107,65 +107,15 @@ class Navbar extends Component {
             </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item>
-              <Link to="/signin">Sign in</Link>
+              <Link to="/signup">Connexion</Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link to="/signup">Sign up</Link>
+              <Link to="/signin">S'enregistrer</Link>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
     );
-
-    // return (
-    //   <div className="navbarContainer">
-    //     <div className="bande"></div>
-    //     <div className="navbarHeader">
-    //       <a href="https://cannesisup.com/#home">
-    //         <img src="./assets/img/logocopie.png" alt="logo"></img>
-    //       </a>
-    //     </div>
-    //     <div id="navbar">
-    //       <ul className="navListe">
-    //         <li>
-    //           <a href="https://cannesisup.com/">ACCUEIL</a>
-    //         </li>
-
-    //         <li>
-    //           <a href="https://cannesisup.com/contact.php">Devenez adhérent</a>
-    //         </li>
-
-    //         <li>
-    //           <a href="https://cannesisup.com/#dda">DDA îles de Lerins</a>
-    //         </li>
-
-    //         <li>
-    //           <a href="https://cannesisup.com/#actus">Actualités</a>
-    //         </li>
-
-    //         {/* <li>
-    //            <a href="">Adhérents</a>
-    //         </li> */}
-
-    //         <li>
-    //           <a href="https://cannesisup.com/equipe.php">L'équipe</a>
-    //         </li>
-
-    //         <li>
-    //           <a href="https://cannesisup.com/#partenaires">Partenaires</a>
-    //         </li>
-    //         <li>
-    //           <a
-    //             href="https://cannesisup.com/contact.php"
-    //             className="lienContact"
-    //           >
-    //             Contact
-    //           </a>
-    //         </li>
-    //       </ul>
-    //     </div>
-    //   </div>
-    // );
   }
 }
 export default Navbar;

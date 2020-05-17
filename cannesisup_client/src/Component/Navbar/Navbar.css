@@ -74,7 +74,7 @@
     color: #f7316b;
   }
 
-  .btnMenu {
+  .dropdown-toggle {
     width: 20vh;
     color: #f7316b;
     background-color: #fff;
@@ -86,7 +86,7 @@
     font-weight: 900;
   }
 
-  .btnMenu:hover {
+  .dropdown-toggle:hover {
     color: #fff;
     background-color: #f7316b;
     border: 2px solid #f7316b;

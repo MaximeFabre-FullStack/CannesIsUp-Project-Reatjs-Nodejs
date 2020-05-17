@@ -6,4 +6,14 @@
   width: 100%;
   height: auto;
   margin-bottom: 100px;
+  border-radius: 10%;
+  position: absolute;
+}
+
+.logo404 img {
+  position: relative;
+  width: 10%;
+  height: auto;
+  margin-left: 64%;
+  margin-top: 2%;
 }

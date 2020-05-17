@@ -17,6 +17,9 @@ class notFound extends Component {
         <div className="img404">
           <img src="./assets/img/404.jpg" alt="404" />
         </div>
+        <div className="logo404">
+          <img src="./assets/img/logo.png" />
+        </div>
         <Footer />
       </div>
     );

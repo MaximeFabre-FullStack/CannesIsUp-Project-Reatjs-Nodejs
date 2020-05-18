@@ -10,9 +10,9 @@ import "./Annuaire.css";
 import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import SearchBAr from "./SearchBar/SearchBar";
 
 import InfiniteScroll from "react-infinite-scroll-component";
-import SearchField from "react-search-field";
 
 class Annuaire extends Component {
   constructor(props) {
@@ -69,20 +69,13 @@ class Annuaire extends Component {
   render() {
     return (
       <div>
-        {/* <Navbar /> */}
+        <Navbar />
         {/* Couverture  */}
         <div className="couverture">
           <h1>ANNUAIRE DES MEMBRES</h1>
         </div>
         {/* Barre de recherche  */}
-        <div className="barreRecherche">
-          <SearchField
-            placeholder="Recherchez : un membre, une activité, un mot clé..."
-            className="react-search-field"
-          />
-        </div>
-        {/* <Navbar />*/}
-
+        <SearchBAr />
         <div className="annuaireContainer">
           {/* <InfiniteScroll> */}
           <Container>

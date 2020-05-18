@@ -32,12 +32,3 @@ h1:after {
   border-bottom: 2px solid #f7316b;
   margin-left: 25%;
 }
-
-.barreRecherche {
-  margin: 5% 40%;
-  width: 25%;
-  height: 100px;
-}
-.react-search-field {
-  width: 100%;
-}

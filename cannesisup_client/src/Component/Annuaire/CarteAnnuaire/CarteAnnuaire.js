@@ -11,6 +11,10 @@ class CarteAnnuaire extends Component {
     this.state = {};
   }
 
+  seeAdherent = () => {
+    console.log(this.props.id);
+  };
+
   render() {
     return (
       <div>
@@ -52,7 +56,9 @@ class CarteAnnuaire extends Component {
             </ListGroup>
             {/* Bouton */}
             <div className="btn">
-              <button className="btn-default">Voir le membre</button>
+              <button className="btn-default" onClick={this.seeAdherent}>
+                Voir le membre
+              </button>
             </div>
           </Card.Body>
         </Card>

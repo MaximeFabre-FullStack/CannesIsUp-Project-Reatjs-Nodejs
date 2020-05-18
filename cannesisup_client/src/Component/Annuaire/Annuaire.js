@@ -38,7 +38,6 @@ class Annuaire extends Component {
       .then(
         (data) => {
           this.setState({ BDDdata: data });
-          console.log(this.state.BDDdata[0].logo);
         },
         (error) => {
           console.log(error);
@@ -50,6 +49,7 @@ class Annuaire extends Component {
     return this.state.BDDdata.map((element, index) => (
       <Col key={index} className="style1" xs={12} sm={6} md={4}>
         <CarteAnnuaire
+          id={element._id}
           nomDeSociete={element.nomDeSociete}
           descriptionExhaustive={element.descriptionExhaustive}
           secteurDactivite={element.secteurDactivite}

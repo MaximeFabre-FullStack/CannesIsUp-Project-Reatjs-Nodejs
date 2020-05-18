@@ -8,6 +8,7 @@ import SignUp from "../SignUp/SignUp";
 import Annuaire from "../Annuaire/Annuaire";
 import FicheAdherent from "../FicheAdherent/FicheAdherent";
 import AdminChart from "../AdminChart/AdminChart";
+import NotFound from "../NotFound/NotFound";
 
 class App extends Component {
   render() {
@@ -15,23 +16,26 @@ class App extends Component {
       <Router>
         <Switch>
           {/* Sign up route */}
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignUp />
           </Route>
           {/*SignIn route */}
-          <Route path="/signin">
+          <Route exact path="/signin">
             <SignIn />
           </Route>
           {/* Annuaire route */}
-          <Route path="/annuaire">
+          <Route exact path="/annuaire">
             <Annuaire />
           </Route>
           {/* Fiche Adhérent */}
-          <Route path="/ficheadherent">
+          <Route exact path="/ficheadherent">
             <FicheAdherent />
           </Route>
-          <Route path="/admin/charts">
+          <Route exact path="/admin/charts">
             <AdminChart />
+          </Route>
+          <Route to="/404">
+            <NotFound />
           </Route>
         </Switch>
       </Router>

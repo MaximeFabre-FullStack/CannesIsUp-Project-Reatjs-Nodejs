@@ -10,6 +10,7 @@ import "./Annuaire.css";
 import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import SearchBAr from "./SearchBar/SearchBar";
 
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -69,7 +70,12 @@ class Annuaire extends Component {
     return (
       <div>
         <Navbar />
-
+        {/* Couverture  */}
+        <div className="couverture">
+          <h1>ANNUAIRE DES MEMBRES</h1>
+        </div>
+        {/* Barre de recherche  */}
+        <SearchBAr />
         <div className="annuaireContainer">
           {/* <InfiniteScroll> */}
           <Container>

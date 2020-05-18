@@ -1,0 +1,17 @@
+.barreRecherche {
+  margin: 5% 40% 1%;
+  width: 25%;
+}
+.react-search-field {
+  width: 100%;
+}
+
+.react-search-field-input {
+  font-weight: 900 !important;
+}
+
+.nombreMembres {
+  font-weight: 900;
+  text-align: center;
+  margin-top: 2%;
+}

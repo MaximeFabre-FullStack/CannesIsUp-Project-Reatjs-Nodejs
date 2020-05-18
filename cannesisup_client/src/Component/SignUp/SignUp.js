@@ -101,6 +101,7 @@ class SignUp extends Component {
           </div>
 
           <Form onSubmit={this.submitForm}>
+            {/* Identifiants  */}
             <div className="form_bloc">
               <h3> Identifiants de votre compte</h3>
               <Form.Group>
@@ -111,7 +112,11 @@ class SignUp extends Component {
                   type="email"
                   placeholder="exemple@ex.com"
                   value={this.state.form.email}
+                  required
                 />
+                <Form.Control.Feedback type="invalid">
+                  Renseignez une adresse email valide
+                </Form.Control.Feedback>
                 <Form.Text className="text-muted">
                   Adresse email que vous utiliserez pour accéder à votre espace
                   membre.
@@ -125,6 +130,7 @@ class SignUp extends Component {
                   type="password"
                   placeholder="Votre mot de passe"
                   value={this.state.form.password}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -135,10 +141,12 @@ class SignUp extends Component {
                   type="password"
                   placeholder="Votre mot de passe"
                   value={this.state.form.password_confirm}
+                  required
                 />
               </Form.Group>
             </div>
 
+            {/* Infos sociétés  */}
             <div className="form_bloc">
               <h3> Informations sur votre société</h3>
               <Form.Group>
@@ -148,6 +156,7 @@ class SignUp extends Component {
                   onChange={this.handle_change}
                   placeholder="Nom de votre société"
                   value={this.state.form.nom}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -157,6 +166,7 @@ class SignUp extends Component {
                   onChange={this.handle_change}
                   placeholder="221B Baker St"
                   value={this.state.form.adresse}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -177,6 +187,7 @@ class SignUp extends Component {
                       onChange={this.handle_change}
                       placeholder="06000"
                       value={this.state.form.code_postal}
+                      required
                     />
                   </Form.Group>
                 </Col>
@@ -188,6 +199,7 @@ class SignUp extends Component {
                       onChange={this.handle_change}
                       placeholder="Ville"
                       value={this.state.form.ville}
+                      required
                     />
                   </Form.Group>
                 </Col>
@@ -301,6 +313,7 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label="Logo (.jpeg , .jpg , .png)"
                   custom
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -322,6 +335,8 @@ class SignUp extends Component {
                 />
               </Form.Group>
             </div>
+
+            {/* Infos dirigeant */}
             <div className="form_bloc">
               <h3> Informations sur le dirigeant</h3>
               <Form.Group>
@@ -331,6 +346,7 @@ class SignUp extends Component {
                   onChange={this.handle_change}
                   placeholder="Nom du dirigeant"
                   value={this.state.form.nomDirigeant}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -340,6 +356,7 @@ class SignUp extends Component {
                   onChange={this.handle_change}
                   placeholder="Prénom du dirigeant"
                   value={this.state.form.prenomDirigeant}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -349,6 +366,7 @@ class SignUp extends Component {
                   onChange={this.handle_change}
                   placeholder="Fonction du dirigeant"
                   value={this.state.form.fonction}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -371,12 +389,15 @@ class SignUp extends Component {
                 />
               </Form.Group>
             </div>
+
+            {/* Charte et RGPD  */}
             <div className="form_bloc">
               <Form.Check
                 type="checkbox"
                 name="charte"
                 onChange={this.handle_check}
                 label="J'accepte la Charte Cannes is Up"
+                required
               />
               <Form.Check
                 type="checkbox"
@@ -385,6 +406,8 @@ class SignUp extends Component {
                 label="RGPD"
               />
             </div>
+
+            {/* Mode paiement */}
             <div className="form_bloc">
               <Form.Check
                 type="radio"
@@ -401,10 +424,14 @@ class SignUp extends Component {
                 onChange={this.handle_radio}
               />
             </div>
+
+            {/* Bouton submit  */}
             <div className="btn">
               <button className="btn-default">Inscription</button>
             </div>
           </Form>
+
+          {/* Footer */}
           <footer className="footer">
             <Footer />
           </footer>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -14,14 +15,14 @@ class Navbar extends Component {
       <div className="navbarContainer">
         <div className="bande"></div>
         <a href="https://cannesisup.com/#home" className="logoNav">
-          <img src="./assets/img/logocopie.png" alt="logo" />
+          <img src="/assets/img/logocopie.png" alt="logo" />
         </a>
 
         <Container>
           <Row className="navListe">
             <a href="https://cannesisup.com/#home">
               <Col className="style1" md={1.2}>
-                <img src="./assets/img/logocopie.png" alt="logo"></img>{" "}
+                <img src="/assets/img/logocopie.png" alt="logo"></img>{" "}
               </Col>
             </a>
             <a href="https://cannesisup.com/">

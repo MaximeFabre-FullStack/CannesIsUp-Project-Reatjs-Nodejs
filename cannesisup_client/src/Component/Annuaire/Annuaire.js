@@ -39,7 +39,6 @@ class Annuaire extends Component {
       .then(
         (data) => {
           this.setState({ BDDdata: data });
-          console.log(this.state.BDDdata[0].logo);
         },
         (error) => {
           console.log(error);
@@ -49,20 +48,21 @@ class Annuaire extends Component {
 
   affichageAnnuaire = () => {
     return this.state.BDDdata.map((element, index) => (
-      <div key={index}>
-        <Col className="style1" xs={12} sm={6} md={4}>
-          <CarteAnnuaire
-            nomDeSociete={element.nomDeSociete}
-            descriptionExhaustive={element.descriptionExhaustive}
-            secteurDactivite={element.secteurDactivite}
-            prenom={element.dirigeant.prenom}
-            nom={element.dirigeant.nom}
-            photo={"http://localhost:8080/" + element.dirigeant.photoPortrait}
-            couv={"http://localhost:8080/" + element.photoCouverture}
-            logo={"http://localhost:8080/" + element.logo}
-          />
-        </Col>
-      </div>
+      <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
+        <CarteAnnuaire
+          id={element._id}
+          nomDeSociete={element.nomDeSociete}
+          descriptionExhaustive={element.descriptionExhaustive}
+          secteurDactivite={element.secteurDactivite}
+          prenom={element.dirigeant.prenom}
+          nom={element.dirigeant.nom}
+          photoProfil={
+            "http://localhost:8080/uploads/" + element.dirigeant.photoPortrait
+          }
+          couv={"http://localhost:8080/uploads/" + element.photoCouverture}
+          logo={"http://localhost:8080/uploads/" + element.logo}
+        />
+      </Col>
     ));
   };
 
@@ -71,7 +71,7 @@ class Annuaire extends Component {
       <div>
         <Navbar />
         {/* Couverture  */}
-        <div className="couverture">
+        <div className="header">
           <h1>ANNUAIRE DES MEMBRES</h1>
         </div>
         {/* Barre de recherche  */}
@@ -79,17 +79,7 @@ class Annuaire extends Component {
         <div className="annuaireContainer">
           {/* <InfiniteScroll> */}
           <Container>
-            <Row>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                {this.affichageAnnuaire()}
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire activite="toto" />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire activite="titi" />
-              </Col>
-            </Row>
+            <Row>{this.affichageAnnuaire()}</Row>
           </Container>
           {/* </InfiniteScroll> */}
         </div>

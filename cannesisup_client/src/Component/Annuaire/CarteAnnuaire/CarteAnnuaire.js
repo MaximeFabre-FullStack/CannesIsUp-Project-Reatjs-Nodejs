@@ -4,14 +4,17 @@ import "./CarteAnnuaire.css";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
+import { Link } from "react-router-dom";
 
 class CarteAnnuaire extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      photo: "http://localhost:8080/",
-    };
+    this.state = {};
   }
+
+  seeAdherent = () => {
+    console.log(this.props.id);
+  };
 
   render() {
     return (
@@ -22,9 +25,14 @@ class CarteAnnuaire extends Component {
             className="couverture"
             variant="top"
             src={this.props.couv}
+            alt=""
           />
           {/* Photo de profil  */}
-          <img className="photoProfil" src={this.props.photoportrait} alt="" />
+          <img
+            className="photoProfil"
+            src={this.props.photoProfil}
+            alt="coucou"
+          />
           {/* Logo entreprise */}
           <img className="logoSociete" src={this.props.logo} alt="" />
           {/* Description  */}
@@ -49,7 +57,11 @@ class CarteAnnuaire extends Component {
             </ListGroup>
             {/* Bouton */}
             <div className="btn">
-              <button className="btn-default">Voir le membre</button>
+              <Link to={"/ficheadherent/" + this.props.id}>
+                <button className="btn-default" onClick={this.seeAdherent}>
+                  Voir le membre
+                </button>
+              </Link>
             </div>
           </Card.Body>
         </Card>

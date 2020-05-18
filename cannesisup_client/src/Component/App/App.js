@@ -28,9 +28,7 @@ class App extends Component {
             <Annuaire />
           </Route>
           {/* Fiche Adhérent */}
-          <Route exact path="/ficheadherent">
-            <FicheAdherent />
-          </Route>
+          <Route exact path="/ficheadherent/:id" component={FicheAdherent} />
           <Route exact path="/admin/charts">
             <AdminChart />
           </Route>

@@ -76,6 +76,12 @@ class Annuaire extends Component {
         </div>
         {/* Barre de recherche  */}
         <SearchBAr />
+        <div>
+          <p className="nombreMembres">
+            {" "}
+            Nombres de membres : {this.state.BDDdata.length}
+          </p>
+        </div>
         <div className="annuaireContainer">
           {/* <InfiniteScroll> */}
           <Container>

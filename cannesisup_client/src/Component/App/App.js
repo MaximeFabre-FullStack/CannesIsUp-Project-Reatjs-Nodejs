@@ -32,7 +32,7 @@ class App extends Component {
           <Route exact path="/admin/charts">
             <AdminChart />
           </Route>
-          <Route to="/404">
+          <Route to="/notfound404">
             <NotFound />
           </Route>
         </Switch>

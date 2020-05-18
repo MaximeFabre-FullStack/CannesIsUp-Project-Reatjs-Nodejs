@@ -17,7 +17,6 @@ class SignIn extends Component {
   }
   recup_info = async (e) => {
     await this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   };
 
   requeteInfo = (e) => {
@@ -43,7 +42,6 @@ class SignIn extends Component {
           if (!data) {
             alert("Compte inexistant ou mauvais champs!"); // TODO voir comment gerer mdp/mail/alert
           }
-          console.log(data);
           const uid = data.userId;
           const token = data.token;
           localStorage.setItem("uid", uid);

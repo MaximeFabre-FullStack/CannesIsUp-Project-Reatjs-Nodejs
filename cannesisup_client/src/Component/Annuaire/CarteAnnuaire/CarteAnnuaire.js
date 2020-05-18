@@ -9,7 +9,7 @@ class CarteAnnuaire extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: "",
+      photo: "http://localhost:8080/",
     };
   }
 
@@ -21,30 +21,30 @@ class CarteAnnuaire extends Component {
           <Card.Img
             className="couverture"
             variant="top"
-            src="/assets/img/fond_contact.jpg"
+            src={this.props.couv}
           />
           {/* Photo de profil  */}
-          <img className="photoProfil" src="/assets/img/equipe/greg.jpg" />
+          <img className="photoProfil" src={this.props.photoportrait} alt="" />
           {/* Logo entreprise */}
-          <img className="logoSociete" src="/assets/img/logo_entreprise2.png" />
+          <img className="logoSociete" src={this.props.logo} alt="" />
           {/* Description  */}
           <Card.Body className="description">
             <ListGroup>
               <ListGroup.Item className="item">
-                <h4 style={{ padding: 0, fontSize: 24 }}> Nom entreprise </h4>
-                <p>
-                  Nous créons de nouvelles expériences usagers, mobiles et
-                  interactives, en élaborant des stratégies data-driven pour
-                  maximiser les performances marketing.
-                </p>
+                <h4 style={{ padding: 0, fontSize: 24 }}>
+                  {this.props.nomDeSociete}
+                </h4>
+                <p>{this.props.descriptionExhaustive}</p>
               </ListGroup.Item>
               <ListGroup.Item className="item">
-                <h3 style={{ padding: 0 }}> Secteur d'activité </h3>
-                <p style={{ fontWeight: 900 }}> Mobile Marketing Solution </p>
+                <h3 style={{ padding: 0 }}>Secteur d'activité</h3>
+                <p style={{ fontWeight: 900 }}>{this.props.secteurDactivite}</p>
               </ListGroup.Item>
               <ListGroupItem className="item">
                 <h3 style={{ padding: 0 }}> Dirigeant </h3>
-                <p style={{ fontWeight: 900, margin: 0 }}> Nom du dirigeant </p>
+                <p style={{ fontWeight: 900, margin: 0 }}>
+                  {this.props.prenom} {this.props.nom}
+                </p>
               </ListGroupItem>
             </ListGroup>
             {/* Bouton */}

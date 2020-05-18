@@ -79,17 +79,7 @@ class Annuaire extends Component {
         <div className="annuaireContainer">
           {/* <InfiniteScroll> */}
           <Container>
-            <Row>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                {this.affichageAnnuaire()}
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire activite="toto" />
-              </Col>
-              <Col className="style1" xs={12} sm={6} md={4}>
-                <CarteAnnuaire activite="titi" />
-              </Col>
-            </Row>
+            <Row>{this.affichageAnnuaire()}</Row>
           </Container>
           {/* </InfiniteScroll> */}
         </div>

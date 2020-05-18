@@ -16,7 +16,7 @@ class Footer extends Component {
             <img
               src="./assets/img/facebook.svg"
               alt="facebook-logo"
-              className="reseaux-logo ml-20"
+              className="reseaux-logo"
             />
           </a>
           <a

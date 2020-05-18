@@ -19,7 +19,7 @@ class FicheAdherent extends Component {
 
   componentDidMount() {
     const body = {
-      id: "5ebe8c03b490401890beb16e",
+      id: this.props.match.params.id,
     };
 
     const options = {
@@ -37,7 +37,6 @@ class FicheAdherent extends Component {
       .then(
         (data) => {
           this.setState({ dataAdherent: data });
-          console.log(this.state.dataAdherent);
         },
         (error) => {
           console.log(error);
@@ -64,14 +63,14 @@ class FicheAdherent extends Component {
             {/* Logo + liens PDF */}
             <Card.Body className="top-link">
               <Card.Img
-                classeName="card-img"
+                className="card-img"
                 src={
                   "http://localhost:8080/uploads/" +
                   this.state.dataAdherent.logo
                 }
               ></Card.Img>
               <Card.Link
-                classeName="card-link"
+                className="card-link"
                 href="https://react-bootstrap.github.io/components/cards/#title-text-and-links"
               >
                 <p
@@ -151,9 +150,9 @@ class FicheAdherent extends Component {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="./assets/img/facebook.svg"
-                      alt="facebook-logo"
-                      className="reseaux-logo ml-20"
+                      src="/assets/img/facebook.svg"
+                      alt="facebook"
+                      className="reseaux-logo "
                     />
                   </a>
                   <a
@@ -162,8 +161,8 @@ class FicheAdherent extends Component {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="./assets/img/instagram.svg"
-                      alt="instagram-logo"
+                      src="/assets/img/instagram.svg"
+                      alt="instagram"
                       className="reseaux-logo ml-20"
                     />
                   </a>
@@ -173,8 +172,8 @@ class FicheAdherent extends Component {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="./assets/img/linkedin.svg"
-                      alt="youtube-logo"
+                      src="/assets/img/linkedin.svg"
+                      alt="linkedin"
                       className="reseaux-logo ml-20"
                     />
                   </a>
@@ -184,8 +183,8 @@ class FicheAdherent extends Component {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="./assets/img/twitter.svg"
-                      alt="twitter-logo"
+                      src="/assets/img/twitter.svg"
+                      alt="twitter"
                       className="reseaux-logo ml-20"
                     />
                   </a>

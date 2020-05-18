@@ -10,6 +10,24 @@
   object-fit: initial;
 }
 
+.couverture h1 {
+  color: white;
+  margin: auto;
+  position: relative;
+  padding-top: 4%;
+  font-size: 50px;
+}
+
+h1:after {
+  content: "";
+  height: 1px;
+  width: 50%;
+  display: block;
+  padding-top: 10px;
+  border-bottom: 2px solid #f7316b;
+  margin-left: 25%;
+}
+
 .photoProfil {
   width: 50%;
   height: 30%;

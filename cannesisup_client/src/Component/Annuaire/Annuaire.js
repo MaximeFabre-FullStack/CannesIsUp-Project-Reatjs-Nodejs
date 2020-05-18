@@ -48,7 +48,7 @@ class Annuaire extends Component {
 
   affichageAnnuaire = () => {
     return this.state.BDDdata.map((element, index) => (
-      <Col key={index} className="style1" xs={12} sm={6} md={4}>
+      <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
         <CarteAnnuaire
           id={element._id}
           nomDeSociete={element.nomDeSociete}
@@ -71,7 +71,7 @@ class Annuaire extends Component {
       <div>
         <Navbar />
         {/* Couverture  */}
-        <div className="couverture">
+        <div className="header">
           <h1>ANNUAIRE DES MEMBRES</h1>
         </div>
         {/* Barre de recherche  */}

@@ -8,6 +8,52 @@ class Footer extends Component {
     return (
       <div className="footerContainer">
         <div className="copyright">
+          <a
+            href="https://www.facebook.com/cannesisup/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="./assets/img/facebook.svg"
+              alt="facebook-logo"
+              className="reseaux-logo ml-20"
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/cannesisup/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="./assets/img/instagram.svg"
+              alt="instagram-logo"
+              className="reseaux-logo ml-20"
+            />
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCBIpW614EFQGZrFVl6ARsAw"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="./assets/img/youtube.svg"
+              alt="youtube-logo"
+              className="reseaux-logo ml-20"
+            />
+          </a>
+          <a
+            href="https://twitter.com/cannesisup"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="./assets/img/twitter.svg"
+              alt="twitter-logo"
+              className="reseaux-logo ml-20"
+            />
+          </a>
+          <br />
+          <br />
           Copyright © CANNES IS UP
           <br />
           <a href="https://cannesisup.com/mentions-legales.php">
@@ -46,36 +92,6 @@ class Footer extends Component {
           >
             {" "}
             (Le Bocal Academy)
-          </a>
-        </div>
-        <div className="lienReseaux">
-          <a
-            href="https://www.facebook.com/cannesisup/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fa fa-4x fa-facebook-square"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/cannesisup/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fa fa-4x fa-instagram"></i>
-          </a>
-          <a
-            href="https://www.youtube.com/channel/UCBIpW614EFQGZrFVl6ARsAw"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fa fa-4x fa-youtube-square"></i>
-          </a>
-          <a
-            href="https://twitter.com/cannesisup"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i className="fa fa-4x fa-twitter-square"></i>
           </a>
         </div>
       </div>

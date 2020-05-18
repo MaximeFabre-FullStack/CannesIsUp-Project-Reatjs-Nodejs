@@ -10,9 +10,27 @@
   object-fit: initial;
 }
 
+.couverture h1 {
+  color: white;
+  margin: auto;
+  position: relative;
+  padding-top: 4%;
+  font-size: 50px;
+}
+
+h1:after {
+  content: "";
+  height: 1px;
+  width: 50%;
+  display: block;
+  padding-top: 10px;
+  border-bottom: 2px solid #f7316b;
+  margin-left: 25%;
+}
+
 .photoProfil {
   width: 50%;
-  /*height: 30%;*/
+  height: 30%;
   margin: -125px auto 0;
   border-radius: 100%;
   object-fit: cover;
@@ -20,6 +38,7 @@
 }
 
 .logoSociete {
+  max-width: 100%;
   height: 100px;
   margin: 0 10% 0 10%;
 }

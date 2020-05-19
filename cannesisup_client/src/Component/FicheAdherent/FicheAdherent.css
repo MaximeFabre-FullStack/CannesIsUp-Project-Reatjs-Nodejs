@@ -81,3 +81,10 @@ body {
   margin-top: 150px;
   padding: 2%;
 }
+
+.brochure {
+  text-align: "right";
+  width: "75%";
+  padding-left: "35%";
+  margin-top: "5%";
+}

@@ -69,26 +69,16 @@ class FicheAdherent extends Component {
                   this.state.dataAdherent.logo
                 }
               ></Card.Img>
-              <Card.Link
-                className="card-link"
-                href="https://react-bootstrap.github.io/components/cards/#title-text-and-links"
-              >
-                <p
-                  style={{
-                    textAlign: "right",
-                    width: "75%",
-                    paddingLeft: "35%",
-                    marginTop: "5%",
-                  }}
-                >
-                  Télécharger la brochure de la société
-                </p>
+              <p className="brochure" style={{}}>
+                Télécharger la brochure de la société
+              </p>
+              <a href="" target="_blank" rel="noopener noreferrer">
                 <img
                   className="arrow"
-                  src="/assets/img/arrow.png"
+                  src="/assets/img/download-solid.svg"
                   alt="logo"
                 ></img>
-              </Card.Link>
+              </a>
             </Card.Body>
 
             {/* Description entreprise */}

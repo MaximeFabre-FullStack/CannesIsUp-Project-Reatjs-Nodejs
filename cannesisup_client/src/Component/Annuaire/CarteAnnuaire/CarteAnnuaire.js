@@ -34,7 +34,10 @@ class CarteAnnuaire extends Component {
             alt="coucou"
           />
           {/* Logo entreprise */}
-          <img className="logoSociete" src={this.props.logo} alt="" />
+          <div className="logo-container">
+            <img className="logoSociete" src={this.props.logo} alt="" />
+          </div>
+
           {/* Description  */}
           <Card.Body className="description">
             <ListGroup>

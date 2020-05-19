@@ -66,6 +66,16 @@ class Annuaire extends Component {
     ));
   };
 
+  /*fetchMoreData = () => {
+    // a fake async api call like which sends
+    // 9 more records in 1.5 secs
+    setTimeout(() => {
+      this.setState({
+        BDDdata: this.state.BDDdata.concat(Array.from({ length: 9 })),
+      });
+    }, 1500);
+  };*/
+
   render() {
     return (
       <div>
@@ -83,7 +93,11 @@ class Annuaire extends Component {
           </p>
         </div>
         <div className="annuaireContainer">
-          {/* <InfiniteScroll> */}
+          {/* <InfiniteScroll 
+          dataLength={this.state.items.length}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}>*/}
           <Container>
             <Row>{this.affichageAnnuaire()}</Row>
           </Container>

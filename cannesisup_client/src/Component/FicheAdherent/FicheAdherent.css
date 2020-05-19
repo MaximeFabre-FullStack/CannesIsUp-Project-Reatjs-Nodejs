@@ -9,11 +9,12 @@ body {
 
 .ficheadherent h4 {
   font-size: 30px;
+  padding-top: 0;
 }
 
 .fichegauche {
   width: 66%;
-  margin: 5%;
+  margin-right: 5%;
   height: fit-content;
 }
 
@@ -31,19 +32,32 @@ body {
 }
 
 .fichegauche .card-img {
-  width: 30%;
   object-fit: cover;
+  max-height: 100%;
+  max-width: 100%;
 }
 
-.fichegauche .card-link {
+.fichegauche .logo-container {
+  height: 100px;
+}
+
+.fichegauche .download-container {
+  flex-grow: 1;
   display: flex;
-  width: 70%;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
-.fichegauche .arrow {
-  width: 10%;
-  height: 35%;
-  margin-top: 5%;
+.fichegauche .download-txt {
+  text-align: right;
+  font-size: 12px;
+  display: block;
+  width: 150px;
+}
+
+.fichegauche .download-img {
+  width: 30px;
+  margin: 5px;
 }
 
 .fichegauche .blockCard {
@@ -56,10 +70,6 @@ body {
   color: #f7316b;
 }
 
-.fichegauche .blockCard .description {
-  padding: 5px 0px;
-}
-
 .fichedroite {
   width: 33%;
   margin-top: 200px;
@@ -70,7 +80,7 @@ body {
 .fichedroite .card-img {
   width: 200px;
   height: 200px;
-  margin: -125px auto;
+  margin: -110px auto;
   border-radius: 100%;
   object-fit: cover;
   border: lightgrey solid 4px;
@@ -80,4 +90,8 @@ body {
 .fichedroite .dirigeant {
   margin-top: 150px;
   padding: 2%;
+}
+
+.description p a {
+  margin-left: 5px;
 }

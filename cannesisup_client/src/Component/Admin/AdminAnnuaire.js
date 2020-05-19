@@ -8,6 +8,7 @@ import "./style.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import SearchBAr from "../Annuaire/SearchBar/SearchBar";
+import "./style.css";
 
 class AnnuaireAdmin extends Component {
   constructor(props) {

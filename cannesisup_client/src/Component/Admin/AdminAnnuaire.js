@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import "./style.css";
 
+import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import SearchBAr from "../Annuaire/SearchBar/SearchBar";
@@ -41,10 +42,27 @@ class AnnuaireAdmin extends Component {
         }
       );
   }
+  // A TESTER < BACK OK /!\
+  // suppression = (element) => {
+  //   const body = {
+  //   _id: element;
+  //    }
+  //   console.log(body);
+
+  //   axios({
+  //     method: "DELETE",
+  //     url: "http://localhost:8080/admin/delete",
+  //     data: JSON,
+  //     body: body,
+  //   });
+  // };
 
   affichageAllData = () => {
     return this.state.allData.map((element, index) => (
       <Row key={index} className="styleCol" xs={12} sm={6} md={4}>
+        <button>supprimer</button>
+        <button>Passer actif</button>
+        <button>Modifier</button>
         <Col>{element.nomDeSociete}</Col>
         <Col>{element.descriptionExhaustive}</Col>
         <Col>{element.secteurDactivite}</Col>

@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const infosAdherentAdmin = require("../controllers/affichageAdherentAdmin");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  // tested ok
-  res.send("coucou admin");
-});
+router.get("/", infosAdherentAdmin);
 
 module.exports = router;

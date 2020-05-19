@@ -8,6 +8,7 @@ import Footer from "../Footer/Footer";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
+import { Redirect } from "react-router-dom";
 
 class SignUp extends Component {
   constructor(props) {
@@ -88,6 +89,11 @@ class SignUp extends Component {
       data: formData,
     }).then((res) => {
       console.log(res);
+      if (res.data.success) {
+        return <Redirect to="https://cannesisup.com/#home" />;
+      } else {
+        alert("L'envoi du formulaire a echoué, veuillez recommencer");
+      }
     });
   };
 

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
+import "./style.css";
 
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -28,11 +29,11 @@ class AnnuaireAdmin extends Component {
     };
 
     /* Requête */
-    fetch("http://localhost:8080/visiteurs", options)
+    fetch("http://localhost:8080/admin", options)
       .then((response) => response.json())
       .then(
         (data) => {
-          this.setState({ AllData: data });
+          this.setState({ allData: data });
         },
         (error) => {
           console.log(error);
@@ -75,9 +76,7 @@ class AnnuaireAdmin extends Component {
           </p>
         </div>
         <div className="annuaireContainer">
-          {/* <InfiniteScroll> */}
           <Container>{this.affichageAllData()}</Container>
-          {/* </InfiniteScroll> */}
         </div>
         <footer>
           <Footer />

@@ -27,6 +27,10 @@
   color: white;
 }
 
+.reseaux-logo g {
+  fill: aliceblue;
+}
+
 .ml-20 {
   margin-left: 20px;
 }

@@ -69,12 +69,17 @@ class FicheAdherent extends Component {
                   this.state.dataAdherent.logo
                 }
               ></Card.Img>
-              <p className="brochure" style={{}}>
-                Télécharger la brochure de la société
-              </p>
-              <a href="" target="_blank" rel="noopener noreferrer">
+              <p className="brochure">Télécharger la brochure de la société</p>
+              <a
+                href={
+                  "http://localhost:8080/uploads/" +
+                  this.state.dataAdherent.dossierPresentation
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
-                  className="arrow"
+                  className="download"
                   src="/assets/img/download-solid.svg"
                   alt="logo"
                 ></img>
@@ -120,16 +125,19 @@ class FicheAdherent extends Component {
                       ? this.state.dataAdherent.coordonnes.mailSociete
                       : " "}
                   </p>
-                  <a
-                    target="_blank"
-                    href="https://cannesisup.com/contact.php"
-                    rel="noopener noreferrer"
-                  >
-                    <span style={{ fontWeight: 700 }}>Site web:</span>{" "}
-                    {this.state.dataAdherent.coordonnes.siteWeb
-                      ? this.state.dataAdherent.coordonnes.siteWeb
-                      : " "}
-                  </a>
+                  <p>
+                    {" "}
+                    <span style={{ fontWeight: 700 }}>Site web:</span>
+                    <a
+                      target="_blank"
+                      href="https://cannesisup.com/contact.php"
+                      rel="noopener noreferrer"
+                    >
+                      {this.state.dataAdherent.coordonnes.siteWeb
+                        ? this.state.dataAdherent.coordonnes.siteWeb
+                        : " "}
+                    </a>
+                  </p>
                 </ListGroup.Item>
                 {/* Réseaux sociaux */}
                 <ListGroup.Item className="description">

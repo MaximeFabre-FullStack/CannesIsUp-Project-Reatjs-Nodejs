@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import SearchBAr from "../Annuaire/SearchBar/SearchBar";
+import "./style.css";
 
 class AnnuaireAdmin extends Component {
   constructor(props) {
@@ -32,7 +33,8 @@ class AnnuaireAdmin extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          this.setState({ AllData: data });
+          this.setState({ allData: data });
+          console.log(data);
         },
         (error) => {
           console.log(error);

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import "../../../src/mainStyle.css";
+import "../../../mainStyle.css";
 import "./AdminChart.css";
 
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
+import Navbar from "../../Navbar/Navbar";
+import Footer from "../../Footer/Footer";
 
 import Bar from "./Charts/Bar";
 import PieChart from "./Charts/PieChart";

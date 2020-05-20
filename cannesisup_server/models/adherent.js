@@ -40,6 +40,7 @@ const adherentSchema = mongoose.Schema({
   paiement: String,
   estActif: { type: Boolean, default: false },
   estAdmin: { type: Boolean, default: false },
+  estVerifie: { type: Boolean, default: false },
 });
 
 /* avec unique verifie que 2 utilisateurs n'ont pas la même adresse mail */

@@ -125,11 +125,10 @@ class AnnuaireAdmin extends Component {
   render() {
     return (
       <div>
-        coucou
         <Navbar />
         {/* Couverture  */}
         <div className="header">
-          <h1>TOUT LES MEMBRES</h1>
+          <h1>TOUS LES MEMBRES</h1>
         </div>
         {/* Barre de recherche  */}
         <SearchBAr />

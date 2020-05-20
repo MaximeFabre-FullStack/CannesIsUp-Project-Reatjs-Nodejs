@@ -15,6 +15,7 @@ class AnnuaireAdmin extends Component {
     super(props);
     this.state = {
       allData: [],
+      supprimes: 0,
     };
   }
 
@@ -41,29 +42,61 @@ class AnnuaireAdmin extends Component {
         }
       );
   }
-  // A TESTER < BACK OK /!\
-  // suppression = (element) => {
-  //   const body = {
-  //   _id: element;
-  //    }
-  //   console.log(body);
 
-  //   axios({
-  //     method: "DELETE",
-  //     url: "http://localhost:8080/admin/delete",
-  //     data: JSON,
-  //     body: body,
-  //   });
-  // };
+  suppression = (element) => {
+    const action = prompt(
+      "Etes vous sur de vouloir supprimer cet adherent? oui / non"
+    );
+    if (action == "non") {
+      return;
+    }
+
+    axios
+      .delete("http://localhost:8080/admin/delete", { data: { _id: element } })
+      .then((res) => {
+        this.setState({ supprimes: +1 });
+      });
+  };
+
+  status = (element) => {
+    if (element) {
+      return (
+        <button onClick={() => this.statusActif} className="boutonInactif">
+          Rendre inactif
+        </button>
+      );
+    }
+    return (
+      <button onClick={() => this.statusInactif} className="boutonActif">
+        Rendre actif
+      </button>
+    );
+  };
+
+  statusActif = () => {
+    return;
+  };
+
+  statusInactif = () => {
+    return;
+  };
 
   affichageAllData = () => {
     return this.state.allData.map((element, index) => (
       <Row key={index} className="styleRowAdmin styleRow">
-        <Col className="styleColAdmin  styleCol" xs={12} sm={6} md={2}>
-          <button>Supprimer</button>
+        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
+          <button
+            onClick={() => {
+              this.suppression(element._id);
+            }}
+          >
+            {" "}
+            Supprimer
+          </button>
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
-          <button>Passer actif</button>
+          {" "}
+          {this.status(element.estActif)}
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           <button>Modifier</button>
@@ -75,7 +108,15 @@ class AnnuaireAdmin extends Component {
           {element.dirigeant.nom} {element.dirigeant.prenom}
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
-          <a href="mailto:">{element.mailPrive}</a>
+          <a
+            href={
+              "mailto:" +
+              element.mailPrive +
+              "?&subject=A%20propos%20de%20votre%20compte%20CannesIsup"
+            }
+          >
+            {element.mailPrive}
+          </a>
         </Col>
       </Row>
     ));
@@ -104,7 +145,7 @@ class AnnuaireAdmin extends Component {
                 <h4>Supprimer</h4>
               </Col>
               <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
-                <h4>Passer actif</h4>
+                <h4>Status</h4>
               </Col>
               <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
                 <h4>Modifier</h4>

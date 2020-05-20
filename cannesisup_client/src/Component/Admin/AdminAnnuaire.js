@@ -9,7 +9,6 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import SearchBAr from "../Annuaire/SearchBar/SearchBar";
-import "./style.css";
 
 class AnnuaireAdmin extends Component {
   constructor(props) {
@@ -59,24 +58,24 @@ class AnnuaireAdmin extends Component {
 
   affichageAllData = () => {
     return this.state.allData.map((element, index) => (
-      <Row key={index} className="styleRow">
-        <Col className="styleCol" xs={12} sm={6} md={2}>
+      <Row key={index} className="styleRowAdmin styleRow">
+        <Col className="styleColAdmin" xs={12} sm={6} md={2}>
           <button>Supprimer</button>
         </Col>
-        <Col className="styleCol" xs={12} sm={6} md={2}>
+        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           {" "}
           <button>Passer actif</button>
         </Col>
-        <Col className="styleCol" xs={12} sm={6} md={2}>
+        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           <button>Modifier</button>
         </Col>
-        <Col className="styleCol" xs={12} sm={6} md={2}>
+        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           <h3>{element.nomDeSociete}</h3>
         </Col>
-        <Col className="styleCol" xs={12} sm={6} md={2}>
+        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           {element.dirigeant.nom} {element.dirigeant.prenom}
         </Col>
-        <Col className="styleCol" xs={12} sm={6} md={2}>
+        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           <a href="mailto:">{element.mailPrive}</a>
         </Col>
       </Row>
@@ -102,23 +101,23 @@ class AnnuaireAdmin extends Component {
         </div>
         <div className="annuaireContainerAdmin">
           <Container>
-            <Row className="styleRow">
-              <Col className="styleCol" xs={12} sm={6} md={2}>
+            <Row className="styleRowAdmin">
+              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
                 <h4>Supprimer</h4>
               </Col>
-              <Col className="styleCol" xs={12} sm={6} md={2}>
+              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
                 <h4>Passer actif</h4>
               </Col>
-              <Col className="styleCol" xs={12} sm={6} md={2}>
+              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
                 <h4>Modifier</h4>
               </Col>
-              <Col className="styleCol" xs={12} sm={6} md={2}>
+              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
                 <h4>Nom entreprise</h4>
               </Col>
-              <Col className="styleCol" xs={12} sm={6} md={2}>
+              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
                 <h4>Nom dirigeant</h4>
               </Col>
-              <Col className="styleCol" xs={12} sm={6} md={2}>
+              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
                 <h4>Mail dirigeant</h4>
               </Col>
             </Row>

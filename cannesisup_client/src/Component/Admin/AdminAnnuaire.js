@@ -59,11 +59,10 @@ class AnnuaireAdmin extends Component {
   affichageAllData = () => {
     return this.state.allData.map((element, index) => (
       <Row key={index} className="styleRowAdmin styleRow">
-        <Col className="styleColAdmin" xs={12} sm={6} md={2}>
+        <Col className="styleColAdmin  styleCol" xs={12} sm={6} md={2}>
           <button>Supprimer</button>
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
-          {" "}
           <button>Passer actif</button>
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
@@ -85,11 +84,10 @@ class AnnuaireAdmin extends Component {
   render() {
     return (
       <div>
-        coucou
         <Navbar />
         {/* Couverture  */}
         <div className="header">
-          <h1>TOUT LES MEMBRES</h1>
+          <h1>TOUS LES MEMBRES</h1>
         </div>
         {/* Barre de recherche  */}
         <SearchBAr />

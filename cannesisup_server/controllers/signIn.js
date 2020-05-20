@@ -20,6 +20,11 @@ const signIn = (req, res, next) => {
             .status(401)
             .json({ error: "Mot de passe incorrect !", exist: false });
         }
+        if (!adherents.estVerifie) {
+          return res
+            .status(401)
+            .json({ error: "Utilisateur non vérifié !", exist: false });
+        }
         if (err) {
           res.status(500).json((success = false));
           return;

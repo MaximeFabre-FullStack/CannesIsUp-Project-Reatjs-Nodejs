@@ -21,7 +21,6 @@
 }
 
 .navListe {
-  margin-left: -70px;
   margin-top: auto;
   margin-bottom: auto;
   list-style: none;
@@ -48,10 +47,6 @@
   display: none;
 }
 
-.lienSite {
-  margin-left: 100px;
-}
-
 .menuDeroulant {
   display: none;
 }
@@ -63,10 +58,6 @@
 
   .logoNav {
     display: contents;
-  }
-
-  .lienSite {
-    margin-left: 0px;
   }
 
   .navListe {

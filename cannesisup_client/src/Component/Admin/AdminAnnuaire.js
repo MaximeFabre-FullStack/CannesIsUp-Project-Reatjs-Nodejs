@@ -59,20 +59,26 @@ class AnnuaireAdmin extends Component {
 
   affichageAllData = () => {
     return this.state.allData.map((element, index) => (
-      <Row key={index} className="styleCol" xs={12} sm={6} md={4}>
-        <button>supprimer</button>
-        <button>Passer actif</button>
-        <button>Modifier</button>
-        <Col>{element.nomDeSociete}</Col>
-        <Col>{element.descriptionExhaustive}</Col>
-        <Col>{element.secteurDactivite}</Col>
-        <Col>{element.dirigeant.prenom}</Col>
-        <Col>{element.dirigeant.nom}</Col>
-        {/* // photoProfil={ */}
-        {/* //   "http://localhost:8080/uploads/" + element.dirigeant.photoPortrait
-          // }
-          // couv={"http://localhost:8080/uploads/" + element.photoCouverture}
-          // logo={"http://localhost:8080/uploads/" + element.logo} */}
+      <Row key={index} className="styleRow">
+        <Col className="styleCol" xs={12} sm={6} md={2}>
+          <button>Supprimer</button>
+        </Col>
+        <Col className="styleCol" xs={12} sm={6} md={2}>
+          {" "}
+          <button>Passer actif</button>
+        </Col>
+        <Col className="styleCol" xs={12} sm={6} md={2}>
+          <button>Modifier</button>
+        </Col>
+        <Col className="styleCol" xs={12} sm={6} md={2}>
+          <h3>{element.nomDeSociete}</h3>
+        </Col>
+        <Col className="styleCol" xs={12} sm={6} md={2}>
+          {element.dirigeant.nom} {element.dirigeant.prenom}
+        </Col>
+        <Col className="styleCol" xs={12} sm={6} md={2}>
+          <a href="mailto:">{element.mailPrive}</a>
+        </Col>
       </Row>
     ));
   };
@@ -94,8 +100,30 @@ class AnnuaireAdmin extends Component {
             Nombres de membres : {this.state.allData.length}{" "}
           </p>
         </div>
-        <div className="annuaireContainer">
-          <Container>{this.affichageAllData()}</Container>
+        <div className="annuaireContainerAdmin">
+          <Container>
+            <Row className="styleRow">
+              <Col className="styleCol" xs={12} sm={6} md={2}>
+                <h4>Supprimer</h4>
+              </Col>
+              <Col className="styleCol" xs={12} sm={6} md={2}>
+                <h4>Passer actif</h4>
+              </Col>
+              <Col className="styleCol" xs={12} sm={6} md={2}>
+                <h4>Modifier</h4>
+              </Col>
+              <Col className="styleCol" xs={12} sm={6} md={2}>
+                <h4>Nom entreprise</h4>
+              </Col>
+              <Col className="styleCol" xs={12} sm={6} md={2}>
+                <h4>Nom dirigeant</h4>
+              </Col>
+              <Col className="styleCol" xs={12} sm={6} md={2}>
+                <h4>Mail dirigeant</h4>
+              </Col>
+            </Row>
+            {this.affichageAllData()}
+          </Container>
         </div>
         <footer>
           <Footer />

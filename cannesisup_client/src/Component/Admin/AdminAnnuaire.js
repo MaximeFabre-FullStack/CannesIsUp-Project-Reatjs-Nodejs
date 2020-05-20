@@ -50,21 +50,35 @@ class AnnuaireAdmin extends Component {
     if (action == "non") {
       return;
     }
-    console.log(element);
 
     axios
       .delete("http://localhost:8080/admin/delete", { data: { _id: element } })
       .then((res) => {
-        console.log(res);
         this.setState({ supprimes: +1 });
       });
   };
 
   status = (element) => {
     if (element) {
-      return <button className="boutonInactif">Rendre inactif</button>;
+      return (
+        <button onClick={() => this.statusActif} className="boutonInactif">
+          Rendre inactif
+        </button>
+      );
     }
-    return <button className="boutonActif">Rendre actif</button>;
+    return (
+      <button onClick={() => this.statusInactif} className="boutonActif">
+        Rendre actif
+      </button>
+    );
+  };
+
+  statusActif = () => {
+    return;
+  };
+
+  statusInactif = () => {
+    return;
   };
 
   affichageAllData = () => {
@@ -73,7 +87,7 @@ class AnnuaireAdmin extends Component {
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           <button
             onClick={() => {
-              this.props.suppression(element._id);
+              this.suppression(element._id);
             }}
           >
             {" "}

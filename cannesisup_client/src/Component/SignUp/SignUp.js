@@ -124,25 +124,26 @@ class SignUp extends Component {
       console.log("coucou");
       const formData = new FormData(e.target);
 
-    axios({
-      method: "post",
-      url: "http://localhost:8080/adherents",
-      data: formData,
-    }).then(
-      (res) => {
-        console.log(res.data);
-        if (res.data.success) {
-          return <Redirect to="https://cannesisup.com/#home" />;
+      axios({
+        method: "post",
+        url: "http://localhost:8080/adherents",
+        data: formData,
+      }).then(
+        (res) => {
+          console.log(res.data);
+          if (res.data.success) {
+            return <Redirect to="https://cannesisup.com/#home" />;
+          }
+          if (res.data.success == false) {
+            alert(res.data.msg);
+          }
+        },
+        (error) => {
+          console.log(error);
+          alert("L'envoi du formulaire a echoué, veuillez recommencer");
         }
-        if (res.data.success == false) {
-          alert(res.data.msg);
-        }
-      },
-      (error) => {
-        console.log(error);
-        alert("L'envoi du formulaire a echoué, veuillez recommencer");
-      }
-    );
+      );
+    }
   };
 
   render() {

@@ -4,7 +4,6 @@ Test sur postman ok
 const AdherentASupprimer = require("../models/adherent");
 
 const AdherentSupprime = (req, res, next) => {
-  console.log(req.body._id);
   const id = req.body._id;
 
   AdherentASupprimer.deleteOne({ _id: id }, (err, data) => {

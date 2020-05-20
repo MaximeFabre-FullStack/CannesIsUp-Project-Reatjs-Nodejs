@@ -8,38 +8,35 @@ const nodemailer = require("nodemailer");
 /* Helper */
 
 // TO DO voir quels parametres à utiliser pour l'envoi des mails
-const sendMail = (email, subject) => {
-  // create reusable transporter object using the default SMTP transport
+const sendMail = (email, message, subject) => {
+  // options du transporteur
   let transporter = nodemailer.createTransport({
-    host: "smtp.ovh001.net",
-    port: 465,
-    secure: true, // true for 465, false for other ports
+    host: "smtp.mailtrap.io", // donne par gergory
+    port: 2525,
+    secure: false, // true for 465, false for other ports
     auth: {
-      user: "utilisateur cannes is up", // donne par grégory
-      pass: "mot de passe", // generated ethereal password
+      user: "4b37ebe2bf1d24", // donne par grégory
+      pass: "a8d29e230efd4c", // donne par gregory
     },
   });
 
-  // send mail with defined transport object
-  transporter
-    .sendMail({
-      from: '"Contact Cannes is Up" <foo@example.com>', //TO DO mettre l'adresse d'envoi
+  // envoi du mail avec le transporteur defini
+  transporter.sendMail(
+    {
+      from: '"Contact Cannes is Up" <no-reply@cannesisup.com>', //TO DO mettre l'adresse d'envoi
       to: email, // list of receivers
       subject: subject, // Subject line
-      text: "Hello world?", // plain text body si envoi texte brut
-      html: "<b>Hello world?</b>", // html body avec backquote pour ecrire du code
-    })
-    .then(
-      (info) => {
-        if (info.messageID) {
-          //OK
-        }
-        //pas OK
-      },
-      (error) => {
-        //pas ok
+      text: message, // plain text body si envoi texte brut
+      //html: "<b>Hello world html  !</b>", // html body avec backquote pour ecrire du code
+    },
+    (error, info) => {
+      if (error) {
+        return console.log(error);
+      } else {
+        return console.log(info);
       }
-    );
+    }
+  );
 };
 
 module.exports = sendMail;

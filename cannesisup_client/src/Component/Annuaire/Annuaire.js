@@ -12,7 +12,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import SearchBAr from "./SearchBar/SearchBar";
 
-import InfiniteScroll from "react-infinite-scroll-component";
+// import InfiniteScroll from "react-infinite-scroll-component";
 
 class Annuaire extends Component {
   constructor(props) {
@@ -73,18 +73,16 @@ class Annuaire extends Component {
       this.setState({
         BDDdata: this.state.BDDdata.concat(Array.from({ length: 9 })),
       });
-    }, 1500);
+    }, 1000);
   };*/
 
   render() {
     return (
       <div>
         <Navbar />
-        {/* Couverture  */}
         <div className="header">
           <h1>ANNUAIRE DES MEMBRES</h1>
         </div>
-        {/* Barre de recherche  */}
         <SearchBAr />
         <div>
           <p className="nombreMembres">

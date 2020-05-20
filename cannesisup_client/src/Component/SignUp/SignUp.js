@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -80,21 +82,34 @@ class SignUp extends Component {
   submitForm = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    if (this.state.form.password !== this.state.form.password_confirm) {
+      console.log("pas coucou");
+    } else {
+      console.log("coucou");
+      const formData = new FormData(e.target);
 
-    axios({
-      method: "post",
-      url: "http://localhost:8080/adherents",
-      data: formData,
-    }).then((res) => {
-      console.log(res);
-    });
+      axios({
+        method: "post",
+        url: "http://localhost:8080/adherents",
+        data: formData,
+      }).then((res) => {
+        console.log(res);
+        if (res.data.success) {
+          return <Redirect to="https://cannesisup.com/#home" />;
+        } else {
+          alert("L'envoi du formulaire a echoué, veuillez recommencer");
+        }
+      });
+    }
   };
 
   render() {
     return (
       <div>
+        {/* Barre de Navigation */}
         <Navbar />
+
+        {/* Formulaire */}
         <div className="form_container">
           <div className="center">
             <h1>Formulaire</h1>
@@ -114,9 +129,6 @@ class SignUp extends Component {
                   value={this.state.form.email}
                   required
                 />
-                <Form.Control.Feedback type="invalid">
-                  Renseignez une adresse email valide
-                </Form.Control.Feedback>
                 <Form.Text className="text-muted">
                   Adresse email que vous utiliserez pour accéder à votre espace
                   membre.
@@ -314,15 +326,18 @@ class SignUp extends Component {
                   label="Logo (.jpeg , .jpg , .png)"
                   custom
                   required
+                  data-browse="Chercher"
                 />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Photo de couverture</Form.Label>
+
                 <Form.File
                   name="couv"
                   onChange={this.fileSelectedHandler}
                   label="Photo de couverture (.jpeg , .jpg , .png)"
                   custom
+                  data-browse="Chercher"
                 />
               </Form.Group>
               <Form.Group>
@@ -332,6 +347,7 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label="Dossier de présentation PDF (Max 10Mo)"
                   custom
+                  data-browse="Chercher"
                 />
               </Form.Group>
             </div>
@@ -386,6 +402,7 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label="Photo de profil (.jpeg , .jpg , .png)"
                   custom
+                  data-browse="Chercher"
                 />
               </Form.Group>
             </div>
@@ -430,12 +447,12 @@ class SignUp extends Component {
               <button className="btn-default">Inscription</button>
             </div>
           </Form>
-
-          {/* Footer */}
-          <footer className="footer">
-            <Footer />
-          </footer>
         </div>
+
+        {/* Footer */}
+        <footer className="footer">
+          <Footer />
+        </footer>
       </div>
     );
   }

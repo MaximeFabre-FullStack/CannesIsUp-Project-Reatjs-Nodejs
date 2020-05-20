@@ -33,7 +33,7 @@ const sendMail = (email, message, subject) => {
       if (error) {
         return console.log(error);
       } else {
-        return console.log(info);
+        return console.log("nouvel adherent validé");
       }
     }
   );

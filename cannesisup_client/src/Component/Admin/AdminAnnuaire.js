@@ -15,7 +15,7 @@ class AnnuaireAdmin extends Component {
     super(props);
     this.state = {
       allData: [],
-      supprimes: 0,
+      etat: 0,
     };
   }
 
@@ -53,32 +53,63 @@ class AnnuaireAdmin extends Component {
 
     axios
       .delete("http://localhost:8080/admin/delete", { data: { _id: element } })
-      .then((res) => {
-        this.setState({ supprimes: +1 });
-      });
+      .then(
+        (data) => {
+          this.setState({ etat: +1 });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   };
 
-  status = (element) => {
+  passerStatusActif = (id) => {
+    console.log(id);
+    axios
+      .put("http://localhost:8080/admin/status/true", { data: { _id: id } })
+      .then(
+        (data) => {
+          this.setState({ etat: +1 });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  passerStatusInactif = (id) => {
+    console.log(id);
+    axios
+      .put("http://localhost:8080/admin/status/false", { data: { _id: id } })
+      .then(
+        (data) => {
+          this.setState({ etat: +1 });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  status = (element, uid) => {
     if (element) {
       return (
-        <button onClick={() => this.statusActif} className="boutonInactif">
+        <button
+          onClick={() => this.passerStatusInactif(uid)}
+          className="boutonInactif"
+        >
           Rendre inactif
         </button>
       );
     }
     return (
-      <button onClick={() => this.statusInactif} className="boutonActif">
+      <button
+        onClick={() => this.passerStatusActif(uid)}
+        className="boutonActif"
+      >
         Rendre actif
       </button>
     );
-  };
-
-  statusActif = () => {
-    return;
-  };
-
-  statusInactif = () => {
-    return;
   };
 
   affichageAllData = () => {
@@ -96,7 +127,7 @@ class AnnuaireAdmin extends Component {
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           {" "}
-          {this.status(element.estActif)}
+          {this.status(element.estActif, element._id)}
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           <button>Modifier</button>

@@ -63,7 +63,7 @@ class FicheAdherent extends Component {
 
             {/* Logo + liens PDF */}
             <Card.Body className="top-link">
-              <div className="logo-container">
+              <div className="logo-cont">
                 <Card.Img
                   className="card-img"
                   src={

@@ -21,7 +21,6 @@
 }
 
 .navListe {
-  margin-left: -70px;
   margin-top: auto;
   margin-bottom: auto;
   list-style: none;
@@ -44,8 +43,8 @@
   color: #f7316b;
 }
 
-.lienSite {
-  margin-left: 100px;
+.cache {
+  display: none;
 }
 
 .menuDeroulant {
@@ -59,10 +58,6 @@
 
   .logoNav {
     display: contents;
-  }
-
-  .lienSite {
-    margin-left: 0px;
   }
 
   .navListe {

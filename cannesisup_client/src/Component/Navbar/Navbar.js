@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -10,6 +10,34 @@ import "../../../src/mainStyle.css";
 import "./Navbar.css";
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      style: "cache",
+      dropDownStyle: "cache",
+      connecte: false,
+    };
+  }
+
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    const uid = localStorage.getItem("uid");
+    if (token && uid) {
+      this.setState({ style: "style1 navLink" }); // change le style de la navbar si connecté
+      this.setState({ dropDownStyle: "" }); // change le style du dropdown menu si connecté
+      this.setState({ connecte: true });
+    }
+  }
+
+  deconnexion = () => {
+    // en cas de deconnexion, enleve les elements du localstorage
+    this.setState({ connecte: false });
+    localStorage.removeItem("token");
+    localStorage.removeItem("uid");
+    localStorage.removeItem("admin");
+    return <Redirect to="https://cannesisup.com/#actus" />;
+  };
+
   render() {
     return (
       <div className="navbarContainer">
@@ -68,11 +96,13 @@ class Navbar extends Component {
                 Contact
               </Col>
             </a>
-            <Link to="/signin">
-              <Col className="style1 navLink" md={1.2}>
-                Sign-in
-              </Col>
-            </Link>
+            <a
+              href="https://cannesisup.com/#home"
+              className={this.state.style}
+              onClick={this.deconnexion}
+            >
+              <Col md={1.2}>Deconnexion</Col>
+            </a>
           </Row>
         </Container>
 
@@ -91,9 +121,7 @@ class Navbar extends Component {
             <Dropdown.Item href="https://cannesisup.com/#actus">
               Actualités
             </Dropdown.Item>
-            <Dropdown.Item>
-              <Link to="/annuaire">Adhérents</Link>
-            </Dropdown.Item>
+            <Dropdown.Item href="/annuaire">Adhérents</Dropdown.Item>
             <Dropdown.Item href="https://cannesisup.com/equipe.php">
               L'équipe
             </Dropdown.Item>
@@ -106,12 +134,13 @@ class Navbar extends Component {
             <Dropdown.Item href="https://cannesisup.com/contact.php">
               Contact
             </Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item>
-              <Link to="/signup">Connexion</Link>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Link to="/signin">S'enregistrer</Link>
+            <Dropdown.Divider className={this.state.dropDownStyle} />
+            <Dropdown.Item
+              href="https://cannesisup.com/#home"
+              className={this.state.dropDownStyle}
+              onClick={this.deconnexion}
+            >
+              Deconnexion
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

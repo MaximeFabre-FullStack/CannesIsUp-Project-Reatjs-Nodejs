@@ -25,6 +25,7 @@ const signIn = (req, res, next) => {
           return;
         }
         res.status(200).json({
+          admin: adherents.estAdmin,
           userId: adherents._id,
           token: jwt.sign({ userId: adherents._id }, "RANDOM_TOKEN_SECRET", {
             expiresIn: "24h",

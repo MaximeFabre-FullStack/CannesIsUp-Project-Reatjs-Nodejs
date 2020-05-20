@@ -11,7 +11,6 @@ class SearchBar extends Component {
           placeholder="Recherchez : un membre, une activité, un mot clé..."
           className="react-search-field "
         />
-        <p className="nombreMembres"> Nombres de membres </p>
       </div>
     );
   }

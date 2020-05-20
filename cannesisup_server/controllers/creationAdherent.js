@@ -34,22 +34,20 @@ const toutAdherents = (req, res, next) => {
       secteurDactivite: req.body.activite,
       descriptionExhaustive: req.body.description,
 
-      logo: req.files.logo[0].filename ? req.files.logo[0].filename : " ",
-      photoCouverture: req.files.couv[0].filename
-        ? req.files.couv[0].filename
-        : " ",
-      dossierPresentation: req.files.dossier[0].filename
+      logo: req.files.logo ? req.files.logo[0].filename : null,
+      photoCouverture: req.files.couv ? req.files.couv[0].filename : null,
+      dossierPresentation: req.files.dossier
         ? req.files.dossier[0].filename
-        : " ",
+        : null,
 
       dirigeant: {
         nom: req.body.nomDirigeant,
         prenom: req.body.prenomDirigeant,
         paroleDeMembre: req.body.parole,
         fonction: req.body.fonction,
-        photoPortrait: req.files.photoPortrait[0].filename
+        photoPortrait: req.files.photoPortrait
           ? req.files.photoPortrait[0].filename
-          : " ",
+          : null,
       },
 
       paiement: req.body.paiement,

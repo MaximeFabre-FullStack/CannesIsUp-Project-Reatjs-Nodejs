@@ -60,35 +60,38 @@ class FicheAdherent extends Component {
                 this.state.dataAdherent.photoCouverture
               }
             />
+
             {/* Logo + liens PDF */}
             <Card.Body className="top-link">
-              <Card.Img
-                className="card-img"
-                src={
-                  "http://localhost:8080/uploads/" +
-                  this.state.dataAdherent.logo
-                }
-              ></Card.Img>
-              <Card.Link
-                className="card-link"
-                href="https://react-bootstrap.github.io/components/cards/#title-text-and-links"
-              >
-                <p
-                  style={{
-                    textAlign: "right",
-                    width: "75%",
-                    paddingLeft: "35%",
-                    marginTop: "5%",
-                  }}
-                >
+              <div className="logo-cont">
+                <Card.Img
+                  className="card-img"
+                  src={
+                    "http://localhost:8080/uploads/" +
+                    this.state.dataAdherent.logo
+                  }
+                ></Card.Img>
+              </div>
+
+              <div className="download-container">
+                <p className="download-txt">
                   Télécharger la brochure de la société
                 </p>
-                <img
-                  className="arrow"
-                  src="/assets/img/arrow.png"
-                  alt="logo"
-                ></img>
-              </Card.Link>
+                <a
+                  href={
+                    "http://localhost:8080/uploads/" +
+                    this.state.dataAdherent.dossierPresentation
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="download-img"
+                    src="/assets/img/download-solid.svg"
+                    alt="logo"
+                  ></img>
+                </a>
+              </div>
             </Card.Body>
 
             {/* Description entreprise */}
@@ -125,22 +128,26 @@ class FicheAdherent extends Component {
                       : " "}
                   </p>
                   <p>
-                    <span style={{ fontWeight: 700 }}>Email: </span>{" "}
+                    <span style={{ fontWeight: 700 }}>Email: </span>
                     {this.state.dataAdherent.coordonnes.mailSociete
                       ? this.state.dataAdherent.coordonnes.mailSociete
                       : " "}
                   </p>
-                  <a
-                    target="_blank"
-                    href="https://cannesisup.com/contact.php"
-                    rel="noopener noreferrer"
-                  >
-                    <span style={{ fontWeight: 700 }}>Site web:</span>{" "}
-                    {this.state.dataAdherent.coordonnes.siteWeb
-                      ? this.state.dataAdherent.coordonnes.siteWeb
-                      : " "}
-                  </a>
+                  <p>
+                    {" "}
+                    <span style={{ fontWeight: 700 }}>Site web:</span>
+                    <a
+                      target="_blank"
+                      href="https://cannesisup.com/contact.php"
+                      rel="noopener noreferrer"
+                    >
+                      {this.state.dataAdherent.coordonnes.siteWeb
+                        ? this.state.dataAdherent.coordonnes.siteWeb
+                        : " "}
+                    </a>
+                  </p>
                 </ListGroup.Item>
+
                 {/* Réseaux sociaux */}
                 <ListGroup.Item className="description">
                   <h3> Réseaux sociaux </h3>

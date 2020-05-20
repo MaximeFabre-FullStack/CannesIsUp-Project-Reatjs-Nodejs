@@ -44,8 +44,10 @@ class SignIn extends Component {
           }
           const uid = data.userId;
           const token = data.token;
+          const admin = data.admin;
           localStorage.setItem("uid", uid);
           localStorage.setItem("token", token);
+          localStorage.setItem("admin", admin);
         },
         (error) => {
           console.log(error);

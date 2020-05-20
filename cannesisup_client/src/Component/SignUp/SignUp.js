@@ -10,6 +10,7 @@ import Footer from "../Footer/Footer";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
+import { Redirect } from "react-router-dom";
 
 class SignUp extends Component {
   constructor(props) {

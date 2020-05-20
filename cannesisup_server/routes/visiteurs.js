@@ -6,6 +6,6 @@ const infosAdherent = require("../controllers/affichageAdherent");
 /* GET home page. */
 router.get("/", affichageAnnuaire); // route OK
 
-router.post("/adherent", infosAdherent); // route a tester
+router.post("/adherent", infosAdherent); // route OK
 
 module.exports = router;

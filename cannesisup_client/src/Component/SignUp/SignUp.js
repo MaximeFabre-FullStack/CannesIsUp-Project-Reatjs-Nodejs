@@ -89,7 +89,6 @@ class SignUp extends Component {
       data: formData,
     }).then(
       (res) => {
-        console.log(res.data);
         if (res.data.success) {
           return <Redirect to="https://cannesisup.com/#home" />;
         }
@@ -98,7 +97,6 @@ class SignUp extends Component {
         }
       },
       (error) => {
-        console.log(error);
         alert("L'envoi du formulaire a echoué, veuillez recommencer");
       }
     );

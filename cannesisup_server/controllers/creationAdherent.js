@@ -79,7 +79,7 @@ const newAdherent = (req, res, next) => {
 
         /* Création du token de verification */
 
-        var token = new Token({
+        const token = new Token({
           _userId: nouvelAdherent._id,
           token: crypto.randomBytes(16).toString("hex"),
         });
@@ -95,20 +95,20 @@ const newAdherent = (req, res, next) => {
           /* Parametres du mail */
           const email = nouvelAdherent.mailPrive;
           const message =
-            "Hello," +
-            nouvelAdherent.dirigeant.prenom +
-            " " +
-            nouvelAdherent.dirigeant.nom +
-            "Please verify your account by clicking the link: http://" +
+            "Hello,\n\n" +
+            "Please verify your account by clicking the link: \nhttp://" +
             req.headers.host +
             "/confirmation/" +
             token.token +
-            ".";
+            ".\n";
           const subject = "Confirmation de demande d'adhésion à Cannes Is Up";
 
           /* Appel du helper */
           sendEmail(email, message, subject);
-          res.json({ success: true });
+          res.json({
+            success: true,
+            msg: "un email de vérification a été envoyé à:" + email,
+          });
         });
       });
     });

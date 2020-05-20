@@ -22,3 +22,27 @@ body {
   width: 60%;
   margin: 0 20%;
 }
+
+.samePasswordOn {
+  color: green;
+}
+
+.samePasswordOff {
+  display: none;
+}
+
+.differentPasswordOn {
+  color: red;
+}
+
+.differentPasswordOff {
+  display: none;
+}
+
+.incorrectPasswordOn {
+  color: red;
+}
+
+.incorrectPasswordOff {
+  display: none;
+}

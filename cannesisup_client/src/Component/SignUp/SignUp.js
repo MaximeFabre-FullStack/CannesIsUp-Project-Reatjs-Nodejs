@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -46,6 +45,9 @@ class SignUp extends Component {
         checkRgpd: false,
         paiement: "",
       },
+      differentPassword: "differentPasswordOff",
+      samePassword: "samePasswordOff",
+      incorrectPassword: "incorrectPasswordOff",
     };
   }
 
@@ -54,6 +56,39 @@ class SignUp extends Component {
     this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.value },
     });
+  };
+
+  /* Confirmation du mot de passe */
+  confirmPassword = async (e) => {
+    await this.setState({
+      form: { ...this.state.form, [e.target.name]: e.target.value },
+    });
+
+    if (!this.state.form.password.valueOf()) {
+      this.setState({
+        incorrectPassword: "incorrectPasswordOn",
+        differentPassword: "differentPasswordOff",
+        samePassword: "samePasswordOff",
+      });
+    } else if (
+      this.state.form.password !== this.state.form.password_confirm ||
+      !this.state.form.password.valueOf(null)
+    ) {
+      this.setState({
+        differentPassword: "differentPasswordOn",
+        samePassword: "samePasswordOff",
+        incorrectPassword: "incorrectPasswordOff",
+      });
+    } else if (
+      this.state.form.password === this.state.form.password_confirm ||
+      !this.state.form.password.valueOf(null)
+    ) {
+      this.setState({
+        samePassword: "samePasswordOn",
+        differentPassword: "differentPasswordOff",
+        incorrectPassword: "incorrectPasswordOff",
+      });
+    }
   };
 
   /* selectionne le fichier dans le state selectedFile*/
@@ -139,23 +174,38 @@ class SignUp extends Component {
                 <Form.Label>Mot de passe *</Form.Label>
                 <Form.Control
                   name="password"
-                  onChange={this.handle_change}
+                  onChange={this.confirmPassword}
                   type="password"
                   placeholder="Votre mot de passe"
                   value={this.state.form.password}
                   required
                 />
+                <p className={this.state.incorrectPassword}>
+                  Veuillez tapez un mot de passe.
+                </p>
+                <p className={this.state.samePassword}>
+                  Mots de passe identiques.
+                </p>
+                <p className={this.state.differentPassword}>
+                  Mots de passe différents.
+                </p>
               </Form.Group>
               <Form.Group>
                 <Form.Label>Confirmation du mot de passe *</Form.Label>
                 <Form.Control
                   name="password_confirm"
-                  onChange={this.handle_change}
+                  onChange={this.confirmPassword}
                   type="password"
                   placeholder="Votre mot de passe"
                   value={this.state.form.password_confirm}
                   required
                 />
+                <p className={this.state.samePassword}>
+                  Mots de passe identiques
+                </p>
+                <p className={this.state.differentPassword}>
+                  Mots de passe différents
+                </p>
               </Form.Group>
             </div>
 

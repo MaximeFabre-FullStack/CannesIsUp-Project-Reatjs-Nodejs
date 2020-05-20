@@ -6,16 +6,19 @@
 const Adherent = require("../models/adherent");
 const Token = require("../models/confirmationToken");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 const sendEmail = require("../helper/sendmail");
 
 /* Controller */
 const newAdherent = (req, res, next) => {
   /* check si adherent existe deja */
-  Adherent.findOne({ mailPrive: req.body.email }, (adherent, err) => {
-    if (adherent)
-      return res.status(400).send({
+  Adherent.findOne({ mailPrive: req.body.email }).then((adherents) => {
+    if (adherents) {
+      return res.status(400).json({
         msg: "L'email que vous avez entré est déjà associé à un compte",
+        success: false,
       });
+    }
 
     /* création du nouvel adherent */
     bcrypt.hash(req.body.password, 10).then((hash) => {
@@ -66,46 +69,50 @@ const newAdherent = (req, res, next) => {
         estVerifie: false,
       });
 
-      nouvelAdherent.save({}, (err) => {
+      nouvelAdherent.save((err) => {
         if (err) {
-          res.status(500).json({ success: false, message: "erreur 500" });
-          console.log(err);
-          return;
+          return res.status(500).json({
+            success: false,
+            msg: err.message,
+          });
         }
 
-        console.log(nouvelAdherent);
         /* Création du token de verification */
 
         var token = new Token({
           _userId: nouvelAdherent._id,
-          token: "123456" /*crypto.randomBytes(16).toString('hex')*/,
+          token: crypto.randomBytes(16).toString("hex"),
         });
 
-        token.save(function (err) {
+        token.save((err) => {
           if (err) {
-            return res.status(500).send({ msg: err.message });
+            return res.status(500).json({
+              success: false,
+              msg: err.message,
+            });
           }
 
           /* Parametres du mail */
           const email = nouvelAdherent.mailPrive;
           const message =
             "Hello," +
+            nouvelAdherent.dirigeant.prenom +
+            " " +
+            nouvelAdherent.dirigeant.nom +
             "Please verify your account by clicking the link: http://" +
             req.headers.host +
             "/confirmation/" +
             token.token +
             ".";
           const subject = "Confirmation de demande d'adhésion à Cannes Is Up";
-          const infoMessage =
-            "A verification email has been sent to " + email + ".";
 
           /* Appel du helper */
           sendEmail(email, message, subject);
+          res.json({ success: true });
         });
       });
     });
   });
-  res.send({ success: true });
 };
 
 module.exports = newAdherent;

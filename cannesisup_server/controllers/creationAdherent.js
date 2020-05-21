@@ -98,7 +98,7 @@ const newAdherent = (req, res, next) => {
             "Hello,\n\n" +
             "Please verify your account by clicking the link: \nhttp://" +
             req.headers.host +
-            "/confirmation/" +
+            "adherents/signin/confirmation/" +
             token.token +
             ".\n";
           const subject = "Confirmation de demande d'adhésion à Cannes Is Up";

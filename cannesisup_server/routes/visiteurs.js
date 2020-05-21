@@ -9,8 +9,4 @@ router.get("/", affichageAnnuaire); // route OK
 
 router.post("/adherent", infosAdherent); // route OK
 
-router.post("/mail", sendMail, (req, res) => {
-  res.send("mail envoyé");
-}); // route test mail
-
 module.exports = router;

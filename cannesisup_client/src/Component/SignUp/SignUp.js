@@ -52,18 +52,15 @@ class SignUp extends Component {
   }
 
   /* Récupère la valeur d'input dans le state */
-  handle_change = (e) => {
-    this.setState({
-      form: { ...this.state.form, [e.target.name]: e.target.value },
-    });
-  };
-
-  /* Confirmation du mot de passe */
-  confirmPassword = async (e) => {
+  handle_change = async (e) => {
     await this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.value },
     });
+    this.confirmPassword();
+  };
 
+  /* Confirmation du mot de passe */
+  confirmPassword = (e) => {
     if (!this.state.form.password.valueOf()) {
       this.setState({
         incorrectPassword: "incorrectPasswordOn",
@@ -178,7 +175,7 @@ class SignUp extends Component {
                 <Form.Label>Mot de passe *</Form.Label>
                 <Form.Control
                   name="password"
-                  onChange={this.confirmPassword}
+                  onChange={this.handle_change}
                   type="password"
                   placeholder="Votre mot de passe"
                   value={this.state.form.password}
@@ -198,7 +195,7 @@ class SignUp extends Component {
                 <Form.Label>Confirmation du mot de passe *</Form.Label>
                 <Form.Control
                   name="password_confirm"
-                  onChange={this.confirmPassword}
+                  onChange={this.handle_change}
                   type="password"
                   placeholder="Votre mot de passe"
                   value={this.state.form.password_confirm}

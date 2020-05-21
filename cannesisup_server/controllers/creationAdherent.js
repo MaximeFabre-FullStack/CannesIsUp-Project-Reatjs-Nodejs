@@ -92,19 +92,27 @@ const newAdherent = (req, res, next) => {
             });
           }
 
-          /* Parametres du mail */
+          /* Envoi du mail adherent */
           const email = nouvelAdherent.mailPrive;
-          const message =
-            "Hello,\n\n" +
-            "Please verify your account by clicking the link: \nhttp://" +
-            req.headers.host +
-            "adherents/signin/confirmation/" +
-            token.token +
-            ".\n";
           const subject = "Confirmation de demande d'adhésion à Cannes Is Up";
+          const url = `http://${req.headers.host}/adherents/signin/confirmation/${token.token}`;
+          const htmlMessage = `<p>Bonjour ${nouvelAdherent.dirigeant.prenom},</p><br/><br/>
+          <p> Veuillez confirmer votre adresse email en cliquant sur le lien ci-dessous:</p><br/>
+          <a href="${url}"> ${url} </a>`;
 
-          /* Appel du helper */
-          sendEmail(email, message, subject);
+          sendEmail(email, htmlMessage, subject);
+
+          /* Envoi du mail admin */
+          const emailAdmin = "contact@cannesisup.com";
+          const subjectAdmin = "Demande d'adhésion à Cannes Is Up";
+          const htmlMessageAdmin = `<p>Bonjour,</p><br/>
+          <p> Vous avez une nouvelle demande d'adhésion pour:</p><br/>
+          <p>Société: ${nouvelAdherent.nomDeSociete}</p>
+          <p>Email: ${nouvelAdherent.mailPrive}</p>
+          <p>Télephone: ${nouvelAdherent.coordonnes.telephone}</p>`;
+
+          sendEmail(emailAdmin, htmlMessageAdmin, subjectAdmin);
+
           res.json({
             success: true,
             msg: "un email de vérification a été envoyé à:" + email,

@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer");
 /* Helper */
 
 // TO DO voir quels parametres à utiliser pour l'envoi des mails
-const sendMail = (email, message, subject) => {
+const sendMail = (email, htmlMessage, subject) => {
   // options du transporteur
   let transporter = nodemailer.createTransport({
     host: "smtp.mailtrap.io", // donne par gergory
@@ -26,8 +26,8 @@ const sendMail = (email, message, subject) => {
       from: '"Contact Cannes is Up" <no-reply@cannesisup.com>', //TO DO mettre l'adresse d'envoi
       to: email, // list of receivers
       subject: subject, // Subject line
-      text: message, // plain text body si envoi texte brut
-      //html: "<b>Hello world html  !</b>", // html body avec backquote pour ecrire du code
+      //text: message, // plain text body si envoi texte brut
+      html: htmlMessage, // html body avec backquote pour ecrire du code
     },
     (error, info) => {
       if (error) {

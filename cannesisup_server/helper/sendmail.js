@@ -4,19 +4,18 @@
 
 /* Import */
 const nodemailer = require("nodemailer");
+const mailAccount = require("../mail-account.json");
 
 /* Helper */
-
-// TO DO voir quels parametres à utiliser pour l'envoi des mails
 const sendMail = (email, htmlMessage, subject) => {
-  // options du transporteur
+  // options du transporteur a modifier dans mail-account.json
   let transporter = nodemailer.createTransport({
-    host: "smtp.mailtrap.io", // donne par gergory
-    port: 2525,
-    secure: false, // true for 465, false for other ports
+    host: mailAccount.host,
+    port: mailAccount.port,
+    secure: mailAccount.secure,
     auth: {
-      user: "4b37ebe2bf1d24", // donne par grégory
-      pass: "a8d29e230efd4c", // donne par gregory
+      user: mailAccount.auth.user,
+      pass: mailAccount.auth.pass,
     },
   });
 
@@ -24,10 +23,9 @@ const sendMail = (email, htmlMessage, subject) => {
   transporter.sendMail(
     {
       from: '"Contact Cannes is Up" <no-reply@cannesisup.com>', //TO DO mettre l'adresse d'envoi
-      to: email, // list of receivers
-      subject: subject, // Subject line
-      //text: message, // plain text body si envoi texte brut
-      html: htmlMessage, // html body avec backquote pour ecrire du code
+      to: email,
+      subject: subject,
+      html: htmlMessage,
     },
     (error, info) => {
       if (error) {

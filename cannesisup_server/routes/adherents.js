@@ -5,13 +5,16 @@ const upload = require("../middleware/uploadConfig");
 const signIn = require("../controllers/signIn");
 const confirmationEmail = require("../controllers/confirmationEmail");
 
-/* GET /adherents */
+/* POST /adherents - envoi du formulaire et du mail de confirmation */
 router.post("/", upload, creationAdherent); // OK
 
-router.post("/signin", signIn); // OK
+/* POST /adherents/signin - login vers back-office */
+router.post("/signin", signIn);
 
-router.get("/signin/confirmation/:token", confirmationEmail.confirmation); // confirmation mail token
+/* GET /adherents/signin/confirmation/ - email de confirmation*/
+router.get("/signin/confirmation/:token", confirmationEmail.confirmation);
 
-router.post("/signin/resend", confirmationEmail.resend); // resend confirmation mail token a raccorder au front !
+/* POST /adherents/signin/resend - Renvoi du mail de confirmation */
+router.post("/signin/resend", confirmationEmail.resend); // TODO a raccorder au front !
 
 module.exports = router;

@@ -1,17 +1,13 @@
-/**
- * controller to get post history
- */
+// REQ CREATION ADHERENT
 
-/* Imports */
 const Adherent = require("../models/adherent");
 const Token = require("../models/confirmationToken");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const sendEmail = require("../helper/sendmail");
 
-/* Controller */
 const newAdherent = (req, res, next) => {
-  /* check si adherent existe deja */
+  // CHECK SI ADHERENT EXISTE DEJA VIA MAIL PUIS SI OUI CONTINUE
   Adherent.findOne({ mailPrive: req.body.email }).then((adherents) => {
     if (adherents) {
       return res.status(400).json({
@@ -20,7 +16,7 @@ const newAdherent = (req, res, next) => {
       });
     }
 
-    /* création du nouvel adherent */
+    // HASH MOT DE PASSE PUIS CREATION ADHERENT
     bcrypt.hash(req.body.password, 10).then((hash) => {
       nouvelAdherent = new Adherent({
         nomDeSociete: req.body.nom,

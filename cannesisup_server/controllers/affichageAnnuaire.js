@@ -1,6 +1,4 @@
-/**
- * controller to get adherent history
- */
+// REQ ANNUAIRE VISITEUR
 
 const Fiches = require("../models/adherent");
 

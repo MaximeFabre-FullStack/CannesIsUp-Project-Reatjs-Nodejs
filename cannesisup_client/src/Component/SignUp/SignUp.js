@@ -51,15 +51,7 @@ class SignUp extends Component {
     };
   }
 
-  /* Récupère la valeur d'input dans le state */
-  handle_change = async (e) => {
-    await this.setState({
-      form: { ...this.state.form, [e.target.name]: e.target.value },
-    });
-    this.confirmPassword();
-  };
-
-  /* Confirmation du mot de passe */
+  // CONPARAISON MOTDEPASSE / MOTDEPASSECOMFIRME
   confirmPassword = (e) => {
     if (!this.state.form.password.valueOf()) {
       this.setState({
@@ -88,21 +80,29 @@ class SignUp extends Component {
     }
   };
 
-  /* selectionne le fichier dans le state selectedFile*/
+  // RECUPERATION DES INPUTS
+  handle_change = async (e) => {
+    await this.setState({
+      form: { ...this.state.form, [e.target.name]: e.target.value },
+    });
+    this.confirmPassword();
+  };
+
+  // RECUPERATION DES FILES
   fileSelectedHandler = (e) => {
     this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.files[0] },
     });
   };
 
-  /* Récupère la valeur d'input dans le state */
+  // RECUPERE LES INFOS DANS LE STATE
   handle_check = (e) => {
     this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.checked },
     });
   };
 
-  /* Récupère la valeur d'input dans le state */
+  // RECUPERE VALEUR CHECKBOX
   handle_radio = (e) => {
     if (e.target.checked === true) {
       this.setState({
@@ -111,7 +111,7 @@ class SignUp extends Component {
     }
   };
 
-  /* Requête POST */
+  // REQUETE POST
   submitForm = (e) => {
     e.preventDefault();
 
@@ -141,6 +141,7 @@ class SignUp extends Component {
     }
   };
 
+  // RENDER PAGE
   render() {
     return (
       <div>

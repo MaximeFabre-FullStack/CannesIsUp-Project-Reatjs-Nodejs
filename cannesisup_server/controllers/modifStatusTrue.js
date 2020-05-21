@@ -1,3 +1,5 @@
+// REQ MODIF STATUS ADHERENT A TRUE
+
 const tableauAdmin = require("../models/adherent");
 
 const modifStatusTrue = (req, res, next) => {

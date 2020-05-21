@@ -4,14 +4,16 @@ const infosAdherentAdmin = require("../controllers/affichageAdherentAdmin");
 const suppressionAdherent = require("../controllers/suppressionAdherent");
 const statusTrue = require("../controllers/modifStatusTrue");
 const statusFalse = require("../controllers/modifStatusFalse");
+const modifAdherent = require("../controllers/modifAdherent");
 
-/* GET home page. */
-router.get("/", infosAdherentAdmin); // test ok front back
+router.get("/", infosAdherentAdmin); // REQ GET ANNUAIRE ADMIN
 
-router.delete("/delete", suppressionAdherent); // test sur Postman ok
+router.delete("/delete", suppressionAdherent); // REQ DELETE ADHERENT VIA ID
 
-router.put("/status/true", statusTrue);
+router.put("/status/true", statusTrue); // REQ PUT MODIF STATUS ADHERENT => TRUE
 
-router.put("/status/false", statusFalse);
+router.put("/status/false", statusFalse); // REQ PUT MODIF STATUS ADHERENT => FALSE
+
+// router.put("/modifier/adherent", modifAdherent) // reste a modifier le controller
 
 module.exports = router;

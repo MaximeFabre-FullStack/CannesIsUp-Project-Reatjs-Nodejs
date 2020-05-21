@@ -1,17 +1,14 @@
-/**
- * controller to get adherent mail/mdp
- */
+// REQ CONNEXION / CREATION TOKEN / COMPARAISON MOT DE PASSE
 const MdpMail = require("../models/adherent");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const signIn = (req, res, next) => {
-  //TODO CRYPTER MDP
   MdpMail.findOne({ mailPrive: req.body.emailSignIn }).then((adherents) => {
     if (!adherents) {
       return res.status(401).json({ error: "Utilisateur non trouvé !" });
     }
-    /* quand utilisateur trouvé comparaison password */
+    // QUAND UTILISATEUR TROUVE COMPARAISON MOT DE PASSE
     bcrypt
       .compare(req.body.motDePasseSignIn, adherents.motDePasse)
       .then((valid, err) => {

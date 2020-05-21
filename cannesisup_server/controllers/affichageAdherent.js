@@ -1,6 +1,4 @@
-/**
- * controller to get adherent details
- */
+// REQ ADHERENT VIA ID
 
 const Adherent = require("../models/adherent");
 

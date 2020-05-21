@@ -1,17 +1,13 @@
-/**
- * controller to get post history
- */
+// REQ CREATION ADHERENT
 
-/* Imports */
 const Adherent = require("../models/adherent");
 const Token = require("../models/confirmationToken");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const sendEmail = require("../helper/sendmail");
 
-/* Controller */
 const newAdherent = (req, res, next) => {
-  /* check si adherent existe deja */
+  // CHECK SI ADHERENT EXISTE DEJA VIA MAIL PUIS SI OUI CONTINUE
   Adherent.findOne({ mailPrive: req.body.email }).then((adherents) => {
     if (adherents) {
       return res.status(400).json({
@@ -20,7 +16,7 @@ const newAdherent = (req, res, next) => {
       });
     }
 
-    /* création du nouvel adherent */
+    // HASH MOT DE PASSE PUIS CREATION ADHERENT
     bcrypt.hash(req.body.password, 10).then((hash) => {
       nouvelAdherent = new Adherent({
         nomDeSociete: req.body.nom,
@@ -92,21 +88,21 @@ const newAdherent = (req, res, next) => {
             });
           }
 
-          /* Parametres du mail */
+          // PARAMETRES POUR ENVOI DE MAIL DE CONFIRMATION
           const email = nouvelAdherent.mailPrive;
           const message =
             "Hello," +
             nouvelAdherent.dirigeant.prenom +
             " " +
             nouvelAdherent.dirigeant.nom +
-            "Please verify your account by clicking the link: http://" +
+            "! Merci de votre enregistrement sur Cannes is Up! Merci de verifier votre adresse mail: http://" +
             req.headers.host +
             "/confirmation/" +
             token.token +
             ".";
           const subject = "Confirmation de demande d'adhésion à Cannes Is Up";
 
-          /* Appel du helper */
+          // APPEL DU HELPER
           sendEmail(email, message, subject);
           res.json({ success: true });
         });

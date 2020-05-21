@@ -11,6 +11,7 @@ import Annuaire from "../Annuaire/Annuaire";
 import FicheAdherent from "../FicheAdherent/FicheAdherent";
 import AnnuaireAdmin from "../Admin/AdminAnnuaire";
 import AdminChart from "../Admin/AdminChart/AdminChart";
+import AdminModifAdherent from "../Admin/AdminModifAdherent/AdminModifAdherent";
 import NotFound from "../NotFound/NotFound";
 
 class App extends Component {
@@ -27,13 +28,21 @@ class App extends Component {
           <Route exact path="/ficheadherent/:id" component={FicheAdherent} />
 
           <Route
+            exact
             path="/admin/annuaire"
             component={authenticatedAdmin(AnnuaireAdmin)}
           />
 
           <Route
+            exact
             path="/admin/charts"
             component={authenticatedAdmin(AdminChart)}
+          />
+
+          <Route
+            exact
+            path="/admin/modif/adherent/:id"
+            component={authenticatedAdmin(AdminModifAdherent)}
           />
 
           <Route exact path="/notfound404" component={NotFound} />

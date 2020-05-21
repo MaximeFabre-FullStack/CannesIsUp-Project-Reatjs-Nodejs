@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import "./style.css";
+import "./AdminAnnuaire.css";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
@@ -13,15 +14,15 @@ import SearchBAr from "../Annuaire/SearchBar/SearchBar";
 class AnnuaireAdmin extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       allData: [],
       etat: 0,
     };
   }
 
-  /* requete GET */
+  // REQUETE GET TOUS LES ADHERENT DANS LA BDD AU CHARGEMENT DE LA PAGE
   componentDidMount() {
-    /* Options, paramètres de la requête */
     const options = {
       method: "GET",
       headers: {
@@ -30,7 +31,6 @@ class AnnuaireAdmin extends Component {
       mode: "cors",
     };
 
-    /* Requête */
     fetch("http://localhost:8080/admin", options)
       .then((response) => response.json())
       .then(
@@ -43,75 +43,7 @@ class AnnuaireAdmin extends Component {
       );
   }
 
-  suppression = (element) => {
-    const action = prompt(
-      "Etes vous sur de vouloir supprimer cet adherent? oui / non"
-    );
-    if (action == "non") {
-      return;
-    }
-
-    axios
-      .delete("http://localhost:8080/admin/delete", { data: { _id: element } })
-      .then(
-        (data) => {
-          this.setState({ etat: +1 });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  };
-
-  passerStatusActif = (id) => {
-    console.log(id);
-    axios
-      .put("http://localhost:8080/admin/status/true", { data: { _id: id } })
-      .then(
-        (data) => {
-          this.setState({ etat: +1 });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  };
-
-  passerStatusInactif = (id) => {
-    console.log(id);
-    axios
-      .put("http://localhost:8080/admin/status/false", { data: { _id: id } })
-      .then(
-        (data) => {
-          this.setState({ etat: +1 });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  };
-
-  status = (element, uid) => {
-    if (element) {
-      return (
-        <button
-          onClick={() => this.passerStatusInactif(uid)}
-          className="boutonInactif"
-        >
-          Rendre inactif
-        </button>
-      );
-    }
-    return (
-      <button
-        onClick={() => this.passerStatusActif(uid)}
-        className="boutonActif"
-      >
-        Rendre actif
-      </button>
-    );
-  };
-
+  // APRES LA REQUETE FETCH / COMPONENTDIDMOUNT , BOUCLE AFFICHAGE APPELEE DANS LE RENDER
   affichageAllData = () => {
     return this.state.allData.map((element, index) => (
       <Row key={index} className="styleRowAdmin styleRow">
@@ -130,7 +62,9 @@ class AnnuaireAdmin extends Component {
           {this.status(element.estActif, element._id)}
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
-          <button>Modifier</button>
+          <Link to={"/admin/modif/adherent/" + element._id}>
+            <button>Modifier</button>
+          </Link>
         </Col>
         <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
           <h3>{element.nomDeSociete}</h3>
@@ -153,15 +87,87 @@ class AnnuaireAdmin extends Component {
     ));
   };
 
+  // FONCTION SUPPRESSION D'UN ADHERENT
+  suppression = (element) => {
+    const action = prompt(
+      "Etes vous sur de vouloir supprimer cet adherent? oui / non"
+    );
+    if (action == "non") {
+      return;
+    }
+
+    axios
+      .delete("http://localhost:8080/admin/delete", { data: { _id: element } })
+      .then(
+        (data) => {
+          this.setState({ etat: +1 });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  // FONCTION POUR PASSER UN STATUS D'ADHERENT A ACTIF
+  passerStatusActif = (id) => {
+    console.log(id);
+    axios
+      .put("http://localhost:8080/admin/status/true", { data: { _id: id } })
+      .then(
+        (data) => {
+          this.setState({ etat: +1 });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  // FONCTION POUR PASSER UN STATUS D'ADHERENT A INACTIF
+  passerStatusInactif = (id) => {
+    console.log(id);
+    axios
+      .put("http://localhost:8080/admin/status/false", { data: { _id: id } })
+      .then(
+        (data) => {
+          this.setState({ etat: +1 });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  // CHANGE LA COULEUR ET LE TEXTE DU BOUTON SUIVANT LE STATUS ACTIF/INACTIF
+  status = (element, uid) => {
+    if (element) {
+      return (
+        <button
+          onClick={() => this.passerStatusInactif(uid)}
+          className="boutonInactif"
+        >
+          Rendre inactif
+        </button>
+      );
+    }
+    return (
+      <button
+        onClick={() => this.passerStatusActif(uid)}
+        className="boutonActif"
+      >
+        Rendre actif
+      </button>
+    );
+  };
+
+  // RENDER DE LA PAGE
   render() {
     return (
       <div>
         <Navbar />
-        {/* Couverture  */}
         <div className="header">
           <h1>TOUS LES MEMBRES</h1>
         </div>
-        {/* Barre de recherche  */}
         <SearchBAr />
         <div>
           <p className="nombreMembres">

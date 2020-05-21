@@ -1,6 +1,5 @@
-/* 
-Test sur postman ok 
-*/
+// REQ DE SUPPRESSION ADHERENT
+
 const AdherentASupprimer = require("../models/adherent");
 
 const AdherentSupprime = (req, res, next) => {

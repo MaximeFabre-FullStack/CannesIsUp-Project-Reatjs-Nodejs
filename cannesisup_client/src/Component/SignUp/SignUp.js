@@ -116,9 +116,8 @@ class SignUp extends Component {
     e.preventDefault();
 
     if (this.state.form.password !== this.state.form.password_confirm) {
-      console.log("pas coucou");
+      return;
     } else {
-      console.log("coucou");
       const formData = new FormData(e.target);
 
       axios({
@@ -138,6 +137,29 @@ class SignUp extends Component {
           alert("L'envoi du formulaire a echoué, veuillez recommencer");
         }
       );
+    }
+  };
+
+  renderName = (file) => {
+    switch (file) {
+      case "logo":
+        return this.state.form.logo ? this.state.form.logo.name : "Logo";
+        break;
+      case "couv":
+        return this.state.form.couv
+          ? this.state.form.couv.name
+          : "Photo de couverture (.jpeg , .jpg , .png)";
+        break;
+      case "photoPortrait":
+        return this.state.form.photoPortrait
+          ? this.state.form.photoPortrait.name
+          : "Photo de profil (.jpeg , .jpg , .png)";
+        break;
+      case "dossier":
+        return this.state.form.dossier
+          ? this.state.form.dossier.name
+          : "Dossier de présentation PDF (Max 10Mo)";
+        break;
     }
   };
 
@@ -376,8 +398,9 @@ class SignUp extends Component {
                 <Form.Label>Logo *</Form.Label>
                 <Form.File
                   name="logo"
+                  required
                   onChange={this.fileSelectedHandler}
-                  label="Logo (.jpeg , .jpg , .png)"
+                  label={this.renderName("logo")}
                   custom
                   required
                   data-browse="Chercher"
@@ -389,7 +412,7 @@ class SignUp extends Component {
                 <Form.File
                   name="couv"
                   onChange={this.fileSelectedHandler}
-                  label="Photo de couverture (.jpeg , .jpg , .png)"
+                  label={this.renderName("couv")}
                   custom
                   data-browse="Chercher"
                 />
@@ -399,7 +422,7 @@ class SignUp extends Component {
                 <Form.File
                   name="dossier"
                   onChange={this.fileSelectedHandler}
-                  label="Dossier de présentation PDF (Max 10Mo)"
+                  label={this.renderName("dossier")}
                   custom
                   data-browse="Chercher"
                 />

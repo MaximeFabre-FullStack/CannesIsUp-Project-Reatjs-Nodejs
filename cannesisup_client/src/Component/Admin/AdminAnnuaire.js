@@ -92,7 +92,7 @@ class AnnuaireAdmin extends Component {
     const action = prompt(
       "Etes vous sur de vouloir supprimer cet adherent? oui / non"
     );
-    if (action == "non") {
+    if (action === "non") {
       return;
     }
 

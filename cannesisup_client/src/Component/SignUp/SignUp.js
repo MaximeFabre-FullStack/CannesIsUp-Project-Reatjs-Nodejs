@@ -144,22 +144,24 @@ class SignUp extends Component {
     switch (file) {
       case "logo":
         return this.state.form.logo ? this.state.form.logo.name : "Logo";
-        break;
+
       case "couv":
         return this.state.form.couv
           ? this.state.form.couv.name
           : "Photo de couverture (.jpeg , .jpg , .png)";
-        break;
+
       case "photoPortrait":
         return this.state.form.photoPortrait
           ? this.state.form.photoPortrait.name
           : "Photo de profil (.jpeg , .jpg , .png)";
-        break;
+
       case "dossier":
         return this.state.form.dossier
           ? this.state.form.dossier.name
           : "Dossier de présentation PDF (Max 10Mo)";
-        break;
+
+      default:
+        return "Inserer vos documents ici";
     }
   };
 
@@ -402,7 +404,6 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label={this.renderName("logo")}
                   custom
-                  required
                   data-browse="Chercher"
                 />
               </Form.Group>

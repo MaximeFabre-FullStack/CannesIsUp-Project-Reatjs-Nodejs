@@ -23,10 +23,11 @@ const signIn = (req, res, next) => {
             .json({ error: "Utilisateur non vérifié !", exist: false });
         }
         if (err) {
-          res.status(500).json((success = false));
+          res.status(500).json(err);
           return;
         }
         res.status(200).json({
+          exist: true,
           admin: adherents.estAdmin,
           userId: adherents._id,
           token: jwt.sign({ userId: adherents._id }, "RANDOM_TOKEN_SECRET", {

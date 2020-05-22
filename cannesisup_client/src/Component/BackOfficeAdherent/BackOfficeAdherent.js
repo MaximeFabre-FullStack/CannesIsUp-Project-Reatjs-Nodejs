@@ -3,6 +3,8 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import axios from "axios";
+//import EditableLabel from "react-inline-editing";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
@@ -12,12 +14,14 @@ class BackOfficeAdherent extends Component {
     super(props);
     this.state = {
       dataAdherent: { coordonnes: {}, dirigeant: {}, reseauSociaux: {} },
+      selectedFile: null,
     };
+    this.inputOpenFileRef = React.createRef();
   }
 
   componentDidMount() {
     const body = {
-      id: "5ebe9023b490401890beb16f",
+      id: this.props.match.params.id,
     };
 
     const options = {
@@ -41,6 +45,27 @@ class BackOfficeAdherent extends Component {
         }
       );
   }
+
+  /* Envoi du nouveau fichier*/
+  fileSelectedHandler = (event) => {
+    const formData = new FormData();
+    formData.append("couv", event.target.files[0], event.target.files[0].name);
+
+    /* envoi de la requete */
+    axios({
+      method: "put",
+      url:
+        "http://localhost:8080/adherents/updateFile/" +
+        this.props.match.params.id,
+      data: formData,
+    }).then((res) => {
+      console.log(res); // recharger la page ?
+    });
+  };
+
+  updateFile = (e) => {
+    this.inputOpenFileRef.current.click();
+  };
 
   render() {
     return (
@@ -66,6 +91,13 @@ class BackOfficeAdherent extends Component {
                   "http://localhost:8080/uploads/" +
                   this.state.dataAdherent.photoCouverture
                 }
+                onClick={this.updateFile}
+              />
+              <input
+                onChange={this.fileSelectedHandler}
+                ref={this.inputOpenFileRef}
+                type="file"
+                style={{ display: "none" }}
               />
 
               {/* Logo + liens PDF */}
@@ -82,7 +114,7 @@ class BackOfficeAdherent extends Component {
 
                 <div className="download-container">
                   <p className="download-txt">
-                    Télécharger la brochure de la société
+                    Modifier la brochure de la société
                   </p>
                   <a
                     href={

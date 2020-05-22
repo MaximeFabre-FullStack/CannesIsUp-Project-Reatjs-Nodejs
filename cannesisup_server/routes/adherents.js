@@ -4,6 +4,7 @@ const creationAdherent = require("../controllers/creationAdherent");
 const upload = require("../middleware/uploadConfig");
 const signIn = require("../controllers/signIn");
 const confirmationEmail = require("../controllers/confirmationEmail");
+const updateAdherent = require("../controllers/updateAdherent");
 
 /* POST /adherents - envoi du formulaire et du mail de confirmation */
 router.post("/", upload, creationAdherent); // OK
@@ -18,6 +19,9 @@ router.get(
 );
 
 /* POST /adherents/signin/resend - Renvoi du mail de confirmation */
-router.post("/signin/resend", confirmationEmail.resend); // TODO a raccorder au front !
+router.post("/signin/resend", confirmationEmail.resend);
+
+/* PUT /adherents/updateFile/:id - Modification file dans BDD */
+router.put("/updateFile/:id", upload, updateAdherent);
 
 module.exports = router;

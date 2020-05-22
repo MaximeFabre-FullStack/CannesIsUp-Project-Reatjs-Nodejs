@@ -116,9 +116,7 @@ class SignUp extends Component {
     e.preventDefault();
 
     if (this.state.form.password !== this.state.form.password_confirm) {
-      console.log("pas coucou");
     } else {
-      console.log("coucou");
       const formData = new FormData(e.target);
 
       axios({
@@ -377,10 +375,10 @@ class SignUp extends Component {
                 <Form.File
                   name="logo"
                   onChange={this.fileSelectedHandler}
-                  label="Logo (.jpeg , .jpg , .png)"
+                  label={}
                   custom
                   required
-                  data-browse="Chercher"
+                  data-browse="Choisir une image"
                 />
               </Form.Group>
               <Form.Group>
@@ -389,9 +387,9 @@ class SignUp extends Component {
                 <Form.File
                   name="couv"
                   onChange={this.fileSelectedHandler}
-                  label="Photo de couverture (.jpeg , .jpg , .png)"
+                  label="couveture"
                   custom
-                  data-browse="Chercher"
+                  data-browse="Choisir une image"
                 />
               </Form.Group>
               <Form.Group>
@@ -401,7 +399,7 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label="Dossier de présentation PDF (Max 10Mo)"
                   custom
-                  data-browse="Chercher"
+                  data-browse="Choisir un fichier"
                 />
               </Form.Group>
             </div>
@@ -456,7 +454,7 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label="Photo de profil (.jpeg , .jpg , .png)"
                   custom
-                  data-browse="Chercher"
+                  data-browse="Choisir une image"
                 />
               </Form.Group>
             </div>

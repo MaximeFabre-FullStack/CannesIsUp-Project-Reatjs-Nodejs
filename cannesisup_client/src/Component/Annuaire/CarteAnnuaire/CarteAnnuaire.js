@@ -25,13 +25,13 @@ class CarteAnnuaire extends Component {
             className="couverture"
             variant="top"
             src={this.props.couv}
-            alt=""
+            alt="couverture"
           />
           {/* Photo de profil  */}
           <img
             className="photoProfil"
             src={this.props.photoProfil}
-            alt="photo profil"
+            alt="profil"
           />
           {/* Logo entreprise */}
           <div className="logo-container">

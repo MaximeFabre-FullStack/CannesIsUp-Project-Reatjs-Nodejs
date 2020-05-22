@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { authenticatedAdmin } from "../Authenticate/AuthenticateAdmin";
+import AdminAnnuaire from "../Admin/AdminAnnuaire";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
@@ -16,8 +18,18 @@ class SignIn extends Component {
       motDePasseSignIn: "",
     };
   }
+
   recup_info = async (e) => {
     await this.setState({ [e.target.name]: e.target.value });
+  };
+
+  redirection = (uid, token, admin) => {
+    console.log(uid, token, admin);
+    if (uid && token && admin) {
+      this.props.history.push("/admin/annuaire");
+    } else if (uid && token) {
+      this.props.history.push();
+    }
   };
 
   requeteInfo = (e) => {
@@ -40,19 +52,26 @@ class SignIn extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          if (!data) {
-            alert("Compte inexistant ou mauvais champs!"); // TODO voir comment gerer mdp/mail/alert
-          }
-          const uid = data.userId;
-          const token = data.token;
-          const admin = data.admin;
-          localStorage.setItem("uid", uid);
-          localStorage.setItem("token", token);
-          localStorage.setItem("admin", admin);
+          if (!data || !data.exist) {
+            alert(
+              "Il semblerait qu'une erreur soit survenue, verifiez les champs renseignés et réesayez. " +
+                " (Il se peut aussi que votre compte n'ai pas encore été validé par l'administrateur). " +
+                " N'hesitez pas a nous contacter si vous rencontrez des difficultés, nous nous ferons un plaisir de vous aider."
+            );
+          } else {
+            const uid = data.userId;
+            const token = data.token;
+            let admin = data.admin;
+            localStorage.setItem("uid", uid);
+            localStorage.setItem("token", token);
+            admin ? localStorage.setItem("admin", admin) : (admin = false);
 
-          return <Redirect to="/annuaire" />;
+            this.redirection(uid, token, admin);
+          }
         },
+
         (error) => {
+          alert("Une erreur est survenue " + error);
           console.log(error);
         }
       );
@@ -109,4 +128,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);

@@ -51,7 +51,9 @@ class App extends Component {
           <Route exact path="/adherent/:id" component={BackOfficeAdherent} />
 
           <Route exact path="/notfound404" component={NotFound} />
+
           <Route exact path="/confirmation" component={Mail} />
+
           <Route exact path="/resend/:email" component={MailResend} />
         </Switch>
       </Router>

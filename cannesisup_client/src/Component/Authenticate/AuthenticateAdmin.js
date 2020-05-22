@@ -7,7 +7,7 @@ export function authenticatedAdmin(Component) {
   return class extends React.Component {
     static displayName = `Route(${componentName})`;
 
-    renderPage() {
+    renderPageAdmin() {
       return <Component {...this.props} />;
     }
 
@@ -16,7 +16,9 @@ export function authenticatedAdmin(Component) {
       const uid = localStorage.getItem("uid");
       const admin = localStorage.getItem("admin");
       if (token && uid && admin) {
-        return this.renderPage();
+        return this.renderPageAdmin();
+      } else if (token && uid) {
+        return <Redirect to={"/adherent/" + uid} />;
       } else {
         return <Redirect to="/notfound404" />;
       }

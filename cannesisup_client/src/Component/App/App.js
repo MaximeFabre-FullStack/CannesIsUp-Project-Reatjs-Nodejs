@@ -15,6 +15,7 @@ import AdminModifAdherent from "../Admin/AdminModifAdherent/AdminModifAdherent";
 import NotFound from "../NotFound/NotFound";
 import Mail from "../Mail/Mail";
 import MailResend from "../MailResend/MailResend";
+import BackOfficeAdherent from "../BackOfficeAdherent/BackOfficeAdherent";
 
 class App extends Component {
   render() {
@@ -46,6 +47,8 @@ class App extends Component {
             path="/admin/modif/adherent/:id"
             component={authenticatedAdmin(AdminModifAdherent)}
           />
+
+          <Route exact path="/adherent/:id" component={BackOfficeAdherent} />
 
           <Route exact path="/notfound404" component={NotFound} />
           <Route exact path="/confirmation" component={Mail} />

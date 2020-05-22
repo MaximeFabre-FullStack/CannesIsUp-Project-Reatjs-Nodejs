@@ -39,7 +39,7 @@ class Annuaire extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          this.setState({ DDdata: data });
+          this.setState({ BDDdata: data });
         },
         (error) => {
           console.log(error);
@@ -47,9 +47,9 @@ class Annuaire extends Component {
       );
   }
 
-  dataSearchbar = (dataFromChild) => {
+  /*dataSearchbar = (dataFromChild) => {
     this.setState({ recherche: dataFromChild });
-  };
+  };*/
 
   affichageAnnuaire = () => {
     return this.state.BDDdata.map((element, index) => (

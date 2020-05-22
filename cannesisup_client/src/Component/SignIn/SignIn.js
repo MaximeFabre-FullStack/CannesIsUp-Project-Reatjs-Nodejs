@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
-// import Col from "react-bootstrap/Col";
-import "../SignUp/style.css";
+import { Redirect } from "react-router-dom";
+
 import "../../../src/mainStyle.css";
+import "./style.css";
 
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -48,6 +49,8 @@ class SignIn extends Component {
           localStorage.setItem("uid", uid);
           localStorage.setItem("token", token);
           localStorage.setItem("admin", admin);
+
+          return <Redirect to="/annuaire" />;
         },
         (error) => {
           console.log(error);

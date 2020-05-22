@@ -31,7 +31,7 @@ class CarteAnnuaire extends Component {
           <img
             className="photoProfil"
             src={this.props.photoProfil}
-            alt="coucou"
+            alt="photo profil"
           />
           {/* Logo entreprise */}
           <div className="logo-container">
@@ -61,9 +61,7 @@ class CarteAnnuaire extends Component {
             {/* Bouton */}
             <div className="btn">
               <Link to={"/ficheadherent/" + this.props.id}>
-                <button className="btn-default" onClick={this.seeAdherent}>
-                  Voir le membre
-                </button>
+                <button className="btn-default">Voir le membre</button>
               </Link>
             </div>
           </Card.Body>

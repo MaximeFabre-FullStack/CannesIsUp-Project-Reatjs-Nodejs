@@ -42,7 +42,6 @@ const modifAdherent = (req, res, next) => {
           ? req.files.photoPortrait[0].filename
           : null,
       },
-      estActif: false, // REPASSE EN FALSE AFIN QUE LADMIN VERIFIE LES NOUVELLES INFOS
     },
     (err, data) => {
       if (err) {

@@ -2,28 +2,25 @@ const Token = require("../models/confirmationToken");
 const Adherent = require("../models/adherent");
 const crypto = require("crypto");
 const sendEmail = require("../helper/sendmail");
+const url = require("../url.json");
 
 const confirmationEmail = {
   confirmation: (req, res, next) => {
+    console.log(req.params);
     Token.findOne({ token: req.params.token }, (err, token) => {
-      if (!token)
-        return res.status(400).json({
-          type: "not-verified",
-          msg:
-            "Nous n'avons pas trouve de token valide. Votre token a peut etre expire",
-        });
+      if (!token) {
+        return res.redirect(`${url["client-url"]}/resend/${req.params.email}`);
+      }
 
-      // If we found a token, update the matching user
+      // Si le token existe, update de l'adherent
       Adherent.findOneAndUpdate(
         { _id: token._userId },
         { estVerifie: true },
         (err, adherent) => {
           if (!adherent) {
-            res.status(400).json({
-              msg: "Nous n'avons pas trouve d'adherent avec ce token",
-            });
+            res.redirect(`${url["client-url"]}/resend/${req.params.email}`);
           }
-          res.json({ success: true });
+          res.redirect(`${url["client-url"]}/confirmation`);
         }
       );
     });

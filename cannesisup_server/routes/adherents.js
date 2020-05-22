@@ -12,7 +12,10 @@ router.post("/", upload, creationAdherent); // OK
 router.post("/signin", signIn);
 
 /* GET /adherents/signin/confirmation/ - email de confirmation*/
-router.get("/signin/confirmation/:token", confirmationEmail.confirmation);
+router.get(
+  "/signin/confirmation/:token/:email",
+  confirmationEmail.confirmation
+);
 
 /* POST /adherents/signin/resend - Renvoi du mail de confirmation */
 router.post("/signin/resend", confirmationEmail.resend); // TODO a raccorder au front !

@@ -95,7 +95,7 @@ const newAdherent = (req, res, next) => {
           /* Envoi du mail adherent */
           const email = nouvelAdherent.mailPrive;
           const subject = "Confirmation de demande d'adhésion à Cannes Is Up";
-          const url = `http://${req.headers.host}/adherents/signin/confirmation/${token.token}`;
+          const url = `http://${req.headers.host}/adherents/signin/confirmation/${token.token}/${nouvelAdherent.mailPrive}`;
           const htmlMessage = `<p>Bonjour ${nouvelAdherent.dirigeant.prenom},</p><br/><br/>
           <p> Veuillez confirmer votre adresse email en cliquant sur le lien ci-dessous:</p><br/>
           <a href="${url}"> ${url} </a>`;

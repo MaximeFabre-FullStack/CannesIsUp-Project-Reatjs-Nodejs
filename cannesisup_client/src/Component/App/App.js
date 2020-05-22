@@ -12,6 +12,8 @@ import FicheAdherent from "../FicheAdherent/FicheAdherent";
 import AnnuaireAdmin from "../Admin/AdminAnnuaire";
 import AdminChart from "../Admin/AdminChart/AdminChart";
 import NotFound from "../NotFound/NotFound";
+import Mail from "../Mail/Mail";
+import MailResend from "../MailResend/MailResend";
 
 class App extends Component {
   render() {
@@ -36,7 +38,8 @@ class App extends Component {
             component={authenticatedAdmin(AdminChart)}
           />
 
-          <Route exact path="/notfound404" component={NotFound} />
+          <Route exact path="/confirmation" component={Mail} />
+          <Route exact path="/resend/:email" component={MailResend} />
         </Switch>
       </Router>
     );

@@ -24,11 +24,10 @@ class SignIn extends Component {
   };
 
   redirection = (uid, token, admin) => {
-    console.log(uid, token, admin);
     if (uid && token && admin) {
       this.props.history.push("/admin/annuaire");
     } else if (uid && token) {
-      this.props.history.push();
+      this.props.history.push("/adherent/" + uid);
     }
   };
 

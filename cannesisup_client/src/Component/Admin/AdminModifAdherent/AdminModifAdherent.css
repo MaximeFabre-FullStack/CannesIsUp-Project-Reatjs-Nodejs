@@ -1,0 +1,49 @@
+.containerAdmin {
+  margin-top: 64px;
+  margin-bottom: 64px;
+  border: 2px solid black;
+}
+.styleColAdminModif {
+  height: 64px;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.styleRowAdminModif {
+  height: 64px;
+  text-align: center;
+}
+
+.lastCol {
+  height: 64px;
+  text-align: center;
+}
+
+.style1 {
+  padding: 10px;
+}
+
+.headerMembres {
+  background: url(/assets/img/fond_equipe.png) no-repeat center center;
+  background-size: cover;
+  height: 200px;
+  margin-top: 80px;
+}
+
+.headerMembres h1 {
+  color: white;
+  margin: auto;
+  position: relative;
+  padding-top: 4%;
+  font-size: 50px;
+}
+
+h1:after {
+  content: "";
+  height: 1px;
+  width: 50%;
+  display: block;
+  padding-top: 10px;
+  border-bottom: 2px solid #f7316b;
+  margin-left: 25%;
+}

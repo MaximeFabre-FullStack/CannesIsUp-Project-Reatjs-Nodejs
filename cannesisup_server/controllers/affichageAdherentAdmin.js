@@ -1,3 +1,5 @@
+// REQ AFFICHAGE ANNUAIRE ADMIN
+
 const tableauAdmin = require("../models/adherent");
 
 const affichageAnnuaireAdmin = (req, res, next) => {

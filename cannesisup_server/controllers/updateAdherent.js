@@ -8,55 +8,96 @@ const updateAdherent = (req, res, next) => {
       res.status(400).json({ msg: "no adherent in DDB" });
     }
 
-    /* Suppression de l'ancien fichier */
-    if (adherent.photoCouverture) {
-      const filepath =
-        path.join(__dirname, "../public/uploads/") + adherent.photoCouverture;
+    /* requete changement photo de couverture */
+    if (req.files.couv) {
+      /* Suppression de l'ancien fichier */
+      if (adherent.photoCouverture) {
+        const filepath =
+          path.join(__dirname, "../public/uploads/") + adherent.photoCouverture;
 
-      fs.unlink(filepath, (err) => {
-        if (err) throw err;
-        console.log("file deleted");
-      });
+        fs.unlink(filepath, (err) => {
+          if (err) throw err;
+          console.log("file deleted");
+        });
+      }
+
+      /* Ajout nouveau fichier */
+      Adherent.findOneAndUpdate(
+        { _id: req.params.id },
+        { photoCouverture: req.files.couv[0].filename }
+      )
+        .then(() => res.status(200).json({ message: "Objet modifié !" }))
+        .catch((error) => res.status(400).json({ error }));
     }
 
-    /* Ajout nouveau fichier */
-    Adherent.findOneAndUpdate(
-      { _id: req.params.id },
-      { photoCouverture: req.files.couv[0].filename }
-    )
-      .then(() => res.status(200).json({ message: "Objet modifié !" }))
-      .catch((error) => res.status(400).json({ error }));
-  });
+    /* requete changement logo */
+    if (req.files.logo) {
+      /* Suppression de l'ancien fichier */
+      if (adherent.logo) {
+        const filepath =
+          path.join(__dirname, "../public/uploads/") + adherent.logo;
 
-  /*if (req.files.couv) {
-    Adherent.findOneAndUpdate(
-      { _id: req.params.id },
-      { photoCouverture: req.files.couv[0].filename }
-    )
-      .then(() => res.status(200).json({ message: "Objet modifié !" }))
-      .catch((error) => res.status(400).json({ error }));
-  } else if (req.files.logo) {
-    Adherent.findOneAndUpdate(
-      { _id: req.params.id },
-      { logo: req.files.logo[0].filename }
-    )
-      .then(() => res.status(200).json({ message: "Objet modifié !" }))
-      .catch((error) => res.status(400).json({ error }));
-  } else if (req.files.dossier) {
-    Adherent.findOneAndUpdate(
-      { _id: req.params.id },
-      { dossierPresentation: req.files.dossier[0].filename }
-    )
-      .then(() => res.status(200).json({ message: "Objet modifié !" }))
-      .catch((error) => res.status(400).json({ error }));
-  } else if (req.files.photoPortrait) {
-    Adherent.findOneAndUpdate(
-      { _id: req.params.id },
-      { photoPortrait: req.files.photoPortrait[0].filename }
-    )
-      .then(() => res.status(200).json({ message: "Objet modifié !" }))
-      .catch((error) => res.status(400).json({ error }));
-  }*/
+        fs.unlink(filepath, (err) => {
+          if (err) throw err;
+          console.log("file deleted");
+        });
+      }
+
+      /* Ajout nouveau fichier */
+      Adherent.findOneAndUpdate(
+        { _id: req.params.id },
+        { logo: req.files.logo[0].filename }
+      )
+        .then(() => res.status(200).json({ message: "Objet modifié !" }))
+        .catch((error) => res.status(400).json({ error }));
+    }
+
+    /* requete changement photo de profil */
+    if (req.files.photoPortrait) {
+      /* Suppression de l'ancien fichier */
+      if (adherent.dirigeant.photoPortrait) {
+        const filepath =
+          path.join(__dirname, "../public/uploads/") +
+          adherent.dirigeant.photoPortrait;
+
+        fs.unlink(filepath, (err) => {
+          if (err) throw err;
+          console.log("file deleted");
+        });
+      }
+
+      /* Ajout nouveau fichier */
+      Adherent.findOneAndUpdate(
+        { _id: req.params.id },
+        { "dirigeant.photoPortrait": req.files.photoPortrait[0].filename }
+      )
+        .then(() => res.status(200).json({ message: "Objet modifié !" }))
+        .catch((error) => res.status(400).json({ error }));
+    }
+
+    /* requete changement dossier présentation */
+    if (req.files.dossier) {
+      /* Suppression de l'ancien fichier */
+      if (adherent.dossierPresentation) {
+        const filepath =
+          path.join(__dirname, "../public/uploads/") +
+          adherent.dossierPresentation;
+
+        fs.unlink(filepath, (err) => {
+          if (err) throw err;
+          console.log("file deleted");
+        });
+      }
+
+      /* Ajout nouveau fichier */
+      Adherent.findOneAndUpdate(
+        { _id: req.params.id },
+        { dossierPresentation: req.files.dossier[0].filename }
+      )
+        .then(() => res.status(200).json({ message: "Objet modifié !" }))
+        .catch((error) => res.status(400).json({ error }));
+    }
+  });
 };
 
 module.exports = updateAdherent;

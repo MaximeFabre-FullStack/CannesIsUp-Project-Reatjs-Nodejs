@@ -16,7 +16,10 @@ class BackOfficeAdherent extends Component {
       dataAdherent: { coordonnes: {}, dirigeant: {}, reseauSociaux: {} },
       selectedFile: null,
     };
-    this.inputOpenFileRef = React.createRef();
+    this.inputPhotoCouv = React.createRef();
+    this.inputLogo = React.createRef();
+    this.inputDossierPresentation = React.createRef();
+    this.inputPhotoPortrait = React.createRef();
   }
 
   componentDidMount() {
@@ -39,6 +42,7 @@ class BackOfficeAdherent extends Component {
       .then(
         (data) => {
           this.setState({ dataAdherent: data });
+          console.log(this.state.dataAdherent);
         },
         (error) => {
           console.log(error);
@@ -67,8 +71,20 @@ class BackOfficeAdherent extends Component {
     });
   };
 
-  updateFile = (e) => {
-    this.inputOpenFileRef.current.click();
+  updatePhotoCouv = (e) => {
+    this.inputPhotoCouv.current.click();
+  };
+
+  updateLogo = (e) => {
+    this.inputLogo.current.click();
+  };
+
+  updateDossierPresentation = (e) => {
+    this.inputDossierPresentation.current.click();
+  };
+
+  updatePhotoPortrait = (e) => {
+    this.inputPhotoPortrait.current.click();
   };
 
   render() {
@@ -95,11 +111,11 @@ class BackOfficeAdherent extends Component {
                   "http://localhost:8080/uploads/" +
                   this.state.dataAdherent.photoCouverture
                 }
-                onClick={this.updateFile}
+                onClick={this.updatePhotoCouv}
               />
               <input
                 onChange={this.fileSelectedHandler}
-                ref={this.inputOpenFileRef}
+                ref={this.inputPhotoCouv}
                 type="file"
                 style={{ display: "none" }}
                 name="couv"
@@ -114,6 +130,14 @@ class BackOfficeAdherent extends Component {
                       "http://localhost:8080/uploads/" +
                       this.state.dataAdherent.logo
                     }
+                    onClick={this.updateLogo}
+                  />
+                  <input
+                    onChange={this.fileSelectedHandler}
+                    ref={this.inputLogo}
+                    type="file"
+                    style={{ display: "none" }}
+                    name="logo"
                   />
                 </div>
 
@@ -121,20 +145,19 @@ class BackOfficeAdherent extends Component {
                   <p className="download-txt">
                     Modifier la brochure de la société
                   </p>
-                  <a
-                    href={
-                      "http://localhost:8080/uploads/" +
-                      this.state.dataAdherent.dossierPresentation
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="download-img"
-                      src="/assets/img/download-solid.svg"
-                      alt="logo"
-                    ></img>
-                  </a>
+                  <img
+                    className="download-img"
+                    src="/assets/img/download-solid.svg"
+                    alt="logo"
+                    onClick={this.updateDossierPresentation}
+                  />
+                  <input
+                    onChange={this.fileSelectedHandler}
+                    ref={this.inputDossierPresentation}
+                    type="file"
+                    style={{ display: "none" }}
+                    name="dossier"
+                  />
                 </div>
               </Card.Body>
 
@@ -252,7 +275,15 @@ class BackOfficeAdherent extends Component {
                   "http://localhost:8080/uploads/" +
                   this.state.dataAdherent.dirigeant.photoPortrait
                 }
-              ></Card.Img>
+                onClick={this.updatePhotoPortrait}
+              />
+              <input
+                onChange={this.fileSelectedHandler}
+                ref={this.inputPhotoPortrait}
+                type="file"
+                style={{ display: "none" }}
+                name="photoPortrait"
+              />
               {/* Identité dirigeant */}
               <Card.Body className="dirigeant">
                 <h3 style={{ padding: 0 }}> Dirigeant </h3>

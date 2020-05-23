@@ -49,7 +49,11 @@ class BackOfficeAdherent extends Component {
   /* Envoi du nouveau fichier*/
   fileSelectedHandler = (event) => {
     const formData = new FormData();
-    formData.append("couv", event.target.files[0], event.target.files[0].name);
+    formData.append(
+      event.target.name,
+      event.target.files[0],
+      event.target.files[0].name
+    );
 
     /* envoi de la requete */
     axios({
@@ -98,6 +102,7 @@ class BackOfficeAdherent extends Component {
                 ref={this.inputOpenFileRef}
                 type="file"
                 style={{ display: "none" }}
+                name="couv"
               />
 
               {/* Logo + liens PDF */}
@@ -109,7 +114,7 @@ class BackOfficeAdherent extends Component {
                       "http://localhost:8080/uploads/" +
                       this.state.dataAdherent.logo
                     }
-                  ></Card.Img>
+                  />
                 </div>
 
                 <div className="download-container">

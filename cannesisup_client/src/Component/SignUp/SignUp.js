@@ -155,17 +155,19 @@ class SignUp extends Component {
         return this.state.form.couv
           ? this.state.form.couv.name
           : "Photo de couverture (.jpeg , .jpg , .png)";
-        break;
+
       case "photoPortrait":
         return this.state.form.photoPortrait
           ? this.state.form.photoPortrait.name
           : "Photo de profil (.jpeg , .jpg , .png)";
-        break;
+
       case "dossier":
         return this.state.form.dossier
           ? this.state.form.dossier.name
           : "Dossier de présentation PDF (Max 10Mo)";
-        break;
+
+      default:
+        return "Inserer vos documents ici";
     }
   };
 

@@ -20,18 +20,17 @@
   z-index: 10;
 }
 
-.navListe {
+.lienNavbar {
   margin-top: auto;
   margin-bottom: auto;
   list-style: none;
-  float: left;
+  margin-left: 100px;
 }
 
-.navListe a {
+.lienNavbar a {
   color: black;
   text-decoration: none;
   line-height: 64px;
-  font-size: 14px;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: #454545;
   text-transform: uppercase;
@@ -39,8 +38,14 @@
   height: fit-content;
 }
 
-.navListe a:hover {
+.lienNavbar p:hover {
   color: #f7316b;
+}
+
+.lienNavbar p {
+  font-size: 24px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .cache {
@@ -60,7 +65,7 @@
     display: contents;
   }
 
-  .navListe {
+  .lienNavbar {
     display: none !important;
   }
 

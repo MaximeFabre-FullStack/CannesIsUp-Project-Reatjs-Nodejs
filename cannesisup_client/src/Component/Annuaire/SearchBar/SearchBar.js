@@ -11,19 +11,12 @@ class SearchBar extends Component {
     };
   }
 
-  handleSearchBar = (e) => {
-    this.setState({ searchBarData: e.target.value });
-    const listInfos = this.state.searchBarData;
-    this.props.callbackDuParent(listInfos);
-  };
-
   render() {
     return (
       <div className="barreRecherche">
         <Form.Control
           placeholder="Recherchez : un membre, une activité, un mot clé..."
           className="react-search-field "
-          onChange={this.handleSearchBar}
         />
       </div>
     );

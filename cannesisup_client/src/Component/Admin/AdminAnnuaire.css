@@ -3,17 +3,11 @@
   margin-bottom: 64px;
 }
 .styleColAdmin {
-  margin-left: 1%;
-  margin-right: 1%;
   border: 1px solid black;
   border-bottom: 0px;
-  margin: 0%;
-  text-align: center;
 }
 
 .styleRowAdmin {
-  margin-left: -12%;
-  margin-right: -12%;
   border: 1px solid black;
 }
 

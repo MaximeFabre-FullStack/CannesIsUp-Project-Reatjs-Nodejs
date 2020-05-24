@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
+import { Form, Row, Container, Col } from "react-bootstrap";
+
 import "../../../src/mainStyle.css";
 import "../SignUp/style.css";
 import "./Annuaire.css";
@@ -10,7 +9,6 @@ import "./Annuaire.css";
 import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import SearchBAr from "./SearchBar/SearchBar";
 
 // import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -19,13 +17,12 @@ class Annuaire extends Component {
     super(props);
     this.state = {
       BDDdata: [],
+      dataClone: [],
       recherche: " ",
     };
   }
 
-  /* requete GET */
   componentDidMount() {
-    /* Options, paramètres de la requête */
     const options = {
       method: "GET",
       headers: {
@@ -34,7 +31,6 @@ class Annuaire extends Component {
       mode: "cors",
     };
 
-    /* Requête */
     fetch("http://localhost:8080/visiteurs", options)
       .then((response) => response.json())
       .then(
@@ -47,11 +43,43 @@ class Annuaire extends Component {
       );
   }
 
-  /*dataSearchbar = (dataFromChild) => {
-    this.setState({ recherche: dataFromChild });
-  };*/
+  handleSearchBar = async (e) => {
+    await this.setState({ recherche: e.target.value });
+    console.log(this.state.recherche);
+  };
 
   affichageAnnuaire = () => {
+    // if (this.state.recherche !== "") {
+    //   let clone = [...this.state.BDDdata];
+    //   let recherche = this.state.recherche;
+    //   let i;
+    //   for (i = 0; i < clone.length; i++) {
+    //     clone.find((filtre) => {
+    //       return (filtre = recherche);
+    //     });
+    //   }
+
+    //   this.setState({ dataClone: clone });
+
+    //   return this.state.BDDdata.map((element, index) => (
+    //     <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
+    //       <CarteAnnuaire
+    //         id={element._id}
+    //         nomDeSociete={element.nomDeSociete}
+    //         descriptionExhaustive={element.descriptionExhaustive}
+    //         secteurDactivite={element.secteurDactivite}
+    //         prenom={element.dirigeant.prenom}
+    //         nom={element.dirigeant.nom}
+    //         photoProfil={
+    //           "http://localhost:8080/uploads/" + element.dirigeant.photoPortrait
+    //         }
+    //         couv={"http://localhost:8080/uploads/" + element.photoCouverture}
+    //         logo={"http://localhost:8080/uploads/" + element.logo}
+    //       />
+    //     </Col>
+    //   ));
+    // }
+
     return this.state.BDDdata.map((element, index) => (
       <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
         <CarteAnnuaire
@@ -88,7 +116,14 @@ class Annuaire extends Component {
         <div className="header">
           <h1>ANNUAIRE DES MEMBRES</h1>
         </div>
-        <SearchBAr />
+        <div className="barreRecherche">
+          <Form.Control
+            placeholder="Recherchez : un membre, une activité, un mot clé..."
+            className="react-search-field"
+            onChange={this.handleSearchBar}
+            name="recherche"
+          />
+        </div>
         <div>
           <p className="nombreMembres">
             {" "}

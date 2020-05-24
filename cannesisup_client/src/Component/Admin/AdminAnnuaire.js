@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
+import { Row, Container, Col, Button, Table } from "react-bootstrap";
 import "./AdminAnnuaire.css";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
-import Navbar from "../Navbar/Navbar";
+import NavAdmin from "./NavAdmin/NavAdmin";
 import Footer from "../Footer/Footer";
 import SearchBAr from "../Annuaire/SearchBar/SearchBar";
 
@@ -46,33 +44,35 @@ class AnnuaireAdmin extends Component {
   // APRES LA REQUETE FETCH / COMPONENTDIDMOUNT , BOUCLE AFFICHAGE APPELEE DANS LE RENDER
   affichageAllData = () => {
     return this.state.allData.map((element, index) => (
-      <Row key={index} className="styleRowAdmin styleRow">
-        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
-          <button
+      <tr>
+        <td>#{index}</td>
+        <td>
+          <Button
+            variant="secondary"
             onClick={() => {
               this.suppression(element._id);
             }}
           >
             {" "}
             Supprimer
-          </button>
-        </Col>
-        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
-          {" "}
-          {this.status(element.estActif, element._id)}
-        </Col>
-        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
+          </Button>
+        </td>
+        <td>{this.status(element.estActif, element._id)}</td>
+        <td>
           <Link to={"/admin/modif/adherent/" + element._id}>
-            <button>Modifier</button>
+            <Button variant="secondary">Modifier</Button>
           </Link>
-        </Col>
-        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
+        </td>
+        <td>
           <h3>{element.nomDeSociete}</h3>
-        </Col>
-        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
+        </td>
+        <td>
           {element.dirigeant.nom} {element.dirigeant.prenom}
-        </Col>
-        <Col className="styleColAdmin styleCol" xs={12} sm={6} md={2}>
+        </td>
+        <td>
+          <p>{element.coordonnes.telephone}</p>
+        </td>
+        <td>
           <a
             href={
               "mailto:" +
@@ -82,8 +82,14 @@ class AnnuaireAdmin extends Component {
           >
             {element.mailPrive}
           </a>
-        </Col>
-      </Row>
+        </td>
+        <td>
+          <p>{element.coordonnes.ville}</p>
+        </td>
+        <td>
+          <p>{element.paiement}</p>
+        </td>
+      </tr>
     ));
   };
 
@@ -142,21 +148,23 @@ class AnnuaireAdmin extends Component {
   status = (element, uid) => {
     if (element) {
       return (
-        <button
+        <Button
+          variant="danger"
           onClick={() => this.passerStatusInactif(uid)}
           className="boutonInactif"
         >
           Rendre inactif
-        </button>
+        </Button>
       );
     }
     return (
-      <button
+      <Button
+        variant="success"
         onClick={() => this.passerStatusActif(uid)}
         className="boutonActif"
       >
         Rendre actif
-      </button>
+      </Button>
     );
   };
 
@@ -164,7 +172,7 @@ class AnnuaireAdmin extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavAdmin />
         <div className="header">
           <h1>TOUS LES MEMBRES</h1>
         </div>
@@ -175,31 +183,24 @@ class AnnuaireAdmin extends Component {
             Nombres de membres : {this.state.allData.length}{" "}
           </p>
         </div>
-        <div className="annuaireContainerAdmin">
-          <Container>
-            <Row className="styleRowAdmin">
-              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
-                <h4>Supprimer</h4>
-              </Col>
-              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
-                <h4>Status</h4>
-              </Col>
-              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
-                <h4>Modifier</h4>
-              </Col>
-              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
-                <h4>Nom entreprise</h4>
-              </Col>
-              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
-                <h4>Nom dirigeant</h4>
-              </Col>
-              <Col className="styleCol styleColAdmin" xs={12} sm={6} md={2}>
-                <h4>Mail dirigeant</h4>
-              </Col>
-            </Row>
-            {this.affichageAllData()}
-          </Container>
-        </div>
+
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Supprimer</th>
+              <th>Status</th>
+              <th>Modifier</th>
+              <th>Entreprise</th>
+              <th>Dirigeant</th>
+              <th>Telephone</th>
+              <th>Mail Dirigeant</th>
+              <th>Ville</th>
+              <th>Preference paiement</th>
+            </tr>
+          </thead>
+          <tbody>{this.affichageAllData()}</tbody>
+        </Table>
         <footer>
           <Footer />
         </footer>

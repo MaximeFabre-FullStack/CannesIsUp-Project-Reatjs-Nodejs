@@ -30,3 +30,14 @@ h1:after {
   border-bottom: 2px solid #f7316b;
   margin-left: 25%;
 }
+
+.barreRecherche {
+  margin: 5% auto 1%;
+  width: 25%;
+}
+
+.nombreMembres {
+  font-weight: 900;
+  text-align: center;
+  margin-top: 2%;
+}

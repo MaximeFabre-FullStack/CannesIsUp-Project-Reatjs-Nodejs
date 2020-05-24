@@ -4,7 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import axios from "axios";
-//import EditableLabel from "react-inline-editing";
+import NavAdmin from "../Admin/NavAdmin/NavAdmin";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
@@ -15,6 +15,7 @@ class BackOfficeAdherent extends Component {
     this.state = {
       dataAdherent: { coordonnes: {}, dirigeant: {}, reseauSociaux: {} },
       selectedFile: null,
+      isEditing: false,
     };
     this.inputPhotoCouv = React.createRef();
     this.inputLogo = React.createRef();
@@ -87,10 +88,28 @@ class BackOfficeAdherent extends Component {
     this.inputPhotoPortrait.current.click();
   };
 
+  onClickEdit = () => {
+    this.setState({ isEditing: !this.state.isEditing });
+  };
+
+  onSaveEdit = () => {
+    this.setState({
+      isEditing: false,
+    });
+  };
+  handleChange = (e) => {
+    this.setState({
+      dataAdherent: {
+        ...this.state.dataAdherent,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
   render() {
     return (
       <div className="maindiv">
-        <Navbar />
+        <NavAdmin />
         <div className="adherent-page-container">
           <div className="header-back-office">
             <h3>
@@ -166,7 +185,29 @@ class BackOfficeAdherent extends Component {
                 <ListGroup variant="flush">
                   {/* Nom + texte */}
                   <ListGroup.Item className="description">
-                    <h4> {this.state.dataAdherent.nomDeSociete} </h4>
+                    {this.state.isEditing ? (
+                      ""
+                    ) : (
+                      <h4>{this.state.dataAdherent.nomDeSociete}</h4>
+                    )}
+                    {this.state.isEditing ? (
+                      <span>
+                        <input
+                          value={this.state.dataAdherent.nomDeSociete}
+                          type="text"
+                          name="nomDeSociete"
+                          onChange={this.handleChange}
+                        />
+                      </span>
+                    ) : (
+                      ""
+                    )}
+                    {this.state.isEditing ? (
+                      ""
+                    ) : (
+                      <button onClick={this.onClickEdit}>Edit</button>
+                    )}
+                    <button onClick={this.onSaveEdit}>Save</button>
                     <p>{this.state.dataAdherent.descriptionExhaustive}</p>
                   </ListGroup.Item>
 

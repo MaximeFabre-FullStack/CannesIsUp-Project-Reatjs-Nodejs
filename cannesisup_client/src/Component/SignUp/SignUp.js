@@ -48,6 +48,8 @@ class SignUp extends Component {
       differentPassword: "differentPasswordOff",
       samePassword: "samePasswordOff",
       incorrectPassword: "incorrectPasswordOff",
+      validCharte: "validationCharte",
+      choixPaiement: "paiement",
     };
   }
 
@@ -96,19 +98,20 @@ class SignUp extends Component {
   };
 
   // RECUPERE LES INFOS DANS LE STATE
-  handle_check = (e) => {
-    this.setState({
+  handle_check = async (e) => {
+    await this.setState({
       form: { ...this.state.form, [e.target.name]: e.target.checked },
     });
+    this.chartesOk();
   };
-
   // RECUPERE VALEUR CHECKBOX
-  handle_radio = (e) => {
+  handle_radio = async (e) => {
     if (e.target.checked === true) {
-      this.setState({
+      await this.setState({
         form: { ...this.state.form, [e.target.name]: e.target.value },
       });
     }
+    this.paiementOk();
   };
 
   // REQUETE POST
@@ -140,11 +143,14 @@ class SignUp extends Component {
     }
   };
 
+  // CHANGEMENT LABEL FORM FILE
   renderName = (file) => {
     switch (file) {
       case "logo":
-        return this.state.form.logo ? this.state.form.logo.name : "Logo";
-
+        return this.state.form.logo
+          ? this.state.form.logo.name
+          : "Logo de société (.jpeg, .jpg, .png)";
+        break;
       case "couv":
         return this.state.form.couv
           ? this.state.form.couv.name
@@ -162,6 +168,32 @@ class SignUp extends Component {
 
       default:
         return "Inserer vos documents ici";
+    }
+  };
+
+  // VERIFICATION CHARTES
+  chartesOk = () => {
+    if (this.state.form.checkCharte && this.state.form.checkRgpd) {
+      this.setState({
+        validCharte: "validationCharteOk",
+      });
+    } else {
+      this.setState({
+        validCharte: "validationCharte",
+      });
+    }
+  };
+
+  // CHOIX MODE PAIEMENT
+  paiementOk = () => {
+    if (this.state.form.paiement) {
+      this.setState({
+        choixPaiement: "paiementOk",
+      });
+    } else {
+      this.setState({
+        choixPaiement: "paiement",
+      });
     }
   };
 
@@ -383,6 +415,7 @@ class SignUp extends Component {
                   onChange={this.handle_change}
                   placeholder="Votre secteur d'activité"
                   value={this.state.form.activite}
+                  required
                 />
               </Form.Group>
               <Form.Group>
@@ -393,6 +426,7 @@ class SignUp extends Component {
                   as="textarea"
                   placeholder="Décrivez en quelques mots votre activité"
                   value={this.state.form.description}
+                  required
                 />
               </Form.Group>
 
@@ -404,7 +438,8 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label={this.renderName("logo")}
                   custom
-                  data-browse="Chercher"
+                  required
+                  data-browse="Choisir une image"
                 />
               </Form.Group>
               <Form.Group>
@@ -415,7 +450,7 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label={this.renderName("couv")}
                   custom
-                  data-browse="Chercher"
+                  data-browse="Choisir une image"
                 />
               </Form.Group>
               <Form.Group>
@@ -425,7 +460,7 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label={this.renderName("dossier")}
                   custom
-                  data-browse="Chercher"
+                  data-browse="Choisir un fichier"
                 />
               </Form.Group>
             </div>
@@ -480,36 +515,45 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label="Photo de profil (.jpeg , .jpg , .png)"
                   custom
-                  data-browse="Chercher"
+                  data-browse="Choisir une image"
                 />
               </Form.Group>
             </div>
 
             {/* Charte et RGPD  */}
             <div className="form_bloc">
+              <p className={this.state.validCharte}>
+                * Veuillez accepter la charte Cannes is Up et la RGPD pour
+                continuer.
+              </p>
               <Form.Check
                 type="checkbox"
-                name="charte"
-                onChange={this.handle_check}
+                name="checkCharte"
+                onClick={this.handle_check}
                 label="J'accepte la Charte Cannes is Up"
                 required
               />
               <Form.Check
                 type="checkbox"
-                name="rgpd"
-                onChange={this.handle_check}
+                name="checkRgpd"
+                onClick={this.handle_check}
                 label="RGPD"
+                required
               />
             </div>
 
             {/* Mode paiement */}
             <div className="form_bloc">
+              <p className={this.state.choixPaiement}>
+                * Veuillez choisir un moyen de paiment.
+              </p>
               <Form.Check
                 type="radio"
                 name="paiement"
                 label="CB"
                 value="CB"
                 onChange={this.handle_radio}
+                required
               />
               <Form.Check
                 type="radio"
@@ -517,6 +561,7 @@ class SignUp extends Component {
                 label="Virement"
                 value="Virement"
                 onChange={this.handle_radio}
+                required
               />
             </div>
 

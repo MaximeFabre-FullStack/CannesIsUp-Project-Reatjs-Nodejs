@@ -37,6 +37,7 @@ class Annuaire extends Component {
         (data) => {
           this.setState({ BDDdata: data });
         },
+
         (error) => {
           console.log(error);
         }

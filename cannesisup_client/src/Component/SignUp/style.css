@@ -46,3 +46,21 @@ body {
 .incorrectPasswordOff {
   display: none;
 }
+
+.validationCharte {
+  margin-bottom: 0;
+  color: red;
+}
+
+.validationCharteOk {
+  display: none;
+}
+
+.paiement {
+  margin-bottom: 0;
+  color: red;
+}
+
+.paiementOk {
+  display: none;
+}

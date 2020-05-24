@@ -39,8 +39,10 @@ class Annuaire extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          this.setState({ DDdata: data });
+          this.setState({ BDDdata: data });
+          console.log(data);
         },
+
         (error) => {
           console.log(error);
         }

@@ -5,6 +5,7 @@
 import React, { Component } from "react";
 import "../../../src/mainStyle.css";
 import "./style.css";
+import url from "../../url.json";
 
 class Mail extends Component {
   sendEmail = () => {
@@ -22,7 +23,7 @@ class Mail extends Component {
     };
 
     /* Requête */
-    fetch("http://localhost:8080/adherents/signin/resend", options)
+    fetch(url["url-server"] + "/adherents/signin/resend", options)
       .then((response) => response.json())
       .then(
         (data) => {

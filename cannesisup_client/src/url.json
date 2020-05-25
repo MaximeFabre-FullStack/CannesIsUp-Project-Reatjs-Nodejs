@@ -1,0 +1,4 @@
+{
+  "url-server": "http://localhost:8080",
+  "url-client": "http://localhost:3000"
+}

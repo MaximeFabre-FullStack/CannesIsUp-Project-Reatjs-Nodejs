@@ -1,0 +1,26 @@
+.main-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.message-container {
+  background-color: white;
+  margin: 15%;
+  text-align: center;
+  padding: 10px;
+}
+
+.check {
+  display: flex;
+  padding: 0 30px;
+  justify-content: center;
+}
+
+.check button {
+  width: 130px;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}

@@ -16,6 +16,7 @@ import NotFound from "../NotFound/NotFound";
 import Mail from "../Mail/Mail";
 import MailResend from "../MailResend/MailResend";
 import BackOfficeAdherent from "../BackOfficeAdherent/BackOfficeAdherent";
+import SubmitMessage from "../SignUp/SubmitMessage/SubmitMessage";
 
 class App extends Component {
   render() {
@@ -55,6 +56,8 @@ class App extends Component {
           <Route exact path="/confirmation" component={Mail} />
 
           <Route exact path="/resend/:email" component={MailResend} />
+
+          <Route exact path="/submit/:email" component={SubmitMessage} />
         </Switch>
       </Router>
     );

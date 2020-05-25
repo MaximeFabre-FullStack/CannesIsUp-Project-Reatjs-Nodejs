@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import { withRouter } from "react-router-dom";
-import { authenticatedAdmin } from "../Authenticate/AuthenticateAdmin";
-import AdminAnnuaire from "../Admin/AdminAnnuaire";
 
 import "../../../src/mainStyle.css";
 import "./style.css";

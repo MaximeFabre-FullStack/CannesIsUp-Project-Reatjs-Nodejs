@@ -150,7 +150,7 @@ class SignUp extends Component {
         return this.state.form.logo
           ? this.state.form.logo.name
           : "Logo de société (.jpeg, .jpg, .png)";
-        break;
+
       case "couv":
         return this.state.form.couv
           ? this.state.form.couv.name
@@ -438,7 +438,6 @@ class SignUp extends Component {
                   onChange={this.fileSelectedHandler}
                   label={this.renderName("logo")}
                   custom
-                  required
                   data-browse="Choisir une image"
                 />
               </Form.Group>

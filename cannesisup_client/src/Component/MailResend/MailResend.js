@@ -12,8 +12,6 @@ class Mail extends Component {
       email: this.props.match.params.email,
     };
 
-    console.log(body.email);
-
     const options = {
       method: "POST",
       headers: {

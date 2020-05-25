@@ -42,7 +42,6 @@ class BackOfficeAdherent extends Component {
       .then(
         (data) => {
           this.setState({ dataAdherent: data });
-          console.log(this.state.dataAdherent);
         },
         (error) => {
           console.log(error);

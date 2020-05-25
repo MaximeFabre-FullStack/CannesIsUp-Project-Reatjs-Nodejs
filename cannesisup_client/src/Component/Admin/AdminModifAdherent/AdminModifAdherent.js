@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
+import { Button, Table } from "react-bootstrap";
 import "./AdminModifAdherent.css";
 
 import Navbar from "../../Navbar/Navbar";
@@ -53,133 +51,149 @@ class AdminModifAdherent extends Component {
         <br />
         <br />
 
-        <h2>Dirigieant: </h2>
-        <Container className="containerAdmin">
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Prénom dirigeant: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.dirigeant.prenom}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Nom dirigeant: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.dirigeant.nom}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="lastCol">
-              <h4>Fonction: </h4>
-            </Col>
-            <Col className="lastCol">
-              {this.state.adherentData.dirigeant.fonction}
-            </Col>
-          </Row>
-        </Container>
+        <h2>Dirigeant: </h2>
+        <Table striped bordered hover className="tableau">
+          <thead>
+            <tr>
+              <th>
+                <p>Prénom dirigeant: </p>
+              </th>
+              <th>
+                <p>Nom dirigeant: </p>
+              </th>
+              <th>
+                <p>Fonction: </p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <p>{this.state.adherentData.dirigeant.prenom}</p>
+              </td>
+              <td>
+                <p>{this.state.adherentData.dirigeant.nom}</p>
+              </td>
+              <td>
+                <p>{this.state.adherentData.dirigeant.fonction}</p>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
 
         <h2>Societe: </h2>
-        <Container className="containerAdmin">
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Nom de societe: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.nomDeSociete}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Description exhaustive: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.descriptionExhaustive}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="lastCol">
-              <h4>Secteur d'activité: </h4>
-            </Col>
-            <Col className="lastCol">
-              {this.state.adherentData.secteurDactivite}
-            </Col>
-          </Row>
-        </Container>
+        <Table striped bordered hover className="tableau">
+          <thead>
+            <tr>
+              <th>
+                <p>Nom de societe: </p>
+              </th>
+              <th>
+                <p>Description exhaustive: </p>
+              </th>
+              <th>
+                <p>Secteur d'activité: </p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.nomDeSociete} </p>
+              </td>
+              <td>
+                <p>{this.state.adherentData.descriptionExhaustive}</p>
+              </td>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.secteurDactivite}</p>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
 
         <h2>Coordonnées:</h2>
-        <Container className="containerAdmin">
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Coordonnées: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.coordonnes.adresse}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Téléphone: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.coordonnes.telephone}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Mail societe: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.coordonnes.mailSociete}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="lastCol">
-              <h4>Site web: </h4>
-            </Col>
-            <Col className="lastCol">
-              {this.state.adherentData.coordonnes.siteWeb}
-            </Col>
-          </Row>
-        </Container>
+        <Table striped bordered hover className="tableau">
+          <thead>
+            <tr>
+              <th>
+                <p>Coordonnées: </p>
+              </th>
+              <th>
+                <p>Téléphone: </p>
+              </th>
+              <th>
+                <p>Mail societe: </p>
+              </th>
+              <th>
+                <p>Site web: </p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.coordonnes.adresse}</p>
+              </td>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.coordonnes.telephone}</p>
+              </td>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.coordonnes.mailSociete}</p>
+              </td>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.coordonnes.siteWeb}</p>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
 
         <h2>Reseaux:</h2>
-        <Container className="containerAdmin">
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Réseaux sociaux: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.reseauSociaux.facebook}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Réseaux sociaux: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.reseauSociaux.instagram}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="styleColAdminModif">
-              <h4>Réseaux sociaux: </h4>
-            </Col>
-            <Col className="styleColAdminModif">
-              {this.state.adherentData.reseauSociaux.linkedin}
-            </Col>
-          </Row>
-          <Row className="styleRowAdminModif">
-            <Col className="lastCol">
-              <h4>Réseaux sociaux: </h4>
-            </Col>
-            <Col className="lastCol">
-              {this.state.adherentData.reseauSociaux.twitter}
-            </Col>
-          </Row>
-          {/* <Row>
+        <Table striped bordered hover className="tableau">
+          <thead>
+            <tr>
+              <th>
+                <p>Réseaux sociaux: </p>
+              </th>
+              <th>
+                <p>Réseaux sociaux: </p>
+              </th>
+              <th>
+                <p>Réseaux sociaux: </p>
+              </th>
+              <th>
+                <p>Réseaux sociaux: </p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.reseauSociaux.facebook}</p>
+              </td>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.reseauSociaux.instagram}</p>
+              </td>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.reseauSociaux.linkedin}</p>
+              </td>
+              <td>
+                {" "}
+                <p>{this.state.adherentData.reseauSociaux.twitter}</p>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
+
+        {/* <Row>
           <Col>Portrait dirigeant: </Col>
           <Col>{this.state.adherentData.dirigeant.photoPortrait}</Col>
         </Row>
@@ -220,7 +234,6 @@ class AdminModifAdherent extends Component {
             />
           </Col>
         </Row> */}
-        </Container>
 
         <Footer />
       </div>

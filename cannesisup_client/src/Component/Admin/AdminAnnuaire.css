@@ -40,10 +40,7 @@ h1:after {
   margin-left: 25%;
 }
 
-.boutonActif {
-  background-color: green;
-}
-
-.boutonInactif {
-  background-color: red;
+.bouttonAdmin {
+  padding: 10px !important;
+  width: auto !important;
 }

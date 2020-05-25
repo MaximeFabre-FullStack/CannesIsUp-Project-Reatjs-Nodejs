@@ -128,7 +128,7 @@ class Annuaire extends Component {
         <div>
           <p className="nombreMembres">
             {" "}
-            Nombres de membres : {this.state.BDDdata.length}
+            Nombre de membres : {this.state.BDDdata.length}
           </p>
         </div>
         <div className="annuaireContainer">

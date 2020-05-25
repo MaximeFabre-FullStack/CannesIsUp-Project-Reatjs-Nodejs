@@ -40,9 +40,6 @@ class AnnuaireAdmin extends Component {
         }
       );
   }
-  toUpperCase = (element) => {
-    return element.toUpperCase;
-  };
 
   // APRES LA REQUETE FETCH / COMPONENTDIDMOUNT , BOUCLE AFFICHAGE APPELEE DANS LE RENDER
   affichageAllData = () => {
@@ -53,7 +50,7 @@ class AnnuaireAdmin extends Component {
           <h3>{element.nomDeSociete}</h3>
         </td>
         <td>
-          {this.toUpperCase(element.dirigeant.nom)}
+          {element.dirigeant.nom}
           <br />
           {element.dirigeant.prenom}
         </td>
@@ -84,6 +81,7 @@ class AnnuaireAdmin extends Component {
             onClick={() => {
               this.suppression(element._id);
             }}
+            className="bouttonAdmin"
           >
             {" "}
             Supprimer
@@ -92,7 +90,9 @@ class AnnuaireAdmin extends Component {
         <td>{this.status(element.estActif, element._id)}</td>
         <td>
           <Link to={"/admin/modif/adherent/" + element._id}>
-            <Button variant="secondary">Modifier</Button>
+            <Button variant="secondary" className="bouttonAdmin">
+              Modifier
+            </Button>
           </Link>
         </td>
       </tr>
@@ -157,7 +157,7 @@ class AnnuaireAdmin extends Component {
         <Button
           variant="danger"
           onClick={() => this.passerStatusInactif(uid)}
-          className="boutonInactif"
+          className="boutonInactif bouttonAdmin"
         >
           Rendre inactif
         </Button>
@@ -167,7 +167,7 @@ class AnnuaireAdmin extends Component {
       <Button
         variant="success"
         onClick={() => this.passerStatusActif(uid)}
-        className="boutonActif"
+        className="boutonActif bouttonAdmin"
       >
         Rendre actif
       </Button>
@@ -186,7 +186,7 @@ class AnnuaireAdmin extends Component {
         <div>
           <p className="nombreMembres">
             {" "}
-            Nombres de membres : {this.state.allData.length}{" "}
+            Nombre de membres : {this.state.allData.length}{" "}
           </p>
         </div>
 

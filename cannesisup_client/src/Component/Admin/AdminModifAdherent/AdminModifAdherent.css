@@ -47,3 +47,8 @@ h1:after {
   border-bottom: 2px solid #f7316b;
   margin-left: 25%;
 }
+
+.tableau {
+  margin-top: 64px;
+  margin-bottom: 64px;
+}

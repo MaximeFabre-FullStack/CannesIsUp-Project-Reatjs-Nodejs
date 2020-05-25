@@ -38,8 +38,12 @@ class Mail extends Component {
   render() {
     return (
       <div className="main-container">
+        <div className="img-container">
+          <img src="/assets/img/logocopie.png" alt="Cannes is up" />
+        </div>
+
         <div className="message-container cadre">
-          <h3>Oups</h3>
+          <h3>Oups !</h3>
           <p>Une erreur s'est produite lors de la confirmation d'email.</p>
           <p>Le lien de confirmation a peut être expiré.</p>
           <br />

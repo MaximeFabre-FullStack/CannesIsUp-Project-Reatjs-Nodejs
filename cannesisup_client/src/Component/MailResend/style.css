@@ -5,7 +5,17 @@
 
 .message-container {
   background-color: white;
-  margin: 15%;
+  margin: 60px 80px !important;
   text-align: center;
   padding: 10px;
+}
+
+.img-container {
+  width: 150px;
+  margin: 64px auto 0;
+}
+
+.img-container img {
+  width: 100%;
+  max-width: 100%;
 }

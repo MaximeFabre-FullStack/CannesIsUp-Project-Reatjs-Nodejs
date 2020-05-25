@@ -17,6 +17,8 @@ import Mail from "../Mail/Mail";
 import MailResend from "../MailResend/MailResend";
 import BackOfficeAdherent from "../BackOfficeAdherent/BackOfficeAdherent";
 import SubmitMessage from "../SignUp/SubmitMessage/SubmitMessage";
+import ForgotPassword from "../SignIn/ForgotPassword/ForgotPassword";
+import NewPassword from "../SignIn/NewPassword/NewPassword";
 
 class App extends Component {
   render() {
@@ -58,6 +60,10 @@ class App extends Component {
           <Route exact path="/resend/:email" component={MailResend} />
 
           <Route exact path="/submit/:email" component={SubmitMessage} />
+
+          <Route exact path="/passwordreset" component={ForgotPassword} />
+
+          <Route exact path="/newpassword/:email" component={NewPassword} />
         </Switch>
       </Router>
     );

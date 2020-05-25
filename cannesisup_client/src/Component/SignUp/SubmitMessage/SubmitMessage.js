@@ -51,11 +51,10 @@ class SubmitMessage extends Component {
           <h3>Merci !</h3>
           <p>Votre demande d'adhésion a été enregistrée.</p>
           <p>Vous allez recevoir un email afin de confirmer votre adresse.</p>
-          <h4>A bientôt !</h4>
           <br />
           <div className="check">
             <button className="btn-default " onClick={this.sendEmail}>
-              Renvoyer un mail de confirmation
+              Renvoyer le mail de confirmation
             </button>
             <img
               src="/assets/img/check-circle-regular.svg"

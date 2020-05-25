@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Row, Container, Col, Button, Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import "./AdminAnnuaire.css";
 import { Link } from "react-router-dom";
 
@@ -40,6 +40,9 @@ class AnnuaireAdmin extends Component {
         }
       );
   }
+  toUpperCase = (element) => {
+    return element.toUpperCase;
+  };
 
   // APRES LA REQUETE FETCH / COMPONENTDIDMOUNT , BOUCLE AFFICHAGE APPELEE DANS LE RENDER
   affichageAllData = () => {
@@ -47,27 +50,12 @@ class AnnuaireAdmin extends Component {
       <tr>
         <td>#{index}</td>
         <td>
-          <Button
-            variant="secondary"
-            onClick={() => {
-              this.suppression(element._id);
-            }}
-          >
-            {" "}
-            Supprimer
-          </Button>
-        </td>
-        <td>{this.status(element.estActif, element._id)}</td>
-        <td>
-          <Link to={"/admin/modif/adherent/" + element._id}>
-            <Button variant="secondary">Modifier</Button>
-          </Link>
-        </td>
-        <td>
           <h3>{element.nomDeSociete}</h3>
         </td>
         <td>
-          {element.dirigeant.nom} {element.dirigeant.prenom}
+          {this.toUpperCase(element.dirigeant.nom)}
+          <br />
+          {element.dirigeant.prenom}
         </td>
         <td>
           <p>{element.coordonnes.telephone}</p>
@@ -88,6 +76,24 @@ class AnnuaireAdmin extends Component {
         </td>
         <td>
           <p>{element.paiement}</p>
+        </td>
+
+        <td>
+          <Button
+            variant="secondary"
+            onClick={() => {
+              this.suppression(element._id);
+            }}
+          >
+            {" "}
+            Supprimer
+          </Button>
+        </td>
+        <td>{this.status(element.estActif, element._id)}</td>
+        <td>
+          <Link to={"/admin/modif/adherent/" + element._id}>
+            <Button variant="secondary">Modifier</Button>
+          </Link>
         </td>
       </tr>
     ));
@@ -188,15 +194,19 @@ class AnnuaireAdmin extends Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>Supprimer</th>
-              <th>Status</th>
-              <th>Modifier</th>
-              <th>Entreprise</th>
-              <th>Dirigeant</th>
-              <th>Telephone</th>
-              <th>Mail Dirigeant</th>
-              <th>Ville</th>
-              <th>Preference paiement</th>
+              <th>ENTREPRISE</th>
+              <th>DIRIGEANT</th>
+              <th>TELEPHONE</th>
+              <th>MAIL</th>
+              <th>VILLE</th>
+              <th>
+                PREFERENCE
+                <br />
+                PAIEMENT
+              </th>
+              <th>SUPPRIMER</th>
+              <th>STATUS</th>
+              <th>MODIFIER</th>
             </tr>
           </thead>
           <tbody>{this.affichageAllData()}</tbody>

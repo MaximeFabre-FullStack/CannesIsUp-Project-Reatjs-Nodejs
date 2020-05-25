@@ -74,10 +74,17 @@ class AnnuaireAdmin extends Component {
         <td>
           <p>{element.paiement}</p>
         </td>
-
+        <td>{this.status(element.estActif, element._id)}</td>
+        <td>
+          <Link to={"/admin/modif/adherent/" + element._id}>
+            <Button variant="secondary" className="bouttonAdmin">
+              Modifier
+            </Button>
+          </Link>
+        </td>
         <td>
           <Button
-            variant="secondary"
+            variant="danger"
             onClick={() => {
               this.suppression(element._id);
             }}
@@ -86,14 +93,6 @@ class AnnuaireAdmin extends Component {
             {" "}
             Supprimer
           </Button>
-        </td>
-        <td>{this.status(element.estActif, element._id)}</td>
-        <td>
-          <Link to={"/admin/modif/adherent/" + element._id}>
-            <Button variant="secondary" className="bouttonAdmin">
-              Modifier
-            </Button>
-          </Link>
         </td>
       </tr>
     ));
@@ -155,11 +154,11 @@ class AnnuaireAdmin extends Component {
     if (element) {
       return (
         <Button
-          variant="danger"
+          variant="secondary"
           onClick={() => this.passerStatusInactif(uid)}
           className="boutonInactif bouttonAdmin"
         >
-          Rendre inactif
+          DESACTIVER
         </Button>
       );
     }
@@ -169,7 +168,7 @@ class AnnuaireAdmin extends Component {
         onClick={() => this.passerStatusActif(uid)}
         className="boutonActif bouttonAdmin"
       >
-        Rendre actif
+        ACTIVER
       </Button>
     );
   };
@@ -190,7 +189,7 @@ class AnnuaireAdmin extends Component {
           </p>
         </div>
 
-        <Table striped bordered hover>
+        <Table striped bordered hover className="tableau">
           <thead>
             <tr>
               <th>#</th>
@@ -204,9 +203,9 @@ class AnnuaireAdmin extends Component {
                 <br />
                 PAIEMENT
               </th>
-              <th>SUPPRIMER</th>
               <th>STATUS</th>
               <th>MODIFIER</th>
+              <th>SUPPRIMER</th>
             </tr>
           </thead>
           <tbody>{this.affichageAllData()}</tbody>

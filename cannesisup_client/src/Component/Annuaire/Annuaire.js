@@ -46,42 +46,24 @@ class Annuaire extends Component {
 
   handleSearchBar = async (e) => {
     await this.setState({ recherche: e.target.value });
-    console.log(this.state.recherche);
   };
 
   affichageAnnuaire = () => {
-    // if (this.state.recherche !== "") {
-    //   let clone = [...this.state.BDDdata];
-    //   let recherche = this.state.recherche;
-    //   let i;
-    //   for (i = 0; i < clone.length; i++) {
-    //     clone.find((filtre) => {
-    //       return (filtre = recherche);
-    //     });
-    //   }
+    let adherantFiltred = this.state.BDDdata.filter((membre) => {
+      for (let property in membre) {
+        if (
+          String(membre[property]).match(
+            new RegExp(this.state.recherche, "m")
+          ) &&
+          property !== "_id"
+        ) {
+          return true;
+        }
+      }
+      return false;
+    });
 
-    //   this.setState({ dataClone: clone });
-
-    //   return this.state.BDDdata.map((element, index) => (
-    //     <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
-    //       <CarteAnnuaire
-    //         id={element._id}
-    //         nomDeSociete={element.nomDeSociete}
-    //         descriptionExhaustive={element.descriptionExhaustive}
-    //         secteurDactivite={element.secteurDactivite}
-    //         prenom={element.dirigeant.prenom}
-    //         nom={element.dirigeant.nom}
-    //         photoProfil={
-    //           "http://localhost:8080/uploads/" + element.dirigeant.photoPortrait
-    //         }
-    //         couv={"http://localhost:8080/uploads/" + element.photoCouverture}
-    //         logo={"http://localhost:8080/uploads/" + element.logo}
-    //       />
-    //     </Col>
-    //   ));
-    // }
-
-    return this.state.BDDdata.map((element, index) => (
+    return adherantFiltred.map((element, index) => (
       <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
         <CarteAnnuaire
           id={element._id}

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-import { Button, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import "./AdminModifAdherent.css";
 
-import Navbar from "../../Navbar/Navbar";
+import NavAdmin from "../NavAdmin/NavAdmin";
 import Footer from "../../Footer/Footer";
 
 class AdminModifAdherent extends Component {
@@ -43,7 +43,7 @@ class AdminModifAdherent extends Component {
   render() {
     return (
       <div className="maindiv">
-        <Navbar />
+        <NavAdmin />
 
         <div className="headerMembres">
           <h1>MODIFICATION MEMBRE</h1>

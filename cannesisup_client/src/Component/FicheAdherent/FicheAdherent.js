@@ -44,6 +44,12 @@ class FicheAdherent extends Component {
       );
   }
 
+  affichageElement = (element) => {
+    if (element) {
+      return;
+    }
+  };
+
   render() {
     return (
       <div className="maindiv">
@@ -162,6 +168,7 @@ class FicheAdherent extends Component {
                       className="reseaux-logo "
                     />
                   </a>
+
                   <a
                     href={this.state.dataAdherent.reseauSociaux.instagram}
                     target="_blank"

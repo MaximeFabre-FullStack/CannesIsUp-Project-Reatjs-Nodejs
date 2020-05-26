@@ -41,6 +41,7 @@ body {
 
 .incorrectPasswordOn {
   color: red;
+  margin-top: 0;
 }
 
 .incorrectPasswordOff {
@@ -63,4 +64,9 @@ body {
 
 .paiementOk {
   display: none;
+}
+
+.champsNonValide {
+  margin-top: 0;
+  color: red;
 }

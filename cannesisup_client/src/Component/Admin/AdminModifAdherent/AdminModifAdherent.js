@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Button, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import "./AdminModifAdherent.css";
 
 import Navbar from "../../Navbar/Navbar";

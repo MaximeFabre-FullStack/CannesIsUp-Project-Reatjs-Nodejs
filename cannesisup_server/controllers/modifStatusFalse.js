@@ -3,7 +3,6 @@
 const tableauAdmin = require("../models/adherent");
 
 const modifStatusFalse = (req, res, next) => {
-  console.log(req.body.data._id);
   tableauAdmin.findOneAndUpdate(
     { _id: req.body.data._id },
     { estActif: false },

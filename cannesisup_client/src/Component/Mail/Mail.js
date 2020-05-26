@@ -4,7 +4,6 @@
 
 import React, { Component } from "react";
 import "../../../src/mainStyle.css";
-import "./style.css";
 
 class Mail extends Component {
   render() {

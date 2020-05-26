@@ -53,7 +53,7 @@ class SignUp extends Component {
     };
   }
 
-  // CONPARAISON MOTDEPASSE / MOTDEPASSECOMFIRME
+  // COMPARAISON MOTDEPASSE / MOTDEPASSECOMFIRME
   confirmPassword = (e) => {
     if (!this.state.form.password.valueOf()) {
       this.setState({

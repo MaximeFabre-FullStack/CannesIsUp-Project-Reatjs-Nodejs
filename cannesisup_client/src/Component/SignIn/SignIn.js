@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
@@ -79,12 +79,12 @@ class SignIn extends Component {
       <div>
         <Navbar />
 
-        <div className="form_container">
+        <div className="main-container">
           <div className="center">
             <h1>Connexion</h1>
           </div>
-          <Form onSubmit={this.requeteInfo}>
-            <div className="form_bloc">
+          <div className="message-container cadre">
+            <Form onSubmit={this.requeteInfo}>
               <h3> Identifiants de votre compte</h3>
               <Form.Group>
                 <Form.Label>Adresse Email (privée) *</Form.Label>
@@ -109,13 +109,14 @@ class SignIn extends Component {
                   placeholder="Votre mot de passe"
                   value={this.state.motDePasseSignIn}
                 />
-                <a href="https://cannesisup.com/#home">Mot de passe oublié?</a>
+                <Link to="/passwordreset">
+                  <h4>Mot de passe oublié?</h4>
+                </Link>
               </Form.Group>
-            </div>
-            <div className="btn">
+
               <button className="btn-default">Connexion</button>
-            </div>
-          </Form>
+            </Form>
+          </div>
           <footer className="footer">
             <Footer />
           </footer>

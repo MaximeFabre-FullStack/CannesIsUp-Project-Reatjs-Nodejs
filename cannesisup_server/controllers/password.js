@@ -1,5 +1,8 @@
 const sendEmail = require("../helper/sendmail");
 const url = require("../url.json");
+const bcrypt = require("bcrypt");
+
+const Adherent = require("../models/adherent");
 
 const password = {
   reset: (req, res, next) => {
@@ -19,7 +22,30 @@ const password = {
   },
 
   newPassword: (req, res, next) => {
-    res.json({ success: true });
+    // CHECK SI ADHERENT EXISTE DEJA VIA MAIL PUIS SI OUI CONTINUE
+    Adherent.findOne({ mailPrive: req.body.email }).then((adherents) => {
+      if (!adherents) {
+        res.status(400).json({
+          msg: "aucune adresse email ne correspond à cet utilisateur",
+          success: false,
+        });
+        return;
+      } else {
+        // CHANGEMENT DU MOT DE PASSE
+        bcrypt.hash(req.body.password, 10).then((hash) => {
+          Adherent.findOneAndUpdate(
+            { mailPrive: req.body.email },
+            { motDePasse: hash },
+            (err) => {
+              if (err) {
+                res.json(err);
+              }
+              res.json({ success: true });
+            }
+          );
+        });
+      }
+    });
   },
 };
 module.exports = password;

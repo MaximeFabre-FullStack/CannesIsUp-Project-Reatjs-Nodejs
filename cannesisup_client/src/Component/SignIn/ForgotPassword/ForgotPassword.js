@@ -3,7 +3,6 @@ import { Form } from "react-bootstrap";
 import url from "../../../url.json";
 
 import "../../../../src/mainStyle.css";
-import "./style.css";
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -45,8 +44,10 @@ class ForgotPassword extends Component {
   render() {
     return (
       <div className="main-container">
-        <div className="message-container cadre">
+        <div className="img-container">
           <img src="/assets/img/logocopie.png" alt="Cannes is up" />
+        </div>
+        <div className="message-container cadre">
           <h4> Vous avez oublié votre mot de passe ?</h4>
           <div className="form-container">
             <Form onSubmit={this.submitForm}>

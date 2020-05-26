@@ -28,7 +28,7 @@ router.put("/updateFile/:id", upload, updateAdherent);
 /* POST /adherents/resetpassword - Renvoi du mail d'oubli de mot de passe */
 router.post("/passwordreset", password.reset);
 
-/* POST /adherents/resetpassword - Renvoi du mail d'oubli de mot de passe */
+/* POST /newpassword - Changement du mot de passe*/
 router.post("/newpassword", password.newPassword);
 
 module.exports = router;

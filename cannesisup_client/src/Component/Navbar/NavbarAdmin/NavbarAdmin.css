@@ -1,0 +1,23 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  position: fixed;
+  z-index: 11;
+}
+.adminNavContainer {
+  width: 100%;
+  line-height: 64px;
+}
+
+.ml-3 {
+  margin-left: 10% !important ;
+}
+
+.ml-100px {
+  margin-left: 10%;
+}
+
+.topLogo {
+  height: 64px;
+  margin-left: 120px;
+}

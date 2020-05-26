@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "../../../mainStyle.css";
 import "./AdminChart.css";
 
-import Navbar from "../../Navbar/Navbar";
+import NavbarAdmin from "../../Navbar/NavbarAdmin/NavbarAdmin";
 import Footer from "../../Footer/Footer";
 
 import Bar from "./Charts/Bar";
@@ -14,7 +14,7 @@ class Annuaire extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarAdmin />
         <div className="annuaireContainer">
           <div className="center">
             <h1>Charts Admin</h1>

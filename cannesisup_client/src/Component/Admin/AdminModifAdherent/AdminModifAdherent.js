@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Table } from "react-bootstrap";
 import "./AdminModifAdherent.css";
 
-import NavAdmin from "../NavAdmin/NavAdmin";
+import NavbarAdmin from "../../Navbar/NavbarAdmin/NavbarAdmin";
 import Footer from "../../Footer/Footer";
 
 class AdminModifAdherent extends Component {
@@ -43,7 +43,7 @@ class AdminModifAdherent extends Component {
   render() {
     return (
       <div className="maindiv">
-        <NavAdmin />
+        <NavbarAdmin />
 
         <div className="headerMembres">
           <h1>MODIFICATION MEMBRE</h1>

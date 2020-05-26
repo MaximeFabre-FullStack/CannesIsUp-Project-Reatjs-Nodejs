@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 
-import { Button, Table } from "react-bootstrap";
+import { Button, Table, Form } from "react-bootstrap";
 import "./AdminAnnuaire.css";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
-import NavAdmin from "./NavAdmin/NavAdmin";
+import NavbarAdmin from "../Navbar/NavbarAdmin/NavbarAdmin";
 import Footer from "../Footer/Footer";
-import SearchBAr from "../Annuaire/SearchBar/SearchBar";
 
 class AnnuaireAdmin extends Component {
   constructor(props) {
@@ -16,6 +15,7 @@ class AnnuaireAdmin extends Component {
     this.state = {
       allData: [],
       etat: 0,
+      search: "",
     };
   }
 
@@ -43,7 +43,19 @@ class AnnuaireAdmin extends Component {
 
   // APRES LA REQUETE FETCH / COMPONENTDIDMOUNT , BOUCLE AFFICHAGE APPELEE DANS LE RENDER
   affichageAllData = () => {
-    return this.state.allData.map((element, index) => (
+    let adherentFiltered = this.state.allData.filter((membre) => {
+      for (let property in membre) {
+        if (
+          String(membre[property]).match(new RegExp(this.state.search, "g")) &&
+          property !== "_id"
+        ) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    return adherentFiltered.map((element, index) => (
       <tr>
         <td>#{index}</td>
         <td>
@@ -121,7 +133,6 @@ class AnnuaireAdmin extends Component {
 
   // FONCTION POUR PASSER UN STATUS D'ADHERENT A ACTIF
   passerStatusActif = (id) => {
-    console.log(id);
     axios
       .put("http://localhost:8080/admin/status/true", { data: { _id: id } })
       .then(
@@ -136,7 +147,6 @@ class AnnuaireAdmin extends Component {
 
   // FONCTION POUR PASSER UN STATUS D'ADHERENT A INACTIF
   passerStatusInactif = (id) => {
-    console.log(id);
     axios
       .put("http://localhost:8080/admin/status/false", { data: { _id: id } })
       .then(
@@ -173,15 +183,26 @@ class AnnuaireAdmin extends Component {
     );
   };
 
+  handleSearchBar = async (e) => {
+    await this.setState({ search: e.target.value });
+  };
+
   // RENDER DE LA PAGE
   render() {
     return (
       <div>
-        <NavAdmin />
+        <NavbarAdmin />
         <div className="header">
           <h1>TOUS LES MEMBRES</h1>
         </div>
-        <SearchBAr />
+        <div className="barreRecherche">
+          <Form.Control
+            placeholder="Recherchez : un membre, une activité, un mot clé..."
+            className="react-search-field"
+            onChange={this.handleSearchBar}
+            name="recherche"
+          />
+        </div>
         <div>
           <p className="nombreMembres">
             {" "}

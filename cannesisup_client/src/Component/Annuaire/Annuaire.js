@@ -7,7 +7,7 @@ import "../SignUp/style.css";
 import "./Annuaire.css";
 
 import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
-import Navbar from "../Navbar/Navbar";
+import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
 
 // import InfiniteScroll from "react-infinite-scroll-component";
@@ -17,7 +17,6 @@ class Annuaire extends Component {
     super(props);
     this.state = {
       BDDdata: [],
-      dataClone: [],
       recherche: " ",
     };
   }
@@ -49,11 +48,11 @@ class Annuaire extends Component {
   };
 
   affichageAnnuaire = () => {
-    let adherantFiltred = this.state.BDDdata.filter((membre) => {
+    let adherentFiltred = this.state.BDDdata.filter((membre) => {
       for (let property in membre) {
         if (
           String(membre[property]).match(
-            new RegExp(this.state.recherche, "m")
+            new RegExp(this.state.recherche, "g")
           ) &&
           property !== "_id"
         ) {
@@ -63,7 +62,7 @@ class Annuaire extends Component {
       return false;
     });
 
-    return adherantFiltred.map((element, index) => (
+    return adherentFiltred.map((element, index) => (
       <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
         <CarteAnnuaire
           id={element._id}
@@ -95,7 +94,7 @@ class Annuaire extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarVisiteurs />
         <div className="header">
           <h1>ANNUAIRE DES MEMBRES</h1>
         </div>

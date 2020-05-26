@@ -4,8 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
-
-import Navbar from "../Navbar/Navbar";
+import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
 
 class SignIn extends Component {
@@ -77,8 +76,7 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-
+        <NavbarVisiteurs />
         <div className="form_container">
           <div className="center">
             <h1>Connexion</h1>

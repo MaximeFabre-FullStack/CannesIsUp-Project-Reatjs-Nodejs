@@ -67,5 +67,75 @@ h1:after {
 
 .submitAdherent:hover {
   background-color: #f7316b;
+  border-color: white;
+}
+
+.submitAdherent:focus {
+  background-color: #f7316b;
   border-color: #f7316b;
+  box-shadow: none;
+}
+
+.submitAdherent:active {
+  background-color: #f7316b !important ;
+  border-color: #f7316b !important;
+  box-shadow: none;
+}
+
+.submitAdherent:not(:disabled):not(.disabled):active:focus {
+  background-color: #f7316b !important ;
+  border-color: #f7316b !important;
+  box-shadow: none;
+}
+
+.cardTop {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+}
+
+.cardHeader {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #dee2e0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  color: white;
+}
+
+.boutonAccordeon {
+  padding: 0 !important;
+  color: black;
+  display: inline-flex;
+  width: auto;
+  margin: auto;
+}
+
+.tableBody tr td {
+  background-color: #dee2e0;
+}
+
+.cardBody {
+  background-color: #dee2e0;
+  color: black;
+}
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 0;
+}
+
+.inputModif {
+  border: 1px solid grey;
+  border-radius: 0.25rem;
+  margin-left: 10% !important;
+  margin-right: 10% !important;
+}
+
+.crayon {
+  margin-left: 20px;
 }

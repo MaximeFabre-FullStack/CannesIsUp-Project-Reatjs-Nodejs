@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "./NavbarAdherent.css";
 import { Redirect, withRouter } from "react-router-dom";
 
@@ -26,9 +26,13 @@ class NavbarAdherent extends Component {
   render() {
     return (
       <Navbar bg="light" expand="lg" className="adherentNavContainer">
-        <img src="/assets/img/logocopie.png" alt="logo" className="topLogo" />
+        <img
+          src="/assets/img/logocopie.png"
+          alt="logo"
+          className="topLogoAdherent"
+        />
         <Navbar.Brand className="ml-100px" href="#home">
-          Cannes is Up back-office
+          Cannes is Up back-office Adherent
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -39,9 +43,17 @@ class NavbarAdherent extends Component {
             <Nav.Link href="/admin/annuaire" className="ml-3">
               Profil
             </Nav.Link>
-            <Nav.Link href="" className="ml-3">
-              Settings
-            </Nav.Link>
+            <NavDropdown
+              title="Parametres"
+              id="basic-nav-dropdown"
+              className="ml-3"
+            >
+              <NavDropdown.Item href="">Modifier mail</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/newpassword/:email">
+                Modifier mot de passe
+              </NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link
               href="https://cannesisup.com/#home"
               onClick={this.deconnexion}

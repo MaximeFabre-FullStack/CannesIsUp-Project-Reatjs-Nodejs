@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
+import { Form, Col } from "react-bootstrap";
 import axios from "axios";
 
 import Footer from "../Footer/Footer";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
-import { Redirect } from "react-router-dom";
 import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import { withRouter } from "react-router-dom";
 
@@ -46,11 +44,25 @@ class SignUp extends Component {
         checkRgpd: false,
         paiement: "",
       },
+
+      // SECURITE FORMULAIRE
       differentPassword: "differentPasswordOff",
       samePassword: "samePasswordOff",
       incorrectPassword: "incorrectPasswordOff",
       validCharte: "validationCharte",
       choixPaiement: "paiement",
+      emailObligatoire: "",
+      passwordObligatoire: "",
+      nomSocieteObligatoire: "",
+      adresseSocieteObligatoire: "",
+      codePostalObligatoire: "",
+      villeObligatoire: "",
+      secteurObligatoire: "",
+      descriptionObligatoire: "",
+      logoObligatoire: "",
+      nomDirigeantObligatoire: "",
+      prenomDirigeantObligatoire: "",
+      fonctionDirigrantObligatoire: "",
     };
   }
 
@@ -120,6 +132,7 @@ class SignUp extends Component {
     e.preventDefault();
 
     if (this.state.form.password !== this.state.form.password_confirm) {
+      window.scrollTo(0, 0);
       return;
     } else {
       const formData = new FormData(e.target);
@@ -228,6 +241,11 @@ class SignUp extends Component {
                   Adresse email que vous utiliserez pour accéder à votre espace
                   membre.
                 </Form.Text>
+                {this.state.form.email === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer une adresse email.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Mot de passe *</Form.Label>
@@ -239,15 +257,18 @@ class SignUp extends Component {
                   value={this.state.form.password}
                   required
                 />
-                <p className={this.state.incorrectPassword}>
-                  Veuillez tapez un mot de passe.
-                </p>
+
                 <p className={this.state.samePassword}>
-                  Mots de passe identiques.
+                  Mots de passe identiques
                 </p>
                 <p className={this.state.differentPassword}>
-                  Mots de passe différents.
+                  Mots de passe différents
                 </p>
+                {this.state.form.password === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer un mot de passe.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Confirmation du mot de passe *</Form.Label>
@@ -280,6 +301,11 @@ class SignUp extends Component {
                   value={this.state.form.nom}
                   required
                 />
+                {this.state.form.nom === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer le nom de votre société.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Adresse *</Form.Label>
@@ -290,6 +316,11 @@ class SignUp extends Component {
                   value={this.state.form.adresse}
                   required
                 />
+                {this.state.form.adresse === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer l'adresse de votre société.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Complément d'adresse</Form.Label>
@@ -311,6 +342,11 @@ class SignUp extends Component {
                       value={this.state.form.code_postal}
                       required
                     />
+                    {this.state.form.code_postal === "" && (
+                      <p className="champsNonValide">
+                        *Veuillez entrer le code postal de votre société.
+                      </p>
+                    )}
                   </Form.Group>
                 </Col>
                 <Col>
@@ -323,6 +359,11 @@ class SignUp extends Component {
                       value={this.state.form.ville}
                       required
                     />
+                    {this.state.form.ville === "" && (
+                      <p className="champsNonValide">
+                        *Veuillez entrer la ville de votre société.
+                      </p>
+                    )}
                   </Form.Group>
                 </Col>
               </Form.Row>
@@ -417,6 +458,11 @@ class SignUp extends Component {
                   value={this.state.form.activite}
                   required
                 />
+                {this.state.form.activite === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer le secteur d'activité de votre société.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Description de l'activité *</Form.Label>
@@ -428,6 +474,11 @@ class SignUp extends Component {
                   value={this.state.form.description}
                   required
                 />
+                {this.state.form.description === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer une brève description de votre société.
+                  </p>
+                )}
               </Form.Group>
 
               <Form.Group>
@@ -440,6 +491,11 @@ class SignUp extends Component {
                   custom
                   data-browse="Choisir une image"
                 />
+                {this.state.form.logo === null && (
+                  <p className="champsNonValide">
+                    *Veuillez télécharger le logo de votre société.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Photo de couverture</Form.Label>
@@ -476,6 +532,11 @@ class SignUp extends Component {
                   value={this.state.form.nomDirigeant}
                   required
                 />
+                {this.state.form.nomDirigeant === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer le nom du dirigeant de la société.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Prénom *</Form.Label>
@@ -486,6 +547,11 @@ class SignUp extends Component {
                   value={this.state.form.prenomDirigeant}
                   required
                 />
+                {this.state.form.prenomDirigeant === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer le prénom du dirigeant de la société.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Fonction *</Form.Label>
@@ -496,6 +562,11 @@ class SignUp extends Component {
                   value={this.state.form.fonction}
                   required
                 />
+                {this.state.form.fonction === "" && (
+                  <p className="champsNonValide">
+                    *Veuillez entrer la fonction du dirigeant de la société.
+                  </p>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Parole de membre </Form.Label>

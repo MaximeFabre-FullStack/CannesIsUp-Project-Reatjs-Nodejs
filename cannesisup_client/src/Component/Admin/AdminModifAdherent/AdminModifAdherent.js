@@ -224,7 +224,7 @@ class AdminModifAdherent extends Component {
                     "http://localhost:8080/uploads/" +
                     this.state.adherentData.photoCouverture
                   }
-                  alt="photo de couverture"
+                  alt="de couverture"
                 />
               </td>
               <td>

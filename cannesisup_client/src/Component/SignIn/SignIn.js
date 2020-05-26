@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
+import { Form, Modal, Button } from "react-bootstrap";
 import { withRouter, Link } from "react-router-dom";
 
 import "../../../src/mainStyle.css";
@@ -13,6 +13,8 @@ class SignIn extends Component {
     this.state = {
       emailSignIn: "",
       motDePasseSignIn: "",
+      modalShow: false,
+      setModalShow: false,
     };
   }
 
@@ -49,11 +51,8 @@ class SignIn extends Component {
       .then(
         (data) => {
           if (!data || !data.exist) {
-            alert(
-              "Il semblerait qu'une erreur soit survenue, verifiez les champs renseignés et réesayez. " +
-                " (Il se peut aussi que votre compte n'ai pas encore été validé par l'administrateur). " +
-                " N'hesitez pas a nous contacter si vous rencontrez des difficultés, nous nous ferons un plaisir de vous aider."
-            );
+            this.setState({ modalShow: true, setModalShow: true });
+            return;
           } else {
             const uid = data.userId;
             const token = data.token;
@@ -67,10 +66,50 @@ class SignIn extends Component {
         },
 
         (error) => {
-          alert("Une erreur est survenue " + error);
-          console.log(error);
+          this.setState({ modalShow: true, setModalShow: true });
         }
       );
+  };
+
+  onHide = () => this.setState({ modalShow: false });
+
+  modal = () => {
+    return (
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={this.state.modalShow}
+        onHide={() => this.onHide}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            <h4>Une erreur est survenue</h4>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Il semblerait qu'une erreur soit survenue, verifiez les champs
+            renseignés et réesayez.
+          </p>
+          <p>
+            {" "}
+            (Il se peut aussi que votre compte n'ai pas encore été validé par
+            l'administrateur).
+          </p>
+          <p>
+            {" "}
+            N'hesitez pas a nous contacter si vous rencontrez des difficultés,
+            nous nous ferons un plaisir de vous aider.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="modalButton" onClick={this.onHide}>
+            Fermer
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
   };
 
   render() {
@@ -82,6 +121,7 @@ class SignIn extends Component {
           <div className="center">
             <h1>Connexion</h1>
           </div>
+          {this.modal()}
           <div className="message-container cadre">
             <Form onSubmit={this.requeteInfo}>
               <h3> Identifiants de votre compte</h3>
@@ -116,7 +156,7 @@ class SignIn extends Component {
               <button className="btn-default">Connexion</button>
             </Form>
           </div>
-          <footer className="footer">
+          <footer className="footerS">
             <Footer />
           </footer>
         </div>

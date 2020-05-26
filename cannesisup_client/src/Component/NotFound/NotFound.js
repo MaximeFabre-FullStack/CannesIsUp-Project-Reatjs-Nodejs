@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import NavbarAdherent from "../Navbar/NavbarAdherent/NavbarAdherent";
-import NavbarAdmin from "../Navbar/NavbarAdmin/NavbarAdmin";
-import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
 import { affichageNavbar } from "../affichageNavbar";
 

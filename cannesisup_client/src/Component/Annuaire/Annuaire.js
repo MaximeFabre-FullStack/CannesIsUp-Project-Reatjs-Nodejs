@@ -10,7 +10,7 @@ import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
 import Footer from "../Footer/Footer";
 import { affichageNavbar } from "../affichageNavbar";
 
-// import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 class Annuaire extends Component {
   constructor(props) {

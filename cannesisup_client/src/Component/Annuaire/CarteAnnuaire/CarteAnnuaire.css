@@ -7,7 +7,7 @@
 .couverture {
   width: auto;
   height: 200px;
-  object-fit: initial;
+  object-fit: cover;
 }
 
 .couverture h1 {

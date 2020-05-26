@@ -512,7 +512,7 @@ class SignUp extends Component {
                 <Form.File
                   name="photoPortrait"
                   onChange={this.fileSelectedHandler}
-                  label="Photo de profil (.jpeg , .jpg , .png)"
+                  label={this.renderName("photoPortrait")}
                   custom
                   data-browse="Choisir une image"
                 />

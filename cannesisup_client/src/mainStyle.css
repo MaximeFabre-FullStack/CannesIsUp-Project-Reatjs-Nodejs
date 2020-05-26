@@ -72,6 +72,11 @@ li {
   line-height: 20px;
 }
 
+.paragraph {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 /* Style des boutons */
 .btn-default {
   color: #f7316b;

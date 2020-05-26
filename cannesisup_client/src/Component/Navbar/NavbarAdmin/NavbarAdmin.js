@@ -40,7 +40,7 @@ class NavbarAdmin extends Component {
             >
               <NavDropdown.Item href="">Modifier mail</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/newpassword/:email">
+              <NavDropdown.Item href="/passwordreset">
                 Modifier mot de passe
               </NavDropdown.Item>
             </NavDropdown>

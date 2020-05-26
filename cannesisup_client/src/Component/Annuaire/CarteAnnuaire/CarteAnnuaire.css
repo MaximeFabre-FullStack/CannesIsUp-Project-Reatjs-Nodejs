@@ -59,11 +59,6 @@ h1:after {
   padding: 20px;
 }
 
-.paragraph {
-  text-align: justify;
-  text-justify: inter-word;
-}
-
-.paragraph:after {
+.paragraph::after {
   content: "  [...]";
 }

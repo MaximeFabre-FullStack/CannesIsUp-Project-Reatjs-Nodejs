@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "./NavbarAdmin.css";
 import { Redirect } from "react-router-dom";
 
@@ -33,9 +33,17 @@ class NavbarAdmin extends Component {
             <Nav.Link href="/admin/annuaire" className="ml-10pc">
               Adherents
             </Nav.Link>
-            <Nav.Link href="" className="ml-10pc">
-              Settings
-            </Nav.Link>
+            <NavDropdown
+              title="Parametres"
+              id="basic-nav-dropdown"
+              className="ml-10pc"
+            >
+              <NavDropdown.Item href="">Modifier mail</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/newpassword/:email">
+                Modifier mot de passe
+              </NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link
               href="https://cannesisup.com/#home"
               onClick={this.deconnexion}

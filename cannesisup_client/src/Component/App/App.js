@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { authenticatedAdmin } from "../Authenticate/AuthenticateAdmin";
-// import { authenticatedPage } from "../Authenticate/AuthenticatePage";
+import { authenticatedPage } from "../Authenticate/AuthenticatePage";
 
 import "./App.css";
 
@@ -16,6 +16,9 @@ import NotFound from "../NotFound/NotFound";
 import Mail from "../Mail/Mail";
 import MailResend from "../MailResend/MailResend";
 import BackOfficeAdherent from "../BackOfficeAdherent/BackOfficeAdherent";
+import SubmitMessage from "../SignUp/SubmitMessage/SubmitMessage";
+import ForgotPassword from "../SignIn/ForgotPassword/ForgotPassword";
+import NewPassword from "../SignIn/NewPassword/NewPassword";
 
 class App extends Component {
   render() {
@@ -48,13 +51,23 @@ class App extends Component {
             component={authenticatedAdmin(AdminModifAdherent)}
           />
 
-          <Route exact path="/adherent/:id" component={BackOfficeAdherent} />
+          <Route
+            exact
+            path="/adherent/:id"
+            component={authenticatedPage(BackOfficeAdherent)}
+          />
 
           <Route exact path="/notfound404" component={NotFound} />
 
           <Route exact path="/confirmation" component={Mail} />
 
           <Route exact path="/resend/:email" component={MailResend} />
+
+          <Route exact path="/submit/:email" component={SubmitMessage} />
+
+          <Route exact path="/passwordreset" component={ForgotPassword} />
+
+          <Route exact path="/newpassword/:email" component={NewPassword} />
         </Switch>
       </Router>
     );

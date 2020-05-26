@@ -1,3 +1,18 @@
+.headerCharts {
+  background: url(/assets/img/fond_equipe.png) no-repeat center center;
+  background-size: cover;
+  height: 200px;
+  margin-top: 64px;
+}
+
+.headerCharts h1 {
+  color: white;
+  margin: auto;
+  position: relative;
+  padding-top: 4%;
+  font-size: 50px;
+}
+
 .bar {
   padding: 50px;
 }

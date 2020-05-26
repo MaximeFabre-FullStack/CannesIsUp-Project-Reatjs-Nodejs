@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+import { Card, ListGroup } from "react-bootstrap";
 import Footer from "../Footer/Footer";
 import axios from "axios";
-import NavAdmin from "../Admin/NavAdmin/NavAdmin";
+import NavbarAdherent from "../Navbar/NavbarAdherent/NavbarAdherent";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
@@ -42,7 +41,6 @@ class BackOfficeAdherent extends Component {
       .then(
         (data) => {
           this.setState({ dataAdherent: data });
-          console.log(this.state.dataAdherent);
         },
         (error) => {
           console.log(error);
@@ -108,7 +106,7 @@ class BackOfficeAdherent extends Component {
   render() {
     return (
       <div className="maindiv">
-        <NavAdmin />
+        <NavbarAdherent />
         <div className="adherent-page-container">
           <div className="header-back-office">
             <h3>

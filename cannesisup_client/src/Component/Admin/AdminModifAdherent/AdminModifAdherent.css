@@ -51,4 +51,10 @@ h1:after {
 .tableau {
   margin-top: 64px;
   margin-bottom: 64px;
+  text-align: center;
+}
+
+.imgModif {
+  width: 180px;
+  height: auto;
 }

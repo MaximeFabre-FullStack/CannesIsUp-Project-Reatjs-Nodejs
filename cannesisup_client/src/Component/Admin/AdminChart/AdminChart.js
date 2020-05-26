@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "../../../mainStyle.css";
 import "./AdminChart.css";
 
-import Navbar from "../../Navbar/Navbar";
+import NavbarAdmin from "../../Navbar/NavbarAdmin/NavbarAdmin";
 import Footer from "../../Footer/Footer";
 
 import Bar from "./Charts/Bar";
@@ -14,20 +14,26 @@ class Annuaire extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarAdmin />
         <div className="annuaireContainer">
-          <div className="center">
-            <h1>Charts Admin</h1>
+          <div className="headerCharts">
+            <h1>CHARTS</h1>
           </div>
           <div className="bar">
             <Bar />
           </div>
+          <br />
+          <br />
           <div className="piechart">
             <PieChart />
           </div>
+          <br />
+          <br />
           <div className="linegraph">
             <LineGraph />
           </div>
+          <br />
+          <br />
         </div>
         <footer className="adminFooter">
           <Footer />

@@ -16,6 +16,10 @@
   color: #454545;
 }
 
+body {
+  background-color: rgb(233, 241, 241);
+}
+
 /* Style des textes */
 
 .fs14 {
@@ -100,4 +104,65 @@ li {
   margin-left: -60px;
   margin-bottom: -120px;
   width: 100vw;
+}
+
+/* Style pages confirmation */
+
+.main-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.message-container {
+  background-color: white;
+  margin: 60px auto;
+  text-align: center;
+  padding: 30px;
+  width: 600px;
+}
+
+.img-container {
+  width: 150px;
+  margin: 64px auto 0;
+}
+
+.img-container img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.check {
+  display: flex;
+  padding: 0 30px;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/*password */
+
+.samePasswordOn {
+  color: green;
+}
+
+.samePasswordOff {
+  display: none;
+}
+
+.differentPasswordOn {
+  color: red;
+}
+
+.differentPasswordOff {
+  display: none;
+}
+
+.incorrectPasswordOn {
+  color: red;
+}
+
+.incorrectPasswordOff {
+  display: none;
 }

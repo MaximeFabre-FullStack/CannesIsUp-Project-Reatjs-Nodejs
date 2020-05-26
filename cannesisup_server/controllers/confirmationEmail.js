@@ -6,7 +6,6 @@ const url = require("../url.json");
 
 const confirmationEmail = {
   confirmation: (req, res, next) => {
-    console.log(req.params);
     Token.findOne({ token: req.params.token }, (err, token) => {
       if (!token) {
         return res.redirect(`${url["client-url"]}/resend/${req.params.email}`);

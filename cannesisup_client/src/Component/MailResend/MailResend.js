@@ -4,15 +4,13 @@
 
 import React, { Component } from "react";
 import "../../../src/mainStyle.css";
-import "./style.css";
+import url from "../../url.json";
 
 class Mail extends Component {
   sendEmail = () => {
     const body = {
       email: this.props.match.params.email,
     };
-
-    console.log(body.email);
 
     const options = {
       method: "POST",
@@ -24,7 +22,7 @@ class Mail extends Component {
     };
 
     /* Requête */
-    fetch("http://localhost:8080/adherents/signin/resend", options)
+    fetch(url["url-server"] + "/adherents/signin/resend", options)
       .then((response) => response.json())
       .then(
         (data) => {
@@ -39,8 +37,12 @@ class Mail extends Component {
   render() {
     return (
       <div className="main-container">
+        <div className="img-container">
+          <img src="/assets/img/logocopie.png" alt="Cannes is up" />
+        </div>
+
         <div className="message-container cadre">
-          <h3>Oups</h3>
+          <h3>Oups !</h3>
           <p>Une erreur s'est produite lors de la confirmation d'email.</p>
           <p>Le lien de confirmation a peut être expiré.</p>
           <br />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { affichageNavbar } from "../affichageNavbar";
 
 import "../../mainStyle.css";
 import "../SignUp/style.css";
@@ -10,7 +10,7 @@ class notFound extends Component {
   render() {
     return (
       <div className="page404Container">
-        <Navbar />
+        {affichageNavbar()}
         <div className="center">
           <h1>404 NOT FOUND</h1>
         </div>

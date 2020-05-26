@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
-export function authenticatedAdmin(Component) {
+export function authenticatedPage(Component) {
   const componentName = Component.displayName || Component.name || "Component";
 
   return class extends React.Component {

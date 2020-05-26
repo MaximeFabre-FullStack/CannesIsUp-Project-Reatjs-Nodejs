@@ -53,3 +53,8 @@ h1:after {
   margin-bottom: 64px;
   text-align: center;
 }
+
+.imgModif {
+  width: 180px;
+  height: auto;
+}

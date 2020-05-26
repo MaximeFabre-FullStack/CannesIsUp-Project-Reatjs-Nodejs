@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Table } from "react-bootstrap";
 import "./AdminModifAdherent.css";
 
-import NavAdmin from "../NavAdmin/NavAdmin";
+import NavbarAdmin from "../../Navbar/NavbarAdmin/NavbarAdmin";
 import Footer from "../../Footer/Footer";
 
 class AdminModifAdherent extends Component {
@@ -43,7 +43,7 @@ class AdminModifAdherent extends Component {
   render() {
     return (
       <div className="maindiv">
-        <NavAdmin />
+        <NavbarAdmin />
 
         <div className="headerMembres">
           <h1>MODIFICATION MEMBRE</h1>
@@ -193,47 +193,63 @@ class AdminModifAdherent extends Component {
           </tbody>
         </Table>
 
-        {/* <Row>
-          <Col>Portrait dirigeant: </Col>
-          <Col>{this.state.adherentData.dirigeant.photoPortrait}</Col>
-        </Row>
-        <Row>
-          <Col>Photo de couverture: </Col>
-          <Col>
-            <img
-              className="couverture"
-              variant="top"
-              src={
-                "http://localhost:8080/uploads/" +
-                this.state.adherentData.photoCouverture
-              }
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>Logo d'entreprise: </Col>
-          <Col>
-            <img
-              className="card-img"
-              src={
-                "http://localhost:8080/uploads/" + this.state.adherentData.logo
-              }
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>Brochure de la société: </Col>
-          <Col>
-            <a
-              href={
-                "http://localhost:8080/uploads/" +
-                this.state.adherentData.dossierPresentation
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-          </Col>
-        </Row> */}
+        <h2>Photos & Logos:</h2>
+
+        <Table striped bordered hover className="tableau">
+          <thead>
+            <tr>
+              <th>Portrait dirigeant: </th>
+              <th>Photo de couverture: </th>
+              <th>Logo d'entreprise: </th>
+              <th>Brochure pdf: </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  className="imgModif"
+                  src={
+                    "http://localhost:8080/uploads/" +
+                    this.state.adherentData.dirigeant.photoPortrait
+                  }
+                  alt="portrait dirigeant"
+                />
+              </td>
+              <td>
+                <img
+                  className="imgModif"
+                  variant="top"
+                  src={
+                    "http://localhost:8080/uploads/" +
+                    this.state.adherentData.photoCouverture
+                  }
+                  alt="photo de couverture"
+                />
+              </td>
+              <td>
+                <img
+                  className="imgModif"
+                  src={
+                    "http://localhost:8080/uploads/" +
+                    this.state.adherentData.logo
+                  }
+                  alt="logo"
+                />
+              </td>
+              <td>
+                <img
+                  className="imgModif"
+                  src={
+                    "http://localhost:8080/uploads/" +
+                    this.state.adherentData.dossierPresentation
+                  }
+                  alt="dossier"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </Table>
 
         <Footer />
       </div>

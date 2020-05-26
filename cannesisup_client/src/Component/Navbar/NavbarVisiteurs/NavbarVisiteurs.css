@@ -1,0 +1,26 @@
+.navContainer {
+  width: 100%;
+  position: fixed, absolute;
+  z-index: 11;
+}
+
+.ml-100 {
+  margin-left: 150px;
+}
+
+.links {
+  margin-left: 20px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: black !important;
+}
+
+.links:hover {
+  color: #f7316b !important;
+}
+
+.topLogo {
+  height: 64px;
+  margin-left: 120px;
+}

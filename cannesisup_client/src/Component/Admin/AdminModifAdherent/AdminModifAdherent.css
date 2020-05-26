@@ -58,3 +58,14 @@ h1:after {
   width: 180px;
   height: auto;
 }
+
+.submitAdherent {
+  background-color: #f7316b;
+  border-color: white;
+  margin-bottom: 64px;
+}
+
+.submitAdherent:hover {
+  background-color: #f7316b;
+  border-color: #f7316b;
+}

@@ -55,7 +55,7 @@ class NavbarAdherent extends Component {
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link
-              href="https://cannesisup.com/#home"
+              href="/signin"
               onClick={this.deconnexion}
               className="ml-3"
             >

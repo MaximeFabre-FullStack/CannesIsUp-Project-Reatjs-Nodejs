@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import "./AdminModifAdherent.css";
 
 import NavbarAdmin from "../../Navbar/NavbarAdmin/NavbarAdmin";
@@ -11,8 +11,34 @@ class AdminModifAdherent extends Component {
     super(props);
     this.state = {
       adherentData: { coordonnes: {}, dirigeant: {}, reseauSociaux: {} },
+      form: {
+        email: "",
+        nom: "",
+        adresse: "",
+        adresse2: "",
+        code_postal: "",
+        ville: "",
+        tel: "",
+        email_public: "",
+        site: "",
+        facebook: "",
+        instagram: "",
+        linkedin: "",
+        twitter: "",
+        activite: "",
+        description: "",
+        // logo: this.state.adherentData ?,
+        // couv: this.state.adherentData ?,
+        // dossier: this.state.adherentData ?,
+        nomDirigeant: "",
+        prenomDirigeant: "",
+        parole: "",
+        fonction: "",
+        // photoPortrait: this.state.adherentData ?,
+      },
     };
   }
+
   componentDidMount() {
     const body = {
       id: this.props.match.params.id,
@@ -32,12 +58,46 @@ class AdminModifAdherent extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          this.setState({ adherentData: data });
+          console.log(data);
+          this.setState({
+            adherentData: data,
+            form: {
+              email: data.mailPrive,
+              nom: data.nomDeSociete,
+              adresse: data.coordonnes.adresse,
+              adresse2: data.coordonnes.complementDadresse,
+              code_postal: data.coordonnes.codePostal,
+              ville: data.coordonnes.ville,
+              tel: data.coordonnes.telephone,
+              email_public: data.coordonnes.mailSociete,
+              site: data.coordonnes.mailSociete,
+              facebook: data ? data.reseauSociaux.facebook : "",
+              instagram: data ? data.reseauSociaux.instagram : "",
+              linkedin: data ? data.reseauSociaux.linkedin : "",
+              twitter: data ? data.reseauSociaux.twitter : "",
+              activite: data.secteurDactivite,
+              description: data.descriptionExhaustive,
+              // logo: this.state.adherentData ?,
+              // couv: this.state.adherentData ?,
+              // dossier: this.state.adherentData ?,
+              nomDirigeant: data.dirigeant.nom,
+              prenomDirigeant: data.dirigeant.prenom,
+              parole: data.dirigeant.paroleDeMembre,
+              fonction: data.dirigeant.fonction,
+              // photoPortrait: this.state.adherentData ?,
+            },
+          });
         },
         (error) => {
           console.log(error);
         }
       );
+  }
+
+  handleChangeModifications(e, field) {
+    this.setState({
+      [field]: e.target.value,
+    });
   }
 
   render() {
@@ -250,6 +310,10 @@ class AdminModifAdherent extends Component {
             </tr>
           </tbody>
         </Table>
+
+        <Button variant="primary" size="lg" block className="submitAdherent">
+          Modifier la fiche
+        </Button>
 
         <Footer />
       </div>

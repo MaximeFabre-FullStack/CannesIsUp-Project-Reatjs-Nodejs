@@ -16,6 +16,7 @@ class AnnuaireAdmin extends Component {
       allData: [],
       etat: 0,
       search: "",
+      dataApplatie: [],
     };
   }
 
@@ -33,7 +34,19 @@ class AnnuaireAdmin extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          this.setState({ allData: data });
+          const dataATraiter = data.map((element) => {
+            return Object.assign(
+              {},
+              ...(function _flatten(o) {
+                return [].concat(
+                  ...Object.keys(o).map((k) =>
+                    typeof o[k] === "object" ? _flatten(o[k]) : { [k]: o[k] }
+                  )
+                );
+              })(element)
+            );
+          });
+          this.setState({ allData: data, dataApplatie: dataATraiter });
         },
         (error) => {
           console.log(error);
@@ -43,71 +56,129 @@ class AnnuaireAdmin extends Component {
 
   // APRES LA REQUETE FETCH / COMPONENTDIDMOUNT , BOUCLE AFFICHAGE APPELEE DANS LE RENDER
   affichageAllData = () => {
-    let adherentFiltered = this.state.allData.filter((membre) => {
-      for (let property in membre) {
-        if (
-          String(membre[property]).match(new RegExp(this.state.search, "g")) &&
-          property !== "_id"
-        ) {
-          return true;
-        }
-      }
-      return false;
-    });
-
-    return adherentFiltered.map((element, index) => (
-      <tr>
-        <td>#{index}</td>
-        <td>
-          <h3>{element.nomDeSociete}</h3>
-        </td>
-        <td>
-          {element.dirigeant.nom}
-          <br />
-          {element.dirigeant.prenom}
-        </td>
-        <td>
-          <p>{element.coordonnes.telephone}</p>
-        </td>
-        <td>
-          <a
-            href={
-              "mailto:" +
-              element.mailPrive +
-              "?&subject=A%20propos%20de%20votre%20compte%20CannesIsup"
-            }
-          >
-            {element.mailPrive}
-          </a>
-        </td>
-        <td>
-          <p>{element.coordonnes.ville}</p>
-        </td>
-        <td>
-          <p>{element.paiement}</p>
-        </td>
-        <td>{this.status(element.estActif, element._id)}</td>
-        <td>
-          <Link to={"/admin/modif/adherent/" + element._id}>
-            <Button variant="secondary" className="bouttonAdmin">
-              Modifier
+    if (this.state.search === "") {
+      return this.state.allData.map((element, index, key) => (
+        <tr key={index}>
+          <td>#{index}</td>
+          <td>
+            <h3>{element.nomDeSociete}</h3>
+          </td>
+          <td>
+            {element.dirigeant.nom}
+            <br />
+            {element.dirigeant.prenom}
+          </td>
+          <td>
+            <p>{element.coordonnes.telephone}</p>
+          </td>
+          <td>
+            <a
+              href={
+                "mailto:" +
+                element.mailPrive +
+                "?&subject=A%20propos%20de%20votre%20compte%20CannesIsup"
+              }
+            >
+              {element.mailPrive}
+            </a>
+          </td>
+          <td>
+            <p>{element.coordonnes.ville}</p>
+          </td>
+          <td>
+            <p>{element.paiement}</p>
+          </td>
+          <td>{this.status(element.estActif, element._id)}</td>
+          <td>
+            <Link to={"/admin/modif/adherent/" + element._id}>
+              <Button variant="secondary" className="bouttonAdmin">
+                Modifier
+              </Button>
+            </Link>
+          </td>
+          <td>
+            <Button
+              variant="danger"
+              onClick={() => {
+                this.suppression(element._id);
+              }}
+              className="bouttonAdmin"
+            >
+              {" "}
+              Supprimer
             </Button>
-          </Link>
-        </td>
-        <td>
-          <Button
-            variant="danger"
-            onClick={() => {
-              this.suppression(element._id);
-            }}
-            className="bouttonAdmin"
-          >
-            {" "}
-            Supprimer
-          </Button>
-        </td>
-      </tr>
-    ));
+          </td>
+        </tr>
+      ));
+    } else {
+      let adherentFiltered = this.state.dataApplatie.filter((membre) => {
+        for (let property in membre) {
+          if (
+            String(membre[property]).match(
+              new RegExp(this.state.search, "g")
+            ) &&
+            property !== "_id"
+          ) {
+            return true;
+          }
+        }
+        return false;
+      });
+
+      return adherentFiltered.map((element, index) => (
+        <tr>
+          <td>#{index}</td>
+          <td>
+            <h3>{element.nomDeSociete}</h3>
+          </td>
+          <td>
+            {element.nom}
+            <br />
+            {element.prenom}
+          </td>
+          <td>
+            <p>{element.telephone}</p>
+          </td>
+          <td>
+            <a
+              href={
+                "mailto:" +
+                element.mailPrive +
+                "?&subject=A%20propos%20de%20votre%20compte%20CannesIsup"
+              }
+            >
+              {element.mailPrive}
+            </a>
+          </td>
+          <td>
+            <p>{element.ville}</p>
+          </td>
+          <td>
+            <p>{element.paiement}</p>
+          </td>
+          <td>{this.status(element.estActif, element._id)}</td>
+          <td>
+            <Link to={"/admin/modif/adherent/" + element._id}>
+              <Button variant="secondary" className="bouttonAdmin">
+                Modifier
+              </Button>
+            </Link>
+          </td>
+          <td>
+            <Button
+              variant="danger"
+              onClick={() => {
+                this.suppression(element._id);
+              }}
+              className="bouttonAdmin"
+            >
+              {" "}
+              Supprimer
+            </Button>
+          </td>
+        </tr>
+      ));
+    }
   };
 
   // FONCTION SUPPRESSION D'UN ADHERENT

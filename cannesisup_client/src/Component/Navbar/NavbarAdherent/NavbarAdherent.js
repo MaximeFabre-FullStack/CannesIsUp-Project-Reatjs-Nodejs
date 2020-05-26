@@ -26,9 +26,13 @@ class NavbarAdherent extends Component {
   render() {
     return (
       <Navbar bg="light" expand="lg" className="adherentNavContainer">
-        <img src="/assets/img/logocopie.png" alt="logo" className="topLogo" />
+        <img
+          src="/assets/img/logocopie.png"
+          alt="logo"
+          className="topLogoAdherent"
+        />
         <Navbar.Brand className="ml-100px" href="#home">
-          Cannes is Up back-office
+          Cannes is Up back-office Adherent
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

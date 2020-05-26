@@ -18,28 +18,28 @@ class NavbarAdmin extends Component {
     return (
       <Navbar bg="light" expand="lg" className="adminNavContainer">
         <img src="/assets/img/logocopie.png" alt="logo" className="topLogo" />
-        <Navbar.Brand className="ml-100px" href="#home">
-          Cannes is Up back-office
+        <Navbar.Brand className="ml-100pc" href="#home">
+          Cannes is Up back-office Administrateur
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-100px">
-            <Nav.Link href="https://cannesisup.com/#home" className="ml-3">
+            <Nav.Link href="https://cannesisup.com/#home" className="ml-10pc">
               Site
             </Nav.Link>
-            <Nav.Link href="/admin/charts" className="ml-3">
+            <Nav.Link href="/admin/charts" className="ml-10pc">
               Charts
             </Nav.Link>
-            <Nav.Link href="/admin/annuaire" className="ml-3">
+            <Nav.Link href="/admin/annuaire" className="ml-10pc">
               Adherents
             </Nav.Link>
-            <Nav.Link href="" className="ml-3">
+            <Nav.Link href="" className="ml-10pc">
               Settings
             </Nav.Link>
             <Nav.Link
               href="https://cannesisup.com/#home"
               onClick={this.deconnexion}
-              className="ml-3"
+              className="ml-10pc"
             >
               Deconnexion
             </Nav.Link>

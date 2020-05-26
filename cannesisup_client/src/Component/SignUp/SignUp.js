@@ -8,7 +8,6 @@ import Footer from "../Footer/Footer";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
-import { Redirect } from "react-router-dom";
 import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import { withRouter } from "react-router-dom";
 

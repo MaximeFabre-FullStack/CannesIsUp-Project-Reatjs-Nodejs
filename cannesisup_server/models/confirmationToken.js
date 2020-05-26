@@ -7,7 +7,7 @@ const confirmationTokenSchema = mongoose.Schema({
     ref: "adherent",
   },
   token: { type: String, required: true },
-  createdAt: { type: Date, required: true, default: Date.now, expires: 43200 },
+  createdAt: { type: Date, required: true, default: Date.now, expires: 8800 },
 });
 
 /* avec unique verifie que 2 utilisateurs n'ont pas la même adresse mail */

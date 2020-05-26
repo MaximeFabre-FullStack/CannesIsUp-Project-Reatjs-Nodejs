@@ -10,6 +10,7 @@ import "../../../src/mainStyle.css";
 import "./style.css";
 import { Redirect } from "react-router-dom";
 import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
+import { withRouter } from "react-router-dom";
 
 class SignUp extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class SignUp extends Component {
     };
   }
 
-  // CONPARAISON MOTDEPASSE / MOTDEPASSECOMFIRME
+  // COMPARAISON MOTDEPASSE / MOTDEPASSECOMFIRME
   confirmPassword = (e) => {
     if (!this.state.form.password.valueOf()) {
       this.setState({
@@ -130,7 +131,7 @@ class SignUp extends Component {
       }).then(
         (res) => {
           if (res.data.success) {
-            return <Redirect to="https://cannesisup.com/#home" />;
+            return this.props.history.push("/submit/" + this.state.form.email);
           }
           if (res.data.success === false) {
             alert(res.data.msg);
@@ -579,4 +580,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

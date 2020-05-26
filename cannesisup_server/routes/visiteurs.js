@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
+
 const affichageAnnuaire = require("../controllers/affichageAnnuaire");
 const infosAdherent = require("../controllers/affichageAdherent");
-const sendMail = require("../helper/sendmail");
 
-/* GET home page. */
-router.get("/", affichageAnnuaire); // route OK
+// GET /visiteurs - Affichage annuaire
+router.get("/", affichageAnnuaire);
 
-router.post("/adherent", infosAdherent); // route OK
+// GET /visiteurs/adherent - Affichage adherent
+router.post("/adherent", infosAdherent);
 
 module.exports = router;

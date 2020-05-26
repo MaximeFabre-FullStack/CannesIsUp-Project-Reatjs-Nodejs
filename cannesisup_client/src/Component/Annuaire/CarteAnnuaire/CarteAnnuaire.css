@@ -59,6 +59,9 @@ h1:after {
   padding: 20px;
 }
 
+.paragraph {
+  height: 100px;
+}
 .paragraph::after {
   content: "  [...]";
 }

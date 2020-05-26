@@ -9,6 +9,7 @@ import "./Annuaire.css";
 import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
 import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
+import { affichageNavbar } from "../affichageNavbar";
 
 // import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -82,8 +83,7 @@ class Annuaire extends Component {
   };
 
   /*fetchMoreData = () => {
-    // a fake async api call like which sends
-    // 9 more records in 1.5 secs
+  
     setTimeout(() => {
       this.setState({
         BDDdata: this.state.BDDdata.concat(Array.from({ length: 9 })),
@@ -94,7 +94,7 @@ class Annuaire extends Component {
   render() {
     return (
       <div>
-        <NavbarVisiteurs />
+        {affichageNavbar()}
         <div className="header">
           <h1>ANNUAIRE DES MEMBRES</h1>
         </div>

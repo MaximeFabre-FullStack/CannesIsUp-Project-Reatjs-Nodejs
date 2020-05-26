@@ -3,28 +3,17 @@ import NavbarAdherent from "../Navbar/NavbarAdherent/NavbarAdherent";
 import NavbarAdmin from "../Navbar/NavbarAdmin/NavbarAdmin";
 import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
+import { affichageNavbar } from "../affichageNavbar";
 
 import "../../mainStyle.css";
 import "../SignUp/style.css";
 import "./NotFound.css";
 
 class notFound extends Component {
-  affichageNavbar = () => {
-    const uid = localStorage.getItem("uid");
-    const admin = localStorage.getItem("admin");
-    const token = localStorage.getItem("token");
-    if (uid && token && admin) {
-      return <NavbarAdmin />;
-    } else if (uid && token && !admin) {
-      return <NavbarAdherent />;
-    } else {
-      return <NavbarVisiteurs />;
-    }
-  };
   render() {
     return (
       <div className="page404Container">
-        {this.affichageNavbar()}
+        {affichageNavbar()}
         <div className="center">
           <h1>404 NOT FOUND</h1>
         </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { authenticatedAdmin } from "../Authenticate/AuthenticateAdmin";
-// import { authenticatedPage } from "../Authenticate/AuthenticatePage";
+import { authenticatedPage } from "../Authenticate/AuthenticatePage";
 
 import "./App.css";
 
@@ -48,7 +48,11 @@ class App extends Component {
             component={authenticatedAdmin(AdminModifAdherent)}
           />
 
-          <Route exact path="/adherent/:id" component={BackOfficeAdherent} />
+          <Route
+            exact
+            path="/adherent/:id"
+            component={authenticatedPage(BackOfficeAdherent)}
+          />
 
           <Route exact path="/notfound404" component={NotFound} />
 

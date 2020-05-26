@@ -4,12 +4,12 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 
-import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
 import { Redirect } from "react-router-dom";
+import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 
 class SignUp extends Component {
   constructor(props) {
@@ -202,8 +202,7 @@ class SignUp extends Component {
     return (
       <div>
         {/* Barre de Navigation */}
-        <Navbar />
-
+        <NavbarVisiteurs />
         {/* Formulaire */}
         <div className="form_container">
           <div className="center">

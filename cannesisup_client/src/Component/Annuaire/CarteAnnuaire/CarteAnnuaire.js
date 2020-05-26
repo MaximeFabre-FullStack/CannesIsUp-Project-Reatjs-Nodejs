@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "../../../../src/mainStyle.css";
 import "./CarteAnnuaire.css";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import ListGroupItem from "react-bootstrap/ListGroupItem";
+import { Card, ListGroupItem, ListGroup } from "react-bootstrap";
+
 import { Link } from "react-router-dom";
 
 class CarteAnnuaire extends Component {
@@ -11,10 +10,6 @@ class CarteAnnuaire extends Component {
     super(props);
     this.state = {};
   }
-
-  seeAdherent = () => {
-    console.log(this.props.id);
-  };
 
   render() {
     return (

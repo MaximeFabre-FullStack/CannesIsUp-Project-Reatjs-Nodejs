@@ -1,8 +1,8 @@
 /* imports */
 import React, { Component } from "react";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import Navbar from "../Navbar/Navbar";
+import { Card, ListGroup } from "react-bootstrap";
+
+import NavbarAdherent from "../Navbar/NavbarAdherent/NavbarAdherent";
 import Footer from "../Footer/Footer";
 
 import "../../../src/mainStyle.css";
@@ -53,7 +53,7 @@ class FicheAdherent extends Component {
   render() {
     return (
       <div className="maindiv">
-        <Navbar />
+        <NavbarAdherent />
         <div className="ficheadherent">
           {/* Fiche gauche */}
           <Card className="fichegauche">

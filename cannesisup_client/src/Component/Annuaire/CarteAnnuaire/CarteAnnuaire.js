@@ -11,6 +11,10 @@ class CarteAnnuaire extends Component {
     this.state = {};
   }
 
+  limitText = (text) => {
+    return text.substr(0, 250);
+  };
+
   render() {
     return (
       <div>
@@ -37,10 +41,12 @@ class CarteAnnuaire extends Component {
           <Card.Body className="description">
             <ListGroup>
               <ListGroup.Item className="item">
-                <h4 style={{ padding: 0, fontSize: 24 }}>
+                <h4 style={{ paddingTop: 5, paddingBottom: 5, fontSize: 24 }}>
                   {this.props.nomDeSociete}
                 </h4>
-                <p>{this.props.descriptionExhaustive}</p>
+                <p className="paragraph">
+                  {this.limitText(this.props.descriptionExhaustive)}
+                </p>
               </ListGroup.Item>
               <ListGroup.Item className="item">
                 <h3 style={{ padding: 0 }}>Secteur d'activité</h3>

@@ -113,7 +113,7 @@ const updateAdherent = {
         if (err) {
           res.status(400).json(error);
         } else {
-          res.status(200).res.json(adherent);
+          res.status(200).json(adherent);
         }
       }
     );

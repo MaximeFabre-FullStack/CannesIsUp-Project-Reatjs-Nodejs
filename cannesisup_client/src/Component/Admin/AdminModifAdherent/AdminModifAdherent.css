@@ -139,3 +139,26 @@ h1:after {
 .crayon {
   margin-left: 20px;
 }
+
+.modalButtonAdmin {
+  background-color: #f7316b;
+  border-color: white;
+}
+
+.modalButtonAdmin:hover {
+  color: #fff;
+  background-color: #f7316b;
+  border-color: white;
+}
+
+.modalButtonAdmin:active {
+  color: #fff !important;
+  background-color: #f7316b !important;
+  border-color: white !important;
+}
+
+.modalButtonAdmin:focus {
+  color: #fff !important;
+  background-color: #f7316b !important;
+  border-color: white !important;
+}

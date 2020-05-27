@@ -50,17 +50,14 @@ const confirmationEmail = {
 
         /* Parametres du mail */
         const email = adherent.mailPrive;
-        const message =
-          "Hello,\n\n" +
-          "Please verify your account by clicking the link: \nhttp://" +
-          req.headers.host +
-          "adherents/signin/confirmation/" +
-          token.token +
-          ".\n";
         const subject = "Confirmation de demande d'adhésion à Cannes Is Up";
+        const url = `http://${req.headers.host}/adherents/signin/confirmation/${token.token}/${adherent.mailPrive}`;
+        const htmlMessage = `<p>Bonjour ${adherent.dirigeant.prenom},</p><br/><br/>
+        <p> Veuillez confirmer votre adresse email en cliquant sur le lien ci-dessous:</p><br/>
+        <a href="${url}"> ${url} </a>`;
 
         /* Appel du helper */
-        sendEmail(email, message, subject);
+        sendEmail(email, htmlMessage, subject);
         res.json({
           success: true,
           msg: "un email de vérification a été envoyé à:" + email,

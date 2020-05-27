@@ -23,50 +23,13 @@ body {
   margin: 0 20%;
 }
 
-.samePasswordOn {
-  color: green;
-}
-
-.samePasswordOff {
-  display: none;
-}
-
-.differentPasswordOn {
-  color: red;
-}
-
-.differentPasswordOff {
-  display: none;
-}
-
-.incorrectPasswordOn {
-  color: red;
-  margin-top: 0;
-}
-
-.incorrectPasswordOff {
-  display: none;
-}
-
-.validationCharte {
-  margin-bottom: 0;
-  color: red;
-}
-
-.validationCharteOk {
-  display: none;
-}
-
-.paiement {
-  margin-bottom: 0;
-  color: red;
-}
-
-.paiementOk {
-  display: none;
-}
-
 .champsNonValide {
   margin-top: 0;
+  margin-bottom: 0;
   color: red;
+}
+
+.champsValide {
+  margin-top: 0;
+  color: green;
 }

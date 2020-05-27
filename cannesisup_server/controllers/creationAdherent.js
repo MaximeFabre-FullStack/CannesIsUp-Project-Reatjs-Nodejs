@@ -75,7 +75,7 @@ const newAdherent = (req, res, next) => {
           });
         }
 
-        /* Création du token de verification */
+        /* Création du token de verification par mail */
 
         const token = new Token({
           _userId: nouvelAdherent._id,

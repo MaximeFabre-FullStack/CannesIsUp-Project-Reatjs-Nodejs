@@ -6,7 +6,7 @@ import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
 
 import "../../../src/mainStyle.css";
-import "./FicheAdherent.css";
+import "./style.css";
 
 /* Component */
 class FicheAdherent extends Component {
@@ -106,7 +106,10 @@ class FicheAdherent extends Component {
                 {/* Nom + texte */}
                 <ListGroup.Item className="description">
                   <h4> {this.state.dataAdherent.nomDeSociete} </h4>
-                  <p>{this.state.dataAdherent.descriptionExhaustive}</p>
+                  <p className="paragraph">
+                    {" "}
+                    {this.state.dataAdherent.descriptionExhaustive}
+                  </p>
                 </ListGroup.Item>
 
                 {/* Secteur d'activité */}

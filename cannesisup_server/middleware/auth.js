@@ -1,4 +1,9 @@
-const jwt = require("jsonwebtoken");
+/**
+ * auth.js - authentification middleware file
+ * Handles CORS requests
+ */
+
+/*const jwt = require("jsonwebtoken");
 const User = require("../models/adherent");
 
 const authentification = (req, res, next) => {
@@ -36,4 +41,4 @@ const authentification = (req, res, next) => {
   }
 };
 
-module.exports = authentification;
+module.exports = authentification;*/

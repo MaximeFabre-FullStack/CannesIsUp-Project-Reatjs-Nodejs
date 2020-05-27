@@ -60,10 +60,8 @@ h1:after {
 }
 
 .paragraph {
-  text-align: justify;
-  text-justify: inter-word;
+  height: 100px;
 }
-
-.paragraph:after {
+.paragraph::after {
   content: "  [...]";
 }

@@ -1,9 +1,6 @@
-body {
-  background-color: rgb(233, 241, 241);
-}
-
 .adherent-page-container {
   margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 .header-back-office {
@@ -16,7 +13,7 @@ body {
   display: flex;
 }
 
-.ficheadherent h4 {
+.ficheadherent-back h4 {
   font-size: 30px;
   padding-top: 0;
 }
@@ -35,7 +32,7 @@ body {
 .fichegauche .top-link {
   display: flex;
   height: 100px;
-  padding: 0 2%;
+  padding: 0 4%;
   margin-top: 20px;
   max-width: 100%;
 }
@@ -72,7 +69,7 @@ body {
 .fichegauche .blockCard {
   display: flex;
   height: auto;
-  padding: 2%;
+  padding: 4%;
 }
 
 .card-link:hover {
@@ -98,9 +95,36 @@ body {
 
 .fichedroite .dirigeant {
   margin-top: 150px;
-  padding: 2%;
+  padding: 4%;
 }
 
 .description p a {
   margin-left: 5px;
+}
+
+.editable:hover {
+  cursor: pointer;
+  background-color: rgb(218, 218, 218);
+}
+
+.editable::after {
+  display: block;
+  float: right;
+  content: " ";
+  background-image: url("/assets/img/pen-solid.svg");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 22px;
+  width: 22px;
+}
+
+.justify {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.editable-img:hover {
+  opacity: 70%;
+  cursor: pointer;
 }

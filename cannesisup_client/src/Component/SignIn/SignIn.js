@@ -156,9 +156,7 @@ class SignIn extends Component {
               <button className="btn-default">Connexion</button>
             </Form>
           </div>
-          <footer className="footerS">
-            <Footer />
-          </footer>
+          <Footer />
         </div>
       </div>
     );

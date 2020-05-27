@@ -8,6 +8,7 @@ import {
   Form,
   Row,
   Col,
+  Modal,
 } from "react-bootstrap";
 import "./AdminModifAdherent.css";
 
@@ -43,6 +44,8 @@ class AdminModifAdherent extends Component {
       parole: "",
       fonction: "",
       // photoPortrait: this.state.adherentData ?,
+      modalShow: false,
+      setModalShow: false,
     };
   }
 
@@ -107,12 +110,47 @@ class AdminModifAdherent extends Component {
     axios.put("http://localhost:8080/admin/modifier/adherent", body).then(
       (data) => {
         console.log(data);
+        this.setState({ modalShow: true, setModalShow: true });
       },
       (err) => {
         console.log(err);
+        alert(
+          "Une erreur est survenue, veuillew réessayer ou contacter le service technique"
+        );
       }
     );
   };
+
+  affichModal = () => {
+    return (
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={this.state.modalShow}
+        onHide={() => this.onHide}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            <h4>Modification réussie !</h4>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            {"La fiche de l'adherent " +
+              this.state.nom +
+              " a bien été mise a jour, actualisez la page !"}
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="modalButton" onClick={this.onHide}>
+            Fermer
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  };
+
   render() {
     return (
       <div className="maindiv">
@@ -123,6 +161,8 @@ class AdminModifAdherent extends Component {
         </div>
 
         <br />
+        {this.affichModal()}
+
         <br />
 
         <h2>Dirigeant: </h2>

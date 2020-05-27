@@ -3,6 +3,7 @@ import { Card, ListGroup } from "react-bootstrap";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 import NavbarAdherent from "../Navbar/NavbarAdherent/NavbarAdherent";
+import url from "../../url.json";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
@@ -11,7 +12,11 @@ class BackOfficeAdherent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataAdherent: { coordonnes: {}, dirigeant: {}, reseauSociaux: {} },
+      dataAdherent: {
+        coordonnes: {},
+        dirigeant: { nom: " ", prenom: " " },
+        reseauSociaux: {},
+      },
       selectedFile: null,
       isEditing: false,
     };
@@ -85,14 +90,9 @@ class BackOfficeAdherent extends Component {
     this.inputPhotoPortrait.current.click();
   };
 
+  // Modification des infos texte
   onClickEdit = () => {
     this.setState({ isEditing: !this.state.isEditing });
-  };
-
-  onSaveEdit = () => {
-    this.setState({
-      isEditing: false,
-    });
   };
 
   handleChange = (e) => {
@@ -102,6 +102,31 @@ class BackOfficeAdherent extends Component {
         [e.target.name]: e.target.value,
       },
     });
+  };
+
+  onSaveUpdate = (e) => {
+    const body = this.state.dataAdherent;
+
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify(body),
+    };
+
+    fetch(url["url-server"] + "/adherents/updateInput", options)
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          console.log(data);
+          this.setState({ dataAdherent: data });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   };
 
   render() {
@@ -115,6 +140,9 @@ class BackOfficeAdherent extends Component {
               {this.state.dataAdherent.dirigeant.prenom}{" "}
               {this.state.dataAdherent.dirigeant.nom} !
             </h3>
+            <button className="btn-default" onClick={this.onSaveUpdate}>
+              Valider les modifications
+            </button>
           </div>
 
           <div className="ficheadherent-back">
@@ -125,7 +153,8 @@ class BackOfficeAdherent extends Component {
                 className="couverture editable-img"
                 variant="top"
                 src={
-                  "http://localhost:8080/uploads/" +
+                  url["url-server"] +
+                  "/uploads/" +
                   this.state.dataAdherent.photoCouverture
                 }
                 onClick={this.updatePhotoCouv}
@@ -144,7 +173,8 @@ class BackOfficeAdherent extends Component {
                   <Card.Img
                     className="card-img"
                     src={
-                      "http://localhost:8080/uploads/" +
+                      url["url-server"] +
+                      "/uploads/" +
                       this.state.dataAdherent.logo
                     }
                     onClick={this.updateLogo}
@@ -186,7 +216,7 @@ class BackOfficeAdherent extends Component {
                     {this.state.isEditing ? (
                       ""
                     ) : (
-                      <h4 className="editable">
+                      <h4 className="editable" onClick={this.onClickEdit}>
                         {this.state.dataAdherent.nomDeSociete}
                       </h4>
                     )}
@@ -198,16 +228,12 @@ class BackOfficeAdherent extends Component {
                           name="nomDeSociete"
                           onChange={this.handleChange}
                         />
+                        <button onClick={this.onClickEdit}>Save</button>
                       </span>
                     ) : (
                       ""
                     )}
-                    {this.state.isEditing ? (
-                      ""
-                    ) : (
-                      <button onClick={this.onClickEdit}>Edit</button>
-                    )}
-                    <button onClick={this.onSaveEdit}>Save</button>
+
                     <p className="justify editable">
                       {this.state.dataAdherent.descriptionExhaustive}
                     </p>
@@ -316,7 +342,8 @@ class BackOfficeAdherent extends Component {
               <Card.Img
                 className="editable-img"
                 src={
-                  "http://localhost:8080/uploads/" +
+                  url["url-server"] +
+                  "/uploads/" +
                   this.state.dataAdherent.dirigeant.photoPortrait
                 }
                 onClick={this.updatePhotoPortrait}

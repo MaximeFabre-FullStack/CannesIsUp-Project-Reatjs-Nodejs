@@ -24,7 +24,10 @@ router.get(
 router.post("/signin/resend", confirmationEmail.resend);
 
 // PUT /adherents/updateFile/:id - Modification file dans BDD
-router.put("/updateFile/:id", upload, updateAdherent);
+router.put("/updateFile/:id", upload, updateAdherent.file);
+
+// PUT /adherents/updateInput - Modification file dans BDD
+router.put("/updateInput", updateAdherent.input);
 
 // POST /adherents/resetpassword - Renvoi du mail d'oubli de mot de passe
 router.post("/passwordreset", password.reset);

@@ -23,24 +23,6 @@ body {
   margin: 0 20%;
 }
 
-.incorrectPasswordOn {
-  color: red;
-  margin-top: 0;
-}
-
-.incorrectPasswordOff {
-  display: none;
-}
-
-.validationCharte {
-  margin-bottom: 0;
-  color: red;
-}
-
-.validationCharteOk {
-  display: none;
-}
-
 .champsNonValide {
   margin-top: 0;
   margin-bottom: 0;

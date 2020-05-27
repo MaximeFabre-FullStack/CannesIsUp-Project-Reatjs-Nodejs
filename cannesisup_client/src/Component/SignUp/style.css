@@ -24,12 +24,9 @@ body {
 }
 
 .champsNonValide {
-  margin-top: 0;
-  margin-bottom: 0;
   color: red;
 }
 
 .champsValide {
-  margin-top: 0;
   color: green;
 }

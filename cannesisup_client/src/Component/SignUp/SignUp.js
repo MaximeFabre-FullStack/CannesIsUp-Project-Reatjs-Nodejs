@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Form, Col } from "react-bootstrap";
+import { Form, Col, Badge } from "react-bootstrap";
 import axios from "axios";
 
 import Footer from "../Footer/Footer";
@@ -135,6 +135,14 @@ class SignUp extends Component {
     }
   };
 
+  // FILTRE CHAMPS NUMERIQUE
+  isInputNumber = (evt) => {
+    var ch = String.fromCharCode(evt.which);
+    if (!/[0-9]/.test(ch)) {
+      evt.preventDefault();
+    }
+  };
+
   // RENDER PAGE
   render() {
     return (
@@ -168,9 +176,9 @@ class SignUp extends Component {
                 </Form.Text>
                 {/* SECURITE  */}
                 {this.state.form.email === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer une adresse email.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* MOT DE PASSE  */}
@@ -186,18 +194,22 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.password === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer un mot de passe.
-                  </p>
+                  </Badge>
                 )}
                 {this.state.form.password !==
                   this.state.form.password_confirm && (
-                  <p className="champsNonValide">*Mots de passe différents.</p>
+                  <Badge className="champsNonValide">
+                    *Mots de passe différents.
+                  </Badge>
                 )}
                 {this.state.form.password ===
                   this.state.form.password_confirm &&
                   this.state.form.password !== "" && (
-                    <p className="champsValide">*Mots de passe identiques.</p>
+                    <Badge className="champsValide">
+                      *Mots de passe identiques.
+                    </Badge>
                   )}
               </Form.Group>
               {/* CONFIRMATION DU MOT DE PASSE  */}
@@ -214,12 +226,16 @@ class SignUp extends Component {
                 {/* SECURITE  */}
                 {this.state.form.password !==
                   this.state.form.password_confirm && (
-                  <p className="champsNonValide">*Mots de passe différents.</p>
+                  <Badge className="champsNonValide">
+                    *Mots de passe différents.
+                  </Badge>
                 )}
                 {this.state.form.password ===
                   this.state.form.password_confirm &&
                   this.state.form.password !== "" && (
-                    <p className="champsValide">*Mots de passe identiques.</p>
+                    <Badge className="champsValide">
+                      *Mots de passe identiques.
+                    </Badge>
                   )}
               </Form.Group>
             </div>
@@ -239,9 +255,9 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.nom === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer le nom de votre société.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* ADRESSE  */}
@@ -256,9 +272,9 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.adresse === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer l'adresse de votre société.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* COMPLEMENT ADRESE  */}
@@ -282,12 +298,13 @@ class SignUp extends Component {
                       placeholder="06000"
                       value={this.state.form.code_postal}
                       required
+                      onKeyPress={this.isInputNumber}
                     />
                     {/* SECURITE  */}
                     {this.state.form.code_postal === "" && (
-                      <p className="champsNonValide">
+                      <Badge className="champsNonValide">
                         *Veuillez entrer le code postal de votre société.
-                      </p>
+                      </Badge>
                     )}
                   </Form.Group>
                 </Col>
@@ -304,9 +321,9 @@ class SignUp extends Component {
                     />
                     {/* SECURITE  */}
                     {this.state.form.ville === "" && (
-                      <p className="champsNonValide">
+                      <Badge className="champsNonValide">
                         *Veuillez entrer la ville de votre société.
-                      </p>
+                      </Badge>
                     )}
                   </Form.Group>
                 </Col>
@@ -319,6 +336,7 @@ class SignUp extends Component {
                   onChange={this.handle_change}
                   placeholder="0400000000"
                   value={this.state.form.tel}
+                  onKeyPress={this.isInputNumber}
                 />
               </Form.Group>
               {/* ADRESSE EMAIL PUBLIQUE  */}
@@ -413,9 +431,9 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.activite === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer le secteur d'activité de votre société.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* DESCRIPTION ACTIVITE  */}
@@ -431,9 +449,9 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.description === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer une brève description de votre société.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* LOGO SOCIETE  */}
@@ -449,9 +467,9 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.logo === null && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez télécharger le logo de votre société.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* PHOTO DE COUVERTURE  */}
@@ -493,9 +511,9 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.nomDirigeant === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer le nom du dirigeant de la société.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* PRENOM DIRIGEANT  */}
@@ -510,9 +528,9 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.prenomDirigeant === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer le prénom du dirigeant de la société.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* FONCTION DIRIGEANT  */}
@@ -527,9 +545,9 @@ class SignUp extends Component {
                 />
                 {/* SECURITE  */}
                 {this.state.form.fonction === "" && (
-                  <p className="champsNonValide">
+                  <Badge className="champsNonValide">
                     *Veuillez entrer la fonction du dirigeant de la société.
-                  </p>
+                  </Badge>
                 )}
               </Form.Group>
               {/* PAROLE DE MEMBRE  */}
@@ -560,9 +578,9 @@ class SignUp extends Component {
               {/* VERIFICATION  */}
               {this.state.form.checkCharte &&
               this.state.form.checkRgpd ? null : (
-                <p className="champsNonValide">
+                <Badge className="champsNonValide">
                   *Veuilles accepter la charte et le RGPD.
-                </p>
+                </Badge>
               )}
               {/* CHECKBOX  */}
               <Form.Check
@@ -585,9 +603,9 @@ class SignUp extends Component {
             <div className="form_bloc">
               {/* VERIFICATION  */}
               {!this.state.form.paiement && (
-                <p className="champsNonValide">
+                <Badge className="champsNonValide">
                   * Veuillez choisir un moyen de paiment.
-                </p>
+                </Badge>
               )}
               {/* RADIO  */}
               <Form.Check

@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import {
+  Card,
+  ListGroup,
+  Accordion,
+  Form,
+  Modal,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 import NavbarAdherent from "../Navbar/NavbarAdherent/NavbarAdherent";
@@ -14,11 +23,10 @@ class BackOfficeAdherent extends Component {
     this.state = {
       dataAdherent: {
         coordonnes: {},
-        dirigeant: { prenom: " ", nom: " " },
+        dirigeant: {},
         reseauSociaux: {},
       },
       selectedFile: null,
-      isEditing: false,
     };
     this.inputPhotoCouv = React.createRef();
     this.inputLogo = React.createRef();
@@ -94,15 +102,48 @@ class BackOfficeAdherent extends Component {
   };
 
   // Modification des infos texte
-  onClickEdit = () => {
-    this.setState({ isEditing: !this.state.isEditing });
-  };
-
-  handleChange = (e) => {
-    this.setState({
+  handleChangeModifications = async (e) => {
+    // await this.setState({ [e.target.name]: e.target.value });
+    await this.setState({
       dataAdherent: {
         ...this.state.dataAdherent,
         [e.target.name]: e.target.value,
+      },
+    });
+  };
+
+  handleChangeModificationsDirigeant = async (e) => {
+    await this.setState({
+      dataAdherent: {
+        ...this.state.dataAdherent,
+        dirigeant: {
+          ...this.state.dataAdherent.dirigeant,
+          [e.target.name]: e.target.value,
+        },
+      },
+    });
+  };
+
+  handleChangeModificationsCoordonnes = async (e) => {
+    await this.setState({
+      dataAdherent: {
+        ...this.state.dataAdherent,
+        coordonnes: {
+          ...this.state.dataAdherent.coordonnes,
+          [e.target.name]: e.target.value,
+        },
+      },
+    });
+  };
+
+  handleChangeModificationsReseaux = async (e) => {
+    await this.setState({
+      dataAdherent: {
+        ...this.state.dataAdherent,
+        reseauSociaux: {
+          ...this.state.dataAdherent.reseauSociaux,
+          [e.target.name]: e.target.value,
+        },
       },
     });
   };
@@ -143,9 +184,6 @@ class BackOfficeAdherent extends Component {
               {this.state.dataAdherent.dirigeant.prenom}{" "}
               {this.state.dataAdherent.dirigeant.nom} !
             </h3>
-            <button className="btn-default" onClick={this.onClickEdit}>
-              Modifier
-            </button>
             <button className="btn-default" onClick={this.onSaveUpdate}>
               Valider les modifications
             </button>
@@ -219,144 +257,546 @@ class BackOfficeAdherent extends Component {
                 <ListGroup variant="flush">
                   {/* Nom + texte */}
                   <ListGroup.Item className="description">
-                    {this.state.isEditing ? (
-                      ""
-                    ) : (
-                      <h4 className="editable" onClick={this.onClickEdit}>
-                        {this.state.dataAdherent.nomDeSociete}
-                      </h4>
-                    )}
-                    {this.state.isEditing ? (
-                      <span>
-                        <input
-                          value={this.state.dataAdherent.nomDeSociete}
-                          type="text"
-                          name="nomDeSociete"
-                          onChange={this.handleChange}
-                        />
-                        <button onClick={this.onClickEdit}>Save</button>
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                    {this.state.isEditing ? (
-                      ""
-                    ) : (
-                      <p
-                        className="justify editable"
-                        onClick={this.onClickEdit}
-                      >
-                        {this.state.dataAdherent.descriptionExhaustive}
-                      </p>
-                    )}
+                    {/* Nom de societe*/}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <h4 className="editable">
+                              {this.state.dataAdherent.nomDeSociete}
+                            </h4>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="nomDeSociete"
+                                    onChange={this.handleChangeModifications}
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.nomDeSociete
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
 
-                    {this.state.isEditing ? (
-                      <span>
-                        <input
-                          value={this.state.dataAdherent.descriptionExhaustive}
-                          type="text"
-                          name="descriptionExhaustive"
-                          onChange={this.handleChange}
-                        />
-                        <button onClick={this.onClickEdit}>Save</button>
-                      </span>
-                    ) : (
-                      ""
-                    )}
+                    {/* Description*/}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <p className="editable justify ">
+                              {this.state.dataAdherent.descriptionExhaustive}
+                            </p>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="descriptionExhaustive"
+                                    onChange={this.handleChangeModifications}
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent
+                                        .descriptionExhaustive
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
                   </ListGroup.Item>
 
                   {/* Secteur d'activité */}
                   <ListGroup.Item className="description">
                     <h3> Secteur d'activité </h3>
-                    <p className="editable" style={{ fontWeight: 900 }}>
-                      {" "}
-                      {this.state.dataAdherent.secteurDactivite}{" "}
-                    </p>
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <p className="editable">
+                              {this.state.dataAdherent.secteurDactivite}
+                            </p>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="secteurDactivite"
+                                    onChange={this.handleChangeModifications}
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.secteurDactivite
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
                   </ListGroup.Item>
 
                   {/* Coordonnées */}
                   <ListGroup.Item className="description">
                     <h3> Coordonnées </h3>
-                    <p className="editable">
-                      <span style={{ fontWeight: 700 }}>Adresse: </span>
-                      {this.state.dataAdherent.coordonnes.adresse
-                        ? this.state.dataAdherent.coordonnes.adresse
-                        : " "}
-                    </p>
-                    <p className="editable">
-                      <span style={{ fontWeight: 700 }}>Téléphone: </span>
-                      {this.state.dataAdherent.coordonnes.telephone
-                        ? this.state.dataAdherent.coordonnes.telephone
-                        : " "}
-                    </p>
-                    <p className="editable">
-                      <span style={{ fontWeight: 700 }}>Email: </span>
-                      {this.state.dataAdherent.coordonnes.mailSociete
-                        ? this.state.dataAdherent.coordonnes.mailSociete
-                        : " "}
-                    </p>
-                    <p className="editable">
-                      {" "}
-                      <span style={{ fontWeight: 700 }}>Site web:</span>
-                      <a
-                        target="_blank"
-                        href="https://cannesisup.com/contact.php"
-                        rel="noopener noreferrer"
-                      >
-                        {this.state.dataAdherent.coordonnes.siteWeb
-                          ? this.state.dataAdherent.coordonnes.siteWeb
-                          : " "}
-                      </a>
-                    </p>
+
+                    {/* Adresse */}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <p className="editable">
+                              <span style={{ fontWeight: 700 }}>Adresse: </span>
+                              {this.state.dataAdherent.coordonnes.adresse
+                                ? this.state.dataAdherent.coordonnes.adresse +
+                                  ", "
+                                : " "}
+                              {this.state.dataAdherent.coordonnes
+                                .complementDadresse
+                                ? this.state.dataAdherent.coordonnes
+                                    .complementDadresse + ", "
+                                : " "}
+                              {this.state.dataAdherent.coordonnes.codePostal
+                                ? this.state.dataAdherent.coordonnes
+                                    .codePostal + " "
+                                : " "}
+                              {this.state.dataAdherent.coordonnes.ville
+                                ? this.state.dataAdherent.coordonnes.ville + " "
+                                : " "}
+                            </p>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="adresse"
+                                    onChange={
+                                      this.handleChangeModificationsCoordonnes
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.coordonnes.adresse
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="complementDadresse"
+                                    onChange={
+                                      this.handleChangeModificationsCoordonnes
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.coordonnes
+                                        .complementDadresse
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="codePostal"
+                                    onChange={
+                                      this.handleChangeModificationsCoordonnes
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.coordonnes
+                                        .codePostal
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="ville"
+                                    onChange={
+                                      this.handleChangeModificationsCoordonnes
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.coordonnes.ville
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
+
+                    {/* Telephone */}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <p className="editable">
+                              <span style={{ fontWeight: 700 }}>
+                                Téléphone:{" "}
+                              </span>
+                              {this.state.dataAdherent.coordonnes.telephone
+                                ? this.state.dataAdherent.coordonnes.telephone
+                                : " "}
+                            </p>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="telephone"
+                                    onChange={
+                                      this.handleChangeModificationsCoordonnes
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.coordonnes
+                                        .telephone
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
+
+                    {/* Mail Societe */}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <p className="editable">
+                              <span style={{ fontWeight: 700 }}>Email: </span>
+                              {this.state.dataAdherent.coordonnes.mailSociete
+                                ? this.state.dataAdherent.coordonnes.mailSociete
+                                : " "}
+                            </p>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="mailSociete"
+                                    onChange={
+                                      this.handleChangeModificationsCoordonnes
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.coordonnes
+                                        .mailSociete
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
+
+                    {/* Site Web */}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <p className="editable">
+                              {" "}
+                              <span style={{ fontWeight: 700 }}>
+                                Site web:
+                              </span>{" "}
+                              {this.state.dataAdherent.coordonnes.siteWeb
+                                ? this.state.dataAdherent.coordonnes.siteWeb
+                                : " "}
+                            </p>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="siteWeb"
+                                    onChange={
+                                      this.handleChangeModificationsCoordonnes
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.coordonnes
+                                        .mailSociete
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
                   </ListGroup.Item>
 
                   {/* Réseaux sociaux */}
                   <ListGroup.Item className="description">
                     <h3> Réseaux sociaux </h3>
-                    <a
-                      href={this.state.dataAdherent.reseauSociaux.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        src="/assets/img/facebook.svg"
-                        alt="facebook"
-                        className="reseaux-logo "
-                      />
-                    </a>
-                    <a
-                      href={this.state.dataAdherent.reseauSociaux.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        src="/assets/img/instagram.svg"
-                        alt="instagram"
-                        className="reseaux-logo ml-20"
-                      />
-                    </a>
-                    <a
-                      href={this.state.dataAdherent.reseauSociaux.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        src="/assets/img/linkedin.svg"
-                        alt="linkedin"
-                        className="reseaux-logo ml-20"
-                      />
-                    </a>
-                    <a
-                      href={this.state.dataAdherent.reseauSociaux.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        src="/assets/img/twitter.svg"
-                        alt="twitter"
-                        className="reseaux-logo ml-20"
-                      />
-                    </a>
+
+                    {/* Facebook */}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <div className="reseau-container">
+                              <img
+                                src="/assets/img/facebook.svg"
+                                alt="facebook"
+                                id="facebook"
+                              />
+                              {this.state.dataAdherent.reseauSociaux.facebook}
+                            </div>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="facebook"
+                                    onChange={
+                                      this.handleChangeModificationsReseaux
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.reseauSociaux
+                                        .facebook
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
+
+                    {/* Instagram */}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <div className="reseau-container">
+                              <img
+                                src="/assets/img/instagram.svg"
+                                alt="instagram"
+                                id="instagram"
+                              />
+                              {this.state.dataAdherent.reseauSociaux.instagram}
+                            </div>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="instagram"
+                                    onChange={
+                                      this.handleChangeModificationsReseaux
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.reseauSociaux
+                                        .instagram
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
+
+                    {/* Linkedin */}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <div className="reseau-container">
+                              <img
+                                src="/assets/img/linkedin.svg"
+                                alt="linkedin"
+                                id="linkedin"
+                              />
+                              {this.state.dataAdherent.reseauSociaux.linkedin}
+                            </div>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="linkedin"
+                                    onChange={
+                                      this.handleChangeModificationsReseaux
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.reseauSociaux
+                                        .linkedin
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
+
+                    {/* Twitter */}
+                    <Accordion>
+                      <Card className="accordeon-card">
+                        <Card.Header className="accordeon-header">
+                          <Accordion.Toggle
+                            className="accordeon-btn"
+                            as={Button}
+                            variant="link"
+                            eventKey="0"
+                          >
+                            <div className="reseau-container">
+                              <img
+                                src="/assets/img/twitter.svg"
+                                alt="twitter"
+                                id="twitter"
+                              />
+                              {this.state.dataAdherent.reseauSociaux.twitter}
+                            </div>
+                          </Accordion.Toggle>
+                        </Card.Header>
+                        <Accordion.Collapse eventKey="0">
+                          <Card.Body>
+                            <Form>
+                              <Form.Group as={Row}>
+                                <Col sm="10">
+                                  <Form.Control
+                                    name="twitter"
+                                    onChange={
+                                      this.handleChangeModificationsReseaux
+                                    }
+                                    className="accordion-input"
+                                    plaintext
+                                    defaultValue={
+                                      this.state.dataAdherent.reseauSociaux
+                                        .twitter
+                                    }
+                                  />
+                                </Col>
+                              </Form.Group>
+                            </Form>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    </Accordion>
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>
@@ -383,20 +823,143 @@ class BackOfficeAdherent extends Component {
               />
               {/* Identité dirigeant */}
               <Card.Body className="dirigeant">
-                <h3 style={{ padding: 0 }}> Dirigeant </h3>
-                <p className="editable" style={{ fontWeight: 900, margin: 0 }}>
-                  {" "}
-                  {this.state.dataAdherent.dirigeant.prenom}{" "}
-                  {this.state.dataAdherent.dirigeant.nom}{" "}
-                </p>
-                <p className="editable">
-                  {this.state.dataAdherent.dirigeant.fonction}
-                </p>
+                <h3> Dirigeant </h3>
+                {/* Nom Prenom */}
+                <Accordion>
+                  <Card className="accordeon-card">
+                    <Card.Header className="accordeon-header">
+                      <Accordion.Toggle
+                        className="accordeon-btn"
+                        as={Button}
+                        variant="link"
+                        eventKey="0"
+                      >
+                        <p className="editable fw900">
+                          {" "}
+                          {this.state.dataAdherent.dirigeant.prenom}{" "}
+                          {this.state.dataAdherent.dirigeant.nom}{" "}
+                        </p>
+                      </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                      <Card.Body>
+                        <Form>
+                          <Form.Group as={Row}>
+                            <Col sm="10">
+                              <Form.Control
+                                name="prenom"
+                                onChange={
+                                  this.handleChangeModificationsDirigeant
+                                }
+                                className="accordion-input"
+                                plaintext
+                                defaultValue={
+                                  this.state.dataAdherent.dirigeant.prenom
+                                }
+                              />
+                            </Col>
+                          </Form.Group>
+                          <Form.Group as={Row}>
+                            <Col sm="10">
+                              <Form.Control
+                                name="nom"
+                                onChange={
+                                  this.handleChangeModificationsDirigeant
+                                }
+                                className="accordion-input"
+                                plaintext
+                                defaultValue={
+                                  this.state.dataAdherent.dirigeant.nom
+                                }
+                              />
+                            </Col>
+                          </Form.Group>
+                        </Form>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                </Accordion>
+
+                {/* Fonction */}
+                <Accordion>
+                  <Card className="accordeon-card">
+                    <Card.Header className="accordeon-header">
+                      <Accordion.Toggle
+                        className="accordeon-btn"
+                        as={Button}
+                        variant="link"
+                        eventKey="0"
+                      >
+                        <p className="editable">
+                          {this.state.dataAdherent.dirigeant.fonction}
+                        </p>
+                      </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                      <Card.Body>
+                        <Form>
+                          <Form.Group as={Row}>
+                            <Col sm="10">
+                              <Form.Control
+                                name="fonction"
+                                onChange={
+                                  this.handleChangeModificationsDirigeant
+                                }
+                                className="accordion-input"
+                                plaintext
+                                defaultValue={
+                                  this.state.dataAdherent.dirigeant.fonction
+                                }
+                              />
+                            </Col>
+                          </Form.Group>
+                        </Form>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                </Accordion>
+
                 <h3> Parole de membre </h3>
-                <p className="justify editable">
-                  {" "}
-                  {this.state.dataAdherent.dirigeant.paroleDeMembre}
-                </p>
+                {/* Nom Prenom */}
+                <Accordion>
+                  <Card className="accordeon-card">
+                    <Card.Header className="accordeon-header">
+                      <Accordion.Toggle
+                        className="accordeon-btn"
+                        as={Button}
+                        variant="link"
+                        eventKey="0"
+                      >
+                        <p className="justify editable">
+                          {" "}
+                          {this.state.dataAdherent.dirigeant.paroleDeMembre}
+                        </p>
+                      </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                      <Card.Body>
+                        <Form>
+                          <Form.Group as={Row}>
+                            <Col sm="10">
+                              <Form.Control
+                                name="paroleDeMembre"
+                                onChange={
+                                  this.handleChangeModificationsDirigeant
+                                }
+                                className="accordion-input"
+                                plaintext
+                                defaultValue={
+                                  this.state.dataAdherent.dirigeant
+                                    .paroleDeMembre
+                                }
+                              />
+                            </Col>
+                          </Form.Group>
+                        </Form>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                </Accordion>
               </Card.Body>
             </Card>
           </div>

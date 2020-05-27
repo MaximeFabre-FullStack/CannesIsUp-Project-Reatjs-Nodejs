@@ -6,6 +6,7 @@ const suppressionAdherent = require("../controllers/suppressionAdherent");
 const statusTrue = require("../controllers/modifStatusTrue");
 const statusFalse = require("../controllers/modifStatusFalse");
 const modifAdherent = require("../controllers/modifAdherent");
+const upload = require("../middleware/uploadConfig");
 
 // REQ GET ANNUAIRE ADMIN
 router.get("/", infosAdherentAdmin);
@@ -19,6 +20,10 @@ router.put("/status/true", statusTrue);
 // REQ PUT MODIF STATUS ADHERENT => FALSE
 router.put("/status/false", statusFalse);
 
-router.put("/modifier/adherent", modifAdherent); //REQ PUT MODIF FICHE ADHERENT COMPLETE
+//REQ PUT MODIF TEXTE FICHE ADHERENT
+router.put("/modifier/adherent", modifAdherent.input);
+
+//REQ PUT MODIF FILES FICHE ADHERENT
+router.put("/modifier/adherent/file", upload, modifAdherent.file);
 
 module.exports = router;

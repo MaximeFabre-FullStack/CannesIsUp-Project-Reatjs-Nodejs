@@ -41,7 +41,7 @@ class BackOfficeAdherent extends Component {
     };
 
     /* Requête */
-    fetch("http://localhost:8080/visiteurs/adherent", options)
+    fetch(url["url-server"] + "/visiteurs/adherent", options)
       .then((response) => response.json())
       .then(
         (data) => {

@@ -14,6 +14,6 @@ router.put("/status/true", statusTrue); // REQ PUT MODIF STATUS ADHERENT => TRUE
 
 router.put("/status/false", statusFalse); // REQ PUT MODIF STATUS ADHERENT => FALSE
 
-// router.put("/modifier/adherent", modifAdherent) // reste a modifier le controller
+router.put("/modifier/adherent", modifAdherent); //REQ PUT MODIF FICHE ADHERENT COMPLETE
 
 module.exports = router;

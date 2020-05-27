@@ -4,7 +4,6 @@ import {
   Table,
   Button,
   Accordion,
-  AccordionCollapse,
   Card,
   Form,
   Row,
@@ -14,37 +13,36 @@ import "./AdminModifAdherent.css";
 
 import NavbarAdmin from "../../Navbar/NavbarAdmin/NavbarAdmin";
 import Footer from "../../Footer/Footer";
+import axios from "axios";
 
 class AdminModifAdherent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      adherentData: { coordonnes: {}, dirigeant: {}, reseauSociaux: {} },
-      form: {
-        email: "",
-        nom: "",
-        adresse: "",
-        adresse2: "",
-        code_postal: "",
-        ville: "",
-        tel: "",
-        email_public: "",
-        site: "",
-        facebook: "",
-        instagram: "",
-        linkedin: "",
-        twitter: "",
-        activite: "",
-        description: "",
-        // logo: this.state.adherentData ?,
-        // couv: this.state.adherentData ?,
-        // dossier: this.state.adherentData ?,
-        nomDirigeant: "",
-        prenomDirigeant: "",
-        parole: "",
-        fonction: "",
-        // photoPortrait: this.state.adherentData ?,
-      },
+      id: this.props.match.params.id,
+      email: "",
+      nom: "",
+      adresse: "",
+      adresse2: "",
+      code_postal: "",
+      ville: "",
+      tel: "",
+      email_public: "",
+      site: "",
+      facebook: "",
+      instagram: "",
+      linkedin: "",
+      twitter: "",
+      activite: "",
+      description: "",
+      // logo: this.state.adherentData ?,
+      // couv: this.state.adherentData ?,
+      // dossier: this.state.adherentData ?,
+      nomDirigeant: "",
+      prenomDirigeant: "",
+      parole: "",
+      fonction: "",
+      // photoPortrait: this.state.adherentData ?,
     };
   }
 
@@ -68,32 +66,29 @@ class AdminModifAdherent extends Component {
       .then(
         (data) => {
           this.setState({
-            adherentData: data,
-            form: {
-              email: data.mailPrive,
-              nom: data.nomDeSociete,
-              adresse: data.coordonnes.adresse,
-              adresse2: data.coordonnes.complementDadresse,
-              code_postal: data.coordonnes.codePostal,
-              ville: data.coordonnes.ville,
-              tel: data.coordonnes.telephone,
-              email_public: data.coordonnes.mailSociete,
-              site: data.coordonnes.mailSociete,
-              facebook: data ? data.reseauSociaux.facebook : "",
-              instagram: data ? data.reseauSociaux.instagram : "",
-              linkedin: data ? data.reseauSociaux.linkedin : "",
-              twitter: data ? data.reseauSociaux.twitter : "",
-              activite: data.secteurDactivite,
-              description: data.descriptionExhaustive,
-              // logo: this.state.adherentData ?,
-              // couv: this.state.adherentData ?,
-              // dossier: this.state.adherentData ?,
-              nomDirigeant: data.dirigeant.nom,
-              prenomDirigeant: data.dirigeant.prenom,
-              parole: data.dirigeant.paroleDeMembre,
-              fonction: data.dirigeant.fonction,
-              // photoPortrait: this.state.adherentData ?,
-            },
+            email: data ? data.mailPrive : "",
+            nom: data ? data.nomDeSociete : "",
+            adresse: data ? data.coordonnes.adresse : "",
+            adresse2: data ? data.coordonnes.complementDadresse : "",
+            code_postal: data ? data.coordonnes.codePostal : "",
+            ville: data ? data.coordonnes.ville : "",
+            tel: data ? data.coordonnes.telephone : "",
+            email_public: data ? data.coordonnes.mailSociete : "",
+            site: data ? data.coordonnes.siteWeb : "",
+            facebook: data ? data.reseauSociaux.facebook : "",
+            instagram: data ? data.reseauSociaux.instagram : "",
+            linkedin: data ? data.reseauSociaux.linkedin : "",
+            twitter: data ? data.reseauSociaux.twitter : "",
+            activite: data ? data.secteurDactivite : "",
+            description: data ? data.descriptionExhaustive : "",
+            logo: data ? data.logo : "",
+            couv: data ? data.photoCouverture : "",
+            dossier: data ? data.dossierPresentation : "",
+            nomDirigeant: data ? data.dirigeant.nom : "",
+            prenomDirigeant: data ? data.dirigeant.prenom : "",
+            parole: data ? data.dirigeant.paroleDeMembre : "",
+            fonction: data ? data.dirigeant.fonction : "",
+            photoPortrait: data ? data.photoPortrait : "",
           });
         },
         (error) => {
@@ -103,12 +98,21 @@ class AdminModifAdherent extends Component {
   }
 
   handleChangeModifications = async (e) => {
-    await this.setState({
-      form: { ...this.state.form, [e.target.name]: e.target.value },
-    });
-    console.log(this.state.form);
+    await this.setState({ [e.target.name]: e.target.value });
   };
 
+  submitModifs = () => {
+    const body = this.state;
+
+    axios.put("http://localhost:8080/admin/modifier/adherent", body).then(
+      (data) => {
+        console.log(data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
   render() {
     return (
       <div className="maindiv">
@@ -117,10 +121,17 @@ class AdminModifAdherent extends Component {
         <div className="headerMembres">
           <h1>MODIFICATION MEMBRE</h1>
         </div>
+
         <br />
         <br />
 
         <h2>Dirigeant: </h2>
+        <div>
+          <h3>
+            N'oubliez pas de valider les modifications en cliquant sur le bouton
+            fin de page
+          </h3>
+        </div>
         <Table striped bordered hover className="tableau">
           <thead>
             <tr>
@@ -147,7 +158,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.dirigeant.prenom}
+                        {this.state.prenomDirigeant}
                         <div className="crayon">
                           <svg
                             className="bi bi-pencil"
@@ -179,9 +190,7 @@ class AdminModifAdherent extends Component {
                                 onChange={this.handleChangeModifications}
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.dirigeant.prenom
-                                }
+                                defaultValue={this.state.prenomDirigeant}
                               />
                             </Col>
                           </Form.Group>
@@ -201,7 +210,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.dirigeant.nom}
+                        {this.state.nomDirigeant}
                         <div className="crayon">
                           <svg
                             className="bi bi-pencil"
@@ -233,9 +242,7 @@ class AdminModifAdherent extends Component {
                                 name="nomDirigeant"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.dirigeant.nom
-                                }
+                                defaultValue={this.state.nomDirigeant}
                               />
                             </Col>
                           </Form.Group>
@@ -255,7 +262,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.dirigeant.fonction}
+                        {this.state.fonction}
 
                         <div className="crayon">
                           <svg
@@ -288,9 +295,7 @@ class AdminModifAdherent extends Component {
                                 name="fonction"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.dirigeant.fonction
-                                }
+                                defaultValue={this.state.fonction}
                               />
                             </Col>
                           </Form.Group>
@@ -331,7 +336,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.nomDeSociete}
+                        {this.state.nom}
 
                         <div className="crayon">
                           <svg
@@ -361,12 +366,10 @@ class AdminModifAdherent extends Component {
                             <Col sm="10">
                               <Form.Control
                                 onChange={this.handleChangeModifications}
-                                name="nomDeSociete"
+                                name="nom"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.nomDeSociete
-                                }
+                                defaultValue={this.state.nom}
                               />
                             </Col>
                           </Form.Group>
@@ -386,7 +389,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.descriptionExhaustive}
+                        {this.state.description}
 
                         <div className="crayon">
                           <svg
@@ -416,12 +419,10 @@ class AdminModifAdherent extends Component {
                             <Col sm="10">
                               <Form.Control
                                 onChange={this.handleChangeModifications}
-                                name="descriptionExhaustive"
+                                name="description"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.descriptionExhaustive
-                                }
+                                defaultValue={this.state.description}
                               />
                             </Col>
                           </Form.Group>
@@ -441,7 +442,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.secteurDactivite}
+                        {this.state.activite}
 
                         <div className="crayon">
                           <svg
@@ -471,12 +472,10 @@ class AdminModifAdherent extends Component {
                             <Col sm="10">
                               <Form.Control
                                 onChange={this.handleChangeModifications}
-                                name="secteurDactivité"
+                                name="activite"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.secteurDactivite
-                                }
+                                defaultValue={this.state.activite}
                               />
                             </Col>
                           </Form.Group>
@@ -520,7 +519,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.coordonnes.adresse}
+                        {this.state.adresse}
 
                         <div className="crayon">
                           <svg
@@ -553,9 +552,7 @@ class AdminModifAdherent extends Component {
                                 name="adresse"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.coordonnes.adresse
-                                }
+                                defaultValue={this.state.adresse}
                               />
                             </Col>
                           </Form.Group>
@@ -575,7 +572,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.coordonnes.complementDadresse}
+                        {this.state.adresse2}
 
                         <div className="crayon">
                           <svg
@@ -605,13 +602,10 @@ class AdminModifAdherent extends Component {
                             <Col sm="10">
                               <Form.Control
                                 onChange={this.handleChangeModifications}
-                                name="complemenDadresse"
+                                name="adresse2"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.coordonnes
-                                    .complementDadresse
-                                }
+                                defaultValue={this.state.adresse2}
                               />
                             </Col>
                           </Form.Group>
@@ -631,7 +625,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.coordonnes.ville}
+                        {this.state.ville}
 
                         <div className="crayon">
                           <svg
@@ -664,9 +658,7 @@ class AdminModifAdherent extends Component {
                                 name="ville"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.coordonnes.ville
-                                }
+                                defaultValue={this.state.ville}
                               />
                             </Col>
                           </Form.Group>
@@ -686,7 +678,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.coordonnes.codePostal}
+                        {this.state.code_postal}
 
                         <div className="crayon">
                           <svg
@@ -716,12 +708,10 @@ class AdminModifAdherent extends Component {
                             <Col sm="10">
                               <Form.Control
                                 onChange={this.handleChangeModifications}
-                                name="codePostal"
+                                name="code_postal"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.coordonnes.codePostal
-                                }
+                                defaultValue={this.state.code_postal}
                               />
                             </Col>
                           </Form.Group>
@@ -760,7 +750,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.coordonnes.telephone}
+                        {this.state.tel}
 
                         <div className="crayon">
                           <svg
@@ -790,12 +780,10 @@ class AdminModifAdherent extends Component {
                             <Col sm="10">
                               <Form.Control
                                 onChange={this.handleChangeModifications}
-                                name="telephone"
+                                name="tel"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.coordonnes.telephone
-                                }
+                                defaultValue={this.state.tel}
                               />
                             </Col>
                           </Form.Group>
@@ -815,7 +803,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.coordonnes.mailSociete}
+                        {this.state.email_public}
 
                         <div className="crayon">
                           <svg
@@ -845,12 +833,10 @@ class AdminModifAdherent extends Component {
                             <Col sm="10">
                               <Form.Control
                                 onChange={this.handleChangeModifications}
-                                name="mailSociete"
+                                name="email_public"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.coordonnes.mailSociete
-                                }
+                                defaultValue={this.state.email_public}
                               />
                             </Col>
                           </Form.Group>
@@ -870,7 +856,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.coordonnes.siteWeb}
+                        {this.state.site}
 
                         <div className="crayon">
                           <svg
@@ -900,12 +886,10 @@ class AdminModifAdherent extends Component {
                             <Col sm="10">
                               <Form.Control
                                 onChange={this.handleChangeModifications}
-                                name="siteWeb"
+                                name="site"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.coordonnes.siteWeb
-                                }
+                                defaultValue={this.state.site}
                               />
                             </Col>
                           </Form.Group>
@@ -949,7 +933,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.reseauSociaux.facebook}
+                        {this.state.facebook}
 
                         <div className="crayon">
                           <svg
@@ -982,9 +966,7 @@ class AdminModifAdherent extends Component {
                                 name="facebook"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.reseauSociaux.facebook
-                                }
+                                defaultValue={this.state.facebook}
                               />
                             </Col>
                           </Form.Group>
@@ -1004,7 +986,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.reseauSociaux.instagram}
+                        {this.state.instagram}
 
                         <div className="crayon">
                           <svg
@@ -1037,10 +1019,7 @@ class AdminModifAdherent extends Component {
                                 name="instagram"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.reseauSociaux
-                                    .instagram
-                                }
+                                defaultValue={this.state.instagram}
                               />
                             </Col>
                           </Form.Group>
@@ -1060,7 +1039,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.reseauSociaux.linkedin}
+                        {this.state.linkedin}
 
                         <div className="crayon">
                           <svg
@@ -1093,9 +1072,7 @@ class AdminModifAdherent extends Component {
                                 name="linkedin"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.reseauSociaux.linkedin
-                                }
+                                defaultValue={this.state.linkedin}
                               />
                             </Col>
                           </Form.Group>
@@ -1115,7 +1092,7 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.adherentData.reseauSociaux.twitter}
+                        {this.state.twitter}
 
                         <div className="crayon">
                           <svg
@@ -1148,9 +1125,7 @@ class AdminModifAdherent extends Component {
                                 name="twitter"
                                 className="inputModif"
                                 plaintext
-                                defaultValue={
-                                  this.state.adherentData.reseauSociaux.twitter
-                                }
+                                defaultValue={this.state.twitter}
                               />
                             </Col>
                           </Form.Group>
@@ -1181,8 +1156,7 @@ class AdminModifAdherent extends Component {
                 <img
                   className="imgModif"
                   src={
-                    "http://localhost:8080/uploads/" +
-                    this.state.adherentData.dirigeant.photoPortrait
+                    "http://localhost:8080/uploads/" + this.state.photoPortrait
                   }
                   alt="portrait dirigeant"
                 />
@@ -1193,7 +1167,7 @@ class AdminModifAdherent extends Component {
                   variant="top"
                   src={
                     "http://localhost:8080/uploads/" +
-                    this.state.adherentData.photoCouverture
+                    this.state.photoCouverture
                   }
                   alt="de couverture"
                 />
@@ -1201,20 +1175,14 @@ class AdminModifAdherent extends Component {
               <td>
                 <img
                   className="imgModif"
-                  src={
-                    "http://localhost:8080/uploads/" +
-                    this.state.adherentData.logo
-                  }
+                  src={"http://localhost:8080/uploads/" + this.state.logo}
                   alt="logo"
                 />
               </td>
               <td>
                 <img
                   className="imgModif"
-                  src={
-                    "http://localhost:8080/uploads/" +
-                    this.state.adherentData.dossierPresentation
-                  }
+                  src={"http://localhost:8080/uploads/" + this.state.dossier}
                   alt="dossier"
                 />
               </td>
@@ -1222,7 +1190,13 @@ class AdminModifAdherent extends Component {
           </tbody>
         </Table>
 
-        <Button variant="primary" size="lg" block className="submitAdherent">
+        <Button
+          variant="primary"
+          size="lg"
+          block
+          className="submitAdherent"
+          onClick={this.submitModifs}
+        >
           Modifier la fiche
         </Button>
 

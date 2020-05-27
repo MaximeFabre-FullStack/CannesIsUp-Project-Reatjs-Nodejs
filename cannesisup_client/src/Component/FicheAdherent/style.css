@@ -1,0 +1,97 @@
+.maindiv {
+  margin-bottom: 60px;
+}
+
+.ficheadherent {
+  margin: 100px 10%;
+  display: flex;
+}
+
+.ficheadherent h4 {
+  font-size: 30px;
+  padding-top: 0;
+}
+
+.fichegauche {
+  width: 66%;
+  margin-right: 5%;
+  height: fit-content;
+}
+
+.fichegauche .couverture {
+  height: 200px;
+  object-fit: cover;
+}
+
+.fichegauche .top-link {
+  display: flex;
+  height: 100px;
+  padding: 0 4%;
+  margin-top: 20px;
+  max-width: 100%;
+}
+
+.fichegauche .card-img {
+  object-fit: cover;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.fichegauche .logo-cont {
+  height: 100px;
+}
+
+.fichegauche .download-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.fichegauche .download-txt {
+  text-align: right;
+  font-size: 12px;
+  display: block;
+  width: 150px;
+}
+
+.fichegauche .download-img {
+  width: 30px;
+  margin: 5px;
+}
+
+.fichegauche .blockCard {
+  display: flex;
+  height: auto;
+  padding: 4%;
+}
+
+.card-link:hover {
+  color: #f7316b;
+}
+
+.fichedroite {
+  width: 33%;
+  margin-top: 200px;
+  height: fit-content;
+  padding: 0px;
+}
+
+.fichedroite .card-img {
+  width: 200px;
+  height: 200px;
+  margin: -110px auto;
+  border-radius: 100%;
+  object-fit: cover;
+  border: lightgrey solid 4px;
+  position: relative;
+}
+
+.fichedroite .dirigeant {
+  margin-top: 150px;
+  padding: 4%;
+}
+
+.description p a {
+  margin-left: 5px;
+}

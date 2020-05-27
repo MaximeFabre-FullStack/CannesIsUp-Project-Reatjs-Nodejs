@@ -43,11 +43,13 @@ const newAdherent = (req, res, next) => {
         secteurDactivite: req.body.activite,
         descriptionExhaustive: req.body.description,
 
-        logo: req.files.logo ? req.files.logo[0].filename : null,
-        photoCouverture: req.files.couv ? req.files.couv[0].filename : null,
+        logo: req.files.logo ? req.files.logo[0].filename : "logo",
+        photoCouverture: req.files.couv
+          ? req.files.couv[0].filename
+          : "photocouv",
         dossierPresentation: req.files.dossier
           ? req.files.dossier[0].filename
-          : null,
+          : "pdf",
 
         dirigeant: {
           nom: req.body.nomDirigeant,
@@ -56,7 +58,7 @@ const newAdherent = (req, res, next) => {
           fonction: req.body.fonction,
           photoPortrait: req.files.photoPortrait
             ? req.files.photoPortrait[0].filename
-            : null,
+            : "photoportrait",
         },
 
         paiement: req.body.paiement,
@@ -73,7 +75,7 @@ const newAdherent = (req, res, next) => {
           });
         }
 
-        /* Création du token de verification */
+        /* Création du token de verification par mail */
 
         const token = new Token({
           _userId: nouvelAdherent._id,

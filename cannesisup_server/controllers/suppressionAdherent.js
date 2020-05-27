@@ -7,7 +7,7 @@ const path = require("path");
 const AdherentSupprime = (req, res, next) => {
   const id = req.body._id;
 
-  /* Suppression des fifhiers */
+  /* Suppression des fichiers */
   AdherentASupprimer.findOne({ _id: id }, (err, data) => {
     if (err) {
       res.status(500).json((msg = "adherent non trouve"));

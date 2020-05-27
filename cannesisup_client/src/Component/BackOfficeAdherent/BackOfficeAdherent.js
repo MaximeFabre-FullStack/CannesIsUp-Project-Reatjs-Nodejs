@@ -94,6 +94,7 @@ class BackOfficeAdherent extends Component {
       isEditing: false,
     });
   };
+
   handleChange = (e) => {
     this.setState({
       dataAdherent: {
@@ -121,7 +122,7 @@ class BackOfficeAdherent extends Component {
             <Card className="fichegauche">
               {/* Image couverture */}
               <Card.Img
-                className="couverture"
+                className="couverture editable-img"
                 variant="top"
                 src={
                   "http://localhost:8080/uploads/" +
@@ -139,7 +140,7 @@ class BackOfficeAdherent extends Component {
 
               {/* Logo + liens PDF */}
               <Card.Body className="top-link">
-                <div className="logo-cont">
+                <div className="logo-cont editable-img">
                   <Card.Img
                     className="card-img"
                     src={
@@ -162,7 +163,7 @@ class BackOfficeAdherent extends Component {
                     Modifier la brochure de la société
                   </p>
                   <img
-                    className="download-img"
+                    className="download-img editable-img"
                     src="/assets/img/download-solid.svg"
                     alt="logo"
                     onClick={this.updateDossierPresentation}
@@ -185,7 +186,9 @@ class BackOfficeAdherent extends Component {
                     {this.state.isEditing ? (
                       ""
                     ) : (
-                      <h4>{this.state.dataAdherent.nomDeSociete}</h4>
+                      <h4 className="editable">
+                        {this.state.dataAdherent.nomDeSociete}
+                      </h4>
                     )}
                     {this.state.isEditing ? (
                       <span>
@@ -205,13 +208,15 @@ class BackOfficeAdherent extends Component {
                       <button onClick={this.onClickEdit}>Edit</button>
                     )}
                     <button onClick={this.onSaveEdit}>Save</button>
-                    <p>{this.state.dataAdherent.descriptionExhaustive}</p>
+                    <p className="justify editable">
+                      {this.state.dataAdherent.descriptionExhaustive}
+                    </p>
                   </ListGroup.Item>
 
                   {/* Secteur d'activité */}
                   <ListGroup.Item className="description">
                     <h3> Secteur d'activité </h3>
-                    <p style={{ fontWeight: 900 }}>
+                    <p className="editable" style={{ fontWeight: 900 }}>
                       {" "}
                       {this.state.dataAdherent.secteurDactivite}{" "}
                     </p>
@@ -220,25 +225,25 @@ class BackOfficeAdherent extends Component {
                   {/* Coordonnées */}
                   <ListGroup.Item className="description">
                     <h3> Coordonnées </h3>
-                    <p>
+                    <p className="editable">
                       <span style={{ fontWeight: 700 }}>Adresse: </span>
                       {this.state.dataAdherent.coordonnes.adresse
                         ? this.state.dataAdherent.coordonnes.adresse
                         : " "}
                     </p>
-                    <p>
+                    <p className="editable">
                       <span style={{ fontWeight: 700 }}>Téléphone: </span>
                       {this.state.dataAdherent.coordonnes.telephone
                         ? this.state.dataAdherent.coordonnes.telephone
                         : " "}
                     </p>
-                    <p>
+                    <p className="editable">
                       <span style={{ fontWeight: 700 }}>Email: </span>
                       {this.state.dataAdherent.coordonnes.mailSociete
                         ? this.state.dataAdherent.coordonnes.mailSociete
                         : " "}
                     </p>
-                    <p>
+                    <p className="editable">
                       {" "}
                       <span style={{ fontWeight: 700 }}>Site web:</span>
                       <a
@@ -309,6 +314,7 @@ class BackOfficeAdherent extends Component {
             <Card className="fichedroite">
               {/* Photo de profil */}
               <Card.Img
+                className="editable-img"
                 src={
                   "http://localhost:8080/uploads/" +
                   this.state.dataAdherent.dirigeant.photoPortrait
@@ -325,14 +331,19 @@ class BackOfficeAdherent extends Component {
               {/* Identité dirigeant */}
               <Card.Body className="dirigeant">
                 <h3 style={{ padding: 0 }}> Dirigeant </h3>
-                <p style={{ fontWeight: 900, margin: 0 }}>
+                <p className="editable" style={{ fontWeight: 900, margin: 0 }}>
                   {" "}
                   {this.state.dataAdherent.dirigeant.prenom}{" "}
                   {this.state.dataAdherent.dirigeant.nom}{" "}
                 </p>
-                <p>{this.state.dataAdherent.dirigeant.fonction}</p>
+                <p className="editable">
+                  {this.state.dataAdherent.dirigeant.fonction}
+                </p>
                 <h3> Parole de membre </h3>
-                <p> {this.state.dataAdherent.dirigeant.paroleDeMembre}</p>
+                <p className="justify editable">
+                  {" "}
+                  {this.state.dataAdherent.dirigeant.paroleDeMembre}
+                </p>
               </Card.Body>
             </Card>
           </div>

@@ -7,7 +7,7 @@
 .couverture {
   width: auto;
   height: 200px;
-  object-fit: initial;
+  object-fit: cover;
 }
 
 .couverture h1 {
@@ -42,7 +42,6 @@ h1:after {
 
 .logo-container {
   height: 100px;
-  align-items: center;
   margin: 75px 30px 10px;
 }
 
@@ -60,21 +59,9 @@ h1:after {
   padding: 20px;
 }
 
-.btn-default {
-  color: #f7316b;
-  background-color: #fff;
-  border: 2px solid #f7316b;
-  border-radius: 8px;
-  padding: 10px 15px;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  font-weight: 900;
-  text-transform: uppercase;
-  width: 90%;
+.paragraph {
+  height: 100px;
 }
-
-.btn-default:hover {
-  color: #fff;
-  background-color: #f7316b;
-  border: 2px solid #f7316b;
+.paragraph::after {
+  content: "  [...]";
 }

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-// const uniqueValidator = require("mongoose-unique-validator"); TODO A ACTIVER
+const uniqueValidator = require("mongoose-unique-validator");
 
 const adherentSchema = mongoose.Schema({
   nomDeSociete: String,
-  mailPrive: String,
+  mailPrive: { type: String, required: true, unique: true },
   motDePasse: String,
 
   coordonnes: {
@@ -44,8 +44,7 @@ const adherentSchema = mongoose.Schema({
 });
 
 /* avec unique verifie que 2 utilisateurs n'ont pas la même adresse mail */
-
-// userSchema.plugin(uniqueValidator); TODO A ACTIVER
+adherentSchema.plugin(uniqueValidator);
 
 /* Model */
 const Adherent = mongoose.model("Adherent", adherentSchema);

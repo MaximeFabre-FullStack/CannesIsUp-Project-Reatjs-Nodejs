@@ -2,11 +2,11 @@
 import React, { Component } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 
-import NavbarAdherent from "../Navbar/NavbarAdherent/NavbarAdherent";
+import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
 
 import "../../../src/mainStyle.css";
-import "./FicheAdherent.css";
+import "./style.css";
 
 /* Component */
 class FicheAdherent extends Component {
@@ -53,7 +53,7 @@ class FicheAdherent extends Component {
   render() {
     return (
       <div className="maindiv">
-        <NavbarAdherent />
+        <NavbarVisiteurs />
         <div className="ficheadherent">
           {/* Fiche gauche */}
           <Card className="fichegauche">
@@ -106,7 +106,10 @@ class FicheAdherent extends Component {
                 {/* Nom + texte */}
                 <ListGroup.Item className="description">
                   <h4> {this.state.dataAdherent.nomDeSociete} </h4>
-                  <p>{this.state.dataAdherent.descriptionExhaustive}</p>
+                  <p className="paragraph">
+                    {" "}
+                    {this.state.dataAdherent.descriptionExhaustive}
+                  </p>
                 </ListGroup.Item>
 
                 {/* Secteur d'activité */}
@@ -157,51 +160,60 @@ class FicheAdherent extends Component {
                 {/* Réseaux sociaux */}
                 <ListGroup.Item className="description">
                   <h3> Réseaux sociaux </h3>
-                  <a
-                    href={this.state.dataAdherent.reseauSociaux.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="/assets/img/facebook.svg"
-                      alt="facebook"
-                      className="reseaux-logo "
-                    />
-                  </a>
+                  {this.state.dataAdherent.reseauSociaux.facebook !== "" && (
+                    <a
+                      href={this.state.dataAdherent.reseauSociaux.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="facebook"
+                    >
+                      <img
+                        src="/assets/img/facebook.svg"
+                        alt="facebook"
+                        className="reseaux-logo "
+                      />
+                    </a>
+                  )}
 
-                  <a
-                    href={this.state.dataAdherent.reseauSociaux.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="/assets/img/instagram.svg"
-                      alt="instagram"
-                      className="reseaux-logo ml-20"
-                    />
-                  </a>
-                  <a
-                    href={this.state.dataAdherent.reseauSociaux.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="/assets/img/linkedin.svg"
-                      alt="linkedin"
-                      className="reseaux-logo ml-20"
-                    />
-                  </a>
-                  <a
-                    href={this.state.dataAdherent.reseauSociaux.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src="/assets/img/twitter.svg"
-                      alt="twitter"
-                      className="reseaux-logo ml-20"
-                    />
-                  </a>
+                  {this.state.dataAdherent.reseauSociaux.instagram !== "" && (
+                    <a
+                      href={this.state.dataAdherent.reseauSociaux.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/assets/img/instagram.svg"
+                        alt="instagram"
+                        className="reseaux-logo ml-20"
+                      />
+                    </a>
+                  )}
+                  {this.state.dataAdherent.reseauSociaux.linkedin !== "" && (
+                    <a
+                      href={this.state.dataAdherent.reseauSociaux.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/assets/img/linkedin.svg"
+                        alt="linkedin"
+                        className="reseaux-logo ml-20"
+                      />
+                    </a>
+                  )}
+                  {this.state.dataAdherent.reseauSociaux.twitter !== "" && (
+                    <a
+                      href={this.state.dataAdherent.reseauSociaux.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/assets/img/twitter.svg"
+                        alt="twitter"
+                        className="reseaux-logo ml-20"
+                      />
+                    </a>
+                  )}
                 </ListGroup.Item>
               </ListGroup>
             </Card.Body>

@@ -127,7 +127,17 @@ class FicheAdherent extends Component {
                   <p>
                     <span style={{ fontWeight: 700 }}>Adresse: </span>
                     {this.state.dataAdherent.coordonnes.adresse
-                      ? this.state.dataAdherent.coordonnes.adresse
+                      ? this.state.dataAdherent.coordonnes.adresse + ", "
+                      : " "}
+                    {this.state.dataAdherent.coordonnes.complementDadresse
+                      ? this.state.dataAdherent.coordonnes.complementDadresse +
+                        ", "
+                      : " "}
+                    {this.state.dataAdherent.coordonnes.codePostal
+                      ? this.state.dataAdherent.coordonnes.codePostal + " "
+                      : " "}
+                    {this.state.dataAdherent.coordonnes.ville
+                      ? this.state.dataAdherent.coordonnes.ville + " "
                       : " "}
                   </p>
                   <p>

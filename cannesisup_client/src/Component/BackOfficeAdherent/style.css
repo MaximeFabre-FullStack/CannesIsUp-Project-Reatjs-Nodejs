@@ -104,7 +104,6 @@
 
 .editable:hover {
   cursor: pointer;
-  background-color: rgb(218, 218, 218);
 }
 
 .editable::after {
@@ -127,4 +126,41 @@
 .editable-img:hover {
   opacity: 70%;
   cursor: pointer;
+}
+
+.accordeon-btn {
+  padding: 0;
+  display: inline-flex;
+  width: auto;
+  margin: auto;
+}
+
+.accordeon-header {
+  padding: 0;
+  background-color: #ffffff00;
+  border-bottom: 0;
+}
+
+.accordeon-card {
+  border: none;
+}
+
+.accordion-input {
+  border: 1px solid rgb(175, 173, 173);
+  border-radius: 0.25rem;
+  padding: 2px;
+}
+
+.reseau-container {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+#facebook,
+#twitter,
+#linkedin,
+#instagram {
+  width: 24px;
+  margin: 0 15px 15px 0;
 }

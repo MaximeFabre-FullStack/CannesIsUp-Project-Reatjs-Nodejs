@@ -2,8 +2,9 @@
 const tableauAdmin = require("../models/adherent");
 
 const modifAdherent = (req, res, next) => {
+  console.log(req.body);
   tableauAdmin.findOneAndUpdate(
-    { _id: req.body.data._id },
+    { _id: req.body.id },
     {
       nomDeSociete: req.body.nom,
 
@@ -27,20 +28,11 @@ const modifAdherent = (req, res, next) => {
       secteurDactivite: req.body.activite,
       descriptionExhaustive: req.body.description,
 
-      logo: req.files.logo ? req.files.logo[0].filename : null,
-      photoCouverture: req.files.couv ? req.files.couv[0].filename : null,
-      dossierPresentation: req.files.dossier
-        ? req.files.dossier[0].filename
-        : null,
-
       dirigeant: {
         nom: req.body.nomDirigeant,
         prenom: req.body.prenomDirigeant,
         paroleDeMembre: req.body.parole,
         fonction: req.body.fonction,
-        photoPortrait: req.files.photoPortrait
-          ? req.files.photoPortrait[0].filename
-          : null,
       },
     },
     (err, data) => {

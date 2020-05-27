@@ -1,5 +1,7 @@
 // REQ DE MODIF D'ADHERENT /!\ A FINIR ROUTES / AJOUT ENVOIE MAIL ADMIN/ADHERENT / FRONT
 const tableauAdmin = require("../models/adherent");
+const fs = require("fs");
+const path = require("path");
 
 const modifAdherent = {
   // Modification des textes

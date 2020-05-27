@@ -23,22 +23,6 @@ body {
   margin: 0 20%;
 }
 
-.samePasswordOn {
-  color: green;
-}
-
-.samePasswordOff {
-  display: none;
-}
-
-.differentPasswordOn {
-  color: red;
-}
-
-.differentPasswordOff {
-  display: none;
-}
-
 .incorrectPasswordOn {
   color: red;
   margin-top: 0;
@@ -57,16 +41,13 @@ body {
   display: none;
 }
 
-.paiement {
+.champsNonValide {
+  margin-top: 0;
   margin-bottom: 0;
   color: red;
 }
 
-.paiementOk {
-  display: none;
-}
-
-.champsNonValide {
+.champsValide {
   margin-top: 0;
-  color: red;
+  color: green;
 }

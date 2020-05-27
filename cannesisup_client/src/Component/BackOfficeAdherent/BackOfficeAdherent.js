@@ -14,7 +14,7 @@ class BackOfficeAdherent extends Component {
     this.state = {
       dataAdherent: {
         coordonnes: {},
-        dirigeant: { nom: " ", prenom: " " },
+        dirigeant: { prenom: " ", nom: " " },
         reseauSociaux: {},
       },
       selectedFile: null,
@@ -45,7 +45,9 @@ class BackOfficeAdherent extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
+          console.log(data);
           this.setState({ dataAdherent: data });
+          console.log(this.state);
         },
         (error) => {
           console.log(error);
@@ -53,7 +55,7 @@ class BackOfficeAdherent extends Component {
       );
   }
 
-  /* Envoi du nouveau fichier*/
+  // Envoi du nouveau fichier
   fileSelectedHandler = (event) => {
     const formData = new FormData();
     formData.append(
@@ -66,7 +68,8 @@ class BackOfficeAdherent extends Component {
     axios({
       method: "put",
       url:
-        "http://localhost:8080/adherents/updateFile/" +
+        url["url-server"] +
+        "adherents/updateFile/" +
         this.props.match.params.id,
       data: formData,
     }).then((res) => {
@@ -121,7 +124,7 @@ class BackOfficeAdherent extends Component {
       .then(
         (data) => {
           console.log(data);
-          this.setState({ dataAdherent: data });
+          this.setState({ dataAdherent: data.data });
         },
         (error) => {
           console.log(error);
@@ -140,6 +143,9 @@ class BackOfficeAdherent extends Component {
               {this.state.dataAdherent.dirigeant.prenom}{" "}
               {this.state.dataAdherent.dirigeant.nom} !
             </h3>
+            <button className="btn-default" onClick={this.onClickEdit}>
+              Modifier
+            </button>
             <button className="btn-default" onClick={this.onSaveUpdate}>
               Valider les modifications
             </button>
@@ -233,10 +239,30 @@ class BackOfficeAdherent extends Component {
                     ) : (
                       ""
                     )}
+                    {this.state.isEditing ? (
+                      ""
+                    ) : (
+                      <p
+                        className="justify editable"
+                        onClick={this.onClickEdit}
+                      >
+                        {this.state.dataAdherent.descriptionExhaustive}
+                      </p>
+                    )}
 
-                    <p className="justify editable">
-                      {this.state.dataAdherent.descriptionExhaustive}
-                    </p>
+                    {this.state.isEditing ? (
+                      <span>
+                        <input
+                          value={this.state.dataAdherent.descriptionExhaustive}
+                          type="text"
+                          name="descriptionExhaustive"
+                          onChange={this.handleChange}
+                        />
+                        <button onClick={this.onClickEdit}>Save</button>
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </ListGroup.Item>
 
                   {/* Secteur d'activité */}

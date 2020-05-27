@@ -258,25 +258,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.dirigeant.prenom}
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.dirigeant.prenom}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -314,25 +297,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.dirigeant.nom}
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.dirigeant.nom}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -370,26 +336,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.dirigeant.fonction}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.dirigeant.fonction}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -448,26 +396,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.nomDeSociete}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.nomDeSociete}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -503,26 +433,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.descriptionExhaustive}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.descriptionExhaustive}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -558,26 +470,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.secteurDactivite}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.secteurDactivite}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -637,26 +531,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.coordonnes.adresse}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.coordonnes.adresse}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -694,26 +570,11 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.coordonnes.complementDadresse}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {
+                            this.state.dataAdherent.coordonnes
+                              .complementDadresse
+                          }
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -752,26 +613,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.coordonnes.ville}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.coordonnes.ville}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -809,26 +652,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.coordonnes.codePostal}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.coordonnes.codePostal}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -885,26 +710,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.coordonnes.telephone}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.coordonnes.telephone}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -942,26 +749,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.coordonnes.mailSociete}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.coordonnes.mailSociete}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -999,26 +788,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.coordonnes.siteWeb}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.coordonnes.siteWeb}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -1080,26 +851,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.reseauSociaux.facebook}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.reseauSociaux.facebook}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -1135,26 +888,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.reseauSociaux.instagram}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.reseauSociaux.instagram}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -1191,26 +926,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.reseauSociaux.linkedin}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.reseauSociaux.linkedin}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>
@@ -1246,26 +963,8 @@ class AdminModifAdherent extends Component {
                         variant="link"
                         eventKey="0"
                       >
-                        {this.state.dataAdherent.reseauSociaux.twitter}
-
-                        <div className="crayon">
-                          <svg
-                            className="bi bi-pencil"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"
-                            />
-                            <path
-                              fillRule="evenodd"
-                              d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"
-                            />
-                          </svg>
+                        <div className="editable">
+                          {this.state.dataAdherent.reseauSociaux.twitter}
                         </div>
                       </Accordion.Toggle>
                     </Card.Header>

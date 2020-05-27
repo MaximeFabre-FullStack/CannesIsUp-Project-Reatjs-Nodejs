@@ -136,8 +136,17 @@ h1:after {
   margin-right: 10% !important;
 }
 
-.crayon {
-  margin-left: 20px;
+.editable::after {
+  display: block;
+  float: right;
+  content: " ";
+  background-image: url("/assets/img/pencil.svg");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 22px;
+  width: 22px;
+  margin-left: 10px;
 }
 
 .modalButtonAdmin {

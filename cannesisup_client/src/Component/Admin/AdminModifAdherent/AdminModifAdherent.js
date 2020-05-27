@@ -55,32 +55,6 @@ class AdminModifAdherent extends Component {
       .then(
         (data) => {
           this.setState({ dataAdherent: data });
-          console.log(data);
-          this.setState({
-            email: data ? data.mailPrive : "",
-            nom: data ? data.nomDeSociete : "",
-            adresse: data ? data.coordonnes.adresse : "",
-            adresse2: data ? data.coordonnes.complementDadresse : "",
-            code_postal: data ? data.coordonnes.codePostal : "",
-            ville: data ? data.coordonnes.ville : "",
-            tel: data ? data.coordonnes.telephone : "",
-            email_public: data ? data.coordonnes.mailSociete : "",
-            site: data ? data.coordonnes.siteWeb : "",
-            facebook: data ? data.reseauSociaux.facebook : "",
-            instagram: data ? data.reseauSociaux.instagram : "",
-            linkedin: data ? data.reseauSociaux.linkedin : "",
-            twitter: data ? data.reseauSociaux.twitter : "",
-            activite: data ? data.secteurDactivite : "",
-            description: data ? data.descriptionExhaustive : "",
-            logo: data ? data.logo : "",
-            couv: data ? data.photoCouverture : "",
-            dossier: data ? data.dossierPresentation : "",
-            nomDirigeant: data ? data.dirigeant.nom : "",
-            prenomDirigeant: data ? data.dirigeant.prenom : "",
-            parole: data ? data.dirigeant.paroleDeMembre : "",
-            fonction: data ? data.dirigeant.fonction : "",
-            photoPortrait: data ? data.photoPortrait : "",
-          });
         },
         (error) => {
           console.log(error);

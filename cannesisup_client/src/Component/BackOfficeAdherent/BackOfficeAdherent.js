@@ -205,6 +205,56 @@ class BackOfficeAdherent extends Component {
     );
   };
 
+  checkPicture = () => {
+    if (this.state.dataAdherent.dirigeant.photoPortrait == "photoportrait") {
+      return (
+        <Card.Img
+          className="editable-img"
+          src="/assets/img/avatar.png"
+          onClick={this.updatePhotoPortrait}
+        />
+      );
+    } else {
+      return (
+        <Card.Img
+          className="editable-img"
+          src={
+            url["url-server"] +
+            "/uploads/" +
+            this.state.dataAdherent.dirigeant.photoPortrait
+          }
+          onClick={this.updatePhotoPortrait}
+        />
+      );
+    }
+  };
+
+  checkCouv = () => {
+    if (this.state.dataAdherent.photoCouverture == "photocouv") {
+      return (
+        <Card.Img
+          className="couverture editable-img"
+          variant="top"
+          src="/assets/img/fond_equipe.png"
+          onClick={this.updatePhotoCouv}
+        />
+      );
+    } else {
+      return (
+        <Card.Img
+          className="couverture editable-img"
+          variant="top"
+          src={
+            url["url-server"] +
+            "/uploads/" +
+            this.state.dataAdherent.photoCouverture
+          }
+          onClick={this.updatePhotoCouv}
+        />
+      );
+    }
+  };
+
   render() {
     return (
       <div className="maindiv">
@@ -227,16 +277,7 @@ class BackOfficeAdherent extends Component {
             {/* Fiche gauche */}
             <Card className="fichegauche">
               {/* Image couverture */}
-              <Card.Img
-                className="couverture editable-img"
-                variant="top"
-                src={
-                  url["url-server"] +
-                  "/uploads/" +
-                  this.state.dataAdherent.photoCouverture
-                }
-                onClick={this.updatePhotoCouv}
-              />
+              {this.checkCouv()}
               <input
                 onChange={this.fileSelectedHandler}
                 ref={this.inputPhotoCouv}
@@ -844,15 +885,7 @@ class BackOfficeAdherent extends Component {
             {/* Fiche droite */}
             <Card className="fichedroite">
               {/* Photo de profil */}
-              <Card.Img
-                className="editable-img"
-                src={
-                  url["url-server"] +
-                  "/uploads/" +
-                  this.state.dataAdherent.dirigeant.photoPortrait
-                }
-                onClick={this.updatePhotoPortrait}
-              />
+              {this.checkPicture()}
               <input
                 onChange={this.fileSelectedHandler}
                 ref={this.inputPhotoPortrait}

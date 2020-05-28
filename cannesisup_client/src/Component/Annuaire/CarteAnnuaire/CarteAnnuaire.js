@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../../../src/mainStyle.css";
 import "./CarteAnnuaire.css";
 import { Card, ListGroupItem, ListGroup } from "react-bootstrap";
+import url from "../../../url.json";
 
 import { Link } from "react-router-dom";
 
@@ -15,23 +16,59 @@ class CarteAnnuaire extends Component {
     return text.substr(0, 250);
   };
 
+  checkPicture = () => {
+    if (
+      this.props.photoProfil ==
+      url["url-server"] + "/uploads/photoportrait"
+    ) {
+      return (
+        <img
+          className="photoProfil"
+          src="/assets/img/avatar.png"
+          alt="no profil picture"
+        />
+      );
+    } else {
+      return (
+        <img
+          className="photoProfil"
+          src={this.props.photoProfil}
+          alt="profil"
+        />
+      );
+    }
+  };
+
+  checkCouv = () => {
+    if (this.props.couv == url["url-server"] + "/uploads/photocouv") {
+      return (
+        <Card.Img
+          className="couverture"
+          variant="top"
+          src="/assets/img/fond_equipe.png"
+          alt="couverture"
+        />
+      );
+    } else {
+      return (
+        <Card.Img
+          className="couverture"
+          variant="top"
+          src={this.props.couv}
+          alt="couverture"
+        />
+      );
+    }
+  };
+
   render() {
     return (
       <div>
         <Card className="carteAnnuaire">
           {/* Couverture */}
-          <Card.Img
-            className="couverture"
-            variant="top"
-            src={this.props.couv}
-            alt="couverture"
-          />
+          {this.checkCouv()}
           {/* Photo de profil  */}
-          <img
-            className="photoProfil"
-            src={this.props.photoProfil}
-            alt="profil"
-          />
+          {this.checkPicture()}
           {/* Logo entreprise */}
           <div className="logo-container">
             <img className="logoSociete" src={this.props.logo} alt="" />

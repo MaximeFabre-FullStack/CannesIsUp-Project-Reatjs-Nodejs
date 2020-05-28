@@ -4,6 +4,7 @@ import { Card, ListGroup } from "react-bootstrap";
 
 import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
+import url from "../../url.json";
 
 import "../../../src/mainStyle.css";
 import "./style.css";

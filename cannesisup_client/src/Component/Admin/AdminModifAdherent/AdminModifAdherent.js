@@ -129,7 +129,7 @@ class AdminModifAdherent extends Component {
         <Modal.Body>
           <p>
             {"La fiche de l'adherent " +
-              this.state.nom +
+              this.state.dataAdherent.nomDeSociete +
               " a bien été mise a jour, actualisez la page !"}
           </p>
         </Modal.Body>

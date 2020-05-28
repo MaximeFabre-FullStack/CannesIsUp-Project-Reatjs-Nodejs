@@ -43,4 +43,6 @@ h1:after {
 .bouttonAdmin {
   padding: 10px !important;
   width: auto !important;
+  margin-left: auto;
+  margin-right: auto;
 }

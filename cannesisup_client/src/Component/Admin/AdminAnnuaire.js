@@ -241,9 +241,9 @@ class AnnuaireAdmin extends Component {
         <Button
           variant="secondary"
           onClick={() => this.passerStatusInactif(uid)}
-          className="boutonInactif bouttonAdmin"
+          className="bouttonAdmin"
         >
-          DESACTIVER
+          Desactiver
         </Button>
       );
     }
@@ -251,9 +251,9 @@ class AnnuaireAdmin extends Component {
       <Button
         variant="success"
         onClick={() => this.passerStatusActif(uid)}
-        className="boutonActif bouttonAdmin"
+        className=" bouttonAdmin"
       >
-        ACTIVER
+        Activer
       </Button>
     );
   };

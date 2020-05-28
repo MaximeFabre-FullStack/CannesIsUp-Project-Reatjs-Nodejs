@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { Navbar, Nav } from "react-bootstrap";
 import "./NavbarVisiteurs.css";
+import url from "../../../url.json";
 
 class NavbarVisiteurs extends Component {
   render() {
@@ -15,10 +16,7 @@ class NavbarVisiteurs extends Component {
             <Nav.Link href="https://cannesisup.com/#home" className="links">
               ACCUEIL
             </Nav.Link>
-            <Nav.Link
-              href="https://cannesisup.com/contact.php"
-              className="links"
-            >
+            <Nav.Link href={url["url-client"] + "/signup"} className="links">
               DEVENEZ ADHERENT
             </Nav.Link>
             <Nav.Link href="https://cannesisup.com/#dda" className="links">

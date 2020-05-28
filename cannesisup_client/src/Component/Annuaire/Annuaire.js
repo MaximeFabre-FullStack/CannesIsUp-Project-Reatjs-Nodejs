@@ -9,8 +9,9 @@ import "./Annuaire.css";
 import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
 import Footer from "../Footer/Footer";
 import { affichageNavbar } from "../affichageNavbar";
+import url from "../../url.json";
 
-import InfiniteScroll from "react-infinite-scroll-component";
+// import InfiniteScroll from "react-infinite-scroll-component";
 
 class Annuaire extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class Annuaire extends Component {
       mode: "cors",
     };
 
-    fetch("http://localhost:8080/visiteurs", options)
+    fetch(url["url-server"] + "/visiteurs", options)
       .then((response) => response.json())
       .then(
         (data) => {
@@ -61,20 +62,12 @@ class Annuaire extends Component {
     await this.setState({ recherche: e.target.value });
   };
 
-  fetchMoreData = () => {
-    setTimeout(() => {
-      this.setState({
-        BDDdata: this.state.BDDdata.concat(this.state.BDDdata),
-      });
-    }, 900);
-  };
-
   render() {
     var adherentFiltred;
 
     const affichageAnnuaire = () => {
       if (this.state.recherche === "") {
-        return this.state.BDDdata[(0, 1, 2)].map((element, index) => (
+        return this.state.BDDdata.map((element, index) => (
           <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
             <CarteAnnuaire
               id={element._id}
@@ -84,11 +77,12 @@ class Annuaire extends Component {
               prenom={element.dirigeant.prenom}
               nom={element.dirigeant.nom}
               photoProfil={
-                "http://localhost:8080/uploads/" +
+                url["url-server"] +
+                "/uploads/" +
                 element.dirigeant.photoPortrait
               }
-              couv={"http://localhost:8080/uploads/" + element.photoCouverture}
-              logo={"http://localhost:8080/uploads/" + element.logo}
+              couv={url["url-server"] + "/uploads/" + element.photoCouverture}
+              logo={url["url-server"] + "/uploads/" + element.logo}
             />
           </Col>
         ));
@@ -117,10 +111,10 @@ class Annuaire extends Component {
               prenom={element.prenom}
               nom={element.nom}
               photoProfil={
-                "http://localhost:8080/uploads/" + element.photoPortrait
+                url["url-server"] + "/uploads/" + element.photoPortrait
               }
-              couv={"http://localhost:8080/uploads/" + element.photoCouverture}
-              logo={"http://localhost:8080/uploads/" + element.logo}
+              couv={url["url-server"] + "/uploads/" + element.photoCouverture}
+              logo={url["url-server"] + "/uploads/" + element.logo}
             />
           </Col>
         ));
@@ -148,16 +142,9 @@ class Annuaire extends Component {
           </p>
         </div>
         <div className="annuaireContainer">
-          <InfiniteScroll
-            dataLength={this.state.BDDdata.length}
-            next={this.fetchMoreData}
-            hasMore={true}
-            loader={<h4>Loading...</h4>}
-          >
-            <Container>
-              <Row>{affichageAnnuaire()}</Row>
-            </Container>
-          </InfiniteScroll>
+          <Container>
+            <Row>{affichageAnnuaire()}</Row>
+          </Container>
         </div>
         <footer>
           <Footer />

@@ -8,7 +8,8 @@ import Footer from "../Footer/Footer";
 import "../../../src/mainStyle.css";
 import "./style.css";
 import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
+import url from "../../url.json";
 
 class SignUp extends Component {
   constructor(props) {
@@ -89,7 +90,7 @@ class SignUp extends Component {
 
       axios({
         method: "post",
-        url: "http://localhost:8080/adherents",
+        url: url["url-server"] + "/adherents",
         data: formData,
       }).then(
         (res) => {
@@ -576,7 +577,7 @@ class SignUp extends Component {
                 type="checkbox"
                 name="checkRgpd"
                 onClick={this.handle_check}
-                label="RGPD"
+                label={<Link to="/rgpd"> Charte RGPD </Link>}
                 required
               />
             </div>

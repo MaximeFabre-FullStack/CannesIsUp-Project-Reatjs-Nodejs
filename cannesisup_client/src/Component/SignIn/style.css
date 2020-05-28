@@ -19,6 +19,34 @@
   border-color: white;
 }
 
+.modalButton:active {
+  color: #fff !important;
+  background-color: #f7316b !important;
+  border-color: white !important;
+}
+
+.modalButton:focus {
+  color: #fff !important;
+  background-color: #f7316b !important;
+  border-color: white !important;
+}
+
 .modal-body {
   text-align: center;
+}
+
+.footerSignin {
+  margin-bottom: -10px;
+}
+
+:not(.footerSignin) {
+  box-sizing: content-box;
+}
+
+.inputSigninMail,
+.inputSigninMdp {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+  width: 95%;
 }

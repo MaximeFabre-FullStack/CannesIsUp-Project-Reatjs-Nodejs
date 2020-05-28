@@ -54,9 +54,7 @@ class BackOfficeAdherent extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          console.log(data);
           this.setState({ dataAdherent: data });
-          console.log(this.state);
         },
         (error) => {
           console.log(error);
@@ -104,7 +102,6 @@ class BackOfficeAdherent extends Component {
 
   // Modification des infos texte
   handleChangeModifications = async (e) => {
-    // await this.setState({ [e.target.name]: e.target.value });
     await this.setState({
       dataAdherent: {
         ...this.state.dataAdherent,

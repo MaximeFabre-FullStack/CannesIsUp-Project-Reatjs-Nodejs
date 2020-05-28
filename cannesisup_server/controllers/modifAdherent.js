@@ -57,7 +57,7 @@ const modifAdherent = {
       /* requete changement photo de couverture */
       if (req.files.couv) {
         /* Suppression de l'ancien fichier */
-        if (adherent.photoCouverture) {
+        if (adherent.photoCouverture != "photocouv") {
           const filepath =
             path.join(__dirname, "../public/uploads/") +
             adherent.photoCouverture;
@@ -81,7 +81,7 @@ const modifAdherent = {
       /* requete changement logo */
       if (req.files.logo) {
         /* Suppression de l'ancien fichier */
-        if (adherent.logo) {
+        if (adherent.logo != "logo") {
           const filepath =
             path.join(__dirname, "../public/uploads/") + adherent.logo;
 
@@ -104,7 +104,7 @@ const modifAdherent = {
       /* requete changement photo de profil */
       if (req.files.photoPortrait) {
         /* Suppression de l'ancien fichier */
-        if (adherent.dirigeant.photoPortrait) {
+        if (adherent.dirigeant.photoPortrait != "photoportrait") {
           const filepath =
             path.join(__dirname, "../public/uploads/") +
             adherent.dirigeant.photoPortrait;
@@ -128,7 +128,7 @@ const modifAdherent = {
       /* requete changement dossier présentation */
       if (req.files.dossier) {
         /* Suppression de l'ancien fichier */
-        if (adherent.dossierPresentation) {
+        if (adherent.dossierPresentation != "pdf") {
           const filepath =
             path.join(__dirname, "../public/uploads/") +
             adherent.dossierPresentation;

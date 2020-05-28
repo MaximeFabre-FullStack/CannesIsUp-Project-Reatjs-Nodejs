@@ -672,8 +672,7 @@ class BackOfficeAdherent extends Component {
                                     className="accordion-input"
                                     plaintext
                                     defaultValue={
-                                      this.state.dataAdherent.coordonnes
-                                        .mailSociete
+                                      this.state.dataAdherent.coordonnes.siteWeb
                                     }
                                   />
                                 </Col>

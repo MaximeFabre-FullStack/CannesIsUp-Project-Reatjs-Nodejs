@@ -19,6 +19,7 @@ import BackOfficeAdherent from "../BackOfficeAdherent/BackOfficeAdherent";
 import SubmitMessage from "../SignUp/SubmitMessage/SubmitMessage";
 import ForgotPassword from "../SignIn/ForgotPassword/ForgotPassword";
 import NewPassword from "../SignIn/NewPassword/NewPassword";
+import RGPD from "../RGPD/RGPD";
 
 class App extends Component {
   render() {
@@ -68,6 +69,8 @@ class App extends Component {
           <Route exact path="/passwordreset" component={ForgotPassword} />
 
           <Route exact path="/newpassword/:email" component={NewPassword} />
+
+          <Route exact path="/rgpd" component={RGPD} />
         </Switch>
       </Router>
     );

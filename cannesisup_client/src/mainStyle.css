@@ -22,6 +22,10 @@ body {
 
 /* Style des textes */
 
+.fw900 {
+  font-weight: 900;
+}
+
 .fs14 {
   font-size: 14px;
 }

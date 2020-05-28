@@ -14,7 +14,7 @@ const AdherentSupprime = (req, res, next) => {
       return;
     }
 
-    if (data.photoCouverture) {
+    if (data.photoCouverture != "photocouv") {
       const filepath =
         path.join(__dirname, "../public/uploads/") + data.photoCouverture;
 
@@ -24,7 +24,7 @@ const AdherentSupprime = (req, res, next) => {
       });
     }
 
-    if (data.dossierPresentation) {
+    if (data.dossierPresentation != "pdf") {
       const filepath =
         path.join(__dirname, "../public/uploads/") + data.dossierPresentation;
 
@@ -34,7 +34,7 @@ const AdherentSupprime = (req, res, next) => {
       });
     }
 
-    if (data.dirigeant.photoPortrait) {
+    if (data.dirigeant.photoPortrait != "photoportrait") {
       const filepath =
         path.join(__dirname, "../public/uploads/") +
         data.dirigeant.photoPortrait;
@@ -45,7 +45,7 @@ const AdherentSupprime = (req, res, next) => {
       });
     }
 
-    if (data.logo) {
+    if (data.logo != "logo") {
       const filepath = path.join(__dirname, "../public/uploads/") + data.logo;
 
       fs.unlink(filepath, (err) => {

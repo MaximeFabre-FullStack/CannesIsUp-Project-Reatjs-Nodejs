@@ -133,6 +133,7 @@ class SignIn extends Component {
                   type="text"
                   placeholder="exemple@ex.com"
                   value={this.state.emailSignIn}
+                  className="inputSigninMail"
                 />
                 <Form.Text className="text-muted">
                   Adresse email que vous utilisez pour accéder à votre espace
@@ -147,6 +148,7 @@ class SignIn extends Component {
                   type="password"
                   placeholder="Votre mot de passe"
                   value={this.state.motDePasseSignIn}
+                  className="inputSigninMdp"
                 />
                 <Link to="/passwordreset">
                   <h4>Mot de passe oublié?</h4>
@@ -156,9 +158,9 @@ class SignIn extends Component {
               <button className="btn-default">Connexion</button>
             </Form>
           </div>
-          <footer className="footerS">
-            <Footer />
-          </footer>
+        </div>
+        <div className="footerSignin">
+          <Footer />
         </div>
       </div>
     );

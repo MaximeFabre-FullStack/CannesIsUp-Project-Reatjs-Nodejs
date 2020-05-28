@@ -13,14 +13,8 @@
   font-size: 50px;
 }
 
-.bar {
-  padding: 50px;
-}
-
-.piechart {
-  padding: 50px;
-}
-
+.bar,
+.piechart,
 .linegraph {
   padding: 50px;
 }

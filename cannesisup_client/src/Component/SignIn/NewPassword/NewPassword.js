@@ -4,6 +4,7 @@ import url from "../../../url.json";
 import { withRouter } from "react-router-dom";
 
 import "../../../../src/mainStyle.css";
+import "./NewPassword.css";
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -97,7 +98,7 @@ class ForgotPassword extends Component {
         </div>
         <div className="message-container cadre">
           <h4> Merci de saisir votre nouveau mot de passe</h4>
-          <div className="form-container">
+          <div className="form-container containerPassword">
             <Form onSubmit={this.submitForm}>
               <Form.Group>
                 <Form.Label>Mot de passe</Form.Label>
@@ -107,6 +108,7 @@ class ForgotPassword extends Component {
                   type="password"
                   value={this.state.password}
                   required
+                  className="password"
                 />
                 <p className={this.state.incorrectPassword}>
                   Veuillez tapez un mot de passe.
@@ -126,6 +128,7 @@ class ForgotPassword extends Component {
                   type="password"
                   value={this.state.passwordConfirm}
                   required
+                  className="passwordConfirm"
                 />
                 <p className={this.state.samePassword}>
                   Mots de passe identiques

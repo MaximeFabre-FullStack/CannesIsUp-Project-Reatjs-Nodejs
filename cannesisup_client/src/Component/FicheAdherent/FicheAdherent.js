@@ -4,6 +4,7 @@ import { Card, ListGroup } from "react-bootstrap";
 
 import NavbarVisiteurs from "../Navbar/NavbarVisiteurs/NavbarVisiteurs";
 import Footer from "../Footer/Footer";
+import url from "../../url.json";
 
 import "../../../src/mainStyle.css";
 import "./style.css";
@@ -18,6 +19,8 @@ class FicheAdherent extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const body = {
       id: this.props.match.params.id,
     };
@@ -32,7 +35,7 @@ class FicheAdherent extends Component {
     };
 
     /* Requête */
-    fetch("http://localhost:8080/visiteurs/adherent", options)
+    fetch(url["url-server"] + "/visiteurs/adherent", options)
       .then((response) => response.json())
       .then(
         (data) => {
@@ -44,9 +47,44 @@ class FicheAdherent extends Component {
       );
   }
 
-  affichageElement = (element) => {
-    if (element) {
-      return;
+  checkPicture = () => {
+    if (this.state.dataAdherent.dirigeant.photoPortrait == "photoportrait") {
+      return <Card.Img src="/assets/img/avatar.png" />;
+    } else {
+      return (
+        <Card.Img
+          src={
+            url["url-server"] +
+            "/uploads/" +
+            this.state.dataAdherent.dirigeant.photoPortrait
+          }
+        />
+      );
+    }
+  };
+
+  checkCouv = () => {
+    if (this.state.dataAdherent.photoCouverture == "photocouv") {
+      return (
+        <Card.Img
+          className="couverture"
+          variant="top"
+          src="/assets/img/fond_equipe.png"
+          alt="couverture"
+        />
+      );
+    } else {
+      return (
+        <Card.Img
+          className="couverture"
+          variant="top"
+          src={
+            url["url-server"] +
+            "/uploads/" +
+            this.state.dataAdherent.photoCouverture
+          }
+        />
+      );
     }
   };
 
@@ -58,14 +96,7 @@ class FicheAdherent extends Component {
           {/* Fiche gauche */}
           <Card className="fichegauche">
             {/* Image couverture */}
-            <Card.Img
-              className="couverture"
-              variant="top"
-              src={
-                "http://localhost:8080/uploads/" +
-                this.state.dataAdherent.photoCouverture
-              }
-            />
+            {this.checkCouv()}
 
             {/* Logo + liens PDF */}
             <Card.Body className="top-link">
@@ -127,7 +158,17 @@ class FicheAdherent extends Component {
                   <p>
                     <span style={{ fontWeight: 700 }}>Adresse: </span>
                     {this.state.dataAdherent.coordonnes.adresse
-                      ? this.state.dataAdherent.coordonnes.adresse
+                      ? this.state.dataAdherent.coordonnes.adresse + ", "
+                      : " "}
+                    {this.state.dataAdherent.coordonnes.complementDadresse
+                      ? this.state.dataAdherent.coordonnes.complementDadresse +
+                        ", "
+                      : " "}
+                    {this.state.dataAdherent.coordonnes.codePostal
+                      ? this.state.dataAdherent.coordonnes.codePostal + " "
+                      : " "}
+                    {this.state.dataAdherent.coordonnes.ville
+                      ? this.state.dataAdherent.coordonnes.ville + " "
                       : " "}
                   </p>
                   <p>
@@ -222,12 +263,7 @@ class FicheAdherent extends Component {
           {/* Fiche droite */}
           <Card className="fichedroite">
             {/* Photo de profil */}
-            <Card.Img
-              src={
-                "http://localhost:8080/uploads/" +
-                this.state.dataAdherent.dirigeant.photoPortrait
-              }
-            ></Card.Img>
+            {this.checkPicture()}
             {/* Identité dirigeant */}
             <Card.Body className="dirigeant">
               <h3 style={{ padding: 0 }}> Dirigeant </h3>

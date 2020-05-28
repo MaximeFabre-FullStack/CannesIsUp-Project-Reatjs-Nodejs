@@ -5,7 +5,7 @@ const creationAdherent = require("../controllers/creationAdherent");
 const upload = require("../middleware/uploadConfig");
 const signIn = require("../controllers/signIn");
 const confirmationEmail = require("../controllers/confirmationEmail");
-const updateAdherent = require("../controllers/updateAdherent");
+const modifAdherent = require("../controllers/modifAdherent");
 const password = require("../controllers/password");
 
 // POST /adherents - Envoi du formulaire et du mail de confirmation
@@ -24,7 +24,10 @@ router.get(
 router.post("/signin/resend", confirmationEmail.resend);
 
 // PUT /adherents/updateFile/:id - Modification file dans BDD
-router.put("/updateFile/:id", upload, updateAdherent);
+router.put("/updateFile/:id", upload, modifAdherent.file);
+
+// PUT /adherents/updateInput - Modification file dans BDD
+router.put("/updateInput", modifAdherent.input);
 
 // POST /adherents/resetpassword - Renvoi du mail d'oubli de mot de passe
 router.post("/passwordreset", password.reset);

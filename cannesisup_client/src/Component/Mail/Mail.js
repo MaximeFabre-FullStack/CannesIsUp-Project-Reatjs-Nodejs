@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from "react";
+import url from "../../url.json";
 import "../../../src/mainStyle.css";
 
 class Mail extends Component {
@@ -22,7 +23,7 @@ class Mail extends Component {
           </p>
           <h4>A bientôt !</h4>
           <br />
-          <a href="https://cannesisup.com/">Retour au site</a>
+          <a href={url["url-client"] + "/signin"}>Retour au site</a>
         </div>
       </div>
     );

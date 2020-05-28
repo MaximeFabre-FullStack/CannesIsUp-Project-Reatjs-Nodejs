@@ -104,14 +104,13 @@
 
 .editable:hover {
   cursor: pointer;
-  background-color: rgb(218, 218, 218);
 }
 
 .editable::after {
   display: block;
   float: right;
   content: " ";
-  background-image: url("/assets/img/pen-solid.svg");
+  background-image: url("/assets/img/pencil.svg");
   background-size: 15px 15px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -127,4 +126,68 @@
 .editable-img:hover {
   opacity: 70%;
   cursor: pointer;
+}
+
+.button-container {
+  padding: 0 30px 10px;
+}
+
+.accordeon-btn {
+  padding: 0;
+  display: inline-flex;
+  width: auto;
+  margin: auto;
+}
+
+.accordeon-header {
+  padding: 0;
+  background-color: #ffffff00;
+  border-bottom: 0;
+}
+
+.accordeon-card {
+  border: none;
+}
+
+.accordion-input {
+  border: 1px solid rgb(175, 173, 173);
+  border-radius: 0.25rem;
+  padding: 2px;
+}
+
+.reseau-container {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+#facebook,
+#twitter,
+#linkedin,
+#instagram {
+  width: 24px;
+  margin: 0 15px 15px 0;
+}
+
+.modalButtonAdmin {
+  background-color: #f7316b;
+  border-color: white;
+}
+
+.modalButtonAdmin:hover {
+  color: #fff;
+  background-color: #f7316b;
+  border-color: white;
+}
+
+.modalButtonAdmin:active {
+  color: #fff;
+  background-color: #f7316b;
+  border-color: white;
+}
+
+.modalButtonAdmin:focus {
+  color: #fff;
+  background-color: #f7316b;
+  border-color: white;
 }

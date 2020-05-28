@@ -8,12 +8,6 @@
   margin: 0 20%;
 }
 
-.footerS {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
-
 .modalButton {
   background-color: #f7316b;
   border-color: white;
@@ -25,6 +19,23 @@
   border-color: white;
 }
 
+.modalButton:active {
+  color: #fff !important;
+  background-color: #f7316b !important;
+  border-color: white !important;
+}
+
+.modalButton:focus {
+  color: #fff !important;
+  background-color: #f7316b !important;
+  border-color: white !important;
+}
+
 .modal-body {
   text-align: center;
+}
+
+.footerSignin {
+  margin-bottom: -10px;
+  box-sizing: content-box;
 }

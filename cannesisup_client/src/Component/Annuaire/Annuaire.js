@@ -9,8 +9,9 @@ import "./Annuaire.css";
 import CarteAnnuaire from "./CarteAnnuaire/CarteAnnuaire";
 import Footer from "../Footer/Footer";
 import { affichageNavbar } from "../affichageNavbar";
+import url from "../../url.json";
 
-import InfiniteScroll from "react-infinite-scroll-component";
+// import InfiniteScroll from "react-infinite-scroll-component";
 
 class Annuaire extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class Annuaire extends Component {
       mode: "cors",
     };
 
-    fetch("http://localhost:8080/visiteurs", options)
+    fetch(url["url-server"] + "/visiteurs", options)
       .then((response) => response.json())
       .then(
         (data) => {
@@ -61,70 +62,65 @@ class Annuaire extends Component {
     await this.setState({ recherche: e.target.value });
   };
 
-  affichageAnnuaire = () => {
-    if (this.state.recherche === "") {
-      return this.state.BDDdata.map((element, index) => (
-        <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
-          <CarteAnnuaire
-            id={element._id}
-            nomDeSociete={element.nomDeSociete}
-            descriptionExhaustive={element.descriptionExhaustive}
-            secteurDactivite={element.secteurDactivite}
-            prenom={element.dirigeant.prenom}
-            nom={element.dirigeant.nom}
-            photoProfil={
-              "http://localhost:8080/uploads/" + element.dirigeant.photoPortrait
-            }
-            couv={"http://localhost:8080/uploads/" + element.photoCouverture}
-            logo={"http://localhost:8080/uploads/" + element.logo}
-          />
-        </Col>
-      ));
-    } else {
-      let adherentFiltred = this.state.dataFlattened.filter((membre) => {
-        for (let property in membre) {
-          if (
-            String(membre[property]).match(
-              new RegExp(this.state.recherche, "i")
-            ) &&
-            property !== "_id"
-          ) {
-            return true;
-          }
-        }
-        return false;
-      });
-
-      return adherentFiltred.map((element, index) => (
-        <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
-          <CarteAnnuaire
-            id={element._id}
-            nomDeSociete={element.nomDeSociete}
-            descriptionExhaustive={element.descriptionExhaustive}
-            secteurDactivite={element.secteurDactivite}
-            prenom={element.prenom}
-            nom={element.nom}
-            photoProfil={
-              "http://localhost:8080/uploads/" + element.photoPortrait
-            }
-            couv={"http://localhost:8080/uploads/" + element.photoCouverture}
-            logo={"http://localhost:8080/uploads/" + element.logo}
-          />
-        </Col>
-      ));
-    }
-  };
-
-  /*fetchMoreData = () => {
-  
-    setTimeout(() => {
-      this.setState({
-        BDDdata: this.state.BDDdata.concat(Array.from({ length: 9 })),
-      });
-    }, 1000);
-  };*/
-
   render() {
+    var adherentFiltred;
+
+    const affichageAnnuaire = () => {
+      if (this.state.recherche === "") {
+        return this.state.BDDdata.map((element, index) => (
+          <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
+            <CarteAnnuaire
+              id={element._id}
+              nomDeSociete={element.nomDeSociete}
+              descriptionExhaustive={element.descriptionExhaustive}
+              secteurDactivite={element.secteurDactivite}
+              prenom={element.dirigeant.prenom}
+              nom={element.dirigeant.nom}
+              photoProfil={
+                url["url-server"] +
+                "/uploads/" +
+                element.dirigeant.photoPortrait
+              }
+              couv={url["url-server"] + "/uploads/" + element.photoCouverture}
+              logo={url["url-server"] + "/uploads/" + element.logo}
+            />
+          </Col>
+        ));
+      } else {
+        adherentFiltred = this.state.dataFlattened.filter((membre) => {
+          for (let property in membre) {
+            if (
+              String(membre[property]).match(
+                new RegExp(this.state.recherche, "i")
+              ) &&
+              property !== "_id"
+            ) {
+              return true;
+            }
+          }
+          return false;
+        });
+
+        return adherentFiltred.map((element, index) => (
+          <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
+            <CarteAnnuaire
+              id={element._id}
+              nomDeSociete={element.nomDeSociete}
+              descriptionExhaustive={element.descriptionExhaustive}
+              secteurDactivite={element.secteurDactivite}
+              prenom={element.prenom}
+              nom={element.nom}
+              photoProfil={
+                url["url-server"] + "/uploads/" + element.photoPortrait
+              }
+              couv={url["url-server"] + "/uploads/" + element.photoCouverture}
+              logo={url["url-server"] + "/uploads/" + element.logo}
+            />
+          </Col>
+        ));
+      }
+    };
+
     return (
       <div>
         {affichageNavbar()}
@@ -146,15 +142,9 @@ class Annuaire extends Component {
           </p>
         </div>
         <div className="annuaireContainer">
-          {/* <InfiniteScroll 
-          dataLength={this.state.items.length}
-          next={this.fetchMoreData}
-          hasMore={true}
-          loader={<h4>Loading...</h4>}>*/}
           <Container>
-            <Row>{this.affichageAnnuaire()}</Row>
+            <Row>{affichageAnnuaire()}</Row>
           </Container>
-          {/* </InfiniteScroll> */}
         </div>
         <footer>
           <Footer />

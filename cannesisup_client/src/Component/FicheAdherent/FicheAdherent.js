@@ -44,12 +44,6 @@ class FicheAdherent extends Component {
       );
   }
 
-  affichageElement = (element) => {
-    if (element) {
-      return;
-    }
-  };
-
   render() {
     return (
       <div className="maindiv">

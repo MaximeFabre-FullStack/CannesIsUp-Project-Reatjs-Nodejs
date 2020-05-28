@@ -66,7 +66,7 @@ class Annuaire extends Component {
     var adherentFiltred;
 
     const affichageAnnuaire = () => {
-      if (this.state.recherche === "") {
+      if (this.state.recherche === " ") {
         return this.state.BDDdata.map((element, index) => (
           <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
             <CarteAnnuaire

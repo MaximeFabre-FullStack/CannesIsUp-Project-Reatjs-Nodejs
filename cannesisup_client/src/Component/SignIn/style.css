@@ -37,16 +37,5 @@
 
 .footerSignin {
   margin-bottom: -10px;
-}
-
-:not(.footerSignin) {
   box-sizing: content-box;
-}
-
-.inputSigninMail,
-.inputSigninMdp {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 100%;
-  width: 95%;
 }

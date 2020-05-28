@@ -48,7 +48,8 @@ const modifAdherent = {
 
   // Modification de fichier
   file: (req, res, next) => {
-    Adherent.findOne({ _id: req.params.id }, (err, adherent) => {
+    console.log(req.body);
+    tableauAdmin.findOne({ _id: req.params.id }, (err, adherent) => {
       if (!adherent) {
         res.status(400).json({ msg: "no adherent in DDB" });
       }
@@ -68,10 +69,11 @@ const modifAdherent = {
         }
 
         /* Ajout nouveau fichier */
-        Adherent.findOneAndUpdate(
-          { _id: req.params.id },
-          { photoCouverture: req.files.couv[0].filename }
-        )
+        tableauAdmin
+          .findOneAndUpdate(
+            { _id: req.params.id },
+            { photoCouverture: req.files.couv[0].filename }
+          )
           .then(() => res.status(200).json({ message: "Objet modifié !" }))
           .catch((error) => res.status(400).json({ error }));
       }
@@ -90,10 +92,11 @@ const modifAdherent = {
         }
 
         /* Ajout nouveau fichier */
-        Adherent.findOneAndUpdate(
-          { _id: req.params.id },
-          { logo: req.files.logo[0].filename }
-        )
+        tableauAdmin
+          .findOneAndUpdate(
+            { _id: req.params.id },
+            { logo: req.files.logo[0].filename }
+          )
           .then(() => res.status(200).json({ message: "Objet modifié !" }))
           .catch((error) => res.status(400).json({ error }));
       }
@@ -113,10 +116,11 @@ const modifAdherent = {
         }
 
         /* Ajout nouveau fichier */
-        Adherent.findOneAndUpdate(
-          { _id: req.params.id },
-          { "dirigeant.photoPortrait": req.files.photoPortrait[0].filename }
-        )
+        tableauAdmin
+          .findOneAndUpdate(
+            { _id: req.params.id },
+            { "dirigeant.photoPortrait": req.files.photoPortrait[0].filename }
+          )
           .then(() => res.status(200).json({ message: "Objet modifié !" }))
           .catch((error) => res.status(400).json({ error }));
       }
@@ -136,10 +140,11 @@ const modifAdherent = {
         }
 
         /* Ajout nouveau fichier */
-        Adherent.findOneAndUpdate(
-          { _id: req.params.id },
-          { dossierPresentation: req.files.dossier[0].filename }
-        )
+        tableauAdmin
+          .findOneAndUpdate(
+            { _id: req.params.id },
+            { dossierPresentation: req.files.dossier[0].filename }
+          )
           .then(() => res.status(200).json({ message: "Objet modifié !" }))
           .catch((error) => res.status(400).json({ error }));
       }

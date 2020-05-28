@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Button, Table, Form } from "react-bootstrap";
 import "./AdminAnnuaire.css";
 import { Link } from "react-router-dom";
+import url from "../../url.json";
 
 import axios from "axios";
 import NavbarAdmin from "../Navbar/NavbarAdmin/NavbarAdmin";
@@ -190,12 +191,12 @@ class AnnuaireAdmin extends Component {
     const action = prompt(
       "Etes vous sur de vouloir supprimer cet adherent? oui / non"
     );
-    if (action !== "oui" || action !== "Oui") {
+    if (action !== "oui") {
       return;
     }
 
     axios
-      .delete("http://localhost:8080/admin/delete", { data: { _id: element } })
+      .delete(url["url-server"] + "/admin/delete", { data: { _id: element } })
       .then(
         (data) => {
           this.setState({ etat: +1 });

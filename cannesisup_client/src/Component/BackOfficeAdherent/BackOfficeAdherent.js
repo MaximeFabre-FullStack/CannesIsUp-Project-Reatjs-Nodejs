@@ -78,7 +78,7 @@ class BackOfficeAdherent extends Component {
       method: "put",
       url:
         url["url-server"] +
-        "adherents/updateFile/" +
+        "/adherents/updateFile/" +
         this.props.match.params.id,
       data: formData,
     }).then((res) => {

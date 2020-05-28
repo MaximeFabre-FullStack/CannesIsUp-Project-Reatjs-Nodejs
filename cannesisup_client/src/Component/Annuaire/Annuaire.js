@@ -62,65 +62,63 @@ class Annuaire extends Component {
     await this.setState({ recherche: e.target.value });
   };
 
-  render() {
+  affichageAnnuaire = () => {
     var adherentFiltred;
 
-    const affichageAnnuaire = () => {
-      if (this.state.recherche === " ") {
-        return this.state.BDDdata.map((element, index) => (
-          <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
-            <CarteAnnuaire
-              id={element._id}
-              nomDeSociete={element.nomDeSociete}
-              descriptionExhaustive={element.descriptionExhaustive}
-              secteurDactivite={element.secteurDactivite}
-              prenom={element.dirigeant.prenom}
-              nom={element.dirigeant.nom}
-              photoProfil={
-                url["url-server"] +
-                "/uploads/" +
-                element.dirigeant.photoPortrait
-              }
-              couv={url["url-server"] + "/uploads/" + element.photoCouverture}
-              logo={url["url-server"] + "/uploads/" + element.logo}
-            />
-          </Col>
-        ));
-      } else {
-        adherentFiltred = this.state.dataFlattened.filter((membre) => {
-          for (let property in membre) {
-            if (
-              String(membre[property]).match(
-                new RegExp(this.state.recherche, "i")
-              ) &&
-              property !== "_id"
-            ) {
-              return true;
+    if (this.state.recherche === " ") {
+      return this.state.BDDdata.map((element, index) => (
+        <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
+          <CarteAnnuaire
+            id={element._id}
+            nomDeSociete={element.nomDeSociete}
+            descriptionExhaustive={element.descriptionExhaustive}
+            secteurDactivite={element.secteurDactivite}
+            prenom={element.dirigeant.prenom}
+            nom={element.dirigeant.nom}
+            photoProfil={
+              url["url-server"] + "/uploads/" + element.dirigeant.photoPortrait
             }
+            couv={url["url-server"] + "/uploads/" + element.photoCouverture}
+            logo={url["url-server"] + "/uploads/" + element.logo}
+          />
+        </Col>
+      ));
+    } else {
+      adherentFiltred = this.state.dataFlattened.filter((membre) => {
+        for (let property in membre) {
+          if (
+            String(membre[property]).match(
+              new RegExp(this.state.recherche, "i")
+            ) &&
+            property !== "_id"
+          ) {
+            return true;
           }
-          return false;
-        });
+        }
+        return false;
+      });
 
-        return adherentFiltred.map((element, index) => (
-          <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
-            <CarteAnnuaire
-              id={element._id}
-              nomDeSociete={element.nomDeSociete}
-              descriptionExhaustive={element.descriptionExhaustive}
-              secteurDactivite={element.secteurDactivite}
-              prenom={element.prenom}
-              nom={element.nom}
-              photoProfil={
-                url["url-server"] + "/uploads/" + element.photoPortrait
-              }
-              couv={url["url-server"] + "/uploads/" + element.photoCouverture}
-              logo={url["url-server"] + "/uploads/" + element.logo}
-            />
-          </Col>
-        ));
-      }
-    };
+      return adherentFiltred.map((element, index) => (
+        <Col key={index} className="styleCol" xs={12} sm={6} md={4}>
+          <CarteAnnuaire
+            id={element._id}
+            nomDeSociete={element.nomDeSociete}
+            descriptionExhaustive={element.descriptionExhaustive}
+            secteurDactivite={element.secteurDactivite}
+            prenom={element.prenom}
+            nom={element.nom}
+            photoProfil={
+              url["url-server"] + "/uploads/" + element.photoPortrait
+            }
+            couv={url["url-server"] + "/uploads/" + element.photoCouverture}
+            logo={url["url-server"] + "/uploads/" + element.logo}
+          />
+        </Col>
+      ));
+    }
+  };
 
+  render() {
     return (
       <div>
         {affichageNavbar()}
@@ -143,7 +141,7 @@ class Annuaire extends Component {
         </div>
         <div className="annuaireContainer">
           <Container>
-            <Row>{affichageAnnuaire()}</Row>
+            <Row>{this.affichageAnnuaire()}</Row>
           </Container>
         </div>
         <footer>

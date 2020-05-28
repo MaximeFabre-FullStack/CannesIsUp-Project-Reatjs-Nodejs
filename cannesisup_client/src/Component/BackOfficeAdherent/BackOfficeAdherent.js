@@ -62,6 +62,33 @@ class BackOfficeAdherent extends Component {
       );
   }
 
+  reFetchData = () => {
+    const body = {
+      id: this.props.match.params.id,
+    };
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify(body),
+    };
+
+    /* Requête */
+    fetch(url["url-server"] + "/visiteurs/adherent", options)
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          this.setState({ dataAdherent: data });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
   // Envoi du nouveau fichier
   fileSelectedHandler = (event) => {
     const formData = new FormData();
@@ -166,6 +193,7 @@ class BackOfficeAdherent extends Component {
             modalShow: true,
             setModalShow: true,
           });
+          this.reFetchData();
         },
         (error) => {
           console.log(error);
@@ -190,7 +218,7 @@ class BackOfficeAdherent extends Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{"Votre fiche a bien été mise à jour, actualisez la page !"}</p>
+          <p>{"Votre fiche a bien été mise à jour !"}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button className="modalButtonAdmin" onClick={this.onHide}>
@@ -672,8 +700,7 @@ class BackOfficeAdherent extends Component {
                                     className="accordion-input"
                                     plaintext
                                     defaultValue={
-                                      this.state.dataAdherent.coordonnes
-                                        .mailSociete
+                                      this.state.dataAdherent.coordonnes.siteWeb
                                     }
                                   />
                                 </Col>

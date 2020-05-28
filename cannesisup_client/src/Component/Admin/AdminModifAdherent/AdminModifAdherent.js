@@ -62,6 +62,33 @@ class AdminModifAdherent extends Component {
       );
   }
 
+  reFetch = () => {
+    const body = {
+      id: this.props.match.params.id,
+    };
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify(body),
+    };
+
+    /* Requête */
+    fetch(url["url-server"] + "/visiteurs/adherent", options)
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          this.setState({ dataAdherent: data });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
   handleChangeModifications = async (e) => {
     // await this.setState({ [e.target.name]: e.target.value });
     await this.setState({
@@ -130,7 +157,7 @@ class AdminModifAdherent extends Component {
           <p>
             {"La fiche de l'adherent " +
               this.state.dataAdherent.nomDeSociete +
-              " a bien été mise a jour, actualisez la page !"}
+              " a bien été mise a jour !"}
           </p>
         </Modal.Body>
         <Modal.Footer>
@@ -201,6 +228,7 @@ class AdminModifAdherent extends Component {
             modalShow: true,
             setModalShow: true,
           });
+          this.reFetch();
         },
         (error) => {
           console.log(error);

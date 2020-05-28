@@ -19,6 +19,9 @@ class NavbarVisiteurs extends Component {
             <Nav.Link href={url["url-client"] + "/signup"} className="links">
               DEVENEZ ADHERENT
             </Nav.Link>
+            <Nav.Link href={url["url-client"] + "/annuaire"} className="links">
+              ANNUAIRE
+            </Nav.Link>
             <Nav.Link href="https://cannesisup.com/#dda" className="links">
               DDA Iles de Lerins
             </Nav.Link>

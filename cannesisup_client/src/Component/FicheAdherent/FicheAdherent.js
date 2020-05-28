@@ -137,7 +137,7 @@ class FicheAdherent extends Component {
                 {/* Nom + texte */}
                 <ListGroup.Item className="description">
                   <h4> {this.state.dataAdherent.nomDeSociete} </h4>
-                  <p className="paragraph">
+                  <p className="paragraphfiche">
                     {" "}
                     {this.state.dataAdherent.descriptionExhaustive}
                   </p>

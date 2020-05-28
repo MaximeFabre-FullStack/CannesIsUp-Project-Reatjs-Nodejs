@@ -18,6 +18,8 @@ class FicheAdherent extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const body = {
       id: this.props.match.params.id,
     };

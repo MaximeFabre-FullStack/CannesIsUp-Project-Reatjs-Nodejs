@@ -26,7 +26,8 @@ class BackOfficeAdherent extends Component {
         dirigeant: {},
         reseauSociaux: {},
       },
-      selectedFile: null,
+      modalShow: false,
+      setModalShow: false,
     };
     this.inputPhotoCouv = React.createRef();
     this.inputLogo = React.createRef();
@@ -164,13 +165,44 @@ class BackOfficeAdherent extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          console.log(data);
-          this.setState({ dataAdherent: data.data });
+          this.setState({
+            dataAdherent: data.data,
+            modalShow: true,
+            setModalShow: true,
+          });
         },
         (error) => {
           console.log(error);
         }
       );
+  };
+
+  onHide = () => this.setState({ modalShow: false });
+
+  affichModal = () => {
+    return (
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={this.state.modalShow}
+        onHide={() => this.onHide}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            <h4>Modification réussie !</h4>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>{"Votre fiche a bien été mise à jour, actualisez la page !"}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className="modalButtonAdmin" onClick={this.onHide}>
+            Fermer
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
   };
 
   render() {
@@ -184,9 +216,11 @@ class BackOfficeAdherent extends Component {
               {this.state.dataAdherent.dirigeant.prenom}{" "}
               {this.state.dataAdherent.dirigeant.nom} !
             </h3>
-            <button className="btn-default" onClick={this.onSaveUpdate}>
-              Valider les modifications
-            </button>
+            {this.affichModal()}
+            <p>
+              N'oubliez pas de valider les modifications en cliquant sur le
+              bouton fin de page
+            </p>
           </div>
 
           <div className="ficheadherent-back">
@@ -800,6 +834,11 @@ class BackOfficeAdherent extends Component {
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>
+              <div className="button-container">
+                <button className="btn-default" onClick={this.onSaveUpdate}>
+                  Valider les modifications
+                </button>
+              </div>
             </Card>
 
             {/* Fiche droite */}

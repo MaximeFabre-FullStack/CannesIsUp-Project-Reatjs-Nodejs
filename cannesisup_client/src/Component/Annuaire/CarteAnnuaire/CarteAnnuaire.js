@@ -18,14 +18,14 @@ class CarteAnnuaire extends Component {
 
   checkPicture = () => {
     if (
-      this.props.photoProfil ==
+      this.props.photoProfil ===
       url["url-server"] + "/uploads/photoportrait"
     ) {
       return (
         <img
           className="photoProfil"
           src="/assets/img/avatar.png"
-          alt="no profil picture"
+          alt="no profil img"
         />
       );
     } else {
@@ -40,7 +40,7 @@ class CarteAnnuaire extends Component {
   };
 
   checkCouv = () => {
-    if (this.props.couv == url["url-server"] + "/uploads/photocouv") {
+    if (this.props.couv === url["url-server"] + "/uploads/photocouv") {
       return (
         <Card.Img
           className="couverture"

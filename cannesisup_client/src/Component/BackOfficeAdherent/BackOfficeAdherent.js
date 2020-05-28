@@ -54,9 +54,7 @@ class BackOfficeAdherent extends Component {
       .then((response) => response.json())
       .then(
         (data) => {
-          console.log(data);
           this.setState({ dataAdherent: data });
-          console.log(this.state);
         },
         (error) => {
           console.log(error);
@@ -81,9 +79,7 @@ class BackOfficeAdherent extends Component {
         "/adherents/updateFile/" +
         this.props.match.params.id,
       data: formData,
-    }).then((res) => {
-      console.log(res); // recharger la page ?
-    });
+    }).then((res) => {});
   };
 
   updatePhotoCouv = (e) => {
@@ -206,7 +202,7 @@ class BackOfficeAdherent extends Component {
   };
 
   checkPicture = () => {
-    if (this.state.dataAdherent.dirigeant.photoPortrait == "photoportrait") {
+    if (this.state.dataAdherent.dirigeant.photoPortrait === "photoportrait") {
       return (
         <Card.Img
           className="editable-img"
@@ -230,7 +226,7 @@ class BackOfficeAdherent extends Component {
   };
 
   checkCouv = () => {
-    if (this.state.dataAdherent.photoCouverture == "photocouv") {
+    if (this.state.dataAdherent.photoCouverture === "photocouv") {
       return (
         <Card.Img
           className="couverture editable-img"

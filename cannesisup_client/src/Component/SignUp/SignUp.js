@@ -595,7 +595,12 @@ class SignUp extends Component {
                 type="checkbox"
                 name="checkRgpd"
                 onClick={this.handle_check}
-                label={<Link to="/rgpd"> Charte RGPD </Link>}
+                label={
+                  <Link target="_blank" to="/rgpd">
+                    {" "}
+                    Charte RGPD{" "}
+                  </Link>
+                }
                 required
               />
             </div>

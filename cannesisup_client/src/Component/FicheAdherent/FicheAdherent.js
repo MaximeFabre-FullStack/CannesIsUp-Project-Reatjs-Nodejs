@@ -48,7 +48,7 @@ class FicheAdherent extends Component {
   }
 
   checkPicture = () => {
-    if (this.state.dataAdherent.dirigeant.photoPortrait == "photoportrait") {
+    if (this.state.dataAdherent.dirigeant.photoPortrait === "photoportrait") {
       return <Card.Img src="/assets/img/avatar.png" />;
     } else {
       return (
@@ -64,7 +64,7 @@ class FicheAdherent extends Component {
   };
 
   checkCouv = () => {
-    if (this.state.dataAdherent.photoCouverture == "photocouv") {
+    if (this.state.dataAdherent.photoCouverture === "photocouv") {
       return (
         <Card.Img
           className="couverture"

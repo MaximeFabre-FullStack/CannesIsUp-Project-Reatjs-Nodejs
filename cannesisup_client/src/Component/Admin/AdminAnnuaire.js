@@ -200,6 +200,7 @@ class AnnuaireAdmin extends Component {
       .then(
         (data) => {
           this.setState({ etat: +1 });
+          this.reFetchAllData();
         },
         (error) => {
           console.log(error);
@@ -214,6 +215,7 @@ class AnnuaireAdmin extends Component {
       .then(
         (data) => {
           this.setState({ etat: +1 });
+          this.reFetchAllData();
         },
         (error) => {
           console.log(error);
@@ -228,6 +230,44 @@ class AnnuaireAdmin extends Component {
       .then(
         (data) => {
           this.setState({ etat: +1 });
+          this.reFetchAllData();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  reFetchAllData = () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    };
+
+    fetch("http://localhost:8080/admin", options)
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          const dataATraiter = data.map((element) => {
+            return Object.assign(
+              {},
+              ...(function _flatten(o) {
+                if (element == null) {
+                  return;
+                } else {
+                  return [].concat(
+                    ...Object.keys(o).map((k) =>
+                      typeof o[k] === "object" ? _flatten(o[k]) : { [k]: o[k] }
+                    )
+                  );
+                }
+              })(element)
+            );
+          });
+          this.setState({ allData: data, dataApplatie: dataATraiter });
         },
         (error) => {
           console.log(error);

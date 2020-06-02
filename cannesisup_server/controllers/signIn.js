@@ -1,4 +1,4 @@
-// REQ CONNEXION / CREATION TOKEN / COMPARAISON MOT DE PASSE
+// REQ CONNEXION / CREATION TOKEN / COMPARAISON MDP
 const MdpMail = require("../models/adherent");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
